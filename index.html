@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <!-- 상단 진행 바 -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- 복사 완료 토스트 메시지 -->
+    <div id="toast" class="toast">코드가 복사되었습니다!</div>
+
+    <!-- 발표 화면 래퍼 -->
+    <div class="presentation-wrapper" id="presentationWrapper">
+        <div class="deck" id="deck">
+            <!-- 슬라이드는 loader.js가 slides/ 폴더에서 자동으로 여기에 삽입합니다 -->
+        </div>
+    </div>
+
+    <!-- 하단 네비게이션 -->
+    <div class="controls">
+        <button id="prevBtn" title="이전 (← 방향키)" onclick="navigateSlide(-1)" disabled>
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <span id="slideIndicator"
+              onclick="jumpToSlide()"
+              title="클릭하면 슬라이드 번호로 바로 이동">
+            1 / 1
+        </span>
+        <button id="nextBtn" title="다음 (→ 방향키 / Space)" onclick="navigateSlide(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button id="fullscreenBtn" title="전체화면" onclick="toggleFullscreen()">
+            <i class="fa-solid fa-expand"></i>
+        </button>
+    </div>
+
+    <!-- JS: loader.js를 먼저 → navigation.js는 로드 완료 후 실행됨 -->
+    <script src="js/loader.js"></script>
+    <script src="js/navigation.js"></script>
+
+</body>
+</html>

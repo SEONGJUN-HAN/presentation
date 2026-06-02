@@ -1,0 +1,29 @@
+아래 발표자료 템플릿 구조에 맞는 슬라이드 HTML 파일을 작성해줘.
+
+[템플릿 구조]
+- 슬라이드 크기: 1280x720px
+- 파일은 슬라이드 내용만 작성 (html/head/body 태그 없이)
+- 사용 가능한 CSS 클래스:
+  · slide-title         → 슬라이드 제목
+  · badge               → 중요 배지 (제목 옆)
+  · content-area        → 콘텐츠 전체 영역
+  · two-column          → 좌우 2컬럼 레이아웃
+  · code-tile-wrapper   → 코드블록 감싸는 래퍼
+  · code-tile           → 코드블록
+  · copy-btn            → 코드 복사 버튼
+  · c-comment / c-keyword / c-string / c-number → 코드 문법 강조
+  · image-wrapper       → 이미지 영역
+  · info-box            → 강조 박스
+  · checklist-icon      → 아이콘 체크리스트
+  · table + highlight   → 표 + 강조 행
+  · star                → ★ 별표 span
+  · section-cover       → 섹션 구분 슬라이드
+  · title-cover         → 표지 슬라이드
+- 중요 슬라이드는 제목에 data-important="true" 추가
+- Font Awesome 아이콘 사용 가능 (fa-solid fa-xxx)
+- CSS 변수: --accent(청록), --accent-alt(라임), --text-dim(회색)
+
+[요청 내용]
+주제: OOO
+레이아웃: OOO (2컬럼/표/섹션구분 등)
+내용: OOO

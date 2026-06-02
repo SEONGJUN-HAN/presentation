@@ -1,0 +1,31 @@
+<h2 class="slide-title">8. Clipboard (복사 &amp; 붙여넣기)</h2>
+
+<div class="content-area">
+    <div class="two-column">
+        <div>
+            <h3>대량 텍스트의 고속 처리</h3>
+            <p>Send보다 훨씬 빠르고 오타가 없습니다.</p>
+            <ul class="checklist-icon">
+                <li><i class="fa-solid fa-check"></i> 클립보드에 내용을 미리 저장</li>
+                <li><i class="fa-solid fa-check"></i> Ctrl+V를 사용하여 일괄 입력</li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <code>`n</code>: 엔터(줄바꿈) 역할
+                </li>
+            </ul>
+        </div>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre>::/보고서::
+    <span class="c-comment">; 긴 내용을 클립보드에 저장</span>
+    <span class="c-keyword">Clipboard</span> = [일일 보고서]`n1. 금일 실적:`n2. 내일 계획:
+    <span class="c-keyword">Sleep</span>, 100
+
+    <span class="c-comment">; Ctrl + V 로 한번에 입력</span>
+    <span class="c-keyword">Send</span>, ^v
+<span class="c-keyword">Return</span></pre>
+            </div>
+        </div>
+    </div>
+</div>

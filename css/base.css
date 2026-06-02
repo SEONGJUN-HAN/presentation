@@ -1,0 +1,193 @@
+/* ============================================================
+   base.css — 원본 스타일 완전 반영
+   ============================================================ */
+
+   :root {
+    --bg-root:        #020617;
+    --bg-primary:     #0f172a;
+    --bg-secondary:   #1e293b;
+    --bg-code:        #0b0f19;
+    --bg-highlight:   #115e59;
+    --bg-normal-row:  #1e293b;
+
+    --text-main:      #f8fafc;
+    --text-dim:       #94a3b8;
+
+    --accent:         #22d3ee;
+    --accent-alt:     #84cc16;
+
+    --border:         #334155;
+
+    --font-sans:      'Inter', sans-serif;
+    --font-mono:      'Fira Code', 'Courier New', monospace;
+
+    --slide-w:        1280px;
+    --slide-h:        720px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-root);
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ─── 발표 래퍼 & 덱 ─── */
+.presentation-wrapper {
+    position: relative;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    transform-origin: center center;
+    transition: transform 0.1s ease-out;
+}
+
+.deck {
+    position: relative;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    background-color: var(--bg-primary);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* ─── 슬라이드 컨테이너 ─── */
+.slide-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 50px 60px 70px 60px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slide-container.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+/* 우상단 글로우 장식 */
+.slide-container::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #1e293b 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ─── 진행 바 ─── */
+.progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--bg-secondary);
+    z-index: 1001;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+/* ─── 하단 네비게이션 ─── */
+.controls {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(30, 41, 59, 0.95);
+    border: 1px solid var(--border);
+    padding: 8px 24px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.controls button:hover:not(:disabled) {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+.controls button:disabled {
+    color: #475569;
+    cursor: not-allowed;
+}
+
+.controls span#slideIndicator {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--text-dim);
+    min-width: 70px;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.controls span#slideIndicator:hover {
+    color: var(--accent);
+}
+
+/* ─── 토스트 ─── */
+.toast {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: var(--accent-alt);
+    color: var(--bg-primary);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

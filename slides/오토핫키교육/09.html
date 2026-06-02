@@ -1,0 +1,41 @@
+<h2 class="slide-title" data-important="true">
+    6. Sleep (기다림의 미학)
+    <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
+</h2>
+
+<div class="content-area">
+    <div class="two-column">
+        <div>
+            <h3>오류 방지의 핵심</h3>
+            <p>명령 사이의 간격을 조절하여 에러를 방지합니다.</p>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <span style="color:var(--accent)">1000</span> = 1초 대기
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    네트워크/하드웨어 로딩 시간 고려
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    "자동화가 멈추면 Sleep을 더 넣으세요"
+                </li>
+            </ul>
+        </div>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre>^!e::
+    <span class="c-keyword">Run</span>, C:\업무\무거운엑셀.xlsx
+
+    <span class="c-comment">; 엑셀 켜질 때까지 5초 대기</span>
+    <span class="c-keyword">Sleep</span>, 5000
+
+    <span class="c-comment">; 그 다음 작업 실행</span>
+    <span class="c-keyword">Send</span>, 데이터를 입력합니다.
+<span class="c-keyword">Return</span></pre>
+            </div>
+        </div>
+    </div>
+</div>

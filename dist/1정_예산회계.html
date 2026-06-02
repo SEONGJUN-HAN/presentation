@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+   <html lang="ko">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>1정_예산회계</title>
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+       <style>
+   /* ============================================================
+   base.css — 원본 스타일 완전 반영
+   ============================================================ */
+
+   :root {
+    --bg-root:        #020617;
+    --bg-primary:     #0f172a;
+    --bg-secondary:   #1e293b;
+    --bg-code:        #0b0f19;
+    --bg-highlight:   #115e59;
+    --bg-normal-row:  #1e293b;
+
+    --text-main:      #f8fafc;
+    --text-dim:       #94a3b8;
+
+    --accent:         #22d3ee;
+    --accent-alt:     #84cc16;
+
+    --border:         #334155;
+
+    --font-sans:      'Inter', sans-serif;
+    --font-mono:      'Fira Code', 'Courier New', monospace;
+
+    --slide-w:        1280px;
+    --slide-h:        720px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-root);
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ─── 발표 래퍼 & 덱 ─── */
+.presentation-wrapper {
+    position: relative;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    transform-origin: center center;
+    transition: transform 0.1s ease-out;
+}
+
+.deck {
+    position: relative;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    background-color: var(--bg-primary);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* ─── 슬라이드 컨테이너 ─── */
+.slide-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 50px 60px 70px 60px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slide-container.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+/* 우상단 글로우 장식 */
+.slide-container::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #1e293b 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ─── 진행 바 ─── */
+.progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--bg-secondary);
+    z-index: 1001;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+/* ─── 하단 네비게이션 ─── */
+.controls {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(30, 41, 59, 0.95);
+    border: 1px solid var(--border);
+    padding: 8px 24px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.controls button:hover:not(:disabled) {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+.controls button:disabled {
+    color: #475569;
+    cursor: not-allowed;
+}
+
+.controls span#slideIndicator {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--text-dim);
+    min-width: 70px;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.controls span#slideIndicator:hover {
+    color: var(--accent);
+}
+
+/* ─── 토스트 ─── */
+.toast {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: var(--accent-alt);
+    color: var(--bg-primary);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+   /* ============================================================
+   components.css — 원본 스타일 완전 반영
+   ============================================================ */
+
+/* ─── 슬라이드 제목 ─── */
+.slide-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--accent);
+    border-left: 8px solid var(--accent);
+    padding-left: 20px;
+    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    line-height: 1.2;
+}
+
+/* 중요 슬라이드: 제목 색상을 라임으로 */
+.slide-container.important .slide-title {
+    color: var(--accent-alt);
+    border-left-color: var(--accent-alt);
+}
+
+/* ─── 중요 배지 ─── */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--accent-alt);
+    color: #020617;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 15px;
+    letter-spacing: 0;
+    text-transform: none;
+    box-shadow: 0 2px 8px rgba(132, 204, 22, 0.4);
+    flex-shrink: 0;
+}
+
+/* ─── 콘텐츠 영역 ─── */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    z-index: 1;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* ─── 2컬럼 레이아웃 ─── */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    flex-grow: 1;
+    align-items: start;
+    min-height: 0;
+}
+
+/* ─── 타이포그래피 ─── */
+h3 {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+}
+
+li strong,
+p strong {
+    color: var(--text-main);
+}
+
+code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--accent);
+    background-color: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* ─── 코드블록 ─── */
+.code-tile-wrapper {
+    position: relative;
+    height: 100%;
+    min-height: 200px;
+}
+
+.code-tile {
+    background-color: var(--bg-code);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    height: 100%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+}
+
+pre {
+    font-family: var(--font-mono);
+    font-size: 17px;
+    color: #d1d5db;
+    white-space: pre-wrap;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* 문법 강조 */
+.c-comment {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.c-keyword {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.c-string {
+    color: var(--accent-alt);
+}
+
+.c-number {
+    color: #f97316;
+}
+
+/* 복사 버튼 */
+.copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #334155;
+    color: var(--text-main);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    z-index: 20;
+}
+
+.copy-btn:hover {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+/* ─── 표 ─── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+th {
+    background-color: var(--bg-secondary);
+    color: var(--accent);
+    text-align: left;
+    padding: 10px 15px;
+    font-size: 15px;
+    border-bottom: 2px solid var(--accent);
+}
+
+td {
+    padding: 8px 15px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+tr:nth-child(even):not(.highlight) {
+    background-color: var(--bg-normal-row);
+}
+
+/* 강조 행 */
+tr.highlight {
+    background-color: var(--bg-highlight) !important;
+}
+
+tr.highlight td {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.star {
+    color: #fde047;
+    margin-left: 5px;
+}
+
+/* ─── 이미지 래퍼 ─── */
+.image-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 400px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-code);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ─── 인포 박스 ─── */
+.info-box {
+    background-color: var(--bg-secondary);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 12px 0;
+}
+
+.info-box p {
+    margin: 0;
+    font-size: 17px;
+}
+
+/* ─── 키 심볼 박스 (핫키 슬라이드용) ─── */
+.key-box {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 12px 0;
+    line-height: 1.9;
+    font-size: 18px;
+}
+
+/* ─── 체크리스트 ─── */
+.checklist {
+    list-style: none;
+    padding-left: 0;
+}
+
+.checklist li {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--accent-alt);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* fa-check 아이콘 버전 체크리스트 */
+.checklist-icon {
+    list-style: none;
+    padding-left: 0;
+}
+
+.checklist-icon li {
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: var(--text-dim);
+}
+
+.checklist-icon li i {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    color: var(--accent-alt);
+}
+
+/* ─── 섹션 구분 슬라이드 ─── */
+.section-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    gap: 20px;
+}
+
+.section-cover .section-label {
+    color: var(--accent);
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.section-cover .section-title {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.section-cover .section-desc {
+    color: var(--text-dim);
+    font-size: 22px;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* ─── 표지 슬라이드 ─── */
+.title-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 16px;
+    padding: 20px 0;
+}
+
+.title-cover .cover-label {
+    color: var(--accent);
+    font-size: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.title-cover .cover-title {
+    font-size: 68px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -2px;
+}
+
+.title-cover .cover-title span {
+    color: var(--accent);
+}
+
+.title-cover .cover-subtitle {
+    font-size: 24px;
+    color: var(--text-dim);
+    margin: 0;
+}
+
+.title-cover .cover-meta {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.title-cover .cover-meta span {
+    font-size: 16px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.title-cover .cover-meta span i {
+    color: var(--accent);
+}
+
+/* ─── 영상 래퍼 ─── */
+.video-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+.video-wrapper video,
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+       </style>
+   </head>
+   <body>
+       <div class="progress-bar-container">
+           <div class="progress-bar" id="progressBar"></div>
+       </div>
+       <div id="toast" class="toast">코드가 복사되었습니다!</div>
+       <div class="presentation-wrapper" id="presentationWrapper">
+           <div class="deck" id="deck">
+               
+            <div class="slide-container" id="slide-0">
+                <!-- ===================== SLIDE 01: 표지 ===================== -->
+<div class="slide title-cover" id="slide-01">
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:18px; text-align:center; padding: 0 80px;">
+      <div class="badge" style="font-size:0.85rem; letter-spacing:2px; padding:6px 18px;">📋 신규~중견 선생님을 위한 실무 특강</div>
+      <h1 class="slide-title" style="font-size:2.6rem; line-height:1.35; margin:0;">
+        "실수 없는"<br>
+        <span style="color:var(--accent);">&nbsp;스마트한 학교 예산 집행 가이드</span>
+      </h1>
+      <p style="font-size:1.1rem; color:var(--text-dim); margin-top:8px;">
+        AI·융합 동아리 운영비 200만 원으로 배우는 예산 행정의 A to Z
+      </p>
+      <div style="display:flex; gap:32px; margin-top:24px; font-size:0.95rem; color:var(--text-dim);">
+        <span><i class="fa-solid fa-clock"></i> &nbsp;30분</span>
+        <span><i class="fa-solid fa-layer-group"></i> &nbsp;19 Slides</span>
+        <span><i class="fa-solid fa-user-graduate"></i> &nbsp;신규~중견 교사 대상</span>
+      </div>
+    </div>
+  </div>
+            </div>
+            <div class="slide-container" id="slide-1">
+                <div class="slide">
+    <h2 class="slide-title">오늘 30분, 이것만! <span class="badge">강의 목표</span></h2>
+    <div class="content-area" style="justify-content:center;gap:28px;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;align-items:center;gap:20px;background:rgba(0,210,190,0.08);border:2px solid var(--accent);border-radius:16px;padding:24px 32px;">
+          <div style="font-size:2.5rem;">💡</div>
+          <div>
+            <div style="font-size:1rem;color:var(--accent);font-weight:700;margin-bottom:4px;">1계명</div>
+            <div style="font-size:1.5rem;font-weight:800;">돈이 왔다고 바로 쓸 수 없다</div>
+            <div style="font-size:1rem;color:var(--text-dim);margin-top:4px;">→ 성립전예산 편성이 먼저</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px;background:rgba(180,255,100,0.08);border:2px solid var(--accent-alt);border-radius:16px;padding:24px 32px;">
+          <div style="font-size:2.5rem;">🏷️</div>
+          <div>
+            <div style="font-size:1rem;color:var(--accent-alt);font-weight:700;margin-bottom:4px;">2계명</div>
+            <div style="font-size:1.5rem;font-weight:800;">돈의 성격이 목적보다 중요하다</div>
+            <div style="font-size:1rem;color:var(--text-dim);margin-top:4px;">→ 세부사업과 목</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px;background:rgba(255,169,77,0.08);border:2px solid #ffa94d;border-radius:16px;padding:24px 32px;">
+          <div style="font-size:2.5rem;">📝</div>
+          <div>
+            <div style="font-size:1rem;color:#ffa94d;font-weight:700;margin-bottom:4px;">3계명</div>
+            <div style="font-size:1.5rem;font-weight:800;">품의했다고 끝난 게 아니다</div>
+            <div style="font-size:1rem;color:var(--text-dim);margin-top:4px;">→ 품의 &ne; 원인행위</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-2">
+                <div class="slide">
+    <h2 class="slide-title">🎬 200만 원이 내려왔다!</h2>
+    <div class="content-area two-column" style="align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;justify-content:center;">
+        <div style="font-size:1.6rem;font-weight:800;line-height:1.8;">
+          📣 공모사업 선정<br>
+          <span style="color:var(--accent);font-size:2rem;">AI·융합 동아리 200만 원</span><br>
+          교육지원청 → 우리 학교
+        </div>
+        <div style="font-size:1.3rem;color:var(--text-dim);line-height:1.8;">
+          🛒 신이 난 나 → 쇼핑몰 오픈<br>
+          🤖 로봇 키트 장바구니에 담는 중...
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
+        <div style="font-size:1.2rem;font-weight:700;color:var(--text-dim);">
+          지금 바로 에듀파인에서<br>지출품의 올리면 될까요?
+        </div>
+        <div style="background:rgba(255,107,107,0.15);border:2px solid #ff6b6b;border-radius:20px;padding:32px 48px;text-align:center;">
+          <div style="font-size:3.5rem;font-weight:900;color:#ff6b6b;">❌ 아니오!</div>
+          <div style="font-size:1.1rem;color:var(--text-dim);margin-top:12px;">
+            이 돈은 아직<br><strong style="color:#fff;">학교 예산에 존재하지 않습니다</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-3">
+                <div class="slide section-cover">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:24px;text-align:center;">
+      <div class="badge" style="font-size:0.9rem;padding:6px 20px;">1단계</div>
+      <h2 style="font-size:3rem;font-weight:900;line-height:1.4;margin:0;">
+        돈이 왔지만<br>쓸 수는 없다
+      </h2>
+      <p style="font-size:1.6rem;color:var(--accent);font-weight:700;margin:0;">
+        💡 성립전예산 편성
+      </p>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-4">
+                <div class="slide">
+    <h2 class="slide-title" data-important="true">성립전예산이란? <span class="badge">핵심 개념</span></h2>
+    <div class="content-area two-column" style="align-items:center;gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="font-size:1.4rem;font-weight:700;line-height:2;">
+          📌 본예산에 없는 돈<br>
+          📌 추경을 기다릴 시간 없음<br>
+          📌 목적 지정 + 전액 교부 완료
+        </div>
+        <div class="info-box" style="font-size:1.1rem;line-height:1.9;border-left:4px solid var(--accent);">
+          운영위 심의를 <strong style="color:var(--accent);">뒤로 미루고</strong><br>
+          먼저 예산을 편성 및 집행 제도
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <table>
+          <thead>
+            <tr>
+              <th>예산 종류</th>
+              <th style="text-align:center;">확정 시기</th>
+              <th style="text-align:center;">운영위 심의</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>본예산</strong></td><td style="text-align:center;">2월 말</td><td style="text-align:center;">✅ 사전</td></tr>
+            <tr><td><strong>추경</strong></td><td style="text-align:center;">수시</td><td style="text-align:center;">✅ 사전</td></tr>
+            <tr class="highlight">
+              <td><strong style="color:var(--accent);">⭐ 성립전예산</strong></td>
+              <td style="text-align:center;font-weight:700;">즉시</td>
+              <td style="text-align:center;font-weight:700;">차기 추경 반영</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="font-size:0.85rem;color:var(--text-dim);text-align:center;">
+          ※ 편성 요구서 제출 → 학교장 확정 → 차기 추경 반영
+        </div>
+      </div>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-5">
+                <div class="slide">
+    <h2 class="slide-title">📄 성립전예산 편성 요구서 <span class="badge">실무 서식</span></h2>
+    <div class="content-area" style="gap:16px;">
+  
+      <!-- 위: 이미지 넓게 -->
+      <div class="image-wrapper" style="flex:1;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);border:2px dashed rgba(255,255,255,0.15);border-radius:16px;min-height:0;">
+        <!-- 실제 사용 시 아래 주석 해제 후 img 태그로 교체 -->
+        <img src="data:image/png;base64,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743mS1b0AGa95RzecB3eHjPX8FSNZ/f9390f+DXOON7ui2ect1pwykEo+9BGhJY3Ol9E12xlalaZWbvUjowRUn507hdO2ccoa9+j17TiHtx6H/EubzmHt1yHtc/MNTxVY3ni3j+xBvBLnHG83RfPOG+14NcHoazv7SGaIxmdL7y1ipJTR/35V55ce2QtKbef++V96520lxHWvktsdMxa0QOY9ZZzeMt1aPss85lriNTU3jU3s45ldT/JE2sAv8QZx9t98YzzVgt+eRBG1/by+7iVH+lljZ4095Qn1x5ZK3KffnnfeqftJTosXrw3mi9Z0QOY9ZZzeNN19HutP2evodRZoyfNne7GPQMjOON4uy+ecd5qwS8PwujakfySU4dldG3P6n4jnlx7ZC0pd7R+drSk+OhoSfHRIdHmM0Z7rVh75f6BrF3nsPSdHS0pPjpaUnx0zJD6zPaMstZp95UdO+zqC5yCM463++IZ560W/PoglPW9PURyRp3eb8STa1trldjswNrnOdprxdo8R5yAc/g9Nz5zzinejjOOt/viGeetFpxyEMo+tLHD6r679hnx5Nq/vM4vKfd5ZFikfG2ssKoPMINz+D03PnPOKd6OM463++IZ560W8GF3P54hTsJ5xAk4h7gB5xRvxxnH233xjPNWC/iwux/PECfhPOIEnEPcgHOKt+OM4+2+eMZ5qwV82N2PZ4iTcB5xAs4hbsA5xdtxxvF2XzzjvNUCPuzuxzPESb5yHst1aiND6lPHDqv77tpn1mn7ASScU7TKeeiHRJs/0U17xTPedia+eMZ5qwV82N2PZ4iTvP08luvzrjGSU63sV/PaocnGCinu1TzttP0AklvOaWSfJacOSzQvKtpvdV7Gqp479rbLTXsdZV1bidVhieZFRfutzivaXCs/0usmb7ueiO9dccAXD8Lb8AxxklPOY9nH6PBEclpe/sp+WqzOl//th8aKFVLcq3naafsBJLec09HPBC0/mhe1et1oXkbptarfyn3tdtNeR1jPs5+fzYtave5InhSz5t/kbdcT8b0rDvjiQXgbniFOcvN59PY+em1P9cusY9Ws7vcLp+0HkJx+Tsv+6tBosX4+mhe1et1oXlbpI/Wq85FRtf99upv2OqJ/JpV2vf18NC9q9bqzea1MzU3edj0R37vigC8ehLfhGeIkN5/HyN5LjpcXySki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" style="height:100%;max-height:340px;border-radius:12px;object-fit:contain;"/>
+        <!-- <div style="text-align:center;color:var(--text-dim);">
+          <i class="fa-solid fa-image" style="font-size:3rem;margin-bottom:12px;"></i><br>
+          공문 캡처 이미지 삽입
+        </div> -->
+      </div>
+  
+      <!-- 아래: 설명 좌우 배치 -->
+      <div style="display:flex;flex-direction:row;gap:16px;">
+        <div class="info-box" style="flex:1;font-size:1rem;line-height:1.9;border-left:4px solid var(--accent);">
+          📌 결재: 학교장<br>
+          📌 제목: 성립전예산 편성 요구
+        </div>
+        <div class="info-box" style="flex:1;font-size:1rem;line-height:1.9;border-left:4px solid var(--accent-alt);text-align:center;">
+          이 공문 한 장이<br>
+          <strong style="color:var(--accent);font-size:1.1rem;">예산을 편성하는 시작점</strong>
+        </div>
+        <div class="info-box" style="flex:1;font-size:1rem;line-height:1.9;border-left:4px solid #ffa94d;text-align:center;">
+          ⚠️ 공문 없이는<br>
+          예산 편성 자체가<br>
+          <strong style="color:#ffa94d;">불가능합니다</strong>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+            </div>
+            <div class="slide-container" id="slide-6">
+                <div class="slide">
+    <h2 class="slide-title">🗂️ 예산은 이렇게 구성됩니다 <span class="badge">예산 구조</span></h2>
+    <div class="content-area" style="gap:16px;">
+  
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px;">
+        <div style="border:1.5px solid rgba(0,210,190,0.4);border-radius:10px;padding:10px 20px;font-size:1rem;font-weight:600;color:rgba(0,210,190,0.5);">정책사업</div>
+        <div style="color:var(--text-dim);font-size:1.2rem;">›</div>
+        <div style="border:1.5px solid rgba(0,210,190,0.4);border-radius:10px;padding:10px 20px;font-size:1rem;font-weight:600;color:rgba(0,210,190,0.5);">단위사업</div>
+        <div style="color:var(--text-dim);font-size:1.2rem;">›</div>
+        <div style="background:rgba(180,255,100,0.25);border:3px solid var(--accent-alt);border-radius:10px;padding:12px 24px;font-size:1.2rem;font-weight:900;color:var(--accent-alt);box-shadow:0 0 16px rgba(180,255,100,0.3);">⭐ 세부사업</div>
+        <div style="color:var(--text-dim);font-size:1.2rem;">›</div>
+        <div style="border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 20px;font-size:1rem;font-weight:600;color:var(--text-dim);">세부항목</div>
+        <div style="color:var(--text-dim);font-size:1.2rem;">›</div>
+        <div style="border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 20px;font-size:1rem;font-weight:600;color:rgba(2, 255, 230, 0.5);">원가통계비목</div>
+        <div style="color:var(--text-dim);font-size:1.2rem;">-</div>
+        <div style="border:1.5px solid rgba(180,130,255,0.3);border-radius:10px;padding:10px 20px;font-size:1rem;font-weight:600;color:var(--text-dim);">산출내역</div>
+      </div>
+  
+      <table style="font-size:0.88rem;">
+        <thead>
+          <tr>
+            <th>정책사업</th>
+            <th>단위사업</th>
+            <th style="color:var(--accent-alt);background:rgba(180,255,100,0.12);">⭐ 세부사업</th>
+            <th>세부항목</th>
+            <th>원가통계비목</th>
+            <th>산출내역(예시)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>기본적 교육활동</td>
+            <td>교과활동</td>
+            <td style="font-weight:800;color:var(--accent-alt);background:rgba(180,255,100,0.06);">교과활동 지원</td>
+            <td>학습준비물 지원</td>
+            <td style="color:var(--accent);">학습준비물</td>
+            <td style="color:var(--text-dim);">준비물 구입 20,000원&times;20명&times;2회</td>
+          </tr>
+          <tr>
+            <td>학생복지</td>
+            <td>급식 관리</td>
+            <td style="font-weight:800;color:var(--accent-alt);background:rgba(180,255,100,0.06);">학교급식 운영</td>
+            <td>급식재료구입비</td>
+            <td style="color:var(--accent);">급식용 식재료비</td>
+            <td style="color:var(--text-dim);">식품비 4,000원&times;300명&times;190일</td>
+          </tr>
+          <tr>
+            <td>교육활동 지원</td>
+            <td>교무업무 운영</td>
+            <td style="font-weight:800;color:var(--accent-alt);background:rgba(180,255,100,0.06);">교무학사 운영</td>
+            <td>입학식 및 졸업식</td>
+            <td style="color:var(--accent);">교육운영비</td>
+            <td style="color:var(--text-dim);">행사용품 구입 500,000원&times;1식</td>
+          </tr>
+          <tr>
+            <td>학교 일반운영</td>
+            <td>학교기관 운영</td>
+            <td style="font-weight:800;color:var(--accent-alt);background:rgba(180,255,100,0.06);">부서기본 운영</td>
+            <td>행정실운영</td>
+            <td style="color:var(--accent);">일반수용비</td>
+            <td style="color:var(--text-dim);">사무용 토너 구입 100,000원&times;5개</td>
+          </tr>
+          <tr>
+            <td>창의적 체험활동</td>
+            <td>자율·자치활동</td>
+            <td style="font-weight:800;color:var(--accent-alt);background:rgba(180,255,100,0.06);">자율·자치활동</td>
+            <td>학예회(축제)</td>
+            <td style="color:var(--accent);">교육운영비</td>
+            <td style="color:var(--text-dim);">축제 홍보 현수막 제작 50,000원&times;2개</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="info-box" style="font-size:1rem;text-align:center;">
+        <i class="fa-solid fa-arrow-pointer" style="color:var(--accent-alt);"></i>
+        &nbsp; <strong style="color:var(--accent-alt);">세부사업</strong>을 먼저 찾고
+        &nbsp;&#8594;&nbsp; <strong style="color:#ffa94d;">원가통계비목</strong>을 맞춰서 입력!
+      </div>
+  
+    </div>
+  </div>
+            </div>
+            <div class="slide-container" id="slide-7">
+                <div class="slide section-cover">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:24px;text-align:center;">
+      <div class="badge" style="font-size:0.9rem;padding:6px 20px;">2단계</div>
+      <h2 style="font-size:3rem;font-weight:900;line-height:1.4;margin:0;">
+        예산의 이름표를<br>찾아라
+      </h2>
+      <p style="font-size:1.6rem;color:var(--accent-alt);font-weight:700;margin:0;">
+        🏷️ 원가통계비목
+      </p>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-8">
+                <div class="slide">
+    <h2 class="slide-title" data-important="true">🎯 이 돈, 어느 주머니에서? <span class="badge">퀴즈</span></h2>
+    <div class="content-area" style="justify-content:center;gap:20px;">
+      <div style="font-size:1rem;color:var(--text-dim);margin-bottom:4px;">
+        200만 원 예산 등록 완료 · 아래 3가지, 모두 '동아리 운영비' 하나로 처리해도 될까요?
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:38%;">집행 내용</th>
+            <th style="text-align:center;width:27%;">❓ 예상 비목</th>
+            <th style="text-align:center;">✅ 정답</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-size:1.1rem;font-weight:700;">🤖 로봇 제작 키트 구매</td>
+            <td style="text-align:center;color:var(--text-dim);">동아리 운영비?</td>
+            <td style="text-align:center;font-size:1.2rem;font-weight:900;color:var(--accent);">교육운영비</td>
+          </tr>
+          <tr>
+            <td style="font-size:1.1rem;font-weight:700;">📄 활동 보고서 인쇄</td>
+            <td style="text-align:center;color:var(--text-dim);">교육운영비?</td>
+            <td style="text-align:center;font-size:1.2rem;font-weight:900;color:var(--accent-alt);">일반수용비</td>
+          </tr>
+          <tr>
+            <td style="font-size:1.1rem;font-weight:700;">🍱 협의회 식비</td>
+            <td style="text-align:center;color:var(--text-dim);">교육운영비?</td>
+            <td style="text-align:center;font-size:1.2rem;font-weight:900;color:#ffa94d;">목적사업 업무추진비</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="info-box" style="font-size:1.05rem;border-left:4px solid #ff6b6b;margin-top:8px;">
+        <i class="fa-solid fa-triangle-exclamation" style="color:#ff6b6b;"></i>
+        &nbsp;<strong>가장 흔한 실수</strong> &nbsp;→&nbsp; 보고서 인쇄비를 <strong>교육운영비</strong>로 품의
+        &nbsp;→&nbsp;  <strong style="color:#ff6b6b;">100% 반려</strong>
+      </div>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-9">
+                <div class="slide">
+    <h2 class="slide-title">📦 3개 주머니만 기억하세요 <span class="badge">비목 해설</span></h2>
+    <div class="content-area" style="justify-content:center;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:20px;">
+        <div style="background:rgba(0,210,190,0.12);border:2px solid var(--accent);border-radius:16px;padding:28px 20px;text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">📚</div>
+          <div style="font-size:1.4rem;font-weight:900;color:var(--accent);margin-bottom:10px;">교육운영비</div>
+          <div style="font-size:1rem;color:var(--text-dim);line-height:1.8;">
+            학생 교육·실습에<br>직접 투입되는 재료<br><br>
+            <strong style="color:#fff;">로봇키트 · 실험재료</strong>
+          </div>
+        </div>
+        <div style="background:rgba(180,255,100,0.10);border:2px solid var(--accent-alt);border-radius:16px;padding:28px 20px;text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">🖨️</div>
+          <div style="font-size:1.4rem;font-weight:900;color:var(--accent-alt);margin-bottom:10px;">일반수용비</div>
+          <div style="font-size:1rem;color:var(--text-dim);line-height:1.8;">
+            행정·운영에<br>소요되는 일반 경비<br><br>
+            <strong style="color:#fff;">인쇄비 · 사무용품</strong>
+          </div>
+        </div>
+        <div style="background:rgba(255,169,77,0.12);border:2px solid #ffa94d;border-radius:16px;padding:28px 20px;text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">🍽️</div>
+          <div style="font-size:1.4rem;font-weight:900;color:#ffa94d;margin-bottom:10px;">목적사업 업무추진비</div>
+          <div style="font-size:1rem;color:var(--text-dim);line-height:1.8;">
+            공식 회의·행사<br>관련 비용<br><br>
+            <strong style="color:#fff;">협의회 식비 · 다과</strong>
+          </div>
+        </div>
+      </div>
+      <div class="info-box" style="font-size:1rem;text-align:center;">
+        <i class="fa-solid fa-robot" style="color:var(--accent-alt);"></i>
+        &nbsp;헷갈리면 → <strong>NotebookLM</strong>에 예산 지침 PDF 넣고 질문 → <strong style="color:var(--accent);">3초 해결</strong> 🎯
+      </div>
+    </div>
+  </div>
+            </div>
+            <div class="slide-container" id="slide-10">
+                <!-- ===================== SLIDE 09: 비목 200만원 배분 시각화 ===================== -->
+<div class="slide" id="slide-09">
+    <h2 class="slide-title">💰 200만 원, 이렇게 3개 주머니로 쪼개세요</h2>
+    <div class="content-area" style="display:flex; flex-direction:column; align-items:center; gap:20px;">
+      <div style="display:flex; align-items:center; gap:12px; font-size:1rem; width:100%;">
+        <div style="background:rgba(255,255,255,0.07); border-radius:12px; padding:14px 20px; flex:1; text-align:center; border:1.5px solid rgba(255,255,255,0.12);">
+          <div style="font-size:0.85rem; color:var(--text-dim);">총 교부 예산</div>
+          <div style="font-size:1.8rem; font-weight:900; color:#fff;">200만 원</div>
+        </div>
+        <div style="font-size:1.5rem; color:var(--text-dim);">→</div>
+        <div style="background:rgba(0,210,190,0.12); border:1.5px solid var(--accent); border-radius:12px; padding:14px 20px; flex:1.3; text-align:center;">
+          <div style="font-size:0.8rem; color:var(--accent); font-weight:700;">교육운영비</div>
+          <div style="font-size:1.5rem; font-weight:800;">120만 원</div>
+          <div style="font-size:0.78rem; color:var(--text-dim); margin-top:4px;">로봇 키트 외 교구·재료</div>
+          <div style="height:8px; background:var(--accent); border-radius:4px; margin-top:10px; width:100%;"></div>
+        </div>
+        <div style="font-size:1.2rem; color:var(--text-dim);">+</div>
+        <div style="background:rgba(180,255,100,0.10); border:1.5px solid var(--accent-alt); border-radius:12px; padding:14px 20px; flex:1.3; text-align:center;">
+          <div style="font-size:0.8rem; color:var(--accent-alt); font-weight:700;">일반수용비</div>
+          <div style="font-size:1.5rem; font-weight:800;">50만 원</div>
+          <div style="font-size:0.78rem; color:var(--text-dim); margin-top:4px;">보고서 인쇄비 등</div>
+          <div style="height:8px; background:var(--accent-alt); border-radius:4px; margin-top:10px; width:100%;"></div>
+        </div>
+        <div style="font-size:1.2rem; color:var(--text-dim);">+</div>
+        <div style="background:rgba(255,169,77,0.12); border:1.5px solid #ffa94d; border-radius:12px; padding:14px 20px; flex:1.3; text-align:center;">
+          <div style="font-size:0.8rem; color:#ffa94d; font-weight:700;">업무추진비</div>
+          <div style="font-size:1.5rem; font-weight:800;">30만 원</div>
+          <div style="font-size:0.78rem; color:var(--text-dim); margin-top:4px;">협의회 식비 등</div>
+          <div style="height:8px; background:#ffa94d; border-radius:4px; margin-top:10px; width:100%;"></div>
+        </div>
+      </div>
+      <div class="info-box" style="font-size:0.92rem; width:100%; line-height:1.8;">
+        <i class="fa-solid fa-circle-info" style="color:var(--accent);"></i>
+        &nbsp;각 비목별 예산은 <strong>서로 섞어 쓸 수 없습니다.</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목(目)별 예산현액을 초과하여 집행하려면 반드시 <strong>예산 전용(이·전용) 절차</strong>를 거쳐야 합니다.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;처음 편성 시부터 비목을 정확히 배분하는 것이 핵심입니다!
+      </div>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-11">
+                <div class="slide">
+    <h2 class="slide-title">🧩 원가통계비목 목구조 <span class="badge">핵심 요약</span></h2>
+    <div class="content-area">
+      <table style="width:100%; table-layout:fixed; font-size:1.05rem; border-collapse:collapse; margin-top:10px;">
+        <colgroup>
+          <col style="width:15%;">
+          <col style="width:20%;">
+          <col style="width:65%;">
+        </colgroup>
+        <thead>
+          <tr style="border-bottom:2px solid var(--accent-alt);">
+            <th style="color:var(--text-dim); padding:12px; text-align:center; font-weight:500;">목그룹</th>
+            <th style="color:var(--accent); padding:12px; text-align:center; font-size:1.15rem; font-weight:900;">목</th>
+            <th style="padding:12px; text-align:center;">원가통계비목</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <td style="color:var(--text-dim); text-align:center; vertical-align:middle;">인건비</td>
+            <td style="background:rgba(0,210,190,0.08); color:var(--accent); text-align:center; font-weight:900;">인건비</td>
+            <td style="color:var(--text-dim); padding:16px; line-height:1.6;">공무직인건비, 기간제교원인건비, 기간제근로자인건비, 기타수당</td>
+          </tr>
+          
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <td rowspan="2" style="color:var(--text-dim); text-align:center; vertical-align:middle;">운영비</td>
+            <td style="background:rgba(0,210,190,0.08); color:var(--accent); text-align:center; font-weight:900;">학교운영비</td>
+            <td style="color:var(--text-dim); padding:16px; line-height:1.6; word-break:keep-all;"><span style="color:#e5ff00;">일반수용비, 운영수당,</span> 전기요금, 상하수도료, 연료비, 기타공공요금, 급식용식재료비, 우유급식비, 여비, 맞춤형복지비, 교직원복지비, <span style="color:#e5ff00;">교육운영비, </span> 학습준비물, 학생복지비, 교직원법정부담금, 기간제교원법정부담금, 기간제근로자법정부담금, 공무직법정부담금</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <td style="background:rgba(0,210,190,0.08); color:var(--accent); text-align:center; font-weight:900;">업무추진비</td>
+            <td style="color:var(--text-dim); padding:16px; line-height:1.6;">일반업무추진비, 직책급업무추진비, <span style="color:#e5ff00;">목적사업 업무추진비 </span></td>
+          </tr>
+  
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <td rowspan="4" style="color:var(--text-dim); text-align:center; vertical-align:middle;">자산취득비</td>
+            <td style="background:rgba(0,210,190,0.08); color:var(--accent); text-align:center; font-weight:900;">시설비</td>
+            <td style="color:var(--text-dim); padding:16px; line-height:1.6;">시설비, 임차보증금</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <td style="background:rgba(0,210,190,0.08); color:var(--accent); text-align:center; font-weight:900;">비품구입비</td>
+            <td style="color:var(--text-dim); padding:16px; line-height:1.6;"><span style="color:#e5ff00;">비품구입비, </span> 도서구입비</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <td style="background:rgba(0,210,190,0.08); color:var(--accent); text-align:center; font-weight:900;">시설적립금</td>
+            <td style="color:var(--text-dim); padding:16px; line-height:1.6;">시설적립금</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <td style="background:rgba(0,210,190,0.08); color:var(--accent); text-align:center; font-weight:900;">기타자산취득비</td>
+            <td style="color:var(--text-dim); padding:16px; line-height:1.6;">기타자산취득비</td>
+          </tr>
+  
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <td style="color:var(--text-dim); text-align:center; vertical-align:middle;">예비비 및 기타</td>
+            <td style="background:rgba(0,210,190,0.08); color:var(--accent); text-align:center; font-weight:900;">예비비 및 기타</td>
+            <td style="color:var(--text-dim); padding:16px; line-height:1.6;">예비비, 반환금, 전출금</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+            </div>
+            <div class="slide-container" id="slide-12">
+                <div class="slide">
+    <h2 class="slide-title">🧩 실전: 내가 담당이라면? <span class="badge">종합 문제</span></h2>
+    <div class="content-area" style="gap:12px;align-items:center;">
+  
+      <table style="font-size:0.82rem;width:75%;table-layout:fixed;margin:0 auto;">
+        <colgroup>
+          <col style="width:13%;">
+          <col style="width:14%;">
+          <col style="width:15%;">
+          <col style="width:42%;">
+          <col style="width:16%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th style="color:var(--accent-alt);text-align:center;">세부사업</th>
+            <th>세부항목</th>
+            <th style="color:#ffa94d;">원가통계비목</th>
+            <th>산출내역</th>
+            <th style="text-align:right;">예산액</th>
+          </tr>
+        </thead>
+        <tbody>
+  
+          <!-- 교무학사운영 -->
+          <tr>
+            <td rowspan="7" style="font-weight:900;color:var(--accent-alt);background:rgba(180,255,100,0.06);text-align:center;vertical-align:middle;">교무학사운영</td>
+            <td rowspan="2">교무학사운영</td>
+            <td style="color:#ffa94d;font-weight:700;">교육운영비</td>
+            <td style="color:var(--text-dim);">자체_시간표 프로그램 구입</td>
+            <td style="text-align:right;">319,000</td>
+          </tr>
+          <tr>
+            <td style="color:rgba(255,255,255,0.3);font-size:0.75rem;font-weight:700;">[세부항목 소계]</td>
+            <td></td>
+            <td style="text-align:right;font-weight:700;">319,000</td>
+          </tr>
+  
+          <tr>
+            <td rowspan="3">교육과정평가</td>
+            <td style="color:#ffa94d;font-weight:700;">일반수용비</td>
+            <td style="color:var(--text-dim);">자체_omr카드 구입 / 평가 운영물품</td>
+            <td style="text-align:right;">1,200,000</td>
+          </tr>
+          <tr>
+            <td style="color:#ffa94d;font-weight:700;">교육운영비</td>
+            <td style="color:var(--text-dim);">자체_신입생반편성검사</td>
+            <td style="text-align:right;">1,000,000</td>
+          </tr>
+          <tr>
+            <td style="color:rgba(255,255,255,0.3);font-size:0.75rem;font-weight:700;">[세부항목 소계]</td>
+            <td></td>
+            <td style="text-align:right;font-weight:700;">2,650,000</td>
+          </tr>
+  
+          <tr>
+            <td>환경정리</td>
+            <td style="color:#ffa94d;font-weight:700;">일반수용비</td>
+            <td style="color:var(--text-dim);">자체_쓰레기봉투 / 청소용품 구입</td>
+            <td style="text-align:right;">4,000,000</td>
+          </tr>
+          <tr style="background:rgba(0,210,190,0.08);">
+            <td style="font-weight:900;color:var(--accent);">[세부사업 소계]</td>
+            <td></td>
+            <td></td>
+            <td style="text-align:right;font-weight:900;color:var(--accent);">7,609,000</td>
+          </tr>
+  
+          <!-- 방송실운영 -->
+          <tr>
+            <td rowspan="5" style="font-weight:900;color:var(--accent-alt);background:rgba(180,255,100,0.06);text-align:center;vertical-align:middle;">방송실운영</td>
+            <td rowspan="4">방송실운영</td>
+            <td style="color:#ffa94d;font-weight:700;">교육운영비</td>
+            <td style="color:var(--text-dim);">자체_방송부 회의 및 활동 지원</td>
+            <td style="text-align:right;">120,000</td>
+          </tr>
+          <tr>
+            <td style="color:#ffa94d;font-weight:700;">일반수용비</td>
+            <td style="color:var(--text-dim);">자체_장비 수리비</td>
+            <td style="text-align:right;">900,000</td>
+          </tr>
+          <tr>
+            <td style="color:#ffa94d;font-weight:700;">비품구입비</td>
+            <td style="color:var(--text-dim);">자체_방송부 물품 구입</td>
+            <td style="text-align:right;">400,000</td>
+          </tr>
+          <tr>
+            <td style="color:rgba(255,255,255,0.3);font-size:0.75rem;font-weight:700;">[세부항목 소계]</td>
+            <td></td>
+            <td style="text-align:right;font-weight:700;">1,420,000</td>
+          </tr>
+          <tr style="background:rgba(0,210,190,0.08);">
+            <td style="font-weight:900;color:var(--accent);">[세부사업 소계]</td>
+            <td></td>
+            <td></td>
+            <td style="text-align:right;font-weight:900;color:var(--accent);">1,420,000</td>
+          </tr>
+  
+        </tbody>
+      </table>
+  
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-13">
+                <div class="slide section-cover">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:24px;text-align:center;">
+      <div class="badge" style="font-size:0.9rem;padding:6px 20px;">3단계</div>
+      <h2 style="font-size:3rem;font-weight:900;line-height:1.4;margin:0;">
+        품의했다고<br>끝난 게 아니다
+      </h2>
+      <p style="font-size:1.6rem;color:var(--accent);font-weight:700;margin:0;">
+        📝 품의 &ne; 원인행위
+      </p>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-14">
+                <div class="slide">
+    <h2 class="slide-title" data-important="true">품의 &ne; 원인행위 <span class="badge">핵심 구분</span></h2>
+    <div class="content-area" style="display:flex;flex-direction:row;align-items:center;justify-content:center;gap:24px;flex:1;">
+  
+      <!-- 왼쪽: 지출품의 -->
+      <div style="flex:1;background:rgba(0,210,190,0.10);border:2px solid var(--accent);border-radius:20px;padding:36px 28px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center;height:100%;justify-content:center;">
+        <i class="fa-solid fa-file-pen" style="color:var(--accent);font-size:2.5rem;"></i>
+        <div style="font-size:1.8rem;font-weight:900;color:var(--accent);">지출품의</div>
+        <div style="font-size:1rem;color:var(--text-dim);">교사 영역</div>
+        <div style="font-size:1.2rem;font-weight:700;line-height:1.8;">
+          "이걸 사도 될까요?"
+        </div>
+        <div style="font-size:1rem;color:var(--text-dim);line-height:1.7;">
+          학교 내부 의사결정<br>교장 결재까지
+        </div>
+      </div>
+  
+      <!-- 가운데 -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;flex-shrink:0;">
+        <div style="font-size:3rem;font-weight:900;color:#fff;">&ne;</div>
+        <div class="info-box" style="font-size:0.95rem;text-align:center;line-height:1.8;border-left:4px solid #ff6b6b;max-width:180px;">
+          품의 완료 후<br>바로 주문 ❌<br><br>
+          <strong style="color:#ff6b6b;">원인행위 없이<br>물품 수령<br>→ 감사 지적</strong>
+        </div>
+      </div>
+  
+      <!-- 오른쪽: 원인행위 -->
+      <div style="flex:1;background:rgba(255,169,77,0.10);border:2px solid #ffa94d;border-radius:20px;padding:36px 28px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center;height:100%;justify-content:center;">
+        <i class="fa-solid fa-handshake" style="color:#ffa94d;font-size:2.5rem;"></i>
+        <div style="font-size:1.8rem;font-weight:900;color:#ffa94d;">원인행위</div>
+        <div style="font-size:1rem;color:var(--text-dim);">행정실 영역</div>
+        <div style="font-size:1.2rem;font-weight:700;line-height:1.8;">
+          "이 가격에 계약합시다"
+        </div>
+        <div style="font-size:1rem;color:var(--text-dim);line-height:1.7;">
+          업체와 가격 확정<br>법적 계약 체결
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-15">
+                <div class="slide">
+    <h2 class="slide-title">💬 지출 품의 및 원인행위 Q&A <span class="badge">자주 묻는 질문</span></h2>
+    <div class="content-area">
+      
+      <div class="two-column" style="gap:30px; align-items:stretch; height:100%;">
+        
+        <!-- 좌측 단 -->
+        <div style="display:flex; flex-direction:column; gap:30px; height:100%;">
+          <div class="info-box" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:30px;">
+            <i class="fa-solid fa-clipboard-question" style="font-size:2.5rem; color:var(--accent); margin-bottom:20px;"></i>
+            <h3 style="color:var(--text-dim); line-height:1.5; font-size:1.6rem; font-weight:700; word-break:keep-all; margin:0;">
+              품의할 때 <span style="color:var(--accent-alt);">'간식비'</span>라고만<br>뭉뚱그려 적어도 되나요?
+            </h3>
+          </div>
+  
+          <div class="info-box" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:30px;">
+            <i class="fa-solid fa-cart-arrow-down" style="font-size:2.5rem; color:var(--accent); margin-bottom:20px;"></i>
+            <h3 style="color:var(--text-dim); line-height:1.5; font-size:1.6rem; font-weight:700; word-break:keep-all; margin:0;">
+              연필, 지우개 품의했는데<br><span style="color:var(--accent-alt);">막상 가보니 가위도 필요해요.</span><br>같이 사도 되나요?
+            </h3>
+          </div>
+        </div>
+  
+        <!-- 우측 단 -->
+        <div style="display:flex; flex-direction:column; gap:30px; height:100%;">
+          <div class="info-box" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:30px;">
+            <i class="fa-solid fa-ban" style="font-size:2.5rem; color:var(--accent); margin-bottom:20px;"></i>
+            <h3 style="color:var(--text-dim); line-height:1.5; font-size:1.6rem; font-weight:700; word-break:keep-all; margin:0;">
+              협의회 다과를 안 먹었어요.<br><span style="color:var(--accent-alt);">결재는 이미 났으니</span><br>지금 사 먹어도 되나요?
+            </h3>
+          </div>
+  
+          <div class="info-box" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:30px;">
+            <i class="fa-solid fa-mug-hot" style="font-size:2.5rem; color:var(--accent); margin-bottom:20px;"></i>
+            <h3 style="color:var(--text-dim); line-height:1.5; font-size:1.6rem; font-weight:700; word-break:keep-all; margin:0;">
+              협의회 4명 품의했는데 <span style="color:var(--accent-alt);">예산이 남아요.</span><br>커피 6잔 사도 되죠?
+            </h3>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+            </div>
+            <div class="slide-container" id="slide-16">
+                <div class="slide">
+    <h2 class="slide-title" data-important="true">🗺️ 200만 원의 여정 <span class="badge">전체 흐름</span></h2>
+    <div class="content-area" style="justify-content:center;gap:24px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:0;width:100%;">
+  
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;">
+          <div style="background:rgba(0,210,190,0.15);border:2px solid var(--accent);border-radius:14px;padding:18px 12px;text-align:center;width:100%;">
+            <div style="font-size:1.8rem;">📥</div>
+            <div style="font-size:0.95rem;font-weight:800;color:var(--accent);margin-top:6px;">예산 교부</div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-dim);">행정실</div>
+        </div>
+        <div style="font-size:1.5rem;color:var(--text-dim);padding:0 6px;margin-bottom:22px;">›</div>
+  
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;">
+          <div style="background:rgba(0,210,190,0.15);border:2px solid var(--accent);border-radius:14px;padding:18px 12px;text-align:center;width:100%;">
+            <div style="font-size:1.8rem;">📋</div>
+            <div style="font-size:0.95rem;font-weight:800;color:var(--accent);margin-top:6px;">성립전예산</div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-dim);">교사+행정실</div>
+        </div>
+        <div style="font-size:1.5rem;color:var(--text-dim);padding:0 6px;margin-bottom:22px;">›</div>
+  
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;">
+          <div style="background:rgba(180,255,100,0.15);border:2px solid var(--accent-alt);border-radius:14px;padding:18px 12px;text-align:center;width:100%;">
+            <div style="font-size:1.8rem;">✍️</div>
+            <div style="font-size:0.95rem;font-weight:800;color:var(--accent-alt);margin-top:6px;">지출품의</div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--accent-alt);font-weight:700;">⭐ 교사</div>
+        </div>
+        <div style="font-size:1.5rem;color:var(--text-dim);padding:0 6px;margin-bottom:22px;">›</div>
+  
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;">
+          <div style="background:rgba(255,169,77,0.15);border:2px solid #ffa94d;border-radius:14px;padding:18px 12px;text-align:center;width:100%;">
+            <div style="font-size:1.8rem;">🤝</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#ffa94d;margin-top:6px;">원인행위</div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-dim);">행정실</div>
+        </div>
+        <div style="font-size:1.5rem;color:var(--text-dim);padding:0 6px;margin-bottom:22px;">›</div>
+  
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;">
+          <div style="background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.2);border-radius:14px;padding:18px 12px;text-align:center;width:100%;">
+            <div style="font-size:1.8rem;">📦</div>
+            <div style="font-size:0.95rem;font-weight:800;color:#fff;margin-top:6px;">물품 수령</div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-dim);">교사+행정실</div>
+        </div>
+        <div style="font-size:1.5rem;color:var(--text-dim);padding:0 6px;margin-bottom:22px;">›</div>
+  
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;">
+          <div style="background:rgba(180,255,100,0.15);border:2px solid var(--accent-alt);border-radius:14px;padding:18px 12px;text-align:center;width:100%;">
+            <div style="font-size:1.8rem;">🔍</div>
+            <div style="font-size:0.95rem;font-weight:800;color:var(--accent-alt);margin-top:6px;">검사·검수</div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--accent-alt);font-weight:700;">⭐ 교사+행정실</div>
+        </div>
+        <div style="font-size:1.5rem;color:var(--text-dim);padding:0 6px;margin-bottom:22px;">›</div>
+  
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;">
+          <div style="background:rgba(0,210,190,0.20);border:2px solid var(--accent);border-radius:14px;padding:18px 12px;text-align:center;width:100%;">
+            <div style="font-size:1.8rem;">💸</div>
+            <div style="font-size:0.95rem;font-weight:800;color:var(--accent);margin-top:6px;">지출</div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-dim);">행정실</div>
+        </div>
+  
+      </div>
+      <div class="info-box" style="font-size:1rem;text-align:center;">
+        <i class="fa-solid fa-star" style="color:var(--accent-alt);"></i>
+        &nbsp;교사가 직접 챙길 단계 &nbsp;→&nbsp;
+        <strong style="color:var(--accent-alt);">③ 지출품의</strong> &nbsp;+&nbsp;
+        <strong style="color:var(--accent-alt);">⑥ 검사·검수조서</strong>
+      </div>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-17">
+                <div class="slide">
+    <h2 class="slide-title">🤖 헷갈리면 AI한테 물어보세요 <span class="badge">실전 팁</span></h2>
+    <div class="content-area two-column" style="align-items:center;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="font-size:1.3rem;font-weight:700;line-height:1.8;color:var(--text-dim);">
+          Before&nbsp; 😅<br>
+          <span style="color:#fff;">행정실 문 두드리기<br>→ 눈치 보임</span>
+        </div>
+        <div style="font-size:1.3rem;font-weight:700;line-height:1.8;color:var(--text-dim);">
+          After&nbsp; 🎯<br>
+          <span style="color:var(--accent-alt);">집행 지침 PDF → NotebookLM<br>→ 10초 만에 정확한 사업과 비목</span>
+        </div>
+      </div>
+      <div class="code-tile-wrapper">
+        <div class="code-tile" style="font-size:0.95rem;line-height:2;">
+          <span class="c-comment">// 질문 예시</span><br>
+          <span class="c-keyword">Q:</span> <span class="c-string">"로봇 키트 구매 비목은?"</span><br>
+          <span class="c-keyword">A:</span> <span class="c-string">"교육운영비 · 근거 p.12"</span><br><br>
+          <span class="c-comment">// 품의서 초안</span><br>
+          <span class="c-keyword">Q:</span> <span class="c-string">"교육운영비 품의 사유 작성해줘"</span><br>
+          <span class="c-keyword">A:</span> <span class="c-string">"초안 10초 완성 ✅"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-18">
+                <div class="slide">
+    <h2 class="slide-title">📌 핵심 3계명 <span class="badge">마무리</span></h2>
+    <div class="content-area" style="justify-content:center;gap:20px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
+        <div style="background:rgba(0,210,190,0.10);border:2px solid var(--accent);border-radius:20px;padding:32px 20px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;">
+          <div style="font-size:2.5rem;">💡</div>
+          <div style="font-size:1.4rem;font-weight:900;color:var(--accent);">1계명</div>
+          <div style="font-size:1.1rem;font-weight:700;line-height:1.6;">돈이 왔다고<br>바로 쓸 수 없다</div>
+          <div style="font-size:0.95rem;color:var(--accent);">성립전예산 편성 먼저!</div>
+        </div>
+        <div style="background:rgba(180,255,100,0.09);border:2px solid var(--accent-alt);border-radius:20px;padding:32px 20px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;">
+          <div style="font-size:2.5rem;">🏷️</div>
+          <div style="font-size:1.4rem;font-weight:900;color:var(--accent-alt);">2계명</div>
+          <div style="font-size:1.1rem;font-weight:700;line-height:1.6;">목적보다<br>성격이 중요하다</div>
+          <div style="font-size:0.95rem;color:var(--accent-alt);">원가통계비목!</div>
+        </div>
+        <div style="background:rgba(255,169,77,0.10);border:2px solid #ffa94d;border-radius:20px;padding:32px 20px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;">
+          <div style="font-size:2.5rem;">📝</div>
+          <div style="font-size:1.4rem;font-weight:900;color:#ffa94d;">3계명</div>
+          <div style="font-size:1.1rem;font-weight:700;line-height:1.6;">품의했다고<br>끝난 게 아니다</div>
+          <div style="font-size:0.95rem;color:#ffa94d;">품의 &ne; 원인행위!</div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(0,210,190,0.12),rgba(180,255,100,0.08));border:1.5px solid rgba(0,210,190,0.4);border-radius:16px;padding:20px;text-align:center;font-size:1.1rem;font-weight:700;line-height:1.9;">
+        행정 절차를 이해하면 <br>
+        <span style="color:#ff6b6b;">예산 집행</span>
+        <span style="color:var(--accent);"></span>막힘 없습니다 🚀
+      </div>
+    </div>
+  </div>
+  
+            </div>
+            <div class="slide-container" id="slide-19">
+                <h2 class="slide-title">
+    <i class="fa-brands fa-youtube" style="color: #ff0000; margin-right: 12px;"></i>
+    AHK 실전 데모
+</h2>
+
+<div class="content-area">
+    <div class="two-column">
+
+        <!-- 왼쪽: 영상 설명 -->
+        <div>
+            <h3>영상으로 보는 자동화</h3>
+            <p>직접 만든 AHK 스크립트가 실제로 동작하는 모습입니다.</p>
+
+            <ul class="checklist-icon" style="margin-top: 16px;">
+                <li>
+                    <i class="fa-solid fa-circle-play" style="color: #ff0000;"></i>
+                    핫키로 프로그램 즉시 실행
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-play" style="color: #ff0000;"></i>
+                    핫스트링 상용구 자동완성
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-play" style="color: #ff0000;"></i>
+                    마우스 클릭 자동화 시연
+                </li>
+            </ul>
+
+            <!-- 영상 정보 카드 -->
+            <div style="background: var(--bg-secondary);
+                        border-radius: 12px;
+                        padding: 16px 20px;
+                        margin-top: 24px;
+                        border: 1px solid var(--border);
+                        border-left: 4px solid #ff0000;">
+                <p style="margin: 0 0 6px 0; font-size: 13px;
+                           color: var(--text-dim); letter-spacing: 1px;
+                           text-transform: uppercase;">
+                    <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
+                    &nbsp;YouTube
+                </p>
+                <p style="margin: 0; font-size: 16px;
+                           color: var(--text-main); font-weight: 600;">
+                    AutoHotkey 업무 자동화 실전 예제
+                </p>
+                <p style="margin: 6px 0 0 0; font-size: 14px; color: var(--text-dim);">
+                    <i class="fa-solid fa-clock"></i> &nbsp;03:24
+                    &nbsp;&nbsp;
+                    <i class="fa-solid fa-user"></i> &nbsp;채널명
+                </p>
+            </div>
+
+            <div class="info-box" style="margin-top: 16px;">
+                <p>
+                    <i class="fa-solid fa-wifi"></i>
+                    &nbsp;영상 재생은 <strong style="color: var(--text-main)">인터넷 연결</strong>이 필요합니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 오른쪽: 유튜브 영상 -->
+        <div style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
+
+            <!-- 유튜브 iframe -->
+            <div style="border-radius: 12px;
+                        overflow: hidden;
+                        border: 1px solid var(--border);
+                        background: #000;
+                        flex-grow: 1;
+                        min-height: 300px;
+                        position: relative;">
+                <iframe
+                    src="https://www.youtube.com/embed/i5tjYF2Bn0k"
+                    title="AHK 실전 데모"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write;
+                           encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    style="position: absolute; top: 0; left: 0;
+                           width: 100%; height: 100%;">
+                </iframe>
+            </div>
+
+            <!-- 영상 아래 URL 표시 -->
+            <div style="background: var(--bg-code);
+                        border-radius: 8px;
+                        padding: 10px 16px;
+                        border: 1px solid var(--border);
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;">
+                <i class="fa-solid fa-link" style="color: var(--accent); flex-shrink: 0;"></i>
+                <code style="font-size: 13px; color: var(--text-dim); word-break: break-all;">
+                    https://www.youtube.com/watch?v=i5tjYF2Bn0k
+                </code>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+            </div>
+           </div>
+       </div>
+       <div class="controls">
+           <button id="prevBtn" onclick="navigateSlide(-1)" disabled>
+               <i class="fa-solid fa-chevron-left"></i>
+           </button>
+           <span id="slideIndicator" onclick="jumpToSlide()">1 / 1</span>
+           <button id="nextBtn" onclick="navigateSlide(1)">
+               <i class="fa-solid fa-chevron-right"></i>
+           </button>
+           <button id="fullscreenBtn" onclick="toggleFullscreen()">
+               <i class="fa-solid fa-expand"></i>
+           </button>
+       </div>
+       <script>
+   /* ============================================================
+   navigation.js — 슬라이드 네비게이션 & 유틸리티
+   loader.js가 initPresentation()을 호출하면 활성화됩니다.
+   ============================================================ */
+
+   let currentSlide = 0;
+   let slides = [];
+   let totalSlides = 0;
+   
+   /* ─── 초기화 (loader.js에서 호출) ─── */
+   function initPresentation() {
+       slides = document.querySelectorAll('.slide-container');
+       totalSlides = slides.length;
+       currentSlide = 0;
+   
+       updateSlideUI();
+       adjustScale();
+   }
+   
+   /* ─── 슬라이드 UI 업데이트 ─── */
+   function updateSlideUI() {
+       slides.forEach((slide, idx) => {
+           slide.classList.toggle('active', idx === currentSlide);
+       });
+   
+       document.getElementById('slideIndicator').innerText =
+           `${currentSlide + 1} / ${totalSlides}`;
+   
+       document.getElementById('prevBtn').disabled = (currentSlide === 0);
+       document.getElementById('nextBtn').disabled = (currentSlide === totalSlides - 1);
+   
+       const percent = ((currentSlide + 1) / totalSlides) * 100;
+       document.getElementById('progressBar').style.width = `${percent}%`;
+   }
+   
+   /* ─── 슬라이드 이동 ─── */
+   function navigateSlide(direction) {
+       const next = currentSlide + direction;
+       if (next >= 0 && next < totalSlides) {
+           currentSlide = next;
+           updateSlideUI();
+       }
+   }
+   
+   /* ─── 슬라이드 번호 직접 점프 ─── */
+   function jumpToSlide() {
+       const input = prompt(
+           `이동할 슬라이드 번호를 입력하세요 (1 ~ ${totalSlides}):`,
+           currentSlide + 1
+       );
+       const num = parseInt(input);
+       if (!isNaN(num) && num >= 1 && num <= totalSlides) {
+           currentSlide = num - 1;
+           updateSlideUI();
+       }
+   }
+   
+   /* ─── 자동 스케일링 (1280x720 → 화면 크기 맞춤) ─── */
+   function adjustScale() {
+       const wrapper = document.getElementById('presentationWrapper');
+       const scaleX = window.innerWidth / 1280;
+       const scaleY = window.innerHeight / 720;
+       const scale  = Math.min(scaleX, scaleY) * 0.92;
+       wrapper.style.transform = `scale(${scale})`;
+   }
+   
+   /* ─── 전체화면 ─── */
+   function toggleFullscreen() {
+       const btn = document.getElementById('fullscreenBtn');
+       if (!document.fullscreenElement) {
+           document.documentElement.requestFullscreen()
+               .then(() => {
+                   btn.innerHTML = '<i class="fa-solid fa-compress"></i>';
+               })
+               .catch(err => console.warn('전체화면 전환 실패:', err.message));
+       } else {
+           document.exitFullscreen()
+               .then(() => {
+                   btn.innerHTML = '<i class="fa-solid fa-expand"></i>';
+               });
+       }
+   }
+   
+   /* ─── 코드 복사 ─── */
+   async function copyCode(button) {
+       const pre = button.nextElementSibling?.querySelector('pre');
+       if (!pre) return;
+   
+       const text = pre.innerText;
+   
+       try {
+           // 최신 브라우저: Clipboard API
+           await navigator.clipboard.writeText(text);
+           showCopySuccess(button);
+       } catch {
+           // 구형 브라우저 폴백: execCommand
+           try {
+               const ta = document.createElement('textarea');
+               ta.value = text;
+               ta.style.cssText = 'position:fixed;opacity:0;';
+               document.body.appendChild(ta);
+               ta.select();
+               document.execCommand('copy');
+               document.body.removeChild(ta);
+               showCopySuccess(button);
+           } catch (err) {
+               console.error('복사 실패:', err);
+           }
+       }
+   }
+   
+   function showCopySuccess(button) {
+       showToast();
+       const orig = button.innerText;
+       button.innerText = '복사 완료!';
+       button.style.cssText = 'background-color:#84cc16; color:#000;';
+       setTimeout(() => {
+           button.innerText = orig;
+           button.style.cssText = '';
+       }, 2000);
+   }
+   
+   function showToast() {
+       const toast = document.getElementById('toast');
+       toast.style.display = 'block';
+       setTimeout(() => { toast.style.display = 'none'; }, 2000);
+   }
+   
+   /* ─── 이미지 로드 실패 처리 ─── */
+   function handleImgError(img) {
+       img.parentElement.innerHTML = `
+           <div style="text-align:center; padding:40px; color:#94a3b8;">
+               <i class="fa-solid fa-image"
+                  style="font-size:48px; margin-bottom:16px; color:#334155; display:block;"></i>
+               <p style="font-size:15px; margin:0; line-height:1.8;">
+                   <code style="color:#22d3ee;">${img.src.split('/').pop()}</code><br>
+                   파일을 img/ 폴더에 넣어주세요
+               </p>
+           </div>`;
+   }
+   
+   /* ─── 키보드 단축키 ─── */
+   document.addEventListener('keydown', (e) => {
+       const forward  = ['ArrowRight', ' ', 'Enter', 'PageDown'];
+       const backward = ['ArrowLeft', 'Backspace', 'PageUp'];
+   
+       if (forward.includes(e.key)) {
+           e.preventDefault();
+           navigateSlide(1);
+       } else if (backward.includes(e.key)) {
+           e.preventDefault();
+           navigateSlide(-1);
+       }
+   });
+   
+   /* ─── 터치 스와이프 ─── */
+   let touchStartX = 0;
+   document.addEventListener('touchstart', (e) => {
+       touchStartX = e.changedTouches[0].screenX;
+   }, { passive: true });
+   
+   document.addEventListener('touchend', (e) => {
+       const diff = touchStartX - e.changedTouches[0].screenX;
+       if (Math.abs(diff) > 60) navigateSlide(diff > 0 ? 1 : -1);
+   }, { passive: true });
+   
+   /* ─── 창 크기 변경 시 스케일 재조정 ─── */
+   window.addEventListener('resize', adjustScale);
+           window.addEventListener('DOMContentLoaded', initPresentation);
+       </script>
+   </body>
+   </html>

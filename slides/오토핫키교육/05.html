@@ -1,0 +1,36 @@
+<h2 class="slide-title" data-important="true">
+    2. 핫키 (나만의 단축키 만들기)
+    <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
+</h2>
+
+<div class="content-area">
+    <div class="two-column">
+        <div>
+            <h3>단축키 커스터마이징</h3>
+            <p>특정 키 조합에 동작을 연결합니다.</p>
+            <div class="key-box">
+                <span style="color:var(--accent)">^</span> (Ctrl) &nbsp;|&nbsp;
+                <span style="color:var(--accent)">!</span> (Alt)<br>
+                <span style="color:var(--accent)">+</span> (Shift) &nbsp;|&nbsp;
+                <span style="color:var(--accent)">#</span> (Win)
+            </div>
+            <p>마지막에는 항상
+                <code>Return</code>을 입력해 종료를 알립니다.
+            </p>
+        </div>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre><span class="c-comment">; Ctrl + Alt + N 을 누르면 메모장 실행</span>
+^!n::
+    <span class="c-keyword">Run</span>, notepad.exe
+<span class="c-keyword">Return</span>
+
+<span class="c-comment">; Ctrl + Alt + G 를 누르면 구글 열기</span>
+^!g::
+    <span class="c-keyword">Run</span>, https://www.google.com
+<span class="c-keyword">Return</span></pre>
+            </div>
+        </div>
+    </div>
+</div>
