@@ -1,0 +1,72 @@
+<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:28px;">
+
+    <h2 class="slide-title" data-important="true">하루 업무, 솔직히 몇 %가 진짜 일인가요?</h2>
+  
+    <div class="two-column" style="flex:1; gap:32px; align-items:center;">
+  
+      <!-- 파이 차트 대체 시각 -->
+      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px;">
+        <!-- 도넛형 원 시각화 (CSS) -->
+        <div style="position:relative; width:220px; height:220px;">
+          <svg viewBox="0 0 120 120" style="width:100%;height:100%;transform:rotate(-90deg);">
+            <!-- 단순 반복 클릭 (70%) -->
+            <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/>
+            <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(239,68,68,0.75)" stroke-width="18"
+              stroke-dasharray="197.9 282.7" stroke-dashoffset="0"/>
+            <!-- 창의적 업무 (30%) -->
+            <circle cx="60" cy="60" r="45" fill="none" stroke="var(--accent)" stroke-width="18"
+              stroke-dasharray="84.8 282.7" stroke-dashoffset="-197.9"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+            <span style="font-size:11px;color:var(--text-dim);">내 하루</span>
+          </div>
+        </div>
+        <div style="display:flex; gap:20px;">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="width:12px;height:12px;border-radius:50%;background:rgba(239,68,68,0.75);display:inline-block;"></span>
+            <span style="font-size:13px; color:var(--text-dim);">단순 반복 클릭 ~70%</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block;"></span>
+            <span style="font-size:13px; color:var(--text-dim);">진짜 창의 업무 ~30%</span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- 오른쪽 공감 카드 -->
+      <div style="display:flex; flex-direction:column; gap:16px; justify-content:center;">
+  
+        <div class="info-box" style="padding:18px 22px; border-left:4px solid rgba(239,68,68,0.7);">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <i class="fa-solid fa-rotate" style="font-size:22px; color:rgba(239,68,68,0.8);"></i>
+            <div>
+              <div style="font-size:15px; color:#fff; font-weight:600;">매일 같은 클릭, 같은 복사-붙여넣기</div>
+              <div style="font-size:13px; color:var(--text-dim); margin-top:2px;">나의 시간과 집중력을 갉아먹는 반복 업무</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="info-box" style="padding:18px 22px; border-left:4px solid var(--accent-alt);">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <i class="fa-solid fa-lightbulb" style="font-size:22px; color:var(--accent-alt);"></i>
+            <div>
+              <div style="font-size:15px; color:#fff; font-weight:600;">"이 무의미한 반복에서 벗어나고 싶다"</div>
+              <div style="font-size:13px; color:var(--text-dim); margin-top:2px;">자동화 입문의 시작점</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="info-box" style="padding:18px 22px; border-left:4px solid var(--accent); background:rgba(0,255,200,0.06);">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <i class="fa-solid fa-rocket" style="font-size:22px; color:var(--accent);"></i>
+            <div>
+              <div style="font-size:15px; color:var(--accent); font-weight:700;">해방된 시간 → 진짜 가치 있는 일에 집중</div>
+              <div style="font-size:13px; color:var(--text-dim); margin-top:2px;">자동화의 궁극적 목표</div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
