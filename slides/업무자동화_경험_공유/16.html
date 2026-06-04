@@ -1,79 +1,64 @@
 <div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
 
-    <div style="display:flex; align-items:center; gap:14px;">
-      <span class="badge" style="background:rgba(239,68,68,0.12); color:rgba(239,68,68,0.9); border-color:rgba(239,68,68,0.3);">④ 초급 · 빠른 구현</span>
-      <h2 class="slide-title" style="margin:0;">절대좌표 기반 자동화</h2>
-    </div>
+    <h2 class="slide-title" data-important="true">4가지 자동화 무기 — 한눈에 비교</h2>
   
-    <div class="two-column" style="flex:1; gap:28px;">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:20px;">
+      <table class="table" style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr style="border-bottom:2px solid rgba(0,255,200,0.3);">
+            <th style="padding:12px 16px; text-align:left; color:var(--accent); font-weight:700; width:14%;">방식</th>
+            <th style="padding:12px 16px; text-align:center; color:var(--accent); font-weight:700; width:13%;">완성도</th>
+            <th style="padding:12px 16px; text-align:left; color:var(--accent); font-weight:700; width:22%;">핵심 특징</th>
+            <th style="padding:12px 16px; text-align:left; color:var(--accent); font-weight:700; width:22%;">취약점</th>
+            <th style="padding:12px 16px; text-align:left; color:var(--accent); font-weight:700; width:29%;">적합한 상황</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight" style="background:rgba(0,255,200,0.06); border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:13px 16px; font-weight:700; color:var(--accent);">
+              <i class="fa-solid fa-plug" style="margin-right:6px;"></i>API
+            </td>
+            <td style="padding:13px 16px; text-align:center; color:var(--accent); font-weight:700; font-size:12px;">최상급 ●●●●●</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.85);">화면 무관, 데이터 직통</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.45);">API 제공 서비스만 가능</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.85);">공공포털·구글·LLM 연동</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:13px 16px; font-weight:700; color:var(--accent-alt);">
+              <i class="fa-solid fa-globe" style="margin-right:6px;"></i>브라우저
+            </td>
+            <td style="padding:13px 16px; text-align:center; color:var(--accent-alt); font-weight:700; font-size:12px;">상급 ●●●●○</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.85);">사람처럼 웹 조작</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.45);">사이트 구조 변경 시 수정</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.85);">API 없는 웹 데이터 수집</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05); background:rgba(251,191,36,0.03);">
+            <td style="padding:13px 16px; font-weight:700; color:rgba(251,191,36,0.9);">
+              <i class="fa-solid fa-image" style="margin-right:6px;"></i>이미지
+            </td>
+            <td style="padding:13px 16px; text-align:center; color:rgba(251,191,36,0.9); font-weight:700; font-size:12px;">중급 ●●●○○</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.85);">버튼 이미지 인식 후 클릭</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.45);">해상도·테마 변경 시 실패</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.85);">복잡한 UI, 데스크탑 앱</td>
+          </tr>
+          <tr style="background:rgba(239,68,68,0.03);">
+            <td style="padding:13px 16px; font-weight:700; color:rgba(239,68,68,0.85);">
+              <i class="fa-solid fa-crosshairs" style="margin-right:6px;"></i>좌표
+            </td>
+            <td style="padding:13px 16px; text-align:center; color:rgba(239,68,68,0.85); font-weight:700; font-size:12px;">초급 ●●○○○</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.85);">X,Y 좌표 지정 클릭</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.45);">화면 조금만 바뀌어도 깨짐</td>
+            <td style="padding:13px 16px; color:rgba(255,255,255,0.85);">고정 화면, 초단기 매크로</td>
+          </tr>
+        </tbody>
+      </table>
   
-      <!-- 왼쪽 -->
-      <div style="display:flex; flex-direction:column; gap:18px; justify-content:center;">
-  
-        <!-- 좌표 시각화 -->
-        <div style="background:rgba(0,0,0,0.3); border-radius:14px; padding:20px; position:relative; height:190px; overflow:hidden; border:1px solid rgba(255,255,255,0.06);">
-          <div style="font-size:11px; color:var(--text-dim); margin-bottom:8px;">모니터 화면</div>
-          <!-- 가상 화면 -->
-          <div style="position:relative; width:100%; height:130px; background:rgba(255,255,255,0.03); border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
-            <!-- 십자선 -->
-            <div style="position:absolute; left:55%; top:0; bottom:0; width:1px; background:rgba(239,68,68,0.4); border:none;"></div>
-            <div style="position:absolute; top:45%; left:0; right:0; height:1px; background:rgba(239,68,68,0.4);"></div>
-            <!-- 좌표 점 -->
-            <div style="position:absolute; left:calc(55% - 6px); top:calc(45% - 6px); width:12px; height:12px; border-radius:50%; background:rgba(239,68,68,0.9);"></div>
-            <!-- 좌표 라벨 -->
-            <div style="position:absolute; left:57%; top:30%; font-size:13px; color:rgba(239,68,68,0.9); font-family:monospace; font-weight:700;">(720, 340)</div>
-            <div style="position:absolute; right:10px; bottom:8px; font-size:10px; color:var(--text-dim);">1280 \times 720</div>
-          </div>
-        </div>
-  
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-circle-check" style="color:rgba(239,68,68,0.8);"></i>
-            <span>가장 빠르게 구현 가능 (5분 내)</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-circle-check" style="color:rgba(239,68,68,0.8);"></i>
-            <span>코딩 몰라도 마우스 레코더로 바로 사용</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.5);">
-            <i class="fa-solid fa-circle-xmark" style="color:rgba(239,68,68,0.6);"></i>
-            <span>화면 조금만 바뀌어도 즉시 깨짐</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.5);">
-            <i class="fa-solid fa-circle-xmark" style="color:rgba(239,68,68,0.6);"></i>
-            <span>해상도 · 창 크기 변경에 매우 취약</span>
-          </div>
-        </div>
-      </div>
-  
-      <!-- 오른쪽 -->
-      <div style="display:flex; flex-direction:column; justify-content:center; gap:14px;">
-        <div style="font-size:13px; color:var(--text-dim); font-weight:600; letter-spacing:0.08em; margin-bottom:4px;">💼 실전 사례</div>
-  
-        <div style="background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.2); border-radius:14px; padding:20px; display:flex; flex-direction:column; gap:12px;">
-          <div style="display:flex; gap:12px; align-items:flex-start;">
-            <span style="font-size:22px;">💬</span>
-            <div>
-              <div style="font-size:15px; color:#fff; font-weight:700;">내부 메신저 특정 위치 클릭</div>
-              <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">고정된 UI에서 단순 반복 클릭 자동화</div>
-            </div>
-          </div>
-          <div style="display:flex; gap:12px; align-items:flex-start;">
-            <span style="font-size:22px;">🎮</span>
-            <div>
-              <div style="font-size:15px; color:#fff; font-weight:700;">마우스 레코더 / 단순 매크로</div>
-              <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">녹화 후 재생 — 가장 입문하기 쉬운 방식</div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="info-box" style="padding:16px 18px; border-left:3px solid rgba(239,68,68,0.6);">
-          <p style="margin:0; font-size:14px; color:#fff; line-height:1.7;">
-            ⚡ <strong style="color:rgba(239,68,68,0.9);">언제 써야 하나?</strong><br>
-            <span style="font-size:13px; color:var(--text-dim);">화면이 절대 바뀌지 않는 고정 환경,<br>딱 한두 번 쓸 초단기 자동화에 적합</span>
-          </p>
-        </div>
-  
+      <div class="info-box" style="padding:14px 22px; border-left:4px solid var(--accent); display:flex; align-items:center; gap:12px;">
+        <i class="fa-solid fa-compass" style="font-size:20px; color:var(--accent); flex-shrink:0;"></i>
+        <p style="margin:0; font-size:14px; color:#fff; line-height:1.6;">
+          <strong style="color:var(--accent);">선택 원칙:</strong>
+          API 가능 여부 먼저 확인 →  없으면 브라우저 →  데스크탑 앱이면 이미지 →  정말 급하면 좌표
+        </p>
       </div>
     </div>
   </div>

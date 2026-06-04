@@ -1,94 +1,129 @@
-<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
+<div style="height:100%; display:flex; flex-direction:column;
+            padding:48px 56px; box-sizing:border-box; gap:18px;">
 
-    <div style="display:flex; align-items:center; gap:14px;">
-      <span class="badge" style="background:rgba(0,255,200,0.15); color:var(--accent); border-color:rgba(0,255,200,0.35);">① 최상급 완성도</span>
-      <h2 class="slide-title" style="margin:0;" data-important="true">API 활용</h2>
+    <!-- 제목 영역 -->
+    <div style="display:flex; align-items:center; gap:14px; flex-shrink:0;">
+        <span style="background:rgba(163,230,53,0.12); color:var(--accent-alt);
+                     border:1px solid rgba(163,230,53,0.3); padding:4px 12px;
+                     border-radius:6px; font-size:13px; font-weight:700;
+                     white-space:nowrap;">
+            ② 상급 완성도
+        </span>
+        <h2 class="slide-title" style="margin:0; border:none; padding:0;
+                                        font-size:36px; letter-spacing:-1px;">
+            브라우저 조작 (SELENIUM)
+        </h2>
     </div>
-  
-    <div class="two-column" style="flex:1; gap:28px;">
-  
-      <!-- 왼쪽: 개념 설명 -->
-      <div style="display:flex; flex-direction:column; gap:16px; justify-content:center;">
-  
-        <div class="image-wrapper" style="height:200px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.25); border-radius:14px; flex-direction:column; gap:12px;">
-          <!-- API 흐름 다이어그램 -->
-          <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
-            <div style="background:rgba(0,255,200,0.15); border:1px solid rgba(0,255,200,0.4); border-radius:8px; padding:8px 14px; color:var(--accent); font-weight:600;">내 코드</div>
-            <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
-              <span style="font-size:10px; color:var(--text-dim);">요청</span>
-              <span style="color:var(--accent); font-size:18px;">→</span>
+
+    <!-- 위: 이미지 가로 길게 -->
+    <div style="border-radius:14px; overflow:hidden;
+                border:1px solid var(--border);
+                background:#000; flex:1; min-height:0;">
+        <img src="img/셀레니움.png"
+             alt="셀레니움 실전 예제"
+             onerror="handleImgError(this)"
+             style="width:100%; height:100%;
+                    object-fit:contain; display:block;">
+    </div>
+
+    <!-- 아래: 텍스트 3컬럼 -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr;
+                gap:14px; flex-shrink:0;">
+
+        <!-- 특징 -->
+        <div style="background:var(--bg-secondary); border-radius:12px;
+                    padding:16px 18px; border:1px solid var(--border);
+                    display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:var(--text-dim);
+                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
+                ⚙️ 특징
             </div>
-            <div style="background:rgba(0,255,200,0.1); border:1px solid rgba(0,255,200,0.3); border-radius:8px; padding:8px 14px; color:var(--accent); font-weight:600;">API 서버</div>
-            <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
-              <span style="font-size:10px; color:var(--text-dim);">응답</span>
-              <span style="color:var(--accent-alt); font-size:18px;">→</span>
+            <div style="display:flex; align-items:center; gap:8px;
+                        font-size:13px; color:rgba(255,255,255,0.85);">
+                <i class="fa-solid fa-circle-check"
+                   style="color:var(--accent-alt); flex-shrink:0;"></i>
+                <span>API 없는 사이트에서도 작동</span>
             </div>
-            <div style="background:rgba(163,230,53,0.12); border:1px solid rgba(163,230,53,0.3); border-radius:8px; padding:8px 14px; color:var(--accent-alt); font-weight:600;">데이터</div>
-          </div>
-          <div style="font-size:12px; color:var(--text-dim);">화면 없이 데이터가 직접 오고 가는 구조</div>
-        </div>
-  
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-bolt" style="color:var(--accent);"></i>
-            <span>화면 없이 데이터가 직접 통신 → 가장 빠름</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-shield-halved" style="color:var(--accent);"></i>
-            <span>UI 변경에 영향 없음 → 에러 거의 없음</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-triangle-exclamation" style="color:rgba(251,191,36,0.8);"></i>
-            <span style="color:rgba(255,255,255,0.5);">단점: API를 제공하는 서비스에만 적용 가능</span>
-          </div>
-        </div>
-      </div>
-  
-      <!-- 오른쪽: 실전 사례 -->
-      <div style="display:flex; flex-direction:column; gap:12px; justify-content:center;">
-        <div style="font-size:13px; color:var(--text-dim); font-weight:600; letter-spacing:0.08em; margin-bottom:4px;">💼 실전 사례</div>
-  
-        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-          <span style="font-size:18px;">🏢</span>
-          <div>
-            <div style="font-size:14px; color:#fff; font-weight:600;">사업자번호로 업체 정보 수집</div>
-            <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">공공업무포털 API → 대량 업체 정보 자동화</div>
-          </div>
-        </div>
-  
-        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-          <span style="font-size:18px;">📅</span>
-          <div>
-            <div style="font-size:14px; color:#fff; font-weight:600;">나이스 복무정보 → 구글 캘린더 동기화</div>
-            <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">직원 모두와 부서 일정 자동 공유</div>
-          </div>
-        </div>
-  
-        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-          <span style="font-size:18px;">✍️</span>
-          <div>
-            <div style="font-size:14px; color:#fff; font-weight:600;">LLM API → 에듀파인 본문 자동 작성</div>
-            <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">AI가 공문 초안을 자동으로 생성</div>
-          </div>
+            <div style="display:flex; align-items:center; gap:8px;
+                        font-size:13px; color:rgba(255,255,255,0.85);">
+                <i class="fa-solid fa-circle-check"
+                   style="color:var(--accent-alt); flex-shrink:0;"></i>
+                <span>로그인·검색·클릭 전부 가능</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;
+                        font-size:13px; color:rgba(255,255,255,0.85);">
+                <i class="fa-solid fa-circle-check"
+                   style="color:var(--accent-alt); flex-shrink:0;"></i>
+                <span>HTML 구조 기반으로 안정적</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;
+                        font-size:13px; color:rgba(255,255,255,0.5);">
+                <i class="fa-solid fa-triangle-exclamation"
+                   style="color:rgba(251,191,36,0.7); flex-shrink:0;"></i>
+                <span>구조 변경 시 수정 필요</span>
+            </div>
         </div>
 
-        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-          <span style="font-size:18px;">🔍</span>
-          <div>
-            <div style="font-size:14px; color:#fff; font-weight:600;">OCR 문자 인식 → 마트 영수증 디지털 변환</div>
-            <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">이미지 속 텍스트를 자동 추출 → 데이터화</div>
-          </div>
+        <!-- 실전 사례 -->
+        <div style="background:rgba(163,230,53,0.06);
+                    border:1px solid rgba(163,230,53,0.2);
+                    border-radius:12px; padding:16px 18px;
+                    display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:12px; color:var(--text-dim);
+                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
+                💼 실전 사례
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+                <span style="font-size:20px; flex-shrink:0;">🔍</span>
+                <div>
+                    <div style="font-size:14px; color:#fff;
+                                font-weight:700; margin-bottom:4px;">
+                        API 차단 사이트 업체 정보 수집
+                    </div>
+                    <div style="font-size:12px; color:var(--text-dim); line-height:1.6;">
+                        사업자번호 목록 입력 → 자동 검색
+                        → 결과를 엑셀로 저장
+                    </div>
+                </div>
+            </div>
+            <!-- Before / After -->
+            <div style="display:flex; align-items:center; gap:8px;
+                         padding-top:8px;
+                         border-top:1px solid rgba(255,255,255,0.06);">
+                <div style="background:rgba(239,68,68,0.12); border-radius:8px;
+                            padding:6px 10px; font-size:12px;
+                            color:rgba(239,68,68,0.9); flex:1; text-align:center;
+                            line-height:1.6;">
+                    Before<br><strong>수동 1건 3분</strong>
+                </div>
+                <i class="fa-solid fa-arrow-right"
+                   style="color:var(--text-dim); flex-shrink:0;"></i>
+                <div style="background:rgba(163,230,53,0.1); border-radius:8px;
+                            padding:6px 10px; font-size:12px;
+                            color:var(--accent-alt); flex:1; text-align:center;
+                            line-height:1.6;">
+                    After<br><strong>100건 자동</strong>
+                </div>
+            </div>
         </div>
-  
-        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-          <span style="font-size:18px;">💳</span>
-          <div>
-            <div style="font-size:14px; color:#fff; font-weight:600;">법인카드 사용부 → 텔레그램 API 알림</div>
-            <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">담당자 및 관계자 핸드폰으로 전송</div>
-          </div>
+
+        <!-- 팁 -->
+        <div style="background:var(--bg-secondary); border-radius:12px;
+                    padding:16px 18px; border:1px solid var(--border);
+                    border-left:3px solid var(--accent-alt);
+                    display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:12px; color:var(--text-dim);
+                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
+                💡 선택 기준
+            </div>
+            <p style="margin:0; font-size:13px;
+                       color:var(--text-dim); line-height:1.8;">
+                <strong style="color:#fff;">공식 API 있음</strong><br>
+                → API 방식 사용<br><br>
+                <strong style="color:#fff;">공식 API 없음</strong><br>
+                → 브라우저 조작으로!
+            </p>
         </div>
-  
-      </div>
+
     </div>
-  </div>
-  
+</div>

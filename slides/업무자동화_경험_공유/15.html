@@ -1,80 +1,120 @@
 <div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
 
+    <!-- 헤더 -->
     <div style="display:flex; align-items:center; gap:14px;">
-      <span class="badge" style="background:rgba(251,191,36,0.12); color:rgba(251,191,36,0.95); border-color:rgba(251,191,36,0.3);">③ 중급 완성도</span>
-      <h2 class="slide-title" style="margin:0;">이미지 기반 자동화</h2>
+      <span class="badge" style="background:rgba(163,230,53,0.12); color:rgba(163,230,53,0.95); border-color:rgba(163,230,53,0.3);">⑤ 기타</span>
+      <h2 class="slide-title" style="margin:0;">분류 밖의 자동화들</h2>
     </div>
   
-    <div class="two-column" style="flex:1; gap:28px;">
+    <!-- 서브타이틀 -->
+    <div style="font-size:13px; color:var(--text-dim); margin-top:-12px; line-height:1.6;">
+      웹 수집도, 이미지 인식도 아닌 — <strong style="color:rgba(255,255,255,0.7);">로컬 환경에서 직접 돌아가는</strong> 자동화 도구들
+    </div>
   
-      <!-- 왼쪽 -->
-      <div style="display:flex; flex-direction:column; gap:18px; justify-content:center;">
+    <!-- 카드 그리드 -->
+    <div style="flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:18px;">
   
-        <!-- 작동 원리 시각화 -->
-        <div style="background:rgba(0,0,0,0.25); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:16px; align-items:center;">
-          <div style="font-size:13px; color:var(--text-dim);">작동 원리</div>
-          <div style="display:flex; align-items:center; gap:14px; width:100%; justify-content:center;">
-            <div style="background:rgba(251,191,36,0.12); border:1px dashed rgba(251,191,36,0.4); border-radius:10px; padding:10px 16px; text-align:center;">
-              <div style="font-size:11px; color:var(--text-dim);">등록한 이미지</div>
-              <i class="fa-solid fa-image" style="font-size:24px; color:rgba(251,191,36,0.8); margin-top:4px;"></i>
-            </div>
-            <div style="font-size:22px; color:rgba(251,191,36,0.7);">👁️</div>
-            <div style="background:rgba(251,191,36,0.12); border:1px dashed rgba(251,191,36,0.4); border-radius:10px; padding:10px 16px; text-align:center;">
-              <div style="font-size:11px; color:var(--text-dim);">화면에서 발견</div>
-              <i class="fa-solid fa-magnifying-glass" style="font-size:24px; color:rgba(251,191,36,0.8); margin-top:4px;"></i>
-            </div>
-            <div style="font-size:22px; color:rgba(251,191,36,0.7);">→</div>
-            <div style="background:rgba(251,191,36,0.12); border:1px dashed rgba(251,191,36,0.4); border-radius:10px; padding:10px 16px; text-align:center;">
-              <div style="font-size:11px; color:var(--text-dim);">자동 클릭!</div>
-              <i class="fa-solid fa-computer-mouse" style="font-size:24px; color:rgba(251,191,36,0.8); margin-top:4px;"></i>
+      <!-- 카드 1: 공공구매계획 -->
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(163,230,53,0.2); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:42px; height:42px; border-radius:12px; background:rgba(163,230,53,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <i class="fa-solid fa-file-invoice" style="color:rgba(163,230,53,0.85); font-size:18px;"></i>
+          </div>
+          <div>
+            <div style="font-size:15px; color:#fff; font-weight:700;">공공구매계획 자동 작성</div>
+            <div style="margin-top:3px;">
+              <span style="font-size:10px; background:rgba(163,230,53,0.12); color:rgba(163,230,53,0.8); border-radius:6px; padding:2px 8px; font-weight:600;">Python</span>
             </div>
           </div>
         </div>
-  
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-circle-check" style="color:rgba(251,191,36,0.8);"></i>
-            <span>개발자가 아니어도 직관적으로 설정</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-circle-check" style="color:rgba(251,191,36,0.8);"></i>
-            <span>웹 · 데스크탑 앱 모두 적용 가능</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.5);">
-            <i class="fa-solid fa-triangle-exclamation" style="color:rgba(251,191,36,0.7);"></i>
-            <span>해상도·테마 변경 시 인식 실패 가능</span>
-          </div>
+        <div style="font-size:13px; color:var(--text-dim); line-height:1.65; flex:1;">
+          물품·용역·공사별 <strong style="color:rgba(255,255,255,0.75);">공공구매 비율</strong>에 맞춰<br>
+          월별 계획 금액를 자동으로 계산·작성
+        </div>
+        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(163,230,53,0.6);">
+          <i class="fa-solid fa-bolt"></i>
+          <span>수작업 계산 → 자동 산출</span>
         </div>
       </div>
   
-      <!-- 오른쪽 -->
-      <div style="display:flex; flex-direction:column; justify-content:center; gap:16px;">
-        <div style="font-size:13px; color:var(--text-dim); font-weight:600; letter-spacing:0.08em; margin-bottom:4px;">💼 실전 사례</div>
-  
-        <div style="background:rgba(251,191,36,0.05); border:1px solid rgba(251,191,36,0.2); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:14px;">
-          <div style="display:flex; gap:14px; align-items:flex-start;">
-            <span style="font-size:24px;">🖱️</span>
-            <div>
-              <div style="font-size:16px; color:#fff; font-weight:700;">원인행위, 문서접수, 결재 요청 등 복잡한 UI 클릭 자동화</div>
-              <div style="font-size:13px; color:var(--text-dim); margin-top:4px; line-height:1.6;">
-                매일 반복되는 복잡한 버튼 순서 클릭을<br>이미지 인식으로 완전 자동 처리
-              </div>
+      <!-- 카드 2: 사무인계인수서 -->
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(99,179,237,0.2); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:42px; height:42px; border-radius:12px; background:rgba(99,179,237,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <i class="fa-solid fa-handshake" style="color:rgba(99,179,237,0.85); font-size:18px;"></i>
+          </div>
+          <div>
+            <div style="font-size:15px; color:#fff; font-weight:700;">사무인계인수서 작성</div>
+            <div style="margin-top:3px;">
+              <span style="font-size:10px; background:rgba(99,179,237,0.12); color:rgba(99,179,237,0.8); border-radius:6px; padding:2px 8px; font-weight:600;">엑셀 VBA</span>
             </div>
           </div>
+        </div>
+        <div style="font-size:13px; color:var(--text-dim); line-height:1.65; flex:1;">
+          회계관직 변경 시 <strong style="color:rgba(255,255,255,0.75);">빠른 시간 내</strong> 인계인수서 완성<br>
+          반복 입력 최소화
+        </div>
+        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(99,179,237,0.6);">
+          <i class="fa-solid fa-bolt"></i>
+          <span>지출 마감 후 즉시 생성</span>
+        </div>
+      </div>
   
-          <div class="image-wrapper" style="height:100px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.2); border-radius:10px; gap:10px;">
-            <i class="fa-solid fa-desktop" style="font-size:28px; color:rgba(251,191,36,0.5);"></i>
-            <div style="font-size:12px; color:var(--text-dim); text-align:center;">🖼️ 실제 자동화 동작 GIF / 시연 영상 삽입</div>
+      <!-- 카드 3: 연간근로계획서 -->
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(251,191,36,0.2); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:42px; height:42px; border-radius:12px; background:rgba(251,191,36,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <i class="fa-solid fa-calendar-days" style="color:rgba(251,191,36,0.85); font-size:18px;"></i>
+          </div>
+          <div>
+            <div style="font-size:15px; color:#fff; font-weight:700;">방중 비상시 연간근로계획서</div>
+            <div style="margin-top:3px;">
+              <span style="font-size:10px; background:rgba(251,191,36,0.12); color:rgba(251,191,36,0.8); border-radius:6px; padding:2px 8px; font-weight:600;">엑셀 VBA</span>
+            </div>
           </div>
         </div>
+        <div style="font-size:13px; color:var(--text-dim); line-height:1.65; flex:1;">
+          방중 비상시 교육공무직원 근무 일정을<br>
+          <strong style="color:rgba(255,255,255,0.75);">연 달력 생성 및 일수 계산</strong>하여 계획서 완성
+        </div>
+        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(251,191,36,0.6);">
+          <i class="fa-solid fa-bolt"></i>
+          <span>달력에 색칠 → 근무일수 자동 계산</span>
+        </div>
+      </div>
   
-        <div class="info-box" style="padding:14px 18px; border-left:3px solid rgba(251,191,36,0.7);">
-          <p style="margin:0; font-size:13px; color:var(--text-dim); line-height:1.6;">
-            💡 <strong style="color:#fff;">추천 언어:</strong>  AutoHotKey
-          </p>
+      <!-- 카드 4: 엑셀 추가기능 -->
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(0,255,200,0.2); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:42px; height:42px; border-radius:12px; background:rgba(0,255,200,0.10); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <i class="fa-solid fa-table" style="color:rgba(0,255,200,0.85); font-size:18px;"></i>
+          </div>
+          <div>
+            <div style="font-size:15px; color:#fff; font-weight:700;">엑셀 추가기능 (VBA)</div>
+            <div style="margin-top:3px;">
+              <span style="font-size:10px; background:rgba(0,255,200,0.10); color:rgba(0,255,200,0.8); border-radius:6px; padding:2px 8px; font-weight:600;">엑셀 VBA</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:13px; color:var(--text-dim); line-height:1.65; flex:1;">
+          기본 제공되지 않는 <strong style="color:rgba(255,255,255,0.75);">반복 작업을 버튼 하나</strong>로<br>
+          리본 메뉴에 추가해 즉시 실행
+        </div>
+        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(0,255,200,0.6);">
+          <i class="fa-solid fa-bolt"></i>
+          <span>클릭 한 번으로 자주 쓰는 작업 실행</span>
         </div>
       </div>
   
     </div>
+  
+    <!-- 하단 설명 -->
+    <div class="info-box" style="padding:13px 18px; border-left:3px solid rgba(163,230,53,0.6); background:rgba(163,230,53,0.05);">
+      <p style="margin:0; font-size:13px; color:var(--text-dim); line-height:1.6;">
+        💡 <strong style="color:#fff;">공통점:</strong>
+        인터넷 없이도 동작 · 보안 걱정 없음 · 한 번 만들어두면 계속 사용 가능
+      </p>
+    </div>
+  
   </div>
   

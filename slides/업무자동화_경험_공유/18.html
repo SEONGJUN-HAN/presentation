@@ -1,24 +1,72 @@
-<div class="section-cover" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; position:relative; overflow:hidden;">
+<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
 
-    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 30% 50%, rgba(0,255,200,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(163,230,53,0.06) 0%, transparent 60%);"></div>
-  
-    <!-- 별빛 파티클 느낌 -->
-    <div style="position:absolute; top:15%; left:20%; width:4px; height:4px; border-radius:50%; background:rgba(0,255,200,0.6);"></div>
-    <div style="position:absolute; top:30%; right:25%; width:3px; height:3px; border-radius:50%; background:rgba(163,230,53,0.5);"></div>
-    <div style="position:absolute; bottom:25%; left:30%; width:5px; height:5px; border-radius:50%; background:rgba(0,255,200,0.4);"></div>
-    <div style="position:absolute; bottom:20%; right:20%; width:3px; height:3px; border-radius:50%; background:rgba(163,230,53,0.6);"></div>
-  
-    <div style="font-size:72px; margin-bottom:20px; position:relative; z-index:2;">🤖</div>
-  
-    <div style="background: linear-gradient(90deg, var(--accent), var(--accent-alt)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-size:15px; font-weight:700; letter-spacing:0.15em; margin-bottom:12px; text-transform:uppercase; position:relative; z-index:2;">Part 4 · 30min</div>
-  
-    <h2 style="font-size:42px; font-weight:900; color:#fff; text-align:center; line-height:1.3; margin:0; position:relative; z-index:2;">
-      나도 할 수 있다:<br>
-      <span style="color:var(--accent);">LLM이라는 천군만마</span>
-    </h2>
-  
-    <p style="margin-top:20px; font-size:16px; color:var(--text-dim); text-align:center; position:relative; z-index:2;">
-      "저는 개발자가 아닙니다. 그런데 어떻게 이걸 다 만들었을까요?"
-    </p>
+  <h2 class="slide-title" data-important="true">비개발자인 내가 이걸 다 만든 이유</h2>
+
+  <div class="two-column" style="flex:1; gap:32px;">
+
+    <!-- 왼쪽: LLM 역할 -->
+    <div style="display:flex; flex-direction:column; gap:16px; justify-content:center;">
+
+      <div style="background:rgba(0,255,200,0.05); border:1px solid rgba(0,255,200,0.2); border-radius:18px; padding:24px; text-align:center;">
+        <div style="font-size:52px; margin-bottom:12px;">🤖</div>
+        <div style="font-size:18px; font-weight:800; color:#fff; margin-bottom:6px;">LLM</div>
+        <div style="font-size:13px; color:var(--text-dim); line-height:1.6;">ChatGPT · Claude · 등</div>
+        <div style="margin-top:14px; background:rgba(0,255,200,0.1); border-radius:10px; padding:10px 14px;">
+          <div style="font-size:14px; color:var(--accent); font-weight:600;">"24시간 대기 중인 수석 개발자"</div>
+        </div>
+      </div>
+
+      <!-- ✅ 이미지 삽입 (image-wrapper 대체) -->
+      <div style="flex:1; min-height:120px; border-radius:12px; overflow:hidden;">
+        <img
+          src="img\코드이미지.png"
+          alt="LLM 채팅으로 코드 받는 실제 화면"
+          style="width:100%; height:100%; object-fit:cover; display:block; border-radius:12px;"
+        />
+      </div>
+
+    </div>
+
+    <!-- 오른쪽: LLM 활용법 카드 -->
+    <div style="display:flex; flex-direction:column; gap:14px; justify-content:center;">
+
+      <div style="background:rgba(255,255,255,0.04); border-radius:14px; padding:18px 20px; display:flex; gap:14px; align-items:flex-start;">
+        <div style="width:40px; height:40px; border-radius:10px; background:rgba(0,255,200,0.15); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <i class="fa-solid fa-pen-nib" style="color:var(--accent); font-size:16px;"></i>
+        </div>
+        <div>
+          <div style="font-size:15px; color:#fff; font-weight:700;">말로 설명하면 코드를 짜준다</div>
+          <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">"사업자번호 엑셀에서 읽어서 API 호출하는 코드 짜줘"</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.04); border-radius:14px; padding:18px 20px; display:flex; gap:14px; align-items:flex-start;">
+        <div style="width:40px; height:40px; border-radius:10px; background:rgba(163,230,53,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <i class="fa-solid fa-bug" style="color:var(--accent-alt); font-size:16px;"></i>
+        </div>
+        <div>
+          <div style="font-size:15px; color:#fff; font-weight:700;">에러 메시지를 붙여넣으면 고쳐준다</div>
+          <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">에러 복사 → 붙여넣기 → 수정된 코드 수령</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.04); border-radius:14px; padding:18px 20px; display:flex; gap:14px; align-items:flex-start;">
+        <div style="width:40px; height:40px; border-radius:10px; background:rgba(251,191,36,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <i class="fa-solid fa-graduation-cap" style="color:rgba(251,191,36,0.9); font-size:16px;"></i>
+        </div>
+        <div>
+          <div style="font-size:15px; color:#fff; font-weight:700;">모르는 부분은 설명까지 해준다</div>
+          <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">코드 이해 → 수정 → 내 것으로 만들기</div>
+        </div>
+      </div>
+
+      <div class="info-box" style="padding:14px 18px; border-left:4px solid var(--accent); background:rgba(0,255,200,0.07);">
+        <p style="margin:0; font-size:14px; color:var(--accent); font-weight:700; line-height:1.6;">
+          ⚡ 두려움을 버리세요.<br>
+          <span style="color:#fff; font-weight:400;">코딩을 몰라도, LLM이 있으면 누구나 자동화를 만들 수 있는 시대입니다.</span>
+        </p>
+      </div>
+
+    </div>
   </div>
-  
+</div>

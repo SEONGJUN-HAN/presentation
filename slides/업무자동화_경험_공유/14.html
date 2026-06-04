@@ -1,129 +1,80 @@
-<div style="height:100%; display:flex; flex-direction:column;
-            padding:48px 56px; box-sizing:border-box; gap:18px;">
+<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
 
-    <!-- 제목 영역 -->
-    <div style="display:flex; align-items:center; gap:14px; flex-shrink:0;">
-        <span style="background:rgba(163,230,53,0.12); color:var(--accent-alt);
-                     border:1px solid rgba(163,230,53,0.3); padding:4px 12px;
-                     border-radius:6px; font-size:13px; font-weight:700;
-                     white-space:nowrap;">
-            ② 상급 완성도
-        </span>
-        <h2 class="slide-title" style="margin:0; border:none; padding:0;
-                                        font-size:36px; letter-spacing:-1px;">
-            브라우저 조작 (SELENIUM)
-        </h2>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span class="badge" style="background:rgba(239,68,68,0.12); color:rgba(239,68,68,0.9); border-color:rgba(239,68,68,0.3);">④ 초급 · 빠른 구현</span>
+      <h2 class="slide-title" style="margin:0;">절대좌표 기반 자동화</h2>
     </div>
-
-    <!-- 위: 이미지 가로 길게 -->
-    <div style="border-radius:14px; overflow:hidden;
-                border:1px solid var(--border);
-                background:#000; flex:1; min-height:0;">
-        <img src="img/셀레니움.png"
-             alt="셀레니움 실전 예제"
-             onerror="handleImgError(this)"
-             style="width:100%; height:100%;
-                    object-fit:contain; display:block;">
+  
+    <div class="two-column" style="flex:1; gap:28px;">
+  
+      <!-- 왼쪽 -->
+      <div style="display:flex; flex-direction:column; gap:18px; justify-content:center;">
+  
+        <!-- 좌표 시각화 -->
+        <div style="background:rgba(0,0,0,0.3); border-radius:14px; padding:20px; position:relative; height:190px; overflow:hidden; border:1px solid rgba(255,255,255,0.06);">
+          <div style="font-size:11px; color:var(--text-dim); margin-bottom:8px;">모니터 화면</div>
+          <!-- 가상 화면 -->
+          <div style="position:relative; width:100%; height:130px; background:rgba(255,255,255,0.03); border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
+            <!-- 십자선 -->
+            <div style="position:absolute; left:55%; top:0; bottom:0; width:1px; background:rgba(239,68,68,0.4); border:none;"></div>
+            <div style="position:absolute; top:45%; left:0; right:0; height:1px; background:rgba(239,68,68,0.4);"></div>
+            <!-- 좌표 점 -->
+            <div style="position:absolute; left:calc(55% - 6px); top:calc(45% - 6px); width:12px; height:12px; border-radius:50%; background:rgba(239,68,68,0.9);"></div>
+            <!-- 좌표 라벨 -->
+            <div style="position:absolute; left:57%; top:30%; font-size:13px; color:rgba(239,68,68,0.9); font-family:monospace; font-weight:700;">(720, 340)</div>
+            <div style="position:absolute; right:10px; bottom:8px; font-size:10px; color:var(--text-dim);">1280 * 720</div>
+          </div>
+        </div>
+  
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
+            <i class="fa-solid fa-circle-check" style="color:rgba(239,68,68,0.8);"></i>
+            <span>가장 빠르게 구현 가능 (5분 내)</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
+            <i class="fa-solid fa-circle-check" style="color:rgba(239,68,68,0.8);"></i>
+            <span>코딩 몰라도 마우스 레코더로 바로 사용</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.5);">
+            <i class="fa-solid fa-circle-xmark" style="color:rgba(239,68,68,0.6);"></i>
+            <span>화면 조금만 바뀌어도 즉시 깨짐</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.5);">
+            <i class="fa-solid fa-circle-xmark" style="color:rgba(239,68,68,0.6);"></i>
+            <span>해상도 · 창 크기 변경에 매우 취약</span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- 오른쪽 -->
+      <div style="display:flex; flex-direction:column; justify-content:center; gap:14px;">
+        <div style="font-size:13px; color:var(--text-dim); font-weight:600; letter-spacing:0.08em; margin-bottom:4px;">💼 실전 사례</div>
+  
+        <div style="background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.2); border-radius:14px; padding:20px; display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="font-size:22px;">💬</span>
+            <div>
+              <div style="font-size:15px; color:#fff; font-weight:700;">JBEdu 메신저 자동화</div>
+              <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">고정된 UI에서 단순 반복 클릭 자동화</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="font-size:22px;">🎮</span>
+            <div>
+              <div style="font-size:15px; color:#fff; font-weight:700;">마우스 레코더 / 단순 매크로</div>
+              <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">녹화 후 재생 — 가장 입문하기 쉬운 방식</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="info-box" style="padding:16px 18px; border-left:3px solid rgba(239,68,68,0.6);">
+          <p style="margin:0; font-size:14px; color:#fff; line-height:1.7;">
+            ⚡ <strong style="color:rgba(239,68,68,0.9);">언제 써야 하나?</strong><br>
+            <span style="font-size:13px; color:var(--text-dim);">화면이 절대 바뀌지 않는 고정 환경,<br>딱 한두 번 쓸 초단기 자동화에 적합</span>
+          </p>
+        </div>
+  
+      </div>
     </div>
-
-    <!-- 아래: 텍스트 3컬럼 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr;
-                gap:14px; flex-shrink:0;">
-
-        <!-- 특징 -->
-        <div style="background:var(--bg-secondary); border-radius:12px;
-                    padding:16px 18px; border:1px solid var(--border);
-                    display:flex; flex-direction:column; gap:8px;">
-            <div style="font-size:12px; color:var(--text-dim);
-                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
-                ⚙️ 특징
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;
-                        font-size:13px; color:rgba(255,255,255,0.85);">
-                <i class="fa-solid fa-circle-check"
-                   style="color:var(--accent-alt); flex-shrink:0;"></i>
-                <span>API 없는 사이트에서도 작동</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;
-                        font-size:13px; color:rgba(255,255,255,0.85);">
-                <i class="fa-solid fa-circle-check"
-                   style="color:var(--accent-alt); flex-shrink:0;"></i>
-                <span>로그인·검색·클릭 전부 가능</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;
-                        font-size:13px; color:rgba(255,255,255,0.85);">
-                <i class="fa-solid fa-circle-check"
-                   style="color:var(--accent-alt); flex-shrink:0;"></i>
-                <span>HTML 구조 기반으로 안정적</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;
-                        font-size:13px; color:rgba(255,255,255,0.5);">
-                <i class="fa-solid fa-triangle-exclamation"
-                   style="color:rgba(251,191,36,0.7); flex-shrink:0;"></i>
-                <span>구조 변경 시 수정 필요</span>
-            </div>
-        </div>
-
-        <!-- 실전 사례 -->
-        <div style="background:rgba(163,230,53,0.06);
-                    border:1px solid rgba(163,230,53,0.2);
-                    border-radius:12px; padding:16px 18px;
-                    display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:12px; color:var(--text-dim);
-                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
-                💼 실전 사례
-            </div>
-            <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span style="font-size:20px; flex-shrink:0;">🔍</span>
-                <div>
-                    <div style="font-size:14px; color:#fff;
-                                font-weight:700; margin-bottom:4px;">
-                        API 차단 사이트 업체 정보 수집
-                    </div>
-                    <div style="font-size:12px; color:var(--text-dim); line-height:1.6;">
-                        사업자번호 목록 입력 → 자동 검색
-                        → 결과를 엑셀로 저장
-                    </div>
-                </div>
-            </div>
-            <!-- Before / After -->
-            <div style="display:flex; align-items:center; gap:8px;
-                         padding-top:8px;
-                         border-top:1px solid rgba(255,255,255,0.06);">
-                <div style="background:rgba(239,68,68,0.12); border-radius:8px;
-                            padding:6px 10px; font-size:12px;
-                            color:rgba(239,68,68,0.9); flex:1; text-align:center;
-                            line-height:1.6;">
-                    Before<br><strong>수동 1건 3분</strong>
-                </div>
-                <i class="fa-solid fa-arrow-right"
-                   style="color:var(--text-dim); flex-shrink:0;"></i>
-                <div style="background:rgba(163,230,53,0.1); border-radius:8px;
-                            padding:6px 10px; font-size:12px;
-                            color:var(--accent-alt); flex:1; text-align:center;
-                            line-height:1.6;">
-                    After<br><strong>100건 자동</strong>
-                </div>
-            </div>
-        </div>
-
-        <!-- 팁 -->
-        <div style="background:var(--bg-secondary); border-radius:12px;
-                    padding:16px 18px; border:1px solid var(--border);
-                    border-left:3px solid var(--accent-alt);
-                    display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:12px; color:var(--text-dim);
-                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
-                💡 선택 기준
-            </div>
-            <p style="margin:0; font-size:13px;
-                       color:var(--text-dim); line-height:1.8;">
-                <strong style="color:#fff;">공식 API 있음</strong><br>
-                → API 방식 사용<br><br>
-                <strong style="color:#fff;">공식 API 없음</strong><br>
-                → 브라우저 조작으로!
-            </p>
-        </div>
-
-    </div>
-</div>
+  </div>
+  

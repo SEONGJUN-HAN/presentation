@@ -1,73 +1,108 @@
-<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:20px; position:relative; overflow:hidden;">
+<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
 
-    <!-- 배경 글로우 -->
-    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 80%, rgba(0,255,200,0.07) 0%, transparent 60%); pointer-events:none;"></div>
+    <!-- 헤더 -->
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span style="font-size:13px; color:rgba(255,255,255,0.4); font-weight:600; letter-spacing:0.1em;">☕ BREAK TIME</span>
+      <span style="color:rgba(255,255,255,0.2);">|</span>
+      <h2 class="slide-title" style="margin:0; font-size:22px;">자동화의 끝판왕 — 실제 사건</h2>
+    </div>
   
-    <h2 class="slide-title" data-important="true" style="position:relative; z-index:1;">오늘의 여정을 마치며</h2>
+    <div class="two-column" style="flex:1; gap:36px; align-items:stretch;">
   
-    <div class="two-column" style="flex:1; gap:28px; position:relative; z-index:1;">
+      <!-- 왼쪽: 일러스트 영역 -->
+      <div style="display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.25); border-radius:20px; padding:32px; position:relative; overflow:hidden;">
   
-      <!-- 왼쪽: 오늘 배운 것 요약 -->
-      <div style="display:flex; flex-direction:column; gap:14px; justify-content:center;">
-        <div style="font-size:13px; color:var(--text-dim); font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">✅ 오늘 우리가 함께한 것</div>
+        <!-- 배경 장식 -->
+        <div style="position:absolute; top:-30px; right:-30px; font-size:120px; opacity:0.06;">🎮</div>
+        <div style="position:absolute; bottom:-20px; left:-20px; font-size:100px; opacity:0.05;">💻</div>
   
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border-radius:10px; padding:12px 16px;">
-            <span style="font-size:18px;">1️⃣</span>
-            <span style="font-size:14px; color:rgba(255,255,255,0.85);">자동화가 왜 필요한지 공감했다</span>
+        <!-- 메인 일러스트 (이모지 기반) -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:16px; z-index:1;">
+  
+          <!-- 캐릭터 -->
+          <div style="position:relative;">
+            <div style="font-size:80px; line-height:1;">🧑‍💻</div>
+            <!-- 게임 말풍선 -->
+            <div style="position:absolute; top:-18px; right:-50px; background:rgba(251,191,36,0.15); border:1px solid rgba(251,191,36,0.4); border-radius:12px; padding:4px 10px; font-size:11px; color:rgba(251,191,36,0.9); white-space:nowrap;">
+              🎮 League of Legends
+            </div>
           </div>
-          <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border-radius:10px; padding:12px 16px;">
-            <span style="font-size:18px;">2️⃣</span>
-            <span style="font-size:14px; color:rgba(255,255,255,0.85);">완성도와 신뢰의 중요성을 알았다</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border-radius:10px; padding:12px 16px;">
-            <span style="font-size:18px;">3️⃣</span>
-            <span style="font-size:14px; color:rgba(255,255,255,0.85);">4가지 무기와 실전 사례를 봤다</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border-radius:10px; padding:12px 16px;">
-            <span style="font-size:18px;">4️⃣</span>
-            <span style="font-size:14px; color:rgba(255,255,255,0.85);">LLM으로 누구나 할 수 있음을 알았다</span>
-          </div>
-        </div>
   
-        <div class="info-box" style="padding:16px 18px; border-left:4px solid var(--accent); margin-top:4px;">
-          <p style="margin:0; font-size:14px; color:#fff; line-height:1.7;">
-            🚀 <strong style="color:var(--accent);">지금 당장 시작할 수 있습니다.</strong><br>
-            <span style="font-size:13px; color:var(--text-dim);">내 업무 중 단순 반복 하나를 골라, LLM에게 물어보세요.</span>
-          </p>
+          <!-- 책상 -->
+          <div style="background:rgba(255,255,255,0.07); border-radius:12px; padding:10px 28px; display:flex; align-items:center; gap:14px;">
+            <span style="font-size:28px;">💻</span>
+            <div style="display:flex; flex-direction:column; gap:3px;">
+              <div style="width:60px; height:4px; background:rgba(0,255,200,0.4); border-radius:2px;"></div>
+              <div style="width:40px; height:4px; background:rgba(0,255,200,0.2); border-radius:2px;"></div>
+              <div style="width:50px; height:4px; background:rgba(0,255,200,0.15); border-radius:2px;"></div>
+            </div>
+            <span style="font-size:11px; color:rgba(0,255,200,0.7);">자동 실행 중 ✅</span>
+          </div>
+  
+          <!-- 연봉 태그 -->
+          <div style="background:rgba(251,191,36,0.1); border:1px dashed rgba(251,191,36,0.5); border-radius:20px; padding:6px 16px; font-size:12px; color:rgba(251,191,36,0.9);">
+            💰 연봉 약 <strong>1억 1천만원</strong> 수령 중
+          </div>
         </div>
       </div>
   
-      <!-- 오른쪽: 다음 세션 예고 -->
+      <!-- 오른쪽: 스토리 카드 -->
       <div style="display:flex; flex-direction:column; gap:14px; justify-content:center;">
-        <div style="font-size:13px; color:var(--text-dim); font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">🔜 다음 단계 예고</div>
   
-        <div style="background:rgba(0,255,200,0.05); border:1px solid rgba(0,255,200,0.2); border-radius:14px; padding:20px; display:flex; flex-direction:column; gap:12px;">
-          <div style="display:flex; gap:12px; align-items:flex-start;">
-            <i class="fa-solid fa-circle-play" style="font-size:20px; color:var(--accent); margin-top:2px; flex-shrink:0;"></i>
-            <div>
-              <div style="font-size:15px; color:#fff; font-weight:700;">실전 사용법 공유 세션</div>
-              <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">오늘 소개한 프로그램을 직접 써보는 자리</div>
-            </div>
-          </div>
-          <div style="display:flex; gap:12px; align-items:flex-start;">
-            <i class="fa-solid fa-code" style="font-size:20px; color:var(--accent-alt); margin-top:2px; flex-shrink:0;"></i>
-            <div>
-              <div style="font-size:15px; color:#fff; font-weight:700;">LLM 활용 코딩 워크숍</div>
-              <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">나만의 자동화 프로그램 직접 만들기</div>
-            </div>
+        <!-- 타이틀 -->
+        <div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.35); letter-spacing:0.12em; margin-bottom:6px;">📰 2016 · 실리콘밸리 실화</div>
+          <div style="font-size:20px; font-weight:800; color:#fff; line-height:1.4;">
+            "입사 8개월 만에 업무 전체를<br>자동화하고 6년간 게임만 했다"
           </div>
         </div>
   
-        <div style="background:rgba(163,230,53,0.07); border:1px solid rgba(163,230,53,0.22); border-radius:14px; padding:18px 20px; text-align:center;">
-          <div style="font-size:22px; margin-bottom:8px;">📝</div>
-          <div style="font-size:15px; color:var(--accent-alt); font-weight:700;">관심 있으신 분은 피드백 남겨주세요!</div>
-          <div style="font-size:13px; color:var(--text-dim); margin-top:4px;">수요에 따라 후속 세션을 개설하겠습니다</div>
+        <!-- 타임라인 -->
+        <div style="display:flex; flex-direction:column; gap:0;">
+  
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+              <div style="width:28px; height:28px; border-radius:50%; background:rgba(0,255,200,0.15); border:1px solid rgba(0,255,200,0.4); display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;">1</div>
+              <div style="width:1px; height:28px; background:rgba(255,255,255,0.1);"></div>
+            </div>
+            <div style="padding-top:4px;">
+              <div style="font-size:13px; color:#fff; font-weight:600;">입사 후 8개월</div>
+              <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">테스트 업무 전체를 자동화하는 스크립트 완성</div>
+            </div>
+          </div>
+  
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+              <div style="width:28px; height:28px; border-radius:50%; background:rgba(251,191,36,0.12); border:1px solid rgba(251,191,36,0.4); display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; color:rgba(251,191,36,0.9);">2</div>
+              <div style="width:1px; height:28px; background:rgba(255,255,255,0.1);"></div>
+            </div>
+            <div style="padding-top:4px;">
+              <div style="font-size:13px; color:#fff; font-weight:600;">이후 6년간</div>
+              <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">출근은 하되 리그 오브 레전드·레딧으로 하루 소비</div>
+            </div>
+          </div>
+  
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="display:flex; flex-direction:column; align-items:center;">
+              <div style="width:28px; height:28px; border-radius:50%; background:rgba(255,80,80,0.12); border:1px solid rgba(255,80,80,0.4); display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; color:rgba(255,100,100,0.9);">3</div>
+            </div>
+            <div style="padding-top:4px;">
+              <div style="font-size:13px; color:#fff; font-weight:600;">결국 발각 → 해고</div>
+              <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">6년간 실제 업무 시간 약 50시간 · 저축금 2억 4천만원</div>
+            </div>
+          </div>
+  
         </div>
   
-        <!-- Q&A 안내 -->
-        <div style="display:flex; align-items:center; justify-content:center; gap:10px; padding:14px; background:rgba(255,255,255,0.03); border-radius:12px; border:1px solid rgba(255,255,255,0.07);">
-          <span style="font-size:22px;">🙋</span>
-          <span style="font-size:15px; color:#fff; font-weight:600;">Q&A 및 네트워킹</span>
-          <span style="font-size:13px; color:var(--text-dim);">— 남은 시간 자유롭게</span>
+        <!-- 포인트 박스 -->
+        <div style="background:rgba(0,255,200,0.06); border:1px solid rgba(0,255,200,0.2); border-radius:14px; padding:14px 18px;">
+          <p style="margin:0; font-size:13px; color:var(--text-dim); line-height:1.7;">
+            🤔 <strong style="color:#fff;">그래서 이게 왜 나왔냐고요?</strong><br>
+            <span>자동화를 제대로 배우면 <strong style="color:rgba(0,255,200,0.9);">(좋은 방향으로)</strong> 여러분도 충분히 가능합니다.</span>
+          </p>
+        </div>
+  
+      </div>
+    </div>
+  </div>
   
