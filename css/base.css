@@ -191,3 +191,48 @@ body {
     z-index: 9999;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
+/* ─── 인쇄 전용 스타일 ─── */
+@media print {
+
+    /* 네비게이션/진행바 숨기기 */
+    .controls,
+    .progress-bar-container,
+    .toast {
+        display: none !important;
+    }
+
+    /* body 레이아웃 인쇄용으로 변경 */
+    body {
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        background-color: #0f172a !important;
+        display: block !important;
+    }
+
+    /* 래퍼 크기 해제 */
+    .presentation-wrapper,
+    .deck {
+        width: 100% !important;
+        height: auto !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        position: static !important;
+        display: block !important;
+    }
+
+    /* 모든 슬라이드 보이게 + 한 장씩 페이지 나누기 */
+    .slide-container {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important;
+        width: 100% !important;
+        height: 100vh !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        pointer-events: auto !important;
+    }
+}
