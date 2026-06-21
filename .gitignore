@@ -1,0 +1,17 @@
+# ============================================================
+#  presentation 저장소 .gitignore
+#  슬라이드 소스(slides/ img/ js/ css/)는 git에 둔다.
+#  build.js 가 만들어내는 산출물만 제외한다.
+# ============================================================
+
+# build.js 출력물 (이미지가 base64로 박힌 단일 html — 다시 빌드 가능)
+dist/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS / 임시
+Thumbs.db
+.DS_Store
+~$*
