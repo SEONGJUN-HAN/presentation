@@ -1,33 +1,39 @@
 <h2 class="slide-title" data-important="true">
-    7. Click (마우스 자동화)
+    1. Run (무엇이든 열어줍니다)
     <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>좌표 기반 클릭 제어</h3>
-            <p>정해진 좌표를 자동으로 클릭합니다.</p>
+            <h3>가장 강력한 런처 기능</h3>
+            <p>AHK의 가장 기본이자 핵심 기능입니다.</p>
             <ul class="checklist-icon">
-                <li><i class="fa-solid fa-check"></i> WindowSpy로 X, Y 좌표 확인</li>
-                <li><i class="fa-solid fa-check"></i> 클릭 전후 <strong>Sleep</strong> 추가 권장</li>
-                <li><i class="fa-solid fa-check"></i> 숫자 '2'를 추가하여 더블클릭 구현</li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    윈도우 프로그램 실행
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    내 PC의 폴더나 파일 열기
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    웹사이트 주소 즉시 접속
+                </li>
             </ul>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre>^!k::
-    <span class="c-keyword">WinActivate</span>, 사내 시스템
-    <span class="c-keyword">Sleep</span>, 500
+<pre><span class="c-comment">; 프로그램 실행</span>
+<span class="c-keyword">Run</span>, notepad.exe
 
-    <span class="c-comment">; 좌표 (350, 280) 클릭</span>
-    <span class="c-keyword">Click</span>, 350 280
-    <span class="c-keyword">Sleep</span>, 300
+<span class="c-comment">; 특정 엑셀 파일 열기</span>
+<span class="c-keyword">Run</span>, C:\Users\나\Documents\업무일지.xlsx
 
-    <span class="c-comment">; 더블클릭 수행</span>
-    <span class="c-keyword">Click</span>, 450 380 2
-<span class="c-keyword">Return</span></pre>
+<span class="c-comment">; 웹사이트 열기</span>
+<span class="c-keyword">Run</span>, https://www.google.com</pre>
             </div>
         </div>
     </div>

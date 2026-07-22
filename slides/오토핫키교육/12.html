@@ -1,28 +1,29 @@
-<h2 class="slide-title">9. MsgBox (확인용 알림창)</h2>
+<h2 class="slide-title" data-important="true">
+    3. 핫스트링 (상용구 자동완성)
+    <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
+</h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>디버깅과 소통 도구</h3>
-            <p>사용자에게 진행 상황을 알립니다.</p>
+            <h3>타이핑 노동 획기적 단축</h3>
+            <p>특정 단어를 입력하면 즉시 긴 문장으로 교체됩니다.</p>
             <ul class="checklist-icon">
-                <li><i class="fa-solid fa-check"></i> 코드 실행 중간 점검용</li>
-                <li><i class="fa-solid fa-check"></i> 오류 위치 파악을 위한 디버깅</li>
-                <li><i class="fa-solid fa-check"></i> 간단한 안내 메시지 표시</li>
+                <li><i class="fa-solid fa-check"></i> 이메일 템플릿 자동 작성</li>
+                <li><i class="fa-solid fa-check"></i> 자주 쓰는 인사말/서명 관리</li>
+                <li><i class="fa-solid fa-check"></i> 오타 교정 및 상용구 등록</li>
             </ul>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre>^!m::
-    <span class="c-keyword">Run</span>, notepad.exe
-    <span class="c-keyword">WinWait</span>, 제목 없음 - 메모장
+<pre><span class="c-comment">; /tel 이라고 치면 전화번호로 변환</span>
+::/tel::063-123-4567
 
-    <span class="c-comment">; 중간 확인 알림창</span>
-    <span class="c-keyword">MsgBox</span>, 메모장이 성공적으로 열렸습니다!
+<span class="c-comment">; /mail 이라고 치면 이메일 주소로 변환</span>
+::/mail::admin@school.kr
 
-    <span class="c-keyword">Send</span>, 이제 입력을 시작합니다.
-<span class="c-keyword">Return</span></pre>
+<span class="c-comment">; 짧은 단어 → 긴 내용. 정말 간단하죠?</span></pre>
             </div>
         </div>
     </div>

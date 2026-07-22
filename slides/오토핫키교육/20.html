@@ -1,0 +1,63 @@
+<h2 class="slide-title" data-important="true">
+    직접 AI에게 시켜보기 (바이브코딩 실전)
+    <span class="badge"><i class="fa-solid fa-robot"></i> 직접 해보기</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        이미 만든 편리한 프로그램(<strong style="color: var(--text-main)">.exe · 로컬 html</strong>)을,
+        백지에서 짜지 말고
+        <strong style="color: var(--accent)">있는 런처에 '버튼 + Run'만 AI로 추가</strong>해 연결합시다.
+    </p>
+
+    <div class="two-column">
+        <div>
+            <h3>이렇게 시킵니다</h3>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    런처(<code>내업무도구.ahk</code>) 코드 <strong>전부 복사</strong> → AI에 붙여넣기
+                </li>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    "이 프로그램 여는 <strong>버튼과 Run 추가</strong>해줘"
+                    (<span style="color:var(--accent)">v1</span> 명시)
+                </li>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    교체 → <code>F5</code> → 에러 나면 <strong>메시지 복붙해서 고쳐줘</strong>
+                </li>
+            </ul>
+            <div class="info-box">
+                <p>
+                    <i class="fa-solid fa-lightbulb"></i>&nbsp;
+                    <strong style="color: var(--text-main)">절대경로</strong>는 파일 우클릭 →
+                    <strong style="color: var(--text-main)">"경로로 복사"</strong>.
+                </p>
+                <p style="margin-top: 10px;">
+                    <i class="fa-solid fa-list-check"></i>&nbsp;
+                    <strong style="color: var(--text-main)">더 시켜보기</strong> —
+                    폴더 열기 버튼 · 새 핫스트링 · 사이트 여러 개 열기
+                </p>
+            </div>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre><span class="c-comment">; ── AI에게 이렇게 요청 ──</span>
+
+아래는 내 AutoHotkey <span class="c-keyword">v1</span> 런처야.
+여기에 버튼을 하나 추가하고,
+누르면 이 프로그램이 열리도록
+<span class="c-keyword">Run</span> 도 연결해줘.
+
+프로그램 경로:
+"C:\Tools\민원접수도우미.exe"
+버튼 이름: 📋 민원접수 도우미
+
+<span class="c-comment">; (그 아래 런처 코드 전체 붙여넣기)</span></pre>
+            </div>
+        </div>
+    </div>
+</div>

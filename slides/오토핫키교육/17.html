@@ -1,73 +1,36 @@
-<h2 class="slide-title">SciTE4AutoHotkey 설치</h2>
+<h2 class="slide-title">8. Clipboard (복사 &amp; 붙여넣기)</h2>
 
 <div class="content-area">
     <div class="two-column">
-
         <div>
-            <h3>설치 순서</h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">1</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        공식 사이트에서 다운로드<br>
-                        <a href="https://www.autohotkey.com/scite4ahk" target="_blank"
-                           style="color: var(--accent); font-size: 15px;">
-                            autohotkey.com/scite4ahk
-                        </a>
-                    </span>
+            <h3>한글은 클립보드로!</h3>
+            <p>핫스트링으로 <strong>한글 문장</strong>을 그냥 타이핑하면
+                IME 때문에 글자가 깨질 수 있습니다.</p>
+            <ul class="checklist-icon">
+                <li><i class="fa-solid fa-check"></i> 영문·숫자는 그냥 타이핑해도 OK</li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    한글은 <strong>클립보드에 담아 <code>^v</code></strong> 로 붙이면 안 깨짐
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">2</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        설치 파일 실행 후 기본값으로 설치 완료
-                    </span>
-                </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">3</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        상단 메뉴 <code>Tools → Spy</code>로
-                        <strong style="color: var(--text-main)">WindowSpy 바로 실행</strong> 가능
-                    </span>
-                </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">4</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        <code>F5</code> 키로 현재 스크립트 즉시 실행
-                    </span>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <code>`n</code> : 엔터(줄바꿈) 역할
                 </li>
             </ul>
-            <div class="info-box">
-                <p><i class="fa-solid fa-book-open"></i>
-                    &nbsp;아래 한국어 강좌 사이트를 적극 활용하세요.
-                </p>
+        </div>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre><span class="c-comment">; ❌ 한글을 그냥 타이핑 → 깨질 수 있음</span>
+::/hi::안녕하세요. 홍길동입니다.
+<span class="c-comment">;   → "안녕하8요" 처럼 깨짐</span>
+
+<span class="c-comment">; ✅ 클립보드에 담아 붙여넣기 → 안 깨짐</span>
+::/hi::
+    <span class="c-keyword">Clipboard</span> := "안녕하세요. 홍길동입니다."
+    <span class="c-keyword">Send</span>, ^v
+<span class="c-keyword">Return</span></pre>
             </div>
-            <a href="https://ahkv1.pnal.dev/1" target="_blank"
-               style="display: inline-flex; align-items: center; gap: 8px;
-                      background: var(--accent-alt); color: var(--bg-primary);
-                      padding: 10px 20px; border-radius: 8px; font-weight: 700;
-                      font-size: 15px; text-decoration: none; margin-top: 16px;">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                AHK v1 한국어 강좌 바로가기
-            </a>
         </div>
-
-        <div class="image-wrapper" style="height: 460px;">
-            <img src="img/scite_editor.png"
-                 alt="SciTE4AutoHotkey 편집기 화면"
-                 onerror="handleImgError(this)">
-        </div>
-
     </div>
 </div>

@@ -1,0 +1,34 @@
+<h2 class="slide-title">10. #IfWinActive (충돌 방지)</h2>
+
+<div class="content-area">
+    <div class="two-column">
+        <div>
+            <h3>스마트한 상황별 단축키</h3>
+            <p>특정 앱에서만 단축키가 작동하도록 제한합니다.</p>
+            <ul class="checklist-icon">
+                <li><i class="fa-solid fa-check"></i> 프로그램 간 단축키 충돌 방지</li>
+                <li><i class="fa-solid fa-check"></i> 작업 효율의 극대화</li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    반드시 닫기(<code>#IfWinActive</code>) 필수
+                </li>
+            </ul>
+        </div>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre><span class="c-comment">; 크롬이 활성화되었을 때만 작동</span>
+<span class="c-keyword">#IfWinActive</span>, ahk_exe chrome.exe
+
+^!s::
+    <span class="c-keyword">Send</span>, ^l <span class="c-comment">; 주소창 선택</span>
+    <span class="c-keyword">Sleep</span>, 200
+    <span class="c-keyword">Send</span>, https://www.google.com{Enter}
+<span class="c-keyword">Return</span>
+
+<span class="c-comment">; 제한 종료 (반드시 닫아주기)</span>
+<span class="c-keyword">#IfWinActive</span></pre>
+            </div>
+        </div>
+    </div>
+</div>

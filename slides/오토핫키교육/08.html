@@ -1,35 +1,76 @@
-<h2 class="slide-title" data-important="true">
-    5. Send (키보드 대신 쳐주기)
-    <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
-</h2>
+<h2 class="slide-title">오늘 배울 AHK 치트시트</h2>
 
 <div class="content-area">
-    <div class="two-column">
-        <div>
-            <h3>자동 타이핑의 마법</h3>
-            <p>사람이 치는 것과 동일한 입력을 수행합니다.</p>
-            <ul class="checklist-icon">
-                <li><i class="fa-solid fa-check"></i> 엔터, 탭 등 특수키 입력 가능</li>
-                <li><i class="fa-solid fa-check"></i> 복사/붙여넣기 단축키 실행</li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    특수키는 <code>{ }</code> 중괄호 필수
-                </li>
-            </ul>
-        </div>
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
-<pre>^!t::
-    <span class="c-comment">; 텍스트와 특수키 조합</span>
-    <span class="c-keyword">Send</span>, 안녕하세요{Enter}
-    <span class="c-keyword">Send</span>, 반갑습니다{Tab}홍길동입니다.
-
-    <span class="c-comment">; Ctrl+A (전체선택) 후 Ctrl+C (복사)</span>
-    <span class="c-keyword">Send</span>, ^a
-    <span class="c-keyword">Send</span>, ^c
-<span class="c-keyword">Return</span></pre>
-            </div>
-        </div>
-    </div>
+    <p style="color: var(--accent); font-weight: 600;
+              margin-bottom: 12px; font-size: 16px;">
+        <i class="fa-solid fa-bolt"></i>
+        오늘 이것만 알아가면 내 업무가 2배 빨라집니다.
+        (★ 중요 핵심 명령어 강조)
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 8%;">순서</th>
+                <th style="width: 25%;">핵심 명령어</th>
+                <th style="width: 67%;">기능 요약</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0</td>
+                <td>WindowSpy</td>
+                <td>창 이름, 마우스 좌표 확인 도구 (필수)</td>
+            </tr>
+            <tr class="highlight">
+                <td>1</td>
+                <td>Run <span class="star">★</span></td>
+                <td>프로그램, 파일, 웹사이트 실행</td>
+            </tr>
+            <tr class="highlight">
+                <td>2</td>
+                <td>핫키 (::) <span class="star">★</span></td>
+                <td>단축키에 동작 연결 (나만의 런처)</td>
+            </tr>
+            <tr class="highlight">
+                <td>3</td>
+                <td>핫스트링 <span class="star">★</span></td>
+                <td>짧은 단어를 긴 문장으로 자동 변환</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>WinActivate</td>
+                <td>원하는 창을 화면 맨 앞으로 가져오기</td>
+            </tr>
+            <tr class="highlight">
+                <td>5</td>
+                <td>Send <span class="star">★</span></td>
+                <td>키보드 자동 타이핑 및 단축키 실행</td>
+            </tr>
+            <tr class="highlight">
+                <td>6</td>
+                <td>Sleep <span class="star">★</span></td>
+                <td>다음 동작 전 잠깐 대기 (오류 방지 핵심)</td>
+            </tr>
+            <tr class="highlight">
+                <td>7</td>
+                <td>Click <span class="star">★</span></td>
+                <td>마우스 지정 좌표 자동 클릭</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Clipboard</td>
+                <td>긴 텍스트 복사/붙여넣기 자동화</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>MsgBox</td>
+                <td>알림창 띄우기 (잘 되나 확인용)</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>#IfWinActive</td>
+                <td>특정 프로그램에서만 단축키 작동하게 하기</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

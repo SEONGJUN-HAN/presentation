@@ -1,33 +1,36 @@
-<h2 class="slide-title">10. #IfWinActive (충돌 방지)</h2>
+<h2 class="slide-title">4. WinActivate & WinWait (창 제어)</h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>스마트한 상황별 단축키</h3>
-            <p>특정 앱에서만 단축키가 작동하도록 제한합니다.</p>
+            <h3>스마트한 창 제어</h3>
+            <p>창을 열고(Run) 활성화(WinActivate)하는 과정은 자동화의 기초입니다.</p>
             <ul class="checklist-icon">
-                <li><i class="fa-solid fa-check"></i> 프로그램 간 단축키 충돌 방지</li>
-                <li><i class="fa-solid fa-check"></i> 작업 효율의 극대화</li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    반드시 닫기(<code>#IfWinActive</code>) 필수
+                    컴퓨터 속도에 맞춰 기다려주는 <strong>WinWait</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    정확한 창 이름을 찾는 <strong>WindowSpy</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    안정적인 자동화의 핵심 단계
                 </li>
             </ul>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 크롬이 활성화되었을 때만 작동</span>
-<span class="c-keyword">#IfWinActive</span>, ahk_exe chrome.exe
+<pre>^!n::
+    <span class="c-keyword">Run</span>, notepad.exe
+    <span class="c-comment">; 창이 뜰 때까지 대기</span>
+    <span class="c-keyword">WinWait</span>, 제목 없음 - 메모장
 
-^!s::
-    <span class="c-keyword">Send</span>, ^l <span class="c-comment">; 주소창 선택</span>
-    <span class="c-keyword">Sleep</span>, 200
-    <span class="c-keyword">Send</span>, https://www.google.com{Enter}
-<span class="c-keyword">Return</span>
-
-<span class="c-comment">; 제한 종료 (반드시 닫아주기)</span>
-<span class="c-keyword">#IfWinActive</span></pre>
+    <span class="c-comment">; 그 창을 맨 앞으로 활성화</span>
+    <span class="c-keyword">WinActivate</span>
+<span class="c-keyword">Return</span></pre>
             </div>
         </div>
     </div>
