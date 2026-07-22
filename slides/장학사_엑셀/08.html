@@ -1,23 +1,121 @@
-<h2 class="slide-title">표에는 두 종류가 있습니다</h2>
+<h2 class="slide-title">표에는 두 종류가 있습니다 — 테이블 ↔ 크로스테이블</h2>
 <div class="content-area">
-  <div class="two-column">
-    <div>
-      <h3>데이터형 (테이블)</h3>
-      <ul>
-        <li>한 줄 = 한 건의 기록</li>
-        <li>세로로 길게 쌓인 형태</li>
-        <li>머리글 1줄, 병합 없음</li>
-        <li><strong>분석·저장에 적합</strong></li>
-      </ul>
+  <style>
+    .pivot08 { display:flex; flex-direction:column; gap:18px; }
+    .pivot08 .diagram {
+      display:flex; align-items:center; justify-content:center; gap:22px;
+    }
+    .pivot08 .card {
+      flex:1 1 0; display:flex; flex-direction:column; align-items:center; gap:10px;
+    }
+    .pivot08 .card .cap {
+      font-size:19px; font-weight:700;
+    }
+    .pivot08 .card .cap.data { color: var(--accent); }
+    .pivot08 .card .cap.cross { color: var(--accent-alt); }
+    .pivot08 .card .sub { font-size:14px; color: var(--text-dim); margin-top:-6px; }
+    .pivot08 table.mini {
+      width:auto; margin:0; border-collapse:collapse;
+      background: var(--bg-code); border-radius:8px; overflow:hidden;
+    }
+    .pivot08 table.mini th,
+    .pivot08 table.mini td {
+      border:1px solid var(--border); padding:7px 14px;
+      font-size:15px; text-align:center; color: var(--text-main);
+    }
+    .pivot08 table.mini th {
+      background: var(--bg-secondary); border-bottom:1px solid var(--border);
+      font-size:15px; color: var(--text-main); font-weight:600;
+    }
+    /* 값이 머리글로 올라간 셀 강조 */
+    .pivot08 .hl-head { background: rgba(132,204,22,.22); color:#eaffc7 !important; font-weight:700; }
+    /* 머리글이 한 열로 쌓인 부분 강조 */
+    .pivot08 .hl-col  { background: rgba(34,211,238,.20); color:#d6faff !important; font-weight:700; }
+
+    .pivot08 .arrows {
+      display:flex; flex-direction:column; align-items:center; gap:16px;
+      min-width:150px;
+    }
+    .pivot08 .arrow-row {
+      display:flex; flex-direction:column; align-items:center; gap:3px; width:100%;
+    }
+    .pivot08 .arrow-label { font-size:16px; font-weight:700; letter-spacing:.5px; }
+    .pivot08 .arrow-line {
+      width:100%; display:flex; align-items:center; justify-content:center; font-size:22px;
+    }
+    .pivot08 .pivot   .arrow-label,
+    .pivot08 .pivot   .arrow-line { color: var(--accent-alt); }
+    .pivot08 .unpivot .arrow-label,
+    .pivot08 .unpivot .arrow-line { color: var(--accent); }
+    .pivot08 .arrow-line .fa-solid { flex:1; text-align:center; }
+    .pivot08 .arrow-line::before,
+    .pivot08 .arrow-line::after {
+      content:''; flex:1; height:2px; background:currentColor; opacity:.55;
+    }
+
+    .pivot08 .legend {
+      display:flex; gap:26px; justify-content:center; flex-wrap:wrap;
+      font-size:16px; color: var(--text-dim);
+    }
+    .pivot08 .legend b { font-weight:700; }
+    .pivot08 .legend .p { color: var(--accent-alt); }
+    .pivot08 .legend .u { color: var(--accent); }
+  </style>
+
+  <div class="pivot08">
+    <div class="diagram">
+      <!-- 테이블 (데이터형) -->
+      <div class="card">
+        <div class="cap data">테이블 (데이터형)</div>
+        <div class="sub">한 줄 = 한 건 · 세로로 쌓임 · 분석용</div>
+        <table class="mini">
+          <thead>
+            <tr><th>반</th><th>학년</th><th>인원</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A반</td><td class="hl-col">1학년</td><td>30</td></tr>
+            <tr><td>A반</td><td class="hl-col">2학년</td><td>28</td></tr>
+            <tr><td>A반</td><td class="hl-col">3학년</td><td>25</td></tr>
+            <tr><td>B반</td><td class="hl-col">1학년</td><td>27</td></tr>
+            <tr><td>B반</td><td class="hl-col">2학년</td><td>31</td></tr>
+            <tr><td>B반</td><td class="hl-col">3학년</td><td>26</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 화살표 -->
+      <div class="arrows">
+        <div class="arrow-row pivot">
+          <span class="arrow-label">피벗 ▶</span>
+          <span class="arrow-line"><i class="fa-solid fa-arrow-right-long"></i></span>
+        </div>
+        <div class="arrow-row unpivot">
+          <span class="arrow-line"><i class="fa-solid fa-arrow-left-long"></i></span>
+          <span class="arrow-label">◀ 언피벗</span>
+        </div>
+      </div>
+
+      <!-- 크로스테이블 (보고서형) -->
+      <div class="card">
+        <div class="cap cross">크로스테이블 (보고서형)</div>
+        <div class="sub">값을 가로로 펼침 · 병합·소계 흔함 · 보기용</div>
+        <table class="mini">
+          <thead>
+            <tr><th>반</th><th class="hl-head">1학년</th><th class="hl-head">2학년</th><th class="hl-head">3학년</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A반</td><td>30</td><td>28</td><td>25</td></tr>
+            <tr><td>B반</td><td>27</td><td>31</td><td>26</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div>
-      <h3>보고서형 (피벗)</h3>
-      <ul>
-        <li>가로·세로로 교차된 요약표</li>
-        <li>사람이 보기 좋은 형태</li>
-        <li>병합·소계가 흔함</li>
-        <li><strong>보기에만 적합</strong></li>
-      </ul>
+
+    <div class="info-box" style="margin:0;">
+      <p style="font-size:18px;">
+        <span style="color:var(--accent-alt);font-weight:700;">피벗</span> = '학년' 값을 <strong>머리글로 펼쳐</strong> 보기 좋게 &nbsp;·&nbsp;
+        <span style="color:var(--accent);font-weight:700;">언피벗</span> = 머리글을 다시 <strong>한 열로 되돌려</strong> 분석 가능하게
+      </p>
     </div>
   </div>
 </div>

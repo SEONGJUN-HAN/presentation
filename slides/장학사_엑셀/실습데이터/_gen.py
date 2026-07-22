@@ -62,6 +62,7 @@ def build_ex1_source(sc, path):
     put(ws, 1, 1, sc["title"], F_TITLE)
     ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=4)
     put(ws, 2, 1, sc["memo"], F_MEMO)
+    put(ws, 3, 1, f"{L['region']}: {sc['region']}    {L['setup']}: {sc['setup']}", F_BOLD)
     hr = 4
     for c, t in enumerate([L["area"], L["course"], SEM[0], SEM[1]], start=1):
         put(ws, hr, c, t); head(ws, hr, c)
@@ -92,6 +93,7 @@ def build_ex2_source(sc, path):
     put(ws, 1, 1, sc["title"], F_TITLE)
     ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=6)
     put(ws, 2, 1, sc["memo"], F_MEMO)
+    put(ws, 3, 1, f"{L['region']}: {sc['region']}    {L['setup']}: {sc['setup']}", F_BOLD)
     hr = 4
     put(ws, hr, 1, L["area"]); ws.merge_cells(start_row=hr, start_column=1, end_row=hr+1, end_column=1)
     put(ws, hr, 2, L["course"]); ws.merge_cells(start_row=hr, start_column=2, end_row=hr+1, end_column=2)
@@ -143,20 +145,21 @@ def write_notes(ws, lines):
 # ---------- Answer key Example 1 ----------
 def build_ex1_answer(schools, path, notes):
     wb = Workbook(); ds = wb.active; ds.title = L["datasheet"]
-    hdr = [L["school"], L["area"], L["course"], L["semester"], L["people"]]
+    hdr = [L["school"], L["region"], L["setup"], L["area"], L["course"], L["semester"], L["people"]]
     for c, t in enumerate(hdr, start=1):
         put(ds, 1, c, t); head(ds, 1, c)
     r = 2
     for sc in schools:
         for row in sc["rows"]:
             for s in range(2):
-                put(ds, r, 1, sc["short"]); put(ds, r, 2, row["area"])
-                put(ds, r, 3, row["course"]); put(ds, r, 4, SEM[s], align=CENTER)
+                put(ds, r, 1, sc["short"]); put(ds, r, 2, sc["region"], align=CENTER)
+                put(ds, r, 3, sc["setup"], align=CENTER); put(ds, r, 4, row["area"])
+                put(ds, r, 5, row["course"]); put(ds, r, 6, SEM[s], align=CENTER)
                 v = row["v"][s]
-                if v is not None: put(ds, r, 5, int(v), fmt=NUMFMT)
+                if v is not None: put(ds, r, 7, int(v), fmt=NUMFMT)
                 r += 1
-    box(ds, 1, 1, r - 1, 5)
-    for c, w in zip("ABCDE", [10, 10, 16, 10, 12]):
+    box(ds, 1, 1, r - 1, 7)
+    for c, w in zip("ABCDEFG", [10, 8, 8, 10, 16, 10, 12]):
         ds.column_dimensions[c].width = w
 
     pv = wb.create_sheet(L["pivotsheet"])
@@ -178,6 +181,31 @@ def build_ex1_answer(schools, path, notes):
     for c, w in zip("ABCD", [12, 12, 12, 12]):
         pv.column_dimensions[c].width = w
 
+    # ── 같은 데이터형에서 기준만 바꾼 요약: 지역별 · 공사립별 ──
+    def sems(sc):
+        return [sum(int(row["v"][s]) for row in sc["rows"] if row["v"][s] is not None) for s in range(2)]
+    def grouped(start_row, label_hdr, key):
+        put(pv, start_row, 1, label_hdr); head(pv, start_row, 1)
+        for c, t in enumerate([SEM[0], SEM[1], L["total"]], start=2):
+            put(pv, start_row, c, t); head(pv, start_row, c)
+        groups = {}
+        for sc in schools:
+            g = key(sc); s1, s2 = sems(sc)
+            acc = groups.setdefault(g, [0, 0]); acc[0] += s1; acc[1] += s2
+        rr = start_row + 1; ct = [0, 0]
+        for g, (a, b) in groups.items():
+            put(pv, rr, 1, g)
+            put(pv, rr, 2, a, fmt=NUMFMT); put(pv, rr, 3, b, fmt=NUMFMT)
+            put(pv, rr, 4, a + b, F_BOLD, fmt=NUMFMT)
+            ct[0] += a; ct[1] += b; rr += 1
+        put(pv, rr, 1, L["grandtotal"], F_BOLD)
+        put(pv, rr, 2, ct[0], F_BOLD, fmt=NUMFMT); put(pv, rr, 3, ct[1], F_BOLD, fmt=NUMFMT)
+        put(pv, rr, 4, ct[0] + ct[1], F_BOLD, fmt=NUMFMT)
+        box(pv, start_row, 1, rr, 4)
+        return rr
+    r2 = grouped(pr + 3, L["region"], lambda s: s["region"])
+    grouped(r2 + 2, L["setup"], lambda s: s["setup"])
+
     write_notes(wb.create_sheet(L["notesheet"]), notes)
     wb.active = 0
     wb.save(path)
@@ -186,21 +214,22 @@ def build_ex1_answer(schools, path, notes):
 # ---------- Answer key Example 2 ----------
 def build_ex2_answer(schools, path, notes):
     wb = Workbook(); ds = wb.active; ds.title = L["datasheet"]
-    hdr = [L["school"], L["area"], L["course"], L["semester"], L["count"], L["people"]]
+    hdr = [L["school"], L["region"], L["setup"], L["area"], L["course"], L["semester"], L["count"], L["people"]]
     for c, t in enumerate(hdr, start=1):
         put(ds, 1, c, t); head(ds, 1, c)
     r = 2
     for sc in schools:
         for row in sc["rows"]:
             for s in range(2):
-                put(ds, r, 1, sc["short"]); put(ds, r, 2, row["area"])
-                put(ds, r, 3, row["course"]); put(ds, r, 4, SEM[s], align=CENTER)
+                put(ds, r, 1, sc["short"]); put(ds, r, 2, sc["region"], align=CENTER)
+                put(ds, r, 3, sc["setup"], align=CENTER); put(ds, r, 4, row["area"])
+                put(ds, r, 5, row["course"]); put(ds, r, 6, SEM[s], align=CENTER)
                 cv, nv = row["c"][s], row["n"][s]
-                if cv is not None: put(ds, r, 5, int(cv), fmt=NUMFMT)
-                if nv is not None: put(ds, r, 6, int(nv), fmt=NUMFMT)
+                if cv is not None: put(ds, r, 7, int(cv), fmt=NUMFMT)
+                if nv is not None: put(ds, r, 8, int(nv), fmt=NUMFMT)
                 r += 1
-    box(ds, 1, 1, r - 1, 6)
-    for c, w in zip("ABCDEF", [10, 10, 16, 10, 10, 12]):
+    box(ds, 1, 1, r - 1, 8)
+    for c, w in zip("ABCDEFGH", [10, 8, 8, 10, 16, 10, 10, 12]):
         ds.column_dimensions[c].width = w
 
     pv = wb.create_sheet(L["pivotsheet"])
@@ -226,8 +255,68 @@ def build_ex2_answer(schools, path, notes):
     for c, w in zip("ABCDE", [10, 14, 14, 14, 14]):
         pv.column_dimensions[c].width = w
 
+    # ── 같은 데이터형에서 기준만 바꾼 요약: 지역별 · 공사립별 ──
+    def svals(sc):
+        vals = []
+        for s in range(2):
+            cc = sum(int(row["c"][s]) for row in sc["rows"] if row["c"][s] is not None)
+            nn = sum(int(row["n"][s]) for row in sc["rows"] if row["n"][s] is not None)
+            vals += [cc, nn]
+        return vals
+    def grouped2(start_row, label_hdr, key):
+        put(pv, start_row, 1, label_hdr); head(pv, start_row, 1)
+        for c, t in enumerate(hdr2[1:], start=2):
+            put(pv, start_row, c, t); head(pv, start_row, c)
+        groups = {}
+        for sc in schools:
+            g = key(sc); v = svals(sc)
+            acc = groups.setdefault(g, [0, 0, 0, 0])
+            for k in range(4):
+                acc[k] += v[k]
+        rr = start_row + 1; ct = [0, 0, 0, 0]
+        for g, v in groups.items():
+            put(pv, rr, 1, g)
+            for k in range(4):
+                put(pv, rr, 2 + k, v[k], fmt=NUMFMT); ct[k] += v[k]
+            rr += 1
+        put(pv, rr, 1, L["grandtotal"], F_BOLD)
+        for k in range(4):
+            put(pv, rr, 2 + k, ct[k], F_BOLD, fmt=NUMFMT)
+        box(pv, start_row, 1, rr, 5)
+        return rr
+    r2 = grouped2(pr + 3, L["region"], lambda s: s["region"])
+    grouped2(r2 + 2, L["setup"], lambda s: s["setup"])
+
     write_notes(wb.create_sheet(L["notesheet"]), notes)
     wb.active = 0
+    wb.save(path)
+
+
+# ---------- 학교 속성표 (VLOOKUP / 파워쿼리 병합용) ----------
+def build_attr_table(schools, path):
+    wb = Workbook(); ws = wb.active; ws.title = "학교속성"
+    put(ws, 1, 1, "학교 속성표 (VLOOKUP·파워쿼리 병합용)", F_TITLE)
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=3)
+    put(ws, 2, 1, "취합·정리한 데이터의 '학교' 열을 기준으로 지역·설립을 붙일 때 사용합니다.", F_MEMO)
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=3)
+    hr = 4
+    for c, t in enumerate([L["school"], L["region"], L["setup"]], start=1):
+        put(ws, hr, c, t); head(ws, hr, c)
+    r = hr + 1; seen = set()
+    for sc in schools:
+        if sc["short"] in seen:
+            continue
+        seen.add(sc["short"])
+        put(ws, r, 1, sc["short"])
+        put(ws, r, 2, sc["region"], align=CENTER)
+        put(ws, r, 3, sc["setup"], align=CENTER)
+        r += 1
+    box(ws, hr, 1, r - 1, 3)
+    for c, w in zip("ABC", [12, 10, 10]):
+        ws.column_dimensions[c].width = w
+    put(ws, r + 1, 1, "사용 예)", F_BOLD)
+    put(ws, r + 2, 1, "· 지역 ← =VLOOKUP(학교셀, 학교속성!$A:$C, 2, 0)", F_SUB)
+    put(ws, r + 3, 1, "· 설립 ← =VLOOKUP(학교셀, 학교속성!$A:$C, 3, 0)", F_SUB)
     wb.save(path)
 
 
@@ -241,4 +330,6 @@ for sc in cfg["ex2"]["schools"]:
     build_ex2_source(sc, os.path.join(ex2src, sc["file"] + ".xlsx"))
 build_ex1_answer(cfg["ex1"]["schools"], os.path.join(ex1dir, OUT["answer"]), cfg["notes1"])
 build_ex2_answer(cfg["ex2"]["schools"], os.path.join(ex2dir, OUT["answer"]), cfg["notes2"])
+build_attr_table(cfg["ex1"]["schools"], os.path.join(ex1dir, "학교속성표.xlsx"))
+build_attr_table(cfg["ex2"]["schools"], os.path.join(ex2dir, "학교속성표.xlsx"))
 print("DONE")
