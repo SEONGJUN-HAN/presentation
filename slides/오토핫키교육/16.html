@@ -1,32 +1,44 @@
 <h2 class="slide-title" data-important="true">
-    7. Click (마우스 자동화)
-    <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
+    6단계. 일하는 버튼 — Sleep &amp; Send
+    <span class="badge"><i class="fa-solid fa-star"></i> 런처 업그레이드</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>좌표 기반 클릭 제어</h3>
-            <p>정해진 좌표를 자동으로 클릭합니다.</p>
+            <h3>여는 버튼 → 일하는 버튼</h3>
+            <p>버튼이 프로그램을 열고, <strong>기다렸다가, 대신 입력</strong>까지 합니다.</p>
             <ul class="checklist-icon">
-                <li><i class="fa-solid fa-check"></i> WindowSpy로 X, Y 좌표 확인</li>
-                <li><i class="fa-solid fa-check"></i> 클릭 전후 <strong>Sleep</strong> 추가 권장</li>
-                <li><i class="fa-solid fa-check"></i> 숫자 '2'를 추가하여 더블클릭 구현</li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <code>Sleep, 1000</code> = 1초 대기 — 창이 뜨기 전에
+                    입력하면 사라지므로 <strong>기다림이 필수</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <code>Send, ^v</code> = 키보드 대신 눌러주기 (5단계 클립보드 방식 재활용)
+                </li>
             </ul>
+            <div class="info-box" style="border-left-color: #f59e0b;">
+                <p><i class="fa-solid fa-flask" style="color: #f59e0b;"></i>&nbsp;
+                    <strong style="color: var(--text-main)">실험</strong> —
+                    Sleep을 <code>0</code>으로 바꿔 실행해 보세요.
+                    입력이 사라지죠? <strong style="color: var(--text-main)">그게 Sleep이 필요한 이유</strong>입니다.
+                </p>
+            </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre>^!k::
-    <span class="c-keyword">WinActivate</span>, 사내 시스템
-    <span class="c-keyword">Sleep</span>, 500
+<pre><span class="c-comment">; 런처 버튼: 📝 메모장 열고 할 일 쓰기</span>
+<span class="c-keyword">Gui</span>, Add, Button, w260 <span class="c-string">gMacro1</span>, 📝 메모장 열고 할 일 쓰기
 
-    <span class="c-comment">; 좌표 (350, 280) 클릭</span>
-    <span class="c-keyword">Click</span>, 350 280
-    <span class="c-keyword">Sleep</span>, 300
-
-    <span class="c-comment">; 더블클릭 수행</span>
-    <span class="c-keyword">Click</span>, 450 380 2
+Macro1:
+    <span class="c-keyword">Gui</span>, Destroy
+    <span class="c-keyword">Run</span>, notepad.exe
+    <span class="c-keyword">Sleep</span>, <span class="c-number">1000</span>   <span class="c-comment">; 메모장이 뜰 때까지 대기</span>
+    <span class="c-keyword">Clipboard</span> := "📌 오늘 할 일`n1. `n2. "
+    <span class="c-keyword">Send</span>, ^v
 <span class="c-keyword">Return</span></pre>
             </div>
         </div>

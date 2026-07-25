@@ -1,39 +1,34 @@
-<h2 class="slide-title" data-important="true">
-    6. Sleep (기다림의 미학)
-    <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
-</h2>
+<h2 class="slide-title">5단계. 한글 상용구는 클립보드로</h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>오류 방지의 핵심</h3>
-            <p>명령 사이의 간격을 조절하여 에러를 방지합니다.</p>
+            <h3>한글은 클립보드로!</h3>
+            <p>핫스트링으로 <strong>한글 문장</strong>을 그냥 타이핑하면
+                IME 때문에 글자가 깨질 수 있습니다.</p>
             <ul class="checklist-icon">
+                <li><i class="fa-solid fa-check"></i> 영문·숫자는 그냥 타이핑해도 OK</li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <span style="color:var(--accent)">1000</span> = 1초 대기
+                    한글은 <strong>클립보드에 담아 <code>^v</code></strong> 로 붙이면 안 깨짐
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    네트워크/하드웨어 로딩 시간 고려
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    "자동화가 멈추면 Sleep을 더 넣으세요"
+                    <code>`n</code> : 엔터(줄바꿈) 역할
                 </li>
             </ul>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre>^!e::
-    <span class="c-keyword">Run</span>, C:\업무\무거운엑셀.xlsx
+<pre><span class="c-comment">; ❌ 한글을 그냥 타이핑 → 깨질 수 있음</span>
+::/hi::안녕하세요. 한성준입니다.
+<span class="c-comment">;   → "안녕하8요" 처럼 깨짐</span>
 
-    <span class="c-comment">; 엑셀 켜질 때까지 5초 대기</span>
-    <span class="c-keyword">Sleep</span>, 5000
-
-    <span class="c-comment">; 그 다음 작업 실행</span>
-    <span class="c-keyword">Send</span>, 데이터를 입력합니다.
+<span class="c-comment">; ✅ 클립보드에 담아 붙여넣기 → 안 깨짐</span>
+::/hello::
+    <span class="c-keyword">Clipboard</span> := "안녕하세요. 한성준입니다."
+    <span class="c-keyword">Send</span>, ^v
 <span class="c-keyword">Return</span></pre>
             </div>
         </div>

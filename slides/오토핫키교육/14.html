@@ -1,34 +1,29 @@
 <h2 class="slide-title" data-important="true">
-    5. Send (키보드 대신 쳐주기)
+    4단계. 상용구 — 핫스트링
     <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>자동 타이핑의 마법</h3>
-            <p>사람이 치는 것과 동일한 입력을 수행합니다.</p>
+            <h3>타이핑 노동 획기적 단축</h3>
+            <p>특정 단어를 입력하면 즉시 긴 문장으로 교체됩니다.</p>
             <ul class="checklist-icon">
-                <li><i class="fa-solid fa-check"></i> 엔터, 탭 등 특수키 입력 가능</li>
-                <li><i class="fa-solid fa-check"></i> 복사/붙여넣기 단축키 실행</li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    특수키는 <code>{ }</code> 중괄호 필수
-                </li>
+                <li><i class="fa-solid fa-check"></i> 이메일 템플릿 자동 작성</li>
+                <li><i class="fa-solid fa-check"></i> 자주 쓰는 인사말/서명 관리</li>
+                <li><i class="fa-solid fa-check"></i> 오타 교정 및 상용구 등록</li>
             </ul>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre>^!t::
-    <span class="c-comment">; 텍스트와 특수키 조합</span>
-    <span class="c-keyword">Send</span>, 안녕하세요{Enter}
-    <span class="c-keyword">Send</span>, 반갑습니다{Tab}홍길동입니다.
+<pre><span class="c-comment">; /tel 이라고 치면 전화번호로 변환</span>
+::/tel::063-123-4567
 
-    <span class="c-comment">; Ctrl+A (전체선택) 후 Ctrl+C (복사)</span>
-    <span class="c-keyword">Send</span>, ^a
-    <span class="c-keyword">Send</span>, ^c
-<span class="c-keyword">Return</span></pre>
+<span class="c-comment">; /mail 이라고 치면 이메일 주소로 변환</span>
+::/mail::dkdlvmhan@jbedu.kr
+
+<span class="c-comment">; 짧은 단어 → 긴 내용. 정말 간단하죠?</span></pre>
             </div>
         </div>
     </div>

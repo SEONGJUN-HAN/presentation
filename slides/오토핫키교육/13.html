@@ -1,36 +1,47 @@
-<h2 class="slide-title">4. WinActivate & WinWait (창 제어)</h2>
+<h2 class="slide-title" data-important="true">
+    3단계. 버튼을 내 것으로 — 경로 바꾸기
+    <span class="badge"><i class="fa-solid fa-star"></i> 내 런처 완성</span>
+</h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>스마트한 창 제어</h3>
-            <p>창을 열고(Run) 활성화(WinActivate)하는 과정은 자동화의 기초입니다.</p>
+            <h3>바꿀 곳은 딱 두 군데</h3>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    컴퓨터 속도에 맞춰 기다려주는 <strong>WinWait</strong>
+                    <i class="fa-solid fa-1"></i>
+                    <strong>버튼 이름</strong> — 내 업무 이름으로
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    정확한 창 이름을 찾는 <strong>WindowSpy</strong>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    안정적인 자동화의 핵심 단계
+                    <i class="fa-solid fa-2"></i>
+                    <strong>Run 뒤의 경로</strong> — 내가 여는 파일·폴더·사이트로
                 </li>
             </ul>
+            <div class="info-box" style="padding: 16px 20px;">
+                <p style="font-size: 18px;"><i class="fa-solid fa-lightbulb"></i>&nbsp;
+                    경로 따는 법 — 파일을
+                    <strong style="color: var(--text-main)">Shift + 우클릭 → "경로로 복사"</strong>
+                </p>
+                <p style="font-size: 18px; margin-top: 10px;"><i class="fa-solid fa-rotate-right"></i>&nbsp;
+                    고친 뒤에는 <code>F5</code> (또는 트레이 우클릭 →
+                    <strong style="color: var(--text-main)">Reload This Script</strong>)
+                </p>
+            </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre>^!n::
-    <span class="c-keyword">Run</span>, notepad.exe
-    <span class="c-comment">; 창이 뜰 때까지 대기</span>
-    <span class="c-keyword">WinWait</span>, 제목 없음 - 메모장
+<pre><span class="c-comment">; ▼ 여기만 바꾸세요 ① — 버튼 이름</span>
+<span class="c-keyword">Gui</span>, Add, Button, w260 gRun1, <span class="c-string">📄 업무일지 열기</span>
+<span class="c-keyword">Gui</span>, Add, Button, w260 gRun2, <span class="c-string">🌐 나이스 접속</span>
 
-    <span class="c-comment">; 그 창을 맨 앞으로 활성화</span>
-    <span class="c-keyword">WinActivate</span>
-<span class="c-keyword">Return</span></pre>
+<span class="c-comment">; ▼ 여기만 바꾸세요 ② — 여는 대상</span>
+Run1:
+    <span class="c-keyword">Gui</span>, Destroy
+    <span class="c-keyword">Run</span>, <span class="c-string">C:\Users\내이름\Documents\업무일지.xlsx</span>
+<span class="c-keyword">Return</span>
+
+<span class="c-comment">; Run2, Run3 … 도 같은 방식</span></pre>
             </div>
         </div>
     </div>

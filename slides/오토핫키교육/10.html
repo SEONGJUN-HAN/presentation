@@ -1,39 +1,42 @@
 <h2 class="slide-title" data-important="true">
-    1. Run (무엇이든 열어줍니다)
-    <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
+    0단계. MsgBox — 내 첫 스크립트
+    <span class="badge"><i class="fa-solid fa-flag-checkered"></i> 첫 실행</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>가장 강력한 런처 기능</h3>
-            <p>AHK의 가장 기본이자 핵심 기능입니다.</p>
+            <h3>일단 한 줄 띄워봅시다</h3>
+            <p>코딩의 첫 걸음은 <strong>"내가 실행했더니 화면에 떴다"</strong>입니다.</p>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    윈도우 프로그램 실행
+                    <i class="fa-solid fa-1"></i>
+                    오른쪽 세 줄을 파일에 입력 (또는 코드 복사)
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    내 PC의 폴더나 파일 열기
+                    <i class="fa-solid fa-2"></i>
+                    <code>F5</code> 로 실행 → <code>Ctrl + Alt + M</code> 누르기
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    웹사이트 주소 즉시 접속
+                    <i class="fa-solid fa-3"></i>
+                    알림창이 떴다면 성공! 문구를 바꿔 다시 실행해 보기
                 </li>
             </ul>
+            <div class="info-box">
+                <p><i class="fa-solid fa-eraser"></i>&nbsp;
+                    확인했으면 <strong style="color: var(--text-main)">지워도 됩니다.</strong>
+                    이 MsgBox는 나중에 우리 런처의
+                    <strong style="color: var(--accent)">❓ 도움말 버튼</strong>이 되어 돌아옵니다.
+                </p>
+            </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 프로그램 실행</span>
-<span class="c-keyword">Run</span>, notepad.exe
-
-<span class="c-comment">; 특정 엑셀 파일 열기</span>
-<span class="c-keyword">Run</span>, C:\Users\나\Documents\업무일지.xlsx
-
-<span class="c-comment">; 웹사이트 열기</span>
-<span class="c-keyword">Run</span>, https://www.google.com</pre>
+<pre><span class="c-comment">; Ctrl + Alt + M 을 누르면 알림창</span>
+^!m::
+    <span class="c-keyword">MsgBox</span>, 반갑습니다! 첫 스크립트 성공!
+<span class="c-keyword">Return</span></pre>
             </div>
         </div>
     </div>

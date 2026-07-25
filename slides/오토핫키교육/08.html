@@ -1,76 +1,49 @@
-<h2 class="slide-title">오늘 배울 AHK 치트시트</h2>
+<h2 class="slide-title">실습 안내 — 두 갈래 중 선택하세요</h2>
 
 <div class="content-area">
-    <p style="color: var(--accent); font-weight: 600;
-              margin-bottom: 12px; font-size: 16px;">
-        <i class="fa-solid fa-bolt"></i>
-        오늘 이것만 알아가면 내 업무가 2배 빨라집니다.
-        (★ 중요 핵심 명령어 강조)
+    <p style="font-size: 18px; margin-bottom: 4px;">
+        지금부터 슬라이드를 따라오면
+        <strong style="color: var(--accent)">나만의 업무자동화 런처 기본안</strong>이 완성됩니다.
+        본인에게 맞는 방식을 고르세요. 둘 다 결과물은 같습니다.
     </p>
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 8%;">순서</th>
-                <th style="width: 25%;">핵심 명령어</th>
-                <th style="width: 67%;">기능 요약</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0</td>
-                <td>WindowSpy</td>
-                <td>창 이름, 마우스 좌표 확인 도구 (필수)</td>
-            </tr>
-            <tr class="highlight">
-                <td>1</td>
-                <td>Run <span class="star">★</span></td>
-                <td>프로그램, 파일, 웹사이트 실행</td>
-            </tr>
-            <tr class="highlight">
-                <td>2</td>
-                <td>핫키 (::) <span class="star">★</span></td>
-                <td>단축키에 동작 연결 (나만의 런처)</td>
-            </tr>
-            <tr class="highlight">
-                <td>3</td>
-                <td>핫스트링 <span class="star">★</span></td>
-                <td>짧은 단어를 긴 문장으로 자동 변환</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>WinActivate</td>
-                <td>원하는 창을 화면 맨 앞으로 가져오기</td>
-            </tr>
-            <tr class="highlight">
-                <td>5</td>
-                <td>Send <span class="star">★</span></td>
-                <td>키보드 자동 타이핑 및 단축키 실행</td>
-            </tr>
-            <tr class="highlight">
-                <td>6</td>
-                <td>Sleep <span class="star">★</span></td>
-                <td>다음 동작 전 잠깐 대기 (오류 방지 핵심)</td>
-            </tr>
-            <tr class="highlight">
-                <td>7</td>
-                <td>Click <span class="star">★</span></td>
-                <td>마우스 지정 좌표 자동 클릭</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Clipboard</td>
-                <td>긴 텍스트 복사/붙여넣기 자동화</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>MsgBox</td>
-                <td>알림창 띄우기 (잘 되나 확인용)</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>#IfWinActive</td>
-                <td>특정 프로그램에서만 단축키 작동하게 하기</td>
-            </tr>
-        </tbody>
-    </table>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+                flex-grow: 1; align-items: stretch; margin-top: 8px;">
+
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 24px 26px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--accent-alt);">
+            <h3 style="font-size: 20px; margin: 0 0 10px 0;">🟢 자신 있다!</h3>
+            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6;">
+                <strong style="color: var(--text-main)">빈 파일에서 직접 타이핑</strong>
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
+                       color: var(--text-dim); line-height: 1.8;">
+                <li>· 바탕화면 우클릭 → New → AutoHotkey Script</li>
+                <li>· 슬라이드의 코드를 보고 직접 입력</li>
+                <li>· 막히면 <strong style="color: var(--text-main)">"코드 복사"</strong> 버튼으로 붙여넣기</li>
+            </ul>
+        </div>
+
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 24px 26px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--accent);">
+            <h3 style="font-size: 20px; margin: 0 0 10px 0;">🟡 따라가기 벅차다!</h3>
+            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6;">
+                <strong style="color: var(--text-main)">완성된 파일로 따라오기</strong>
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
+                       color: var(--text-dim); line-height: 1.8;">
+                <li>· 나눠드린 <code>내업무도구.ahk</code> 를 SciTE로 열기</li>
+                <li>· 슬라이드 진도에 맞는 <strong style="color: var(--text-main)">[N단계] 주석</strong>을 찾아가기</li>
+                <li>· <strong style="color: var(--text-main)">"▼ 여기만 바꾸세요"</strong> 부분만 내 것으로 수정 → F5</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="info-box" style="margin-top: 16px;">
+        <p><i class="fa-solid fa-flag-checkered"></i>&nbsp;
+            어느 쪽이든 오늘 끝나면 <strong style="color: var(--text-main)">돌아가는 내 런처 파일 하나</strong>를 가져갑니다.
+            중간에 길을 잃으면 언제든 완성본 파일로 갈아타세요.
+        </p>
+    </div>
 </div>

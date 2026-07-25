@@ -1,35 +1,63 @@
-<h2 class="slide-title">0. WindowSpy (좌표/창이름 확인)</h2>
+<h2 class="slide-title">오늘 만들 런처 — 완성 미리보기</h2>
 
 <div class="content-area">
-    <div class="two-column">
+    <div class="two-column" style="gap: 32px;">
+
+        <!-- 좌측: 런처 완성 모습 목업 -->
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="background: var(--bg-code); border: 1px solid var(--border);
+                        border-radius: 12px; padding: 18px 22px; width: 280px;
+                        box-shadow: 0 8px 24px rgba(0,0,0,0.35);">
+                <p style="font-size: 16px; font-weight: 700; color: var(--text-main);
+                          text-align: center; margin: 0 0 12px 0;">🚀 나만의 업무 런처</p>
+                <div style="display: flex; flex-direction: column; gap: 7px; font-size: 14px;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px;">📄 업무일지 열기</div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px;">🌐 나이스 접속</div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px;">📁 올해 업무 폴더</div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px;">✉️ 메일 쓰기</div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--accent); border-radius: 6px; padding: 8px 12px;">📝 메모장 열고 할 일 쓰기</div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px;">❓ 단축키 도움말</div>
+                </div>
+            </div>
+            <p style="font-size: 14px; margin-top: 12px; text-align: center;">
+                <code>Ctrl + Alt + L</code> 로 여는 <strong style="color: var(--text-main)">내 런처</strong>
+                + 상용구(<code>/tel</code>, <code>/hi</code>)까지 파일 하나
+            </p>
+        </div>
+
+        <!-- 우측: 단계 지도 -->
         <div>
-            <h3>정보 확인용 필수 도구</h3>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <strong>마우스를 올리기만 하면</strong> 실시간 정보를 알려줍니다.
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <strong>Title:</strong> 현재 창의 정확한 이름 확인
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <strong>Mouse Position:</strong> 현재 X, Y 좌표 확인
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <strong>실행 방법:</strong> SciTE4AutoHotkey 상단 메뉴에서 즉시 실행 가능
-                </li>
-            </ul>
-            <div class="info-box" style="margin-top: 24px;">
-                <p>💡 "여기 Window Title과 Mouse Position만 보시면 됩니다!"</p>
+            <h3 style="font-size: 22px;">이 순서대로 만들어 갑니다</h3>
+            <style>
+                .step-table td { padding: 7px 14px; font-size: 15px; }
+                .step-table th { padding: 8px 14px; font-size: 15px; }
+            </style>
+            <table class="step-table">
+                <thead>
+                    <tr>
+                        <th style="width: 18%;">단계</th>
+                        <th style="width: 46%;">만드는 것</th>
+                        <th style="width: 36%;">배우는 명령어</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0</td><td>내 첫 알림창</td><td>MsgBox</td></tr>
+                    <tr class="highlight"><td>1</td><td>맛보기 단축키</td><td>핫키 · Run</td></tr>
+                    <tr class="highlight"><td>2</td><td>런처 창 띄우기</td><td>Gui · 버튼</td></tr>
+                    <tr class="highlight"><td>3</td><td>버튼을 내 것으로</td><td>경로 바꾸기</td></tr>
+                    <tr><td>4</td><td>상용구</td><td>핫스트링</td></tr>
+                    <tr><td>5</td><td>한글 상용구</td><td>Clipboard · Send</td></tr>
+                    <tr class="highlight"><td>6</td><td>일하는 버튼</td><td>Sleep · Send</td></tr>
+                    <tr><td>보너스</td><td>좌표 클릭</td><td>WindowSpy · Click</td></tr>
+                </tbody>
+            </table>
+            <div class="info-box" style="margin-top: 14px; padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-map"></i>&nbsp;
+                    실습 파일의 <strong style="color: var(--text-main)">[N단계] 주석</strong>이
+                    이 표와 똑같이 매겨져 있습니다.
+                </p>
             </div>
         </div>
-        <div class="image-wrapper">
-            <img src="img/windowspy.png"
-                 alt="WindowSpy 화면 캡처"
-                 onerror="handleImgError(this)">
-        </div>
+
     </div>
 </div>
