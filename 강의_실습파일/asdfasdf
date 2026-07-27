@@ -1,0 +1,72 @@
+#NoEnv
+#SingleInstance Force
+SetBatchLines, -1
+
+; ==========================
+; 퇴근 시간 설정
+; ==========================
+QuitHour := 16
+QuitMin  := 30
+
+Gui, +AlwaysOnTop -MaximizeBox -MinimizeBox +ToolWindow
+Gui, Font, s12 Bold, 맑은 고딕
+Gui, Add, Text, vRemain w240 Center, 계산중...
+
+Gui, Font, s9 Normal
+Gui, Add, Text, vNow w240 Center,
+
+Gui, Show,, 퇴근 타이머
+
+SetTimer, UpdateTimer, 1000
+Gosub, UpdateTimer
+Return
+
+;===========================
+UpdateTimer:
+FormatTime, Today,, yyyyMMdd
+
+QuitTime := Today . Format("{:02}{:02}00", QuitHour, QuitMin)
+
+EnvSub, QuitTime, %A_Now%, Seconds
+
+if (QuitTime >= 0)
+{
+    h := Floor(QuitTime/3600)
+    m := Floor(Mod(QuitTime,3600)/60)
+    s := Mod(QuitTime,60)
+
+    GuiControl,, Remain, ? 퇴근까지 % Format("{:02}:{:02}:{:02}",h,m,s)
+}
+else
+{
+    elapsed := -QuitTime
+    h := Floor(elapsed/3600)
+    m := Floor(Mod(elapsed,3600)/60)
+    s := Mod(elapsed,60)
+
+    GuiControl,, Remain, ?? 퇴근 +% Format("{:02}:{:02}:{:02}",h,m,s)
+}
+
+FormatTime, nowTime,, HH:mm:ss
+GuiControl,, Now, 현재시간 : %nowTime%
+
+Return
+
+;===========================
+GuiClose:
+ExitApp
+
+Esc::
+ExitApp
+
+;===========================
+; 창 드래그
+GuiEscape:
+Return
+
+~LButton::
+MouseGetPos,,, win
+WinGetTitle, title, ahk_id %win%
+if (title="퇴근 타이머")
+    PostMessage, 0xA1, 2
+return
