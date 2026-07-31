@@ -148,7 +148,7 @@ ${componentsCss}
             ${slidesHTML}
         </div>
     </div>
-    <div class="controls">
+    <div class="controls" title="H 키를 누르면 이 바가 숨겨지고 다시 나타납니다">
         <button id="prevBtn" onclick="navigateSlide(-1)" disabled>
             <i class="fa-solid fa-chevron-left"></i>
         </button>

@@ -60,7 +60,7 @@
        const wrapper = document.getElementById('presentationWrapper');
        const scaleX = window.innerWidth / 1280;
        const scaleY = window.innerHeight / 720;
-       const scale  = Math.min(scaleX, scaleY) * 0.92;
+       const scale  = Math.min(scaleX, scaleY);   // 여백 없이 화면에 꽉 맞춤
        wrapper.style.transform = `scale(${scale})`;
    }
    
@@ -81,6 +81,11 @@
        }
    }
    
+   /* ─── 컨트롤러 숨김/표시 (H 키) ─── */
+   function toggleControls() {
+       document.querySelector('.controls')?.classList.toggle('hidden');
+   }
+
    /* ─── 코드 복사 ─── */
    async function copyCode(button) {
        const pre = button.nextElementSibling?.querySelector('pre');
@@ -143,8 +148,16 @@
    document.addEventListener('keydown', (e) => {
        const forward  = ['ArrowRight', ' ', 'Enter', 'PageDown'];
        const backward = ['ArrowLeft', 'Backspace', 'PageUp'];
-   
-       if (forward.includes(e.key)) {
+
+       // 입력 중이거나 조합키가 눌린 경우는 무시
+       if (e.ctrlKey || e.altKey || e.metaKey) return;
+       const tag = e.target.tagName;
+       if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+
+       if (e.key === 'h' || e.key === 'H' || e.key === 'ㅗ') {
+           e.preventDefault();
+           toggleControls();
+       } else if (forward.includes(e.key)) {
            e.preventDefault();
            navigateSlide(1);
        } else if (backward.includes(e.key)) {
