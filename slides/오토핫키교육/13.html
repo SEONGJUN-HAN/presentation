@@ -1,47 +1,42 @@
 <h2 class="slide-title" data-important="true">
-    3단계. 버튼을 내 것으로 — 경로 바꾸기
-    <span class="badge"><i class="fa-solid fa-star"></i> 내 런처 완성</span>
+    1단계. 단축키 + Run — 뭐든 한 방에 열기
+    <span class="badge"><i class="fa-solid fa-star"></i> 런처의 씨앗</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>바꿀 곳은 딱 두 군데</h3>
+            <h3>단축키 한 줄이면 열립니다</h3>
+            <p><code>Run</code>은 프로그램·파일·폴더·사이트를 가리지 않습니다.</p>
+            <div class="key-box">
+                <span style="color:var(--accent)">^</span> (Ctrl) &nbsp;|&nbsp;
+                <span style="color:var(--accent)">!</span> (Alt)<br>
+                <span style="color:var(--accent)">+</span> (Shift) &nbsp;|&nbsp;
+                <span style="color:var(--accent)">#</span> (Win)
+            </div>
             <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    <strong>버튼 이름</strong> — 내 업무 이름으로
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    <strong>Run 뒤의 경로</strong> — 내가 여는 파일·폴더·사이트로
-                </li>
+                <li><i class="fa-solid fa-check"></i> <code>^!n</code> = Ctrl + Alt + N</li>
+                <li><i class="fa-solid fa-check"></i> 끝에는 항상 <code>Return</code></li>
             </ul>
-            <div class="info-box" style="padding: 16px 20px;">
-                <p style="font-size: 18px;"><i class="fa-solid fa-lightbulb"></i>&nbsp;
-                    경로 따는 법 — 파일을
-                    <strong style="color: var(--text-main)">Shift + 우클릭 → "경로로 복사"</strong>
-                </p>
-                <p style="font-size: 18px; margin-top: 10px;"><i class="fa-solid fa-rotate-right"></i>&nbsp;
-                    고친 뒤에는 <code>F5</code> (또는 트레이 우클릭 →
-                    <strong style="color: var(--text-main)">Reload This Script</strong>)
+            <div class="info-box" style="padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-arrow-right"></i>&nbsp;
+                    그런데 열 게 10개면 단축키도 10개?
+                    <strong style="color: var(--text-main)">그래서 다음 단계, 런처 창입니다.</strong>
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; ▼ 여기만 바꾸세요 ① — 버튼 이름</span>
-<span class="c-keyword">Gui</span>, Add, Button, w260 gRun1, <span class="c-string">📄 업무일지 열기</span>
-<span class="c-keyword">Gui</span>, Add, Button, w260 gRun2, <span class="c-string">🌐 나이스 접속</span>
-
-<span class="c-comment">; ▼ 여기만 바꾸세요 ② — 여는 대상</span>
-Run1:
-    <span class="c-keyword">Gui</span>, Destroy
-    <span class="c-keyword">Run</span>, <span class="c-string">C:\Users\내이름\Documents\업무일지.xlsx</span>
+<pre><span class="c-comment">; Ctrl + Alt + N → 나이스 열기</span>
+^!n::
+    <span class="c-keyword">Run</span>, https://www.neis.go.kr
 <span class="c-keyword">Return</span>
 
-<span class="c-comment">; Run2, Run3 … 도 같은 방식</span></pre>
+<span class="c-comment">; 파일·폴더도 똑같이 됩니다</span>
+^!e::
+    <span class="c-keyword">Run</span>, C:\Users\내이름\Documents\업무일지.xlsx
+<span class="c-keyword">Return</span></pre>
             </div>
         </div>
     </div>

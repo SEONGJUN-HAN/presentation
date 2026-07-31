@@ -1,29 +1,50 @@
 <h2 class="slide-title" data-important="true">
-    4단계. 상용구 — 핫스트링
-    <span class="badge"><i class="fa-solid fa-star"></i> 핵심 중요</span>
+    2단계. 런처 창 띄우기 — Gui
+    <span class="badge"><i class="fa-solid fa-star"></i> 오늘의 핵심</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>타이핑 노동 획기적 단축</h3>
-            <p>특정 단어를 입력하면 즉시 긴 문장으로 교체됩니다.</p>
+            <h3>버튼 모음 창 = 런처</h3>
+            <p>딱 세 가지만 알면 창이 만들어집니다.</p>
             <ul class="checklist-icon">
-                <li><i class="fa-solid fa-check"></i> 이메일 템플릿 자동 작성</li>
-                <li><i class="fa-solid fa-check"></i> 자주 쓰는 인사말/서명 관리</li>
-                <li><i class="fa-solid fa-check"></i> 오타 교정 및 상용구 등록</li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <code>Gui, Add, Button</code> — 버튼 추가
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <code>gRun1</code> — 버튼을 누르면 <strong>Run1: 으로 점프</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <code>Gui, Show</code> — 창 보여주기
+                </li>
             </ul>
+            <div class="info-box" style="padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-bolt"></i>&nbsp;
+                    <code>F5</code> 실행 → <code>Ctrl + Alt + L</code> →
+                    <strong style="color: var(--text-main)">내 런처 창이 처음으로 뜹니다!</strong>
+                </p>
+            </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; /tel 이라고 치면 전화번호로 변환</span>
-::/tel::063-123-4567
+<pre><span class="c-comment">; Ctrl + Alt + L → 런처 창</span>
+^!l::
+    <span class="c-keyword">Gui</span>, Destroy
+    <span class="c-keyword">Gui</span>, Add, Text, , 원하는 버튼을 누르세요
+    <span class="c-keyword">Gui</span>, Add, Button, w260 <span class="c-string">gRun1</span>, 🌐 나이스 접속
+    <span class="c-keyword">Gui</span>, Show, , 나만의 런처
+<span class="c-keyword">Return</span>
 
-<span class="c-comment">; /mail 이라고 치면 이메일 주소로 변환</span>
-::/mail::dkdlvmhan@jbedu.kr
-
-<span class="c-comment">; 짧은 단어 → 긴 내용. 정말 간단하죠?</span></pre>
+<span class="c-comment">; 버튼을 누르면 여기가 실행됨</span>
+<span class="c-string">Run1:</span>
+    <span class="c-keyword">Gui</span>, Destroy
+    <span class="c-keyword">Run</span>, https://www.neis.go.kr
+<span class="c-keyword">Return</span></pre>
             </div>
         </div>
     </div>

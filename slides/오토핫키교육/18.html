@@ -1,44 +1,45 @@
-<h2 class="slide-title">참고. 창 다루기 — 더 깊이 가면 <span class="badge" style="background-color:#64748b; box-shadow:none;">참고</span></h2>
+<h2 class="slide-title" data-important="true">
+    6단계. 일하는 버튼 — Sleep &amp; Send
+    <span class="badge"><i class="fa-solid fa-star"></i> 런처 업그레이드</span>
+</h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>오늘 런처엔 없지만, 알아두면 좋은 두 가지</h3>
+            <h3>여는 버튼 → 일하는 버튼</h3>
+            <p>버튼이 프로그램을 열고, <strong>기다렸다가, 대신 입력</strong>까지 합니다.</p>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <strong>WinActivate</strong> — 창 제목으로
-                    원하는 창을 맨 앞으로 (해상도와 무관해 안정적)
+                    <code>Sleep, 1000</code> = 1초 대기 — 창이 뜨기 전에
+                    입력하면 사라지므로 <strong>기다림이 필수</strong>
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <strong>#IfWinActive</strong> — 특정 프로그램에서만
-                    단축키가 작동 (충돌 방지)
+                    <code>Send, ^v</code> = 키보드 대신 눌러주기 (5단계 클립보드 방식 재활용)
                 </li>
             </ul>
-            <div class="info-box">
-                <p><i class="fa-solid fa-robot"></i>&nbsp;
-                    필요해지면 외울 필요 없이 —
-                    <strong style="color: var(--text-main)">"AI에게 v1 문법으로 짜달라"</strong>고 하면 됩니다.
-                    다음 슬라이드에서 그 방법을 실습합니다.
+            <div class="info-box" style="border-left-color: #f59e0b;">
+                <p><i class="fa-solid fa-flask" style="color: #f59e0b;"></i>&nbsp;
+                    <strong style="color: var(--text-main)">실험</strong> —
+                    Sleep을 <code>0</code>으로 바꿔 실행해 보세요.
+                    입력이 사라지죠? <strong style="color: var(--text-main)">그게 Sleep이 필요한 이유</strong>입니다.
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 메신저 창을 맨 앞으로</span>
-^!w::
-    <span class="c-keyword">WinActivate</span>, JBEdu Messenger+
-<span class="c-keyword">Return</span>
+<pre><span class="c-comment">; 런처 버튼: 📝 메모장 열고 할 일 쓰기</span>
+<span class="c-keyword">Gui</span>, Add, Button, w260 <span class="c-string">gMacro1</span>, 📝 메모장 열고 할 일 쓰기
 
-<span class="c-comment">; 크롬에서만 작동하는 단축키</span>
-<span class="c-keyword">#IfWinActive</span>, ahk_exe chrome.exe
-^!s::
-    <span class="c-keyword">Send</span>, ^l
-    <span class="c-keyword">Send</span>, https://www.google.com{Enter}
-<span class="c-keyword">Return</span>
-<span class="c-keyword">#IfWinActive</span>   <span class="c-comment">; 제한 닫기 (필수)</span></pre>
+Macro1:
+    <span class="c-keyword">Gui</span>, Destroy
+    <span class="c-keyword">Run</span>, notepad.exe
+    <span class="c-keyword">Sleep</span>, <span class="c-number">1000</span>   <span class="c-comment">; 메모장이 뜰 때까지 대기</span>
+    <span class="c-keyword">Clipboard</span> := "📌 오늘 할 일`n1. `n2. "
+    <span class="c-keyword">Send</span>, ^v
+<span class="c-keyword">Return</span></pre>
             </div>
         </div>
     </div>

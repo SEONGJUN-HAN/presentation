@@ -1,49 +1,41 @@
 <h2 class="slide-title" data-important="true">
-    2단계. 런처 창 띄우기 — Gui
-    <span class="badge"><i class="fa-solid fa-star"></i> 오늘의 핵심</span>
+    0단계. MsgBox — 내 첫 스크립트
+    <span class="badge"><i class="fa-solid fa-flag-checkered"></i> 첫 실행</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>버튼 모음 창 = 런처</h3>
-            <p>딱 세 가지만 알면 창이 만들어집니다.</p>
+            <h3>일단 한 줄 띄워봅시다</h3>
+            <p>코딩의 첫 걸음은 <strong>"내가 실행했더니 화면에 떴다"</strong>입니다.</p>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    <code>Gui, Add, Button</code> — 버튼 추가
+                    <i class="fa-solid fa-1"></i>
+                    오른쪽 세 줄을 파일에 입력 (또는 코드 복사)
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    <code>gRun1</code> — 버튼을 누르면 <strong>Run1: 으로 점프</strong>
+                    <i class="fa-solid fa-2"></i>
+                    <code>F5</code> 로 실행 → <code>Ctrl + Alt + M</code> 누르기
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    <code>Gui, Show</code> — 창 보여주기
+                    <i class="fa-solid fa-3"></i>
+                    알림창이 떴다면 성공! 문구를 바꿔 다시 실행해 보기
                 </li>
             </ul>
-            <div class="info-box" style="padding: 14px 20px;">
-                <p style="font-size: 17px;"><i class="fa-solid fa-bolt"></i>&nbsp;
-                    <code>F5</code> 실행 → <code>Ctrl + Alt + L</code> →
-                    <strong style="color: var(--text-main)">내 런처 창이 처음으로 뜹니다!</strong>
+            <div class="info-box">
+                <p><i class="fa-solid fa-eraser"></i>&nbsp;
+                    확인했으면 <strong style="color: var(--text-main)">지워도 됩니다.</strong>
+                    이 MsgBox는 나중에 우리 런처의
+                    <strong style="color: var(--accent)">❓ 도움말 버튼</strong>이 되어 돌아옵니다.
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; Ctrl + Alt + L → 런처 창</span>
-^!l::
-    <span class="c-keyword">Gui</span>, Destroy
-    <span class="c-keyword">Gui</span>, Add, Text, , 원하는 버튼을 누르세요
-    <span class="c-keyword">Gui</span>, Add, Button, w260 <span class="c-string">gRun1</span>, 🌐 나이스 접속
-    <span class="c-keyword">Gui</span>, Show, , 나만의 런처
-<span class="c-keyword">Return</span>
-
-<span class="c-comment">; 버튼을 누르면 여기가 실행됨</span>
-<span class="c-string">Run1:</span>
-    <span class="c-keyword">Gui</span>, Destroy
-    <span class="c-keyword">Run</span>, https://www.neis.go.kr
+<pre><span class="c-comment">; Ctrl + Alt + M 을 누르면 알림창</span>
+^!m::
+    <span class="c-keyword">MsgBox</span>, 반갑습니다! 첫 스크립트 성공!
 <span class="c-keyword">Return</span></pre>
             </div>
         </div>

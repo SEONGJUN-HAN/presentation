@@ -1,59 +1,44 @@
-<h2 class="slide-title" data-important="true">
-    응용 ①. 퇴근시간 타이머 만들기
-    <span class="badge"><i class="fa-solid fa-robot"></i> AI에게 통째로</span>
-</h2>
+<h2 class="slide-title">참고. 창 다루기 — 더 깊이 가면 <span class="badge" style="background-color:#64748b; box-shadow:none;">참고</span></h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        런처에 <strong style="color: var(--text-main)">버튼만 추가</strong>해 봤으니, 이번엔
-        <strong style="color: var(--accent)">프로그램 하나를 통째로</strong> AI에게 시켜봅시다.
-        내가 코드를 못 써도, <strong style="color: var(--text-main)">원하는 걸 말로 설명하면 됩니다.</strong>
-    </p>
-
     <div class="two-column">
         <div>
-            <h3>말로 설명하면 프로그램이 됩니다</h3>
+            <h3>오늘 런처엔 없지만, 알아두면 좋은 두 가지</h3>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    오른쪽 프롬프트를 <strong>그대로 복사</strong>해 AI에 붙여넣기
+                    <strong>WinActivate</strong> — 창 제목으로
+                    원하는 창을 맨 앞으로 (해상도와 무관해 안정적)
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    받은 코드를 <strong>새 .ahk 파일</strong>에 붙여넣고 <code>F5</code>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    에러가 나면? <strong>메시지 복붙해서 "고쳐줘"</strong>
+                    <strong>#IfWinActive</strong> — 특정 프로그램에서만
+                    단축키가 작동 (충돌 방지)
                 </li>
             </ul>
-            <div class="info-box" style="border-left-color: var(--accent-alt); padding: 14px 20px;">
-                <p style="font-size: 17px;"><i class="fa-solid fa-seedling"></i>&nbsp;
-                    <strong style="color: var(--text-main)">되면 키워보세요</strong> —
-                    "퇴근 30분 전에 알림창을 띄워줘"
-                </p>
-                <p style="font-size: 17px; margin-top: 10px;">
-                    <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-alt);"></i>&nbsp;
-                    <strong style="color: var(--text-main)">요즘은 복붙도 안 합니다</strong> —
-                    AI가 파일을 <strong style="color: var(--text-main)">직접 만들고 고쳐줍니다</strong> (시연)
+            <div class="info-box">
+                <p><i class="fa-solid fa-robot"></i>&nbsp;
+                    필요해지면 외울 필요 없이 —
+                    <strong style="color: var(--text-main)">"AI에게 v1 문법으로 짜달라"</strong>고 하면 됩니다.
+                    다음 슬라이드에서 그 방법을 실습합니다.
                 </p>
             </div>
         </div>
-
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre>AutoHotkey <span class="c-keyword">v1.1</span> 문법으로 만들어줘.
+<pre><span class="c-comment">; 메신저 창을 맨 앞으로</span>
+^!w::
+    <span class="c-keyword">WinActivate</span>, JBEdu Messenger+
+<span class="c-keyword">Return</span>
 
-화면 오른쪽 아래에 뜨는 '퇴근 타이머'.
-
-- 퇴근 16:30, 1초마다 갱신
-- 검은 배경 큰 글씨, 테두리 없이 항상 위
-- 하루 진행률을 막대로도 표시
-- 30분 이내 주황, 퇴근 후엔 빨강
-- 끌어서 이동, 오른쪽 클릭으로 종료
-
-한국어 주석도 달아줘.</pre>
+<span class="c-comment">; 크롬에서만 작동하는 단축키</span>
+<span class="c-keyword">#IfWinActive</span>, ahk_exe chrome.exe
+^!s::
+    <span class="c-keyword">Send</span>, ^l
+    <span class="c-keyword">Send</span>, https://www.google.com{Enter}
+<span class="c-keyword">Return</span>
+<span class="c-keyword">#IfWinActive</span>   <span class="c-comment">; 제한 닫기 (필수)</span></pre>
             </div>
         </div>
     </div>

@@ -1,62 +1,104 @@
-<h2 class="slide-title">AutoHotkey란?</h2>
+<h2 class="slide-title">우리는 지금까지 '키오스크'만 눌러왔습니다</h2>
 
 <div class="content-area">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;
-                flex-grow: 1; align-items: stretch;">
+    <p style="font-size: 18px; margin-bottom: 8px;">
+        컴퓨터로 일할 때 우리는 <strong style="color: var(--text-main)">화면에 있는 버튼을 보고 누르고, 또 보고 누릅니다.</strong>
+        식당 키오스크와 똑같습니다.
+    </p>
 
-        <!-- 좌측: 세로 카드 3개 -->
-        <div style="display: flex; flex-direction: column; gap: 14px; justify-content: center;">
-            <div style="background: var(--bg-secondary); border-radius: 12px;
-                        padding: 18px 22px; border: 1px solid var(--border);
-                        display: flex; align-items: center; gap: 18px;">
-                <span style="font-size: 28px; flex-shrink: 0;">⌨️</span>
-                <div>
-                    <h3 style="font-size: 18px; margin: 0 0 4px 0;">자동화 스크립트 언어</h3>
-                    <p style="font-size: 15px; margin: 0; line-height: 1.5;">
-                        키보드, 마우스, 창 제어를 코드 몇 줄로 자동화하는
-                        <strong style="color: var(--text-main)">윈도우 전용 무료 도구</strong>입니다.
-                    </p>
-                </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+                flex-grow: 1; align-items: stretch; margin-top: 4px;">
+
+        <!-- 1. 키오스크 -->
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--border);
+                    display: flex; flex-direction: column;">
+            <h3 style="font-size: 19px; margin: 0 0 10px 0;">🖥️ 키오스크</h3>
+            <p style="font-family: var(--font-mono); font-size: 15px; margin: 0 0 12px 0;
+                      color: var(--text-dim); line-height: 1.5;">
+                "파스타 1개"
+            </p>
+            <p style="font-size: 15px; margin: 0 0 auto 0; line-height: 1.6; color: var(--text-dim);">
+                화면에 있는 버튼이 <strong style="color: var(--text-main)">내가 할 수 있는 전부</strong>.
+                없는 건 주문 자체가 안 됩니다.
+            </p>
+            <div style="border-top: 1px solid var(--border); margin-top: 14px; padding-top: 12px;
+                        font-size: 14px; color: var(--text-dim); line-height: 1.8;">
+                주문 가능 범위 &nbsp;<strong style="color: var(--text-main)">버튼 개수만큼</strong><br>
+                알아서 해석 &nbsp;<strong style="color: var(--text-main)">—</strong>
             </div>
-            <div style="background: var(--bg-secondary); border-radius: 12px;
-                        padding: 18px 22px; border: 1px solid var(--border);
-                        display: flex; align-items: center; gap: 18px;">
-                <span style="font-size: 28px; flex-shrink: 0;">🧩</span>
-                <div>
-                    <h3 style="font-size: 18px; margin: 0 0 4px 0;">직관적인 문법</h3>
-                    <p style="font-size: 15px; margin: 0; line-height: 1.5;">
-                        복잡한 프로그래밍 지식 없이도
-                        <strong style="color: var(--text-main)">영어 문장에 가까운 문법</strong>으로
-                        빠르게 배울 수 있습니다.
-                    </p>
-                </div>
+        </div>
+
+        <!-- 2. 웨이터 -->
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--accent-alt);
+                    display: flex; flex-direction: column;">
+            <h3 style="font-size: 19px; margin: 0 0 10px 0;">🙋 웨이터</h3>
+            <p style="font-family: var(--font-mono); font-size: 15px; margin: 0 0 12px 0;
+                      color: var(--accent-alt); line-height: 1.5;">
+                "파스타 1개인데<br>소금은 적게요"
+            </p>
+            <p style="font-size: 15px; margin: 0 0 auto 0; line-height: 1.6; color: var(--text-dim);">
+                말로 하니 주문할 수 있는 게 <strong style="color: var(--text-main)">무한대</strong>.
+                대충 말해도 알아서 해줍니다.
+            </p>
+            <div style="border-top: 1px solid var(--border); margin-top: 14px; padding-top: 12px;
+                        font-size: 14px; color: var(--text-dim); line-height: 1.8;">
+                주문 가능 범위 &nbsp;<strong style="color: var(--accent-alt)">무한대</strong><br>
+                알아서 해석 &nbsp;<strong style="color: var(--accent-alt)">해줌</strong>
             </div>
-            <div style="background: var(--bg-secondary); border-radius: 12px;
-                        padding: 18px 22px; border: 1px solid var(--border);
-                        display: flex; align-items: center; gap: 18px;">
-                <span style="font-size: 28px; flex-shrink: 0;">🎮</span>
-                <div>
-                    <h3 style="font-size: 18px; margin: 0 0 4px 0;">검증된 자동화 도구</h3>
-                    <p style="font-size: 15px; margin: 0; line-height: 1.5;">
-                        온라인 게임 자동화 도구로 유명해질 만큼
-                        <strong style="color: var(--text-main)">반복 동작 자동화</strong>에
-                        특화되어 있습니다.
-                    </p>
-                </div>
-            </div>
-            <div class="info-box" style="margin: 4px 0 0 0;">
-                <p><i class="fa-solid fa-bolt"></i>&nbsp;
-                    우리는 이 도구를 <strong style="color: var(--text-main)">업무 자동화</strong>에 활용합니다.
+        </div>
+
+        <!-- 3. 컴퓨터 (버튼을 누르면 등장) -->
+        <div>
+
+            <!-- 3-a. 처음 상태: 질문 + 버튼 -->
+            <div class="js-ask" style="height: 100%; border-radius: 12px; padding: 20px 22px;
+                        border: 2px dashed var(--border);
+                        display: flex; flex-direction: column;
+                        align-items: center; justify-content: center; gap: 18px; text-align: center;">
+                <p style="font-size: 17px; margin: 0; line-height: 1.7; color: var(--text-dim);">
+                    그럼<br>
+                    <strong style="color: var(--text-main)">컴퓨터</strong>는
+                    어느 쪽일까요?
                 </p>
+                <button
+                    onclick="var s=this.closest('.slide-container'); s.querySelector('.js-ask').style.display='none'; s.querySelector('.js-computer').style.display='flex'; s.querySelector('.js-punch').style.visibility='visible';"
+                    style="background: var(--accent); color: var(--bg-primary); border: none;
+                           padding: 12px 22px; border-radius: 8px; font-family: var(--font-sans);
+                           font-size: 16px; font-weight: 700; cursor: pointer;">
+                    💻 확인하기
+                </button>
             </div>
+
+            <!-- 3-b. 클릭 후 상태: 컴퓨터 카드 -->
+            <div class="js-computer" style="display: none; height: 100%;
+                        background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
+                        border: 1px solid var(--border); border-top: 4px solid var(--accent);
+                        flex-direction: column;">
+                <h3 style="font-size: 19px; margin: 0 0 10px 0;">💻 컴퓨터</h3>
+                <p style="font-family: var(--font-mono); font-size: 15px; margin: 0 0 12px 0;
+                          color: var(--accent); line-height: 1.5;">
+                    "파스타를 1개 담되<br>소금은 2g만"
+                </p>
+                <p style="font-size: 15px; margin: 0 0 auto 0; line-height: 1.6; color: var(--text-dim);">
+                    시킬 수 있는 건 웨이터처럼 <strong style="color: var(--text-main)">무한대</strong>.
+                    단, <strong style="color: var(--text-main)">알아서 해석은 안 해줍니다.</strong>
+                </p>
+                <div style="border-top: 1px solid var(--border); margin-top: 14px; padding-top: 12px;
+                            font-size: 14px; color: var(--text-dim); line-height: 1.8;">
+                    주문 가능 범위 &nbsp;<strong style="color: var(--accent)">무한대</strong><br>
+                    알아서 해석 &nbsp;<strong style="color: #f59e0b">안 해줌</strong>
+                </div>
+            </div>
+
         </div>
 
-        <!-- 우측: 이미지 -->
-        <div class="image-wrapper" style="height: 100%;">
-            <img src="img/lineage.png"
-                 alt="리니지 게임 화면"
-                 onerror="handleImgError(this)">
-        </div>
+    </div>
 
+    <div class="info-box js-punch" style="margin-top: 14px; visibility: hidden;">
+        <p><i class="fa-solid fa-arrow-right-long"></i>&nbsp;
+            그래서 컴퓨터에게는 <strong style="color: var(--text-main)">정확하게 말하는 방법</strong>이 필요합니다.
+        </p>
     </div>
 </div>

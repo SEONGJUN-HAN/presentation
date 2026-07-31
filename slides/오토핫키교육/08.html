@@ -1,49 +1,73 @@
-<h2 class="slide-title">실습 안내 — 두 갈래 중 선택하세요</h2>
+<h2 class="slide-title">SciTE4AutoHotkey 설치</h2>
 
 <div class="content-area">
-    <p style="font-size: 18px; margin-bottom: 4px;">
-        지금부터 슬라이드를 따라오면
-        <strong style="color: var(--accent)">나만의 업무자동화 런처 기본안</strong>이 완성됩니다.
-        본인에게 맞는 방식을 고르세요. 둘 다 결과물은 같습니다.
-    </p>
+    <div class="two-column">
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-                flex-grow: 1; align-items: stretch; margin-top: 8px;">
-
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 24px 26px;
-                    border: 1px solid var(--border); border-top: 4px solid var(--accent-alt);">
-            <h3 style="font-size: 20px; margin: 0 0 10px 0;">🟢 자신 있다!</h3>
-            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6;">
-                <strong style="color: var(--text-main)">빈 파일에서 직접 타이핑</strong>
-            </p>
-            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
-                       color: var(--text-dim); line-height: 1.8;">
-                <li>· 바탕화면 우클릭 → New → AutoHotkey Script</li>
-                <li>· 슬라이드의 코드를 보고 직접 입력</li>
-                <li>· 막히면 <strong style="color: var(--text-main)">"코드 복사"</strong> 버튼으로 붙여넣기</li>
+        <div>
+            <h3>설치 순서</h3>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
+                                 color: var(--bg-primary); border-radius: 50%; display: flex;
+                                 align-items: center; justify-content: center;
+                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">1</span>
+                    <span style="font-size: 16px; color: var(--text-dim);">
+                        공식 사이트에서 다운로드<br>
+                        <a href="https://www.autohotkey.com/scite4ahk" target="_blank"
+                           style="color: var(--accent); font-size: 15px;">
+                            autohotkey.com/scite4ahk
+                        </a>
+                    </span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
+                                 color: var(--bg-primary); border-radius: 50%; display: flex;
+                                 align-items: center; justify-content: center;
+                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">2</span>
+                    <span style="font-size: 16px; color: var(--text-dim);">
+                        설치 파일 실행 후 기본값으로 설치 완료
+                    </span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
+                                 color: var(--bg-primary); border-radius: 50%; display: flex;
+                                 align-items: center; justify-content: center;
+                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">3</span>
+                    <span style="font-size: 16px; color: var(--text-dim);">
+                        상단 메뉴 <code>Tools → Spy</code>로
+                        <strong style="color: var(--text-main)">WindowSpy 바로 실행</strong> 가능
+                    </span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
+                                 color: var(--bg-primary); border-radius: 50%; display: flex;
+                                 align-items: center; justify-content: center;
+                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">4</span>
+                    <span style="font-size: 16px; color: var(--text-dim);">
+                        <code>F5</code> 키로 현재 스크립트 즉시 실행
+                    </span>
+                </li>
             </ul>
+            <div class="info-box">
+                <p><i class="fa-solid fa-book-open"></i>
+                    &nbsp;아래 한국어 강좌 사이트를 적극 활용하세요.
+                </p>
+            </div>
+            <a href="https://ahkv1.pnal.dev/1" target="_blank"
+               style="display: inline-flex; align-items: center; gap: 8px;
+                      background: var(--accent-alt); color: var(--bg-primary);
+                      padding: 10px 20px; border-radius: 8px; font-weight: 700;
+                      font-size: 15px; text-decoration: none; margin-top: 16px;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                AHK v1 한국어 강좌 바로가기
+            </a>
         </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 24px 26px;
-                    border: 1px solid var(--border); border-top: 4px solid var(--accent);">
-            <h3 style="font-size: 20px; margin: 0 0 10px 0;">🟡 따라가기 벅차다!</h3>
-            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6;">
-                <strong style="color: var(--text-main)">완성된 파일로 따라오기</strong>
-            </p>
-            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
-                       color: var(--text-dim); line-height: 1.8;">
-                <li>· 나눠드린 <code>내업무도구.ahk</code> 를 SciTE로 열기</li>
-                <li>· 슬라이드 진도에 맞는 <strong style="color: var(--text-main)">[N단계] 주석</strong>을 찾아가기</li>
-                <li>· <strong style="color: var(--text-main)">"▼ 여기만 바꾸세요"</strong> 부분만 내 것으로 수정 → F5</li>
-            </ul>
+        <div class="image-wrapper" style="height: 460px;">
+            <img src="img/scite_editor.png"
+                 alt="SciTE4AutoHotkey 편집기 화면"
+                 onerror="handleImgError(this)">
         </div>
 
-    </div>
-
-    <div class="info-box" style="margin-top: 16px;">
-        <p><i class="fa-solid fa-flag-checkered"></i>&nbsp;
-            어느 쪽이든 오늘 끝나면 <strong style="color: var(--text-main)">돌아가는 내 런처 파일 하나</strong>를 가져갑니다.
-            중간에 길을 잃으면 언제든 완성본 파일로 갈아타세요.
-        </p>
     </div>
 </div>

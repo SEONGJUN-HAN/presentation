@@ -1,43 +1,49 @@
-<h2 class="slide-title" data-important="true">
-    0단계. MsgBox — 내 첫 스크립트
-    <span class="badge"><i class="fa-solid fa-flag-checkered"></i> 첫 실행</span>
-</h2>
+<h2 class="slide-title">실습 안내 — 두 갈래 중 선택하세요</h2>
 
 <div class="content-area">
-    <div class="two-column">
-        <div>
-            <h3>일단 한 줄 띄워봅시다</h3>
-            <p>코딩의 첫 걸음은 <strong>"내가 실행했더니 화면에 떴다"</strong>입니다.</p>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    오른쪽 세 줄을 파일에 입력 (또는 코드 복사)
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    <code>F5</code> 로 실행 → <code>Ctrl + Alt + M</code> 누르기
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    알림창이 떴다면 성공! 문구를 바꿔 다시 실행해 보기
-                </li>
+    <p style="font-size: 18px; margin-bottom: 4px;">
+        지금부터 슬라이드를 따라오면
+        <strong style="color: var(--accent)">나만의 업무자동화 런처 기본안</strong>이 완성됩니다.
+        본인에게 맞는 방식을 고르세요. 둘 다 결과물은 같습니다.
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+                flex-grow: 1; align-items: stretch; margin-top: 8px;">
+
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 24px 26px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--accent-alt);">
+            <h3 style="font-size: 20px; margin: 0 0 10px 0;">🟢 자신 있다!</h3>
+            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6;">
+                <strong style="color: var(--text-main)">빈 파일에서 직접 타이핑</strong>
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
+                       color: var(--text-dim); line-height: 1.8;">
+                <li>· 바탕화면 우클릭 → New → AutoHotkey Script</li>
+                <li>· 슬라이드의 코드를 보고 직접 입력</li>
+                <li>· 막히면 <strong style="color: var(--text-main)">"코드 복사"</strong> 버튼으로 붙여넣기</li>
             </ul>
-            <div class="info-box">
-                <p><i class="fa-solid fa-eraser"></i>&nbsp;
-                    확인했으면 <strong style="color: var(--text-main)">지워도 됩니다.</strong>
-                    이 MsgBox는 나중에 우리 런처의
-                    <strong style="color: var(--accent)">❓ 도움말 버튼</strong>이 되어 돌아옵니다.
-                </p>
-            </div>
         </div>
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
-<pre><span class="c-comment">; Ctrl + Alt + M 을 누르면 알림창</span>
-^!m::
-    <span class="c-keyword">MsgBox</span>, 반갑습니다! 첫 스크립트 성공!
-<span class="c-keyword">Return</span></pre>
-            </div>
+
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 24px 26px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--accent);">
+            <h3 style="font-size: 20px; margin: 0 0 10px 0;">🟡 따라가기 벅차다!</h3>
+            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6;">
+                <strong style="color: var(--text-main)">완성된 파일로 따라오기</strong>
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
+                       color: var(--text-dim); line-height: 1.8;">
+                <li>· 나눠드린 <code>내업무도구.ahk</code> 를 SciTE로 열기</li>
+                <li>· 슬라이드 진도에 맞는 <strong style="color: var(--text-main)">[N단계] 주석</strong>을 찾아가기</li>
+                <li>· <strong style="color: var(--text-main)">"▼ 여기만 바꾸세요"</strong> 부분만 내 것으로 수정 → F5</li>
+            </ul>
         </div>
+
+    </div>
+
+    <div class="info-box" style="margin-top: 16px;">
+        <p><i class="fa-solid fa-flag-checkered"></i>&nbsp;
+            어느 쪽이든 오늘 끝나면 <strong style="color: var(--text-main)">돌아가는 내 런처 파일 하나</strong>를 가져갑니다.
+            중간에 길을 잃으면 언제든 완성본 파일로 갈아타세요.
+        </p>
     </div>
 </div>

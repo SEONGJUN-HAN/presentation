@@ -1,35 +1,47 @@
-<h2 class="slide-title">5단계. 한글 상용구는 클립보드로</h2>
+<h2 class="slide-title" data-important="true">
+    3단계. 버튼을 내 것으로 — 경로 바꾸기
+    <span class="badge"><i class="fa-solid fa-star"></i> 내 런처 완성</span>
+</h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>한글은 클립보드로!</h3>
-            <p>핫스트링으로 <strong>한글 문장</strong>을 그냥 타이핑하면
-                IME 때문에 글자가 깨질 수 있습니다.</p>
+            <h3>바꿀 곳은 딱 두 군데</h3>
             <ul class="checklist-icon">
-                <li><i class="fa-solid fa-check"></i> 영문·숫자는 그냥 타이핑해도 OK</li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    한글은 <strong>클립보드에 담아 <code>^v</code></strong> 로 붙이면 안 깨짐
+                    <i class="fa-solid fa-1"></i>
+                    <strong>버튼 이름</strong> — 내 업무 이름으로
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    <code>`n</code> : 엔터(줄바꿈) 역할
+                    <i class="fa-solid fa-2"></i>
+                    <strong>Run 뒤의 경로</strong> — 내가 여는 파일·폴더·사이트로
                 </li>
             </ul>
+            <div class="info-box" style="padding: 16px 20px;">
+                <p style="font-size: 18px;"><i class="fa-solid fa-lightbulb"></i>&nbsp;
+                    경로 따는 법 — 파일을
+                    <strong style="color: var(--text-main)">Shift + 우클릭 → "경로로 복사"</strong>
+                </p>
+                <p style="font-size: 18px; margin-top: 10px;"><i class="fa-solid fa-rotate-right"></i>&nbsp;
+                    고친 뒤에는 <code>F5</code> (또는 트레이 우클릭 →
+                    <strong style="color: var(--text-main)">Reload This Script</strong>)
+                </p>
+            </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; ❌ 한글을 그냥 타이핑 → 깨질 수 있음</span>
-::/hi::안녕하세요. 한성준입니다.
-<span class="c-comment">;   → "안녕하8요" 처럼 깨짐</span>
+<pre><span class="c-comment">; ▼ 여기만 바꾸세요 ① — 버튼 이름</span>
+<span class="c-keyword">Gui</span>, Add, Button, w260 gRun1, <span class="c-string">📄 업무일지 열기</span>
+<span class="c-keyword">Gui</span>, Add, Button, w260 gRun2, <span class="c-string">🌐 나이스 접속</span>
 
-<span class="c-comment">; ✅ 클립보드에 담아 붙여넣기 → 안 깨짐</span>
-::/hello::
-    <span class="c-keyword">Clipboard</span> := "안녕하세요. 한성준입니다."
-    <span class="c-keyword">Send</span>, ^v
-<span class="c-keyword">Return</span></pre>
+<span class="c-comment">; ▼ 여기만 바꾸세요 ② — 여는 대상</span>
+Run1:
+    <span class="c-keyword">Gui</span>, Destroy
+    <span class="c-keyword">Run</span>, <span class="c-string">C:\Users\내이름\Documents\업무일지.xlsx</span>
+<span class="c-keyword">Return</span>
+
+<span class="c-comment">; Run2, Run3 … 도 같은 방식</span></pre>
             </div>
         </div>
     </div>

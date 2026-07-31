@@ -1,80 +1,60 @@
-<h2 class="slide-title">부팅 시 자동 실행 등록</h2>
+<h2 class="slide-title" data-important="true">
+    응용 ①. 퇴근시간 타이머 만들기
+    <span class="badge"><i class="fa-solid fa-robot"></i> AI에게 통째로</span>
+</h2>
 
 <div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        런처에 <strong style="color: var(--text-main)">버튼만 추가</strong>해 봤으니, 이번엔
+        <strong style="color: var(--accent)">프로그램 하나를 통째로</strong> AI에게 시켜봅시다.
+        내가 코드를 못 써도, <strong style="color: var(--text-main)">원하는 걸 말로 설명하면 됩니다.</strong>
+    </p>
+
     <div class="two-column">
-
         <div>
-            <h3>shell:startup 이란?</h3>
-            <p>윈도우가 켜질 때
-                <strong style="color: var(--text-main)">자동으로 실행되는 프로그램 폴더</strong>입니다.
-                여기에 <code>.ahk</code> 파일의
-                <strong style="color: var(--text-main)">바로가기</strong>를 넣어두면
-                부팅 시마다 자동으로 핫키가 활성화됩니다.
-            </p>
-
-            <h3 style="margin-top: 12px;">등록 방법</h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">1</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        윈도우 키 + <code>R</code> → 실행창 열기
-                    </span>
+            <h3>말로 설명하면 프로그램이 됩니다</h3>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    오른쪽 프롬프트를 <strong>그대로 복사</strong>해 AI에 붙여넣기
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">2</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        <code>shell:startup</code> 입력 후 엔터
-                    </span>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    받은 코드를 <strong>새 .ahk 파일</strong>에 붙여넣고 <code>F5</code>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">3</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        등록할 <code>.ahk</code> 파일 우클릭 →
-                        <strong style="color: var(--text-main)">바로가기 만들기</strong>
-                    </span>
-                </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">4</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        생성된 바로가기를
-                        <strong style="color: var(--text-main)">startup 폴더로 이동</strong>
-                    </span>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    에러가 나면? <strong>메시지 복붙해서 "고쳐줘"</strong>
                 </li>
             </ul>
-            <div class="info-box" style="padding: 14px 20px; margin: 10px 0 0 0;">
-                <p><i class="fa-solid fa-link"></i>
-                    &nbsp;<strong style="color: var(--text-main)">바로가기</strong>를 넣는 이유 —
-                    원본 파일 수정 시 <strong style="color: var(--text-main)">항상 최신 내용이 자동 반영</strong>됩니다.
+            <div class="info-box" style="border-left-color: var(--accent-alt); padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-seedling"></i>&nbsp;
+                    <strong style="color: var(--text-main)">되면 키워보세요</strong> —
+                    "퇴근 30분 전에 알림창을 띄워줘"
+                </p>
+                <p style="font-size: 17px; margin-top: 10px;">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-alt);"></i>&nbsp;
+                    <strong style="color: var(--text-main)">요즘은 복붙도 안 합니다</strong> —
+                    AI가 파일을 <strong style="color: var(--text-main)">직접 만들고 고쳐줍니다</strong> (시연)
                 </p>
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div class="image-wrapper" style="height: 210px;">
-                <img src="img/startup_folder.png"
-                     alt="startup 폴더 화면"
-                     onerror="handleImgError(this)">
-            </div>
-            <div class="info-box">
-                <p><i class="fa-solid fa-rotate-right"></i>
-                    &nbsp;파일 수정 후에는 트레이 아이콘 우클릭 →
-                    <strong style="color: var(--text-main)">Reload This Script</strong>로
-                    즉시 적용. 재부팅 불필요!
-                </p>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre>AutoHotkey <span class="c-keyword">v1.1</span> 문법으로 만들어줘.
+
+화면 오른쪽 아래에 뜨는 '퇴근 타이머'.
+
+- 퇴근 16:30, 1초마다 갱신
+- 검은 배경 큰 글씨, 테두리 없이 항상 위
+- 하루 진행률을 막대로도 표시
+- 30분 이내 주황, 퇴근 후엔 빨강
+- 끌어서 이동, 오른쪽 클릭으로 종료
+
+한국어 주석도 달아줘.</pre>
             </div>
         </div>
-
     </div>
 </div>

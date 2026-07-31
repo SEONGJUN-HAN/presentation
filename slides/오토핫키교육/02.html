@@ -1,70 +1,68 @@
-<h2 class="slide-title">이 프로그램들, 코딩으로 만들었습니다</h2>
+<h2 class="slide-title">오늘, 이걸 만듭니다</h2>
 
 <div class="content-area">
-    <p style="font-size: 18px; margin-bottom: 4px;">
-        방금 보신 프로그램들은 전부
-        <strong style="color: var(--text-main)">개발자가 아닌 제가 오토핫키로 직접 만든</strong> 실무 도구입니다.
-        오늘 여러분도 이 중 하나를 <strong style="color: var(--accent)">직접 만들어서 가져갑니다.</strong>
+    <p style="font-size: 18px; margin-bottom: 10px;">
+        방금 보신 건 제가 <strong style="color: var(--text-main)">매일 실제로 쓰는 런처</strong>입니다.
+        오늘 여러분은 그 핵심만 담은 <strong style="color: var(--accent)">실습용 런처를 직접 만들어서 가져갑니다.</strong>
     </p>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
-                flex-grow: 1; align-items: stretch; margin-top: 8px;">
+    <div class="two-column" style="gap: 32px; align-items: stretch;">
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 20px;
-                    border: 1px solid var(--border); border-left: 4px solid var(--accent);">
-            <h3 style="font-size: 17px; margin: 0 0 6px 0;">🚀 통합 업무 런처</h3>
-            <p style="font-size: 14px; margin: 0; line-height: 1.5;">
-                단축키 하나로 연락처·OCR·PDF·인쇄까지 자주 쓰는 도구를 한 창에서 실행.
+        <!-- 좌측: 런처란? -->
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 22px 26px;
+                    border: 1px solid var(--border); border-left: 4px solid var(--accent);
+                    display: flex; flex-direction: column;">
+            <h3 style="font-size: 21px; margin: 0 0 6px 0;">🚀 런처(Launcher)란?</h3>
+            <p style="font-size: 15px; margin: 0 0 14px 0; color: var(--text-dim);">
+                자주 쓰는 것들을 <strong style="color: var(--text-main)">단축키 하나로 꺼내는 내 리모컨</strong>
             </p>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 16px;
+                       color: var(--text-dim); line-height: 1.9;">
+                <li>· 프로그램 &middot; 폴더 &middot; 사이트를 즉시 연다</li>
+                <li>· 자주 쓰는 문구를 즉시 붙여넣는다</li>
+                <li>· 창을 찾아 헤매지 않는다</li>
+            </ul>
+            <div style="margin: auto 0 0 0; border-top: 1px solid var(--border);
+                        padding-top: 14px; font-size: 15px; color: var(--text-dim);">
+                예를 들면 이런 식입니다
+                <p style="font-family: var(--font-mono); font-size: 16px; margin: 8px 0 0 0;
+                          color: var(--accent); line-height: 1.7;">
+                    Ctrl + 1 &nbsp;&rarr;&nbsp; 나이스 열기<br>
+                    Ctrl + 2 &nbsp;&rarr;&nbsp; 결재 문구 붙여넣기
+                </p>
+            </div>
         </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 20px;
-                    border: 1px solid var(--border); border-left: 4px solid var(--accent);">
-            <h3 style="font-size: 17px; margin: 0 0 6px 0;">📞 통합연락처 &amp; 메신저</h3>
-            <p style="font-size: 14px; margin: 0; line-height: 1.5;">
-                담당자를 검색해 메신저 쪽지를 템플릿으로 자동 발송.
-            </p>
-        </div>
+        <!-- 우측: 강사용 vs 실습용 -->
+        <div style="display: flex; flex-direction: column; gap: 14px;">
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 20px;
-                    border: 1px solid var(--border); border-left: 4px solid var(--accent);">
-            <h3 style="font-size: 17px; margin: 0 0 6px 0;">📝 상용구 10칸</h3>
-            <p style="font-size: 14px; margin: 0; line-height: 1.5;">
-                자주 쓰는 문구를 Ctrl+1~0으로 즉시 붙여넣기.
-            </p>
-        </div>
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 22px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--border);">
+                <h3 style="font-size: 17px; margin: 0 0 6px 0;">🧰 방금 보신 것 &mdash; 강사용 실전판</h3>
+                <p style="font-size: 15px; margin: 0; line-height: 1.6;">
+                    연락처 &middot; OCR &middot; PDF &middot; 인쇄까지 몇 년에 걸쳐 붙여온 버전입니다.
+                </p>
+            </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 20px;
-                    border: 1px solid var(--border); border-left: 4px solid var(--accent-alt);">
-            <h3 style="font-size: 17px; margin: 0 0 6px 0;">😀 메신저 이모티콘</h3>
-            <p style="font-size: 14px; margin: 0; line-height: 1.5;">
-                이미지를 더블클릭 한 번으로 메신저에 바로 전송.
-            </p>
-        </div>
+            <div style="background: var(--accent); border-radius: 12px; padding: 18px 22px;
+                        border: 1px solid var(--accent); color: var(--bg-primary); flex-grow: 1;
+                        display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="font-size: 17px; margin: 0 0 6px 0; color: var(--bg-primary);">
+                    ⭐ 오늘 만들 것 &mdash; 실습용 간단 버전
+                </h3>
+                <p style="font-size: 15px; margin: 0; line-height: 1.6; color: var(--bg-primary);">
+                    기능은 단출합니다. 대신
+                    <strong style="color: var(--bg-primary);">처음부터 끝까지 내 손으로</strong> 만들고,
+                    <strong style="color: var(--bg-primary);">내가 원하는 대로 계속 붙일 수 있습니다.</strong>
+                </p>
+            </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 20px;
-                    border: 1px solid var(--border); border-left: 4px solid var(--accent-alt);">
-            <h3 style="font-size: 17px; margin: 0 0 6px 0;">🖼️ 이미지 업무 자동화</h3>
-            <p style="font-size: 14px; margin: 0; line-height: 1.5;">
-                엑셀에 적은 순서대로 화면을 인식해 반복 작업을 자동 실행.
-            </p>
         </div>
-
-        <div style="background: var(--accent); border-radius: 12px; padding: 18px 20px;
-                    border: 1px solid var(--accent); color: var(--bg-primary);
-                    display: flex; flex-direction: column; justify-content: center;">
-            <h3 style="font-size: 17px; margin: 0 0 6px 0; color: var(--bg-primary);">⭐ 오늘 만들 것</h3>
-            <p style="font-size: 14px; margin: 0; line-height: 1.5; color: var(--bg-primary);">
-                <strong style="color: var(--bg-primary);">나만의 업무 런처</strong> —
-                내 손으로 완성해서 퇴근합니다.
-            </p>
-        </div>
-
     </div>
 
     <div class="info-box" style="margin-top: 14px;">
         <p><i class="fa-solid fa-bolt"></i>&nbsp;
-            공통점은 딱 하나 —
+            둘의 공통점은 딱 하나 &mdash;
             <strong style="color: var(--text-main)">전부 파일 하나(.ahk), 설치 없이, 복잡한 지식 없이</strong> 만들어졌습니다.
         </p>
     </div>

@@ -1,62 +1,48 @@
-<h2 class="slide-title" data-important="true">
-    직접 AI에게 시켜보기 (바이브코딩 실전)
-    <span class="badge"><i class="fa-solid fa-robot"></i> 직접 해보기</span>
-</h2>
+<h2 class="slide-title">보너스. 좌표 클릭 — WindowSpy &amp; Click <span class="badge" style="background-color:#f59e0b; box-shadow:none;">보너스</span></h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        이미 만든 편리한 프로그램(<strong style="color: var(--text-main)">.exe · 로컬 html</strong>)을,
-        백지에서 짜지 말고
-        <strong style="color: var(--accent)">있는 런처에 '버튼 + Run'만 AI로 추가</strong>해 연결합시다.
-    </p>
-
     <div class="two-column">
         <div>
-            <h3>이렇게 시킵니다</h3>
+            <h3>화면의 아무 곳이나 대신 클릭</h3>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    런처(<code>내업무도구.ahk</code>) 코드 <strong>전부 복사</strong> → AI에 붙여넣기
+                    계산기를 켜 두고 <strong>WindowSpy</strong> 실행
+                    (SciTE 메뉴 <code>Tools → Spy</code>)
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    "이 프로그램 여는 <strong>버튼과 Run 추가</strong>해줘"
-                    (<span style="color:var(--accent)">v1</span> 명시)
+                    버튼 위에 마우스 → <strong>화면 좌표(X, Y)</strong> 확인
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    교체 → <code>F5</code> → 에러 나면 <strong>메시지 복붙해서 고쳐줘</strong>
+                    실습 파일 [보너스] 코드 줄 선택 → <code>Ctrl + Q</code> →
+                    좌표 바꿔서 <code>F5</code>
                 </li>
             </ul>
-            <div class="info-box">
-                <p>
-                    <i class="fa-solid fa-lightbulb"></i>&nbsp;
-                    <strong style="color: var(--text-main)">절대경로</strong>는 파일 우클릭 →
-                    <strong style="color: var(--text-main)">"경로로 복사"</strong>.
-                </p>
-                <p style="margin-top: 10px;">
-                    <i class="fa-solid fa-list-check"></i>&nbsp;
-                    <strong style="color: var(--text-main)">더 시켜보기</strong> —
-                    폴더 열기 버튼 · 새 핫스트링 · 사이트 여러 개 열기
+            <div class="info-box" style="border-left-color: #f59e0b;">
+                <p><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+                    좌표 클릭은 <strong style="color: var(--text-main)">해상도·창 위치가 바뀌면 깨집니다.</strong>
+                    Run·Send로 안 될 때만 쓰는 최후의 수단!
                 </p>
             </div>
         </div>
-
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; ── AI에게 이렇게 요청 ──</span>
+<pre><span class="c-comment">; 클릭 한 번 : Ctrl + Alt + C</span>
+^!c::
+    <span class="c-keyword">CoordMode</span>, Mouse, Screen   <span class="c-comment">; WindowSpy와 같은 좌표계</span>
+    <span class="c-keyword">Click</span>, <span class="c-number">200 300</span>   <span class="c-comment">; ← WindowSpy로 본 좌표</span>
+<span class="c-keyword">Return</span>
 
-아래는 내 AutoHotkey <span class="c-keyword">v1</span> 런처야.
-여기에 버튼을 하나 추가하고,
-누르면 이 프로그램이 열리도록
-<span class="c-keyword">Run</span> 도 연결해줘.
-
-프로그램 경로:
-"C:\Tools\민원접수도우미.exe"
-버튼 이름: 📋 민원접수 도우미
-
-<span class="c-comment">; (그 아래 런처 코드 전체 붙여넣기)</span></pre>
+<span class="c-comment">; 슬립 넣고 두 번 : Ctrl + Alt + X</span>
+^!x::
+    <span class="c-keyword">CoordMode</span>, Mouse, Screen
+    <span class="c-keyword">Click</span>, <span class="c-number">200 300</span>
+    <span class="c-keyword">Sleep</span>, <span class="c-number">1000</span>
+    <span class="c-keyword">Click</span>, <span class="c-number">250 300</span>
+<span class="c-keyword">Return</span></pre>
             </div>
         </div>
     </div>

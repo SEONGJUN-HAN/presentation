@@ -1,70 +1,71 @@
-<h2 class="slide-title">오늘의 목표</h2>
+<h2 class="slide-title">정확하게 말하려면 '언어'가 필요합니다</h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 4px;">
-        AHK를 활용하여
-        <strong style="color: var(--text-main)">나만의 개인 업무 자동화 런처</strong>를
-        만드는 것이 목표입니다.
-    </p>
+    <div class="two-column" style="gap: 32px; align-items: stretch;">
 
-    <!-- 2x2 목표 카드 그리드 -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-                flex-grow: 1; align-items: start; margin-top: 8px;">
-
-        <div style="background: var(--bg-secondary); border-radius: 12px;
-                    padding: 22px 24px; border: 1px solid var(--border);
-                    border-left: 4px solid var(--accent);">
-            <h3 style="font-size: 18px; margin: 0 0 8px 0; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 22px;">📝</span> 상용구 자동완성
-            </h3>
-            <p style="font-size: 15px; margin: 0; line-height: 1.6;">
-                자주 쓰는 이메일 인사말, 서명, 보고서 템플릿 등을
-                단어 몇 글자로 즉시 입력합니다.
+        <!-- 좌측: 언어 목록 -->
+        <div style="display: flex; flex-direction: column;">
+            <p style="font-size: 16px; margin-bottom: 12px;">
+                컴퓨터와 통하는 말도 한국어 &middot; 영어 &middot; 일본어처럼
+                <strong style="color: var(--text-main)">여러 개</strong>입니다.
             </p>
+            <table>
+                <thead>
+                    <tr><th>언어</th><th>주로 쓰는 곳</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>C</td><td>운영체제 &middot; 하드웨어 제어</td></tr>
+                    <tr><td>자바스크립트</td><td>웹사이트 &middot; 브라우저</td></tr>
+                    <tr><td>파이썬</td><td>데이터 분석 &middot; AI</td></tr>
+                    <tr><td>러스트</td><td>빠르고 안전한 프로그램</td></tr>
+                    <tr class="highlight">
+                        <td>오토핫키</td>
+                        <td>내 윈도우 화면 자동화 <span class="star">★</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px;
-                    padding: 22px 24px; border: 1px solid var(--border);
-                    border-left: 4px solid var(--accent-alt);">
-            <h3 style="font-size: 18px; margin: 0 0 8px 0; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 22px;">🚀</span> 프로그램 즉시 실행
-            </h3>
-            <p style="font-size: 15px; margin: 0; line-height: 1.6;">
-                단축키 하나로 자주 쓰는 프로그램, 폴더, 웹사이트를
-                즉시 열 수 있는 런처를 만듭니다.
-            </p>
-        </div>
+        <!-- 우측: 왜 오토핫키부터인가 -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <h3 style="font-size: 21px; margin: 0 0 2px 0;">왜 오토핫키부터?</h3>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px;
-                    padding: 22px 24px; border: 1px solid var(--border);
-                    border-left: 4px solid var(--accent-alt);">
-            <h3 style="font-size: 18px; margin: 0 0 8px 0; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 22px;">⌨️</span> 자동 입력·붙여넣기
-            </h3>
-            <p style="font-size: 15px; margin: 0; line-height: 1.6;">
-                계좌번호, 안내 문구처럼 자주 쓰는 내용을
-                단축키 하나로 즉시 붙여넣습니다.
-            </p>
-        </div>
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--accent);">
+                <h3 style="font-size: 17px; margin: 0 0 4px 0;">⚡ 이름이 곧 목적</h3>
+                <p style="font-size: 15px; margin: 0; line-height: 1.6;">
+                    <strong style="color: var(--accent)">Auto</strong>(자동) +
+                    <strong style="color: var(--accent)">Hotkey</strong>(단축키).
+                    오늘 만들 런처가 정확히 그것입니다.
+                </p>
+            </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px;
-                    padding: 22px 24px; border: 1px solid var(--border);
-                    border-left: 4px solid var(--accent);">
-            <h3 style="font-size: 18px; margin: 0 0 8px 0; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 22px;">🤖</span> LLM과 함께 만들기
-            </h3>
-            <p style="font-size: 15px; margin: 0; line-height: 1.6;">
-                ChatGPT 등 AI에게 코드를 요청하고, 오류를 해결하면서
-                나만의 자동화 도구를 완성합니다.
-            </p>
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--accent);">
+                <h3 style="font-size: 17px; margin: 0 0 4px 0;">👀 읽기가 쉽다</h3>
+                <p style="font-size: 15px; margin: 0; line-height: 1.6;">
+                    <code>Run, chrome.exe</code> &mdash;
+                    안 배워도 무슨 뜻인지 보입니다.
+                </p>
+            </div>
+
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--accent-alt);">
+                <h3 style="font-size: 17px; margin: 0 0 4px 0;">🚀 5초 뒤에 진짜로 움직인다</h3>
+                <p style="font-size: 15px; margin: 0; line-height: 1.6;">
+                    검은 창에 글자가 뜨는 게 아니라
+                    <strong style="color: var(--text-main)">내 업무 화면이 실제로 움직입니다.</strong>
+                </p>
+            </div>
         </div>
 
     </div>
 
-    <div class="info-box" style="margin-top: 16px;">
-        <p><i class="fa-solid fa-lightbulb"></i>&nbsp;
-            코딩 경험이 없어도 괜찮습니다. AI가 코드를 만들고,
-            우리는 <strong style="color: var(--text-main)">활용법과 수정법</strong>을 배웁니다.
+    <div class="info-box" style="border-left-color: #f59e0b; margin-top: 14px;">
+        <p><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+            <strong style="color: var(--text-main)">"너 컴퓨터냐"</strong>는 말, 괜히 나온 게 아닙니다.
+            컴퓨터는 융통성이 없어서 <strong style="color: var(--text-main)">쉼표 하나만 틀려도 멈춥니다.</strong>
+            이따 오류가 나는 건 여러분 탓이 아니라 원래 그런 것입니다.
         </p>
     </div>
 </div>
