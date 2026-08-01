@@ -156,7 +156,7 @@ ${componentsCss}
         <button id="nextBtn" onclick="navigateSlide(1)">
             <i class="fa-solid fa-chevron-right"></i>
         </button>
-        <button id="fullscreenBtn" onclick="toggleFullscreen()">
+        <button id="fullscreenBtn" title="전체화면 (F)" onclick="toggleFullscreen()">
             <i class="fa-solid fa-expand"></i>
         </button>
     </div>

@@ -15,6 +15,7 @@
    
        updateSlideUI();
        adjustScale();
+       syncFullscreenIcon();
    }
    
    /* ─── 슬라이드 UI 업데이트 ─── */
@@ -66,20 +67,25 @@
    
    /* ─── 전체화면 ─── */
    function toggleFullscreen() {
-       const btn = document.getElementById('fullscreenBtn');
        if (!document.fullscreenElement) {
            document.documentElement.requestFullscreen()
-               .then(() => {
-                   btn.innerHTML = '<i class="fa-solid fa-compress"></i>';
-               })
                .catch(err => console.warn('전체화면 전환 실패:', err.message));
        } else {
            document.exitFullscreen()
-               .then(() => {
-                   btn.innerHTML = '<i class="fa-solid fa-expand"></i>';
-               });
+               .catch(err => console.warn('전체화면 해제 실패:', err.message));
        }
    }
+
+   /* 아이콘은 실제 상태 변화에 맞춰 갱신 → Esc 로 빠져나와도 어긋나지 않음 */
+   function syncFullscreenIcon() {
+       const btn = document.getElementById('fullscreenBtn');
+       if (!btn) return;
+       const icon = document.fullscreenElement ? 'fa-compress' : 'fa-expand';
+       btn.innerHTML = `<i class="fa-solid ${icon}"></i>`;
+       btn.title = document.fullscreenElement ? '전체화면 종료 (F)' : '전체화면 (F)';
+   }
+
+   document.addEventListener('fullscreenchange', syncFullscreenIcon);
    
    /* ─── 컨트롤러 숨김/표시 (H 키) ─── */
    function toggleControls() {
@@ -154,9 +160,16 @@
        const tag = e.target.tagName;
        if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
 
-       if (e.key === 'h' || e.key === 'H' || e.key === 'ㅗ') {
+       // 단축키 (한글 자판 상태에서도 동작하도록 ㅗ/ㄹ 같이 처리)
+       const hideKeys = ['h', 'H', 'ㅗ'];
+       const fullKeys = ['f', 'F', 'ㄹ'];
+
+       if (hideKeys.includes(e.key)) {
            e.preventDefault();
            toggleControls();
+       } else if (fullKeys.includes(e.key)) {
+           e.preventDefault();
+           toggleFullscreen();
        } else if (forward.includes(e.key)) {
            e.preventDefault();
            navigateSlide(1);
