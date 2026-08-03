@@ -31,7 +31,10 @@ async function loadSlides() {
 
         let response;
         try {
-            response = await fetch(file);
+            // cache: 'no-store' → 슬라이드를 항상 새로 받아옵니다.
+            // (파일명은 그대로인데 내용만 바뀐 경우, 브라우저가 옛 슬라이드를
+            //  캐시에서 꺼내 쓰는 것을 방지)
+            response = await fetch(file, { cache: 'no-store' });
         } catch (err) {
             // 네트워크 오류 또는 file:// 차단
             if (i === 0) {
