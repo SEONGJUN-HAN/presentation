@@ -1,80 +1,59 @@
-<h2 class="slide-title">부팅 시 자동 실행 등록</h2>
+<h2 class="slide-title" data-important="true">
+    응용 ③. 자바스크립트 — 장바구니를 엑셀로
+    <span class="badge"><i class="fa-brands fa-js"></i> 설치 0</span>
+</h2>
 
 <div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        물품 구매 품의 낼 때, 장바구니를 보며 하나씩 옮겨 적으셨죠?
+        <strong style="color: var(--accent)">북마크 하나로 표가 통째로 복사</strong>됩니다.
+        설치도, 프로그램도 필요 없습니다.
+    </p>
+
     <div class="two-column">
-
         <div>
-            <h3>shell:startup 이란?</h3>
-            <p>윈도우가 켜질 때
-                <strong style="color: var(--text-main)">자동으로 실행되는 프로그램 폴더</strong>입니다.
-                여기에 <code>.ahk</code> 파일의
-                <strong style="color: var(--text-main)">바로가기</strong>를 넣어두면
-                부팅 시마다 자동으로 핫키가 활성화됩니다.
-            </p>
-
-            <h3 style="margin-top: 12px;">등록 방법</h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">1</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        윈도우 키 + <code>R</code> → 실행창 열기
-                    </span>
+            <h3>북마클릿 = 북마크에 담은 코드</h3>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    아무 페이지나 <code>Ctrl + D</code> 로 북마크 → 이름은
+                    <strong>"장바구니→엑셀"</strong>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">2</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        <code>shell:startup</code> 입력 후 엔터
-                    </span>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    북마크 <strong>우클릭 → 수정</strong> → URL 칸에 AI가 준 코드 붙여넣기
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">3</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        등록할 <code>.ahk</code> 파일 우클릭 →
-                        <strong style="color: var(--text-main)">바로가기 만들기</strong>
-                    </span>
-                </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">4</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        생성된 바로가기를
-                        <strong style="color: var(--text-main)">startup 폴더로 이동</strong>
-                    </span>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    11번가 장바구니에서 원하는 것만 체크 → 북마크 클릭 →
+                    엑셀에 <code>Ctrl + V</code>
                 </li>
             </ul>
-            <div class="info-box" style="padding: 14px 20px; margin: 10px 0 0 0;">
-                <p><i class="fa-solid fa-link"></i>
-                    &nbsp;<strong style="color: var(--text-main)">바로가기</strong>를 넣는 이유 —
-                    원본 파일 수정 시 <strong style="color: var(--text-main)">항상 최신 내용이 자동 반영</strong>됩니다.
+            <div class="info-box" style="border-left-color: #f59e0b; padding: 14px 20px;">
+                <p style="font-size: 17px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+                    주소창에 붙여넣으면 <code>javascript:</code>가 지워집니다.
+                    <strong style="color: var(--text-main)">반드시 북마크 수정 화면에서</strong>!
                 </p>
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div class="image-wrapper" style="height: 210px;">
-                <img src="img/startup_folder.png"
-                     alt="startup 폴더 화면"
-                     onerror="handleImgError(this)">
-            </div>
-            <div class="info-box">
-                <p><i class="fa-solid fa-rotate-right"></i>
-                    &nbsp;파일 수정 후에는 트레이 아이콘 우클릭 →
-                    <strong style="color: var(--text-main)">Reload This Script</strong>로
-                    즉시 적용. 재부팅 불필요!
-                </p>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre><span class="c-comment">// (F12 → 상품 줄 우클릭 →</span>
+<span class="c-comment">//  Copy → Copy outerHTML 후 붙여넣기)</span>
+
+이건 11번가 장바구니의 상품 한 줄 <span class="c-keyword">HTML</span>이야.
+
+<span class="c-keyword">체크된 상품만</span> 골라서 상품명·옵션·
+수량·단가·금액을 탭으로 구분해
+클립보드에 복사하는
+<span class="c-keyword">북마클릿</span>을 만들어줘.
+
+외부 라이브러리 없이,
+javascript: 한 줄로 쓸 수 있게.</pre>
             </div>
         </div>
-
     </div>
 </div>
