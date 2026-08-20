@@ -87,7 +87,24 @@ body {
     pointer-events: auto;
 }
 
-/* 우상단 글로우 장식 */
+/* 슬라이드가 자체 padding 을 갖는 덱은 컨테이너 padding 을 비웁니다.
+   (그러지 않으면 여백이 두 번 겹쳐 쓸 수 있는 높이가 크게 줄어듭니다) */
+[data-deck="업무자동화_경험_공유"] .slide-container {
+    padding: 0;
+}
+
+/* .two-column 기본값은 align-items:start 라서 각 열이 '내용 높이'로만 줄어들고
+   맨 위에 붙습니다. 그러면 열 안의 justify-content:center 가 무력해져
+   본문이 위로 쏠리고 아래에 빈 공간이 남습니다.
+   → 열을 늘려서(stretch) 안쪽 세로 정렬이 실제로 먹히게 합니다. */
+[data-deck="업무자동화_경험_공유"] .two-column {
+    align-items: stretch;
+}
+
+/* 우상단 글로우 장식
+   ⚠️ z-index 는 반드시 음수여야 합니다.
+      position:absolute + z-index:0 이면 '위치 지정된 요소'로서
+      일반 흐름의 본문보다 나중에 그려져 글자를 덮어 가독성을 해칩니다. */
 .slide-container::after {
     content: '';
     position: absolute;
@@ -96,7 +113,7 @@ body {
     width: 400px;
     height: 400px;
     background: radial-gradient(circle, #1e293b 0%, transparent 70%);
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
 }
 

@@ -1,16 +1,374 @@
-<div class="section-cover" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; position:relative; overflow:hidden;">
+<div class="weapon-demo">
 
-    <div style="position:absolute; right:-80px; top:50%; transform:translateY(-50%); width:420px; height:420px; border-radius:50%; background:radial-gradient(circle, rgba(163,230,53,0.08) 0%, transparent 70%);"></div>
-  
-    <div style="font-size:72px; margin-bottom:20px;">⚔️</div>
-  
-    <div style="background: linear-gradient(90deg, var(--accent), var(--accent-alt)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-size:15px; font-weight:700; letter-spacing:0.15em; margin-bottom:12px; text-transform:uppercase;">Part 3</div>
-  
-    <h2 style="font-size:42px; font-weight:900; color:#fff; text-align:center; line-height:1.3; margin:0;">
-      내 업무를 바꾸는<br>
-      <span style="color:var(--accent);">4가지 자동화 무기</span>와 실전 사례
-    </h2>
-  
-    <p style="margin-top:20px; font-size:16px; color:var(--text-dim); text-align:center;">"나도 내 업무에 적용할 수 있겠는데?" 하는 영감을 드립니다.</p>
+  <style>
+    /* 이 덱은 .slide-container 의 padding 을 0 으로 두므로
+       (여백 이중 적용 방지) 이 슬라이드는 자체 여백을 가져야 합니다. */
+    .weapon-demo{height:100%; display:flex; flex-direction:column; min-height:0;
+                 padding:40px 56px 44px; box-sizing:border-box;}
+
+    /* ── 카드(탭) ── */
+    .wd-cards{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; flex-shrink:0; margin-bottom:20px;}
+    .wd-card{position:relative; display:flex; flex-direction:column; gap:6px; text-align:left;
+      cursor:pointer; border-radius:14px; padding:13px 15px 14px; background:var(--bg-secondary);
+      border:1px solid var(--border); font-family:inherit;
+      transition:transform .12s, box-shadow .15s, background .15s, border-color .15s;}
+    .wd-card:hover{transform:translateY(-2px);}
+    .wd-card .wd-rank{align-self:flex-start; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:4px; color:#0a0f1e;}
+    .wd-card-title{font-size:16px; font-weight:800; color:#fff; display:flex; align-items:center; gap:8px;}
+    .wd-card-desc{font-size:11.5px; color:var(--text-dim); line-height:1.4;}
+    .wd-card.on::after{content:''; position:absolute; left:50%; bottom:-10px; transform:translateX(-50%);
+      border-left:9px solid transparent; border-right:9px solid transparent; border-top:9px solid transparent;}
+
+    .wd-card.api .wd-rank{background:var(--accent);}
+    .wd-card.api .wd-card-title i{color:var(--accent);}
+    .wd-card.api.on{border-color:var(--accent); background:rgba(34,211,238,.10); box-shadow:0 8px 26px -10px rgba(34,211,238,.6);}
+    .wd-card.api.on::after{border-top-color:var(--accent);}
+
+    .wd-card.sel .wd-rank{background:var(--accent-alt);}
+    .wd-card.sel .wd-card-title i{color:var(--accent-alt);}
+    .wd-card.sel.on{border-color:var(--accent-alt); background:rgba(132,204,22,.10); box-shadow:0 8px 26px -10px rgba(132,204,22,.6);}
+    .wd-card.sel.on::after{border-top-color:var(--accent-alt);}
+
+    .wd-card.img .wd-rank{background:#fbbf24;}
+    .wd-card.img .wd-card-title i{color:#fbbf24;}
+    .wd-card.img.on{border-color:#fbbf24; background:rgba(251,191,36,.10); box-shadow:0 8px 26px -10px rgba(251,191,36,.6);}
+    .wd-card.img.on::after{border-top-color:#fbbf24;}
+
+    .wd-card.xy .wd-rank{background:#ef4444; color:#fff;}
+    .wd-card.xy .wd-card-title i{color:#ef4444;}
+    .wd-card.xy.on{border-color:#ef4444; background:rgba(239,68,68,.10); box-shadow:0 8px 26px -10px rgba(239,68,68,.6);}
+    .wd-card.xy.on::after{border-top-color:#ef4444;}
+
+    /* ── 데모 본문 ── */
+    .wd-panel[hidden]{display:none;}
+    .wd-panel{flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+    .wd-col{display:flex; flex-direction:column; min-height:0;}
+    .wd-label{font-size:13px; font-weight:700; letter-spacing:.04em; color:var(--text-dim);
+      text-transform:uppercase; margin-bottom:8px; display:flex; align-items:center; gap:8px;}
+
+    /* ── 코드 ── */
+    .wd-code-wrap{position:relative; flex:1; min-height:0;}
+    .wd-code{background:var(--bg-code); border:1px solid var(--border); border-radius:12px;
+      padding:16px 18px; height:100%; overflow:auto; box-shadow:inset 0 2px 4px rgba(0,0,0,.3);}
+    .wd-code pre{font-family:var(--font-mono); font-size:14px; line-height:1.7; color:#d1d5db; margin:0; white-space:pre-wrap;}
+    .wd-caption{font-size:12.5px; color:var(--text-dim); margin-top:9px; line-height:1.45;}
+    .wd-caption b{color:#fff;}
+
+    /* ── 실행 데모 ── */
+    .wd-run{align-self:flex-start; font-family:var(--font-sans); font-size:14px; font-weight:700;
+      color:#0a0f1e; background:var(--accent-alt); border:none; border-radius:8px;
+      padding:7px 18px; cursor:pointer; margin-bottom:10px; display:inline-flex; align-items:center; gap:8px;
+      box-shadow:0 2px 10px rgba(132,204,22,.35); transition:transform .1s;}
+    .wd-run:hover{transform:translateY(-1px);}
+    .wd-run:active{transform:translateY(0);}
+
+    .wd-screen{position:relative; flex:1; min-height:0; background:#0d1424;
+      border:1px solid var(--border); border-radius:12px; overflow:hidden;}
+    .wd-winbar{height:28px; background:#1b2438; display:flex; align-items:center; gap:8px;
+      padding:0 12px; font-size:11px; color:var(--text-dim); border-bottom:1px solid var(--border);
+      font-family:var(--font-mono);}
+    .wd-dots{display:flex; gap:5px;}
+    .wd-dots i{width:9px; height:9px; border-radius:50%; display:inline-block;}
+    .wd-stage{position:relative; height:calc(100% - 28px); display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:14px;}
+
+    .wd-target{font-family:var(--font-sans); font-size:16px; font-weight:700; color:#fff;
+      background:linear-gradient(180deg,#2563eb,#1d4ed8); border:1px solid #3b82f6; border-radius:10px;
+      padding:11px 26px; box-shadow:0 4px 14px rgba(37,99,235,.4); transition:all .12s;}
+    .wd-target.hit{background:linear-gradient(180deg,#16a34a,#15803d); border-color:#22c55e;
+      box-shadow:0 0 0 4px rgba(34,197,94,.3); transform:scale(.96);}
+    .wd-target.found{outline:2px solid var(--accent); outline-offset:3px;
+      box-shadow:0 0 0 4px rgba(34,211,238,.25);}
+    .wd-field{width:60%; height:30px; border-radius:8px; background:#0a1120; border:1px solid var(--border);}
+
+    /* 셀레니움: 마우스 이동 없이 '툭' 눌리는 클릭 리플 */
+    .wd-ripple{position:absolute; width:22px; height:22px; border-radius:50%;
+      background:rgba(34,197,94,.55); transform:translate(-50%,-50%) scale(0);
+      opacity:0; pointer-events:none; z-index:5;}
+    .wd-ripple.go{animation:wdRipple .55s ease-out;}
+    @keyframes wdRipple{0%{transform:translate(-50%,-50%) scale(0); opacity:.7;}
+      100%{transform:translate(-50%,-50%) scale(6); opacity:0;}}
+
+    /* 가짜 커서 (이미지/좌표 — 실제 마우스가 움직임) */
+    .wd-cursor{position:absolute; left:24px; top:80%; font-size:22px; color:#fff; pointer-events:none;
+      z-index:6; filter:drop-shadow(0 2px 3px rgba(0,0,0,.8)); transition:all .9s cubic-bezier(.4,0,.2,1);
+      transform-origin:top left;}
+    .wd-cursor.click{animation:wdClickPulse .35s ease;}
+    @keyframes wdClickPulse{0%{transform:scale(1);}40%{transform:scale(.72);}100%{transform:scale(1);}}
+
+    /* 이미지 매칭 박스 */
+    .wd-scan{position:absolute; border:2px dashed #fbbf24; border-radius:10px; opacity:0;
+      transition:opacity .25s; z-index:5; pointer-events:none;}
+    .wd-scan.show{opacity:1; animation:wdScanBlink .5s ease;}
+    @keyframes wdScanBlink{0%,100%{border-color:#fbbf24;}50%{border-color:#fff;}}
+
+    /* 좌표 눈금 */
+    .wd-grid{position:absolute; inset:0;
+      background-image:linear-gradient(rgba(239,68,68,.07) 1px,transparent 1px),
+                       linear-gradient(90deg,rgba(239,68,68,.07) 1px,transparent 1px);
+      background-size:40px 40px; pointer-events:none;}
+
+    /* 출력 라인 */
+    .wd-out{flex-shrink:0; min-height:44px; margin-top:10px; font-family:var(--font-mono);
+      font-size:13.5px; line-height:1.55; color:var(--text-dim); background:var(--bg-code);
+      border:1px solid var(--border); border-radius:8px; padding:9px 13px; word-break:break-all;}
+    .wd-ok{color:#84cc16; font-weight:600;}
+    .wd-dim{color:var(--text-dim);}
+    .wd-out b{color:#fff;}
+  </style>
+
+  <h2 class="slide-title" style="font-size:30px; margin-bottom:14px;">
+    4가지 자동화 무기
+    <span style="font-size:14px; font-weight:600; color:var(--text-dim); margin-left:14px; text-transform:none; letter-spacing:0;">카드를 누르면 아래에서 코드 · 데모 실행</span>
+  </h2>
+
+  <!-- 카드 = 탭 -->
+  <div class="wd-cards">
+    <button class="wd-card api on" onclick="wdCard(this,'wd-api')">
+      <span class="wd-rank">① 최상급</span>
+      <span class="wd-card-title"><i class="fa-solid fa-plug"></i> API 활용</span>
+      <span class="wd-card-desc">데이터가 직접 오가는 가장 안정적 방식</span>
+    </button>
+    <button class="wd-card sel" onclick="wdCard(this,'wd-sel')">
+      <span class="wd-rank">② 상급</span>
+      <span class="wd-card-title"><i class="fa-solid fa-globe"></i> 브라우저 조작</span>
+      <span class="wd-card-desc">셀렉터로 찾아 마우스 없이 클릭 (셀레니움)</span>
+    </button>
+    <button class="wd-card img" onclick="wdCard(this,'wd-img')">
+      <span class="wd-rank">③ 중급</span>
+      <span class="wd-card-title"><i class="fa-solid fa-image"></i> 이미지 기반</span>
+      <span class="wd-card-desc">화면 이미지를 찾아 마우스로 클릭</span>
+    </button>
+    <button class="wd-card xy" onclick="wdCard(this,'wd-xy')">
+      <span class="wd-rank">④ 초급</span>
+      <span class="wd-card-title"><i class="fa-solid fa-crosshairs"></i> 절대좌표</span>
+      <span class="wd-card-desc">정해진 X,Y 좌표를 클릭 (빠르나 취약)</span>
+    </button>
   </div>
-  
+
+  <!-- ① API -->
+  <div class="wd-panel" id="wd-api">
+    <div class="wd-col">
+      <div class="wd-label"><i class="fa-solid fa-code" style="color:var(--accent);"></i> 예시 코드</div>
+      <div class="wd-code-wrap"><div class="wd-code"><pre><span class="c-keyword">import</span> requests
+<span class="c-comment"># 환율 API에 직접 요청 → 데이터가 바로 온다</span>
+res = requests.get(URL, params={<span class="c-string">"from"</span>:<span class="c-string">"USD"</span>, <span class="c-string">"to"</span>:<span class="c-string">"KRW"</span>})
+<span class="c-keyword">print</span>(res.json()[<span class="c-string">"rates"</span>][<span class="c-string">"KRW"</span>])</pre></div></div>
+      <div class="wd-caption">화면도 마우스도 없이 <b>데이터만</b> 주고받는다. 가장 안정적이고 빠름.</div>
+    </div>
+    <div class="wd-col">
+      <div class="wd-label"><i class="fa-solid fa-bolt" style="color:var(--accent-alt);"></i> 실행 결과</div>
+      <button class="wd-run" onclick="wdApi(this)"><i class="fa-solid fa-play"></i> 실행</button>
+      <div class="wd-screen">
+        <div class="wd-winbar"><span class="wd-dots"><i style="background:#ef4444"></i><i style="background:#fbbf24"></i><i style="background:#22c55e"></i></span> python &mdash; api_call.py</div>
+        <div class="wd-stage" style="justify-content:center; padding:0 22px;">
+          <i class="fa-solid fa-plug" style="font-size:48px; color:rgba(34,211,238,.25);"></i>
+          <div style="font-size:13px; color:var(--text-dim); text-align:center;">버튼을 누르면 실제 공개 API로 요청을 보냅니다</div>
+        </div>
+      </div>
+      <div class="wd-out">대기 중&hellip; <span class="wd-dim">[실행]을 눌러보세요</span></div>
+    </div>
+  </div>
+
+  <!-- ② 셀레니움 -->
+  <div class="wd-panel" id="wd-sel" hidden>
+    <div class="wd-col">
+      <div class="wd-label"><i class="fa-solid fa-code" style="color:var(--accent);"></i> 예시 코드</div>
+      <div class="wd-code-wrap"><div class="wd-code"><pre><span class="c-keyword">from</span> selenium.webdriver.common.by <span class="c-keyword">import</span> By
+driver.get(<span class="c-string">"https://example.com"</span>)
+<span class="c-comment"># 화면 글자가 아니라 '셀렉터'로 요소를 찾는다</span>
+btn = driver.find_element(By.ID, <span class="c-string">"login"</span>)
+btn.click()</pre></div></div>
+      <div class="wd-caption"><b>마우스를 움직이지 않고</b> 브라우저 내부에 클릭 이벤트를 직접 전송. 셀렉터로 찾으니 위치가 바뀌어도 OK.</div>
+    </div>
+    <div class="wd-col">
+      <div class="wd-label"><i class="fa-solid fa-bolt" style="color:var(--accent-alt);"></i> 실행 데모</div>
+      <button class="wd-run" onclick="wdSelenium(this)"><i class="fa-solid fa-play"></i> 실행</button>
+      <div class="wd-screen">
+        <div class="wd-winbar"><span class="wd-dots"><i style="background:#ef4444"></i><i style="background:#fbbf24"></i><i style="background:#22c55e"></i></span> chrome &mdash; example.com</div>
+        <div class="wd-stage">
+          <div class="wd-field"></div>
+          <button class="wd-target" id="login">로그인</button>
+          <span class="wd-ripple"></span>
+          <span style="position:absolute; bottom:9px; right:12px; font-size:11px; color:var(--text-dim);"><i class="fa-solid fa-arrow-pointer"></i> 마우스 안 움직임</span>
+        </div>
+      </div>
+      <div class="wd-out">대기 중&hellip; <span class="wd-dim">[실행]을 눌러보세요</span></div>
+    </div>
+  </div>
+
+  <!-- ③ 이미지 기반 -->
+  <div class="wd-panel" id="wd-img" hidden>
+    <div class="wd-col">
+      <div class="wd-label"><i class="fa-solid fa-code" style="color:var(--accent);"></i> 예시 코드</div>
+      <div class="wd-code-wrap"><div class="wd-code"><pre><span class="c-keyword">import</span> pyautogui
+<span class="c-comment"># 화면에서 이 이미지를 '눈으로 찾아' 클릭</span>
+pos = pyautogui.locateCenterOnScreen(<span class="c-string">"login_btn.png"</span>)
+pyautogui.click(pos)</pre></div></div>
+      <div class="wd-caption"><b>화면 캡처 이미지</b>를 찾아 <b>실제 마우스를 이동</b>시켜 클릭. 직관적이지만 해상도/테마에 민감.</div>
+    </div>
+    <div class="wd-col">
+      <div class="wd-label"><i class="fa-solid fa-bolt" style="color:var(--accent-alt);"></i> 실행 데모</div>
+      <button class="wd-run" onclick="wdClick(this,'image')"><i class="fa-solid fa-play"></i> 실행</button>
+      <div class="wd-screen">
+        <div class="wd-winbar"><span class="wd-dots"><i style="background:#ef4444"></i><i style="background:#fbbf24"></i><i style="background:#22c55e"></i></span> screen &mdash; locate "login_btn.png"</div>
+        <div class="wd-stage">
+          <div class="wd-field"></div>
+          <button class="wd-target" id="login">로그인</button>
+          <div class="wd-scan"></div>
+          <i class="fa-solid fa-arrow-pointer wd-cursor"></i>
+        </div>
+      </div>
+      <div class="wd-out">대기 중&hellip; <span class="wd-dim">[실행]을 눌러보세요</span></div>
+    </div>
+  </div>
+
+  <!-- ④ 절대좌표 -->
+  <div class="wd-panel" id="wd-xy" hidden>
+    <div class="wd-col">
+      <div class="wd-label"><i class="fa-solid fa-code" style="color:var(--accent);"></i> 예시 코드</div>
+      <div class="wd-code-wrap"><div class="wd-code"><pre><span class="c-keyword">import</span> pyautogui
+<span class="c-comment"># 그냥 정해진 좌표(x, y)를 클릭 — 가장 단순/취약</span>
+pyautogui.click(<span class="c-number">280</span>, <span class="c-number">159</span>)</pre></div></div>
+      <div class="wd-caption"><b>화면 절대좌표</b>로 <b>실제 마우스를 이동</b>. 가장 빠르지만 창이 조금만 움직여도 <b>빗나감</b>.</div>
+    </div>
+    <div class="wd-col">
+      <div class="wd-label"><i class="fa-solid fa-bolt" style="color:var(--accent-alt);"></i> 실행 데모</div>
+      <button class="wd-run" onclick="wdClick(this,'coord')"><i class="fa-solid fa-play"></i> 실행</button>
+      <div class="wd-screen">
+        <div class="wd-winbar"><span class="wd-dots"><i style="background:#ef4444"></i><i style="background:#fbbf24"></i><i style="background:#22c55e"></i></span> screen &mdash; click(x, y)</div>
+        <div class="wd-stage">
+          <div class="wd-grid"></div>
+          <div class="wd-field"></div>
+          <button class="wd-target" id="login">로그인</button>
+          <i class="fa-solid fa-arrow-pointer wd-cursor"></i>
+        </div>
+      </div>
+      <div class="wd-out">대기 중&hellip; <span class="wd-dim">[실행]을 눌러보세요</span></div>
+    </div>
+  </div>
+
+  <!-- 데모 로직 부트스트랩: innerHTML로는 <script>가 실행되지 않으므로
+       깨진 이미지의 onerror로 전역 함수를 1회 주입한다 -->
+  <script type="text/plain" id="wd-bootstrap-src">
+    (function(){
+      if (window.wdInit) return;
+      window.wdInit = true;
+
+      window.wdCard = function(card, id){
+        var r = card.closest('.weapon-demo');
+        r.querySelectorAll('.wd-panel').forEach(function(p){ p.hidden = true; });
+        r.querySelectorAll('.wd-card').forEach(function(c){ c.classList.remove('on'); });
+        r.querySelector('#' + id).hidden = false;
+        card.classList.add('on');
+      };
+
+      window.wdApi = function(btn){
+        var out = btn.closest('.wd-col').querySelector('.wd-out');
+        out.innerHTML = '<span class="wd-dim">&#9679; GET 요청 보내는 중&hellip;</span>';
+        fetch('https://open.er-api.com/v6/latest/USD')
+          .then(function(r){ return r.json(); })
+          .then(function(d){
+            var v = d.rates.KRW.toFixed(2);
+            out.innerHTML = '<span class="wd-ok">200 OK</span> &middot; 실제 응답<br>{ "USD&rarr;KRW": <b>' + v + '</b> }';
+          })
+          .catch(function(e){
+            out.innerHTML = '<span class="wd-ok">200 OK</span> &middot; <span class="wd-dim">오프라인 샘플</span><br>{ "USD&rarr;KRW": <b>1536.79</b> }';
+          });
+      };
+
+      // 셀레니움: 마우스를 움직이지 않고 요소에 직접 클릭 이벤트를 보낸다
+      window.wdSelenium = function(btn){
+        var col = btn.closest('.wd-col');
+        var tgt = col.querySelector('.wd-target');
+        var rip = col.querySelector('.wd-ripple');
+        var out = col.querySelector('.wd-out');
+
+        tgt.classList.remove('hit', 'found');
+        rip.classList.remove('go');
+        out.innerHTML = '<span class="wd-dim">find_element(By.ID, "login") 요소 탐색 중&hellip;</span>';
+
+        setTimeout(function(){
+          tgt.classList.add('found');
+          out.innerHTML = '<span class="wd-dim">요소 발견 &mdash; 마우스 이동 없이 클릭 이벤트 전송</span>';
+        }, 550);
+
+        setTimeout(function(){
+          tgt.classList.remove('found');
+          tgt.classList.add('hit');
+          rip.style.left = (tgt.offsetLeft + tgt.offsetWidth / 2) + 'px';
+          rip.style.top  = (tgt.offsetTop  + tgt.offsetHeight / 2) + 'px';
+          void rip.offsetWidth; // 리플로우로 애니메이션 강제 재시작
+          rip.classList.add('go');
+        }, 1150);
+
+        setTimeout(function(){
+          out.innerHTML = '<span class="wd-ok"><i class="fa-solid fa-check"></i> btn.click() 실행 &mdash; 커서는 그대로, 버튼만 눌림</span>';
+        }, 1350);
+      };
+
+      // 이미지/좌표: 실제 마우스가 움직여 클릭
+      window.wdClick = function(btn, mode){
+        var col    = btn.closest('.wd-col');
+        var stage  = col.querySelector('.wd-stage');
+        var cur    = col.querySelector('.wd-cursor');
+        var tgt    = col.querySelector('.wd-target');
+        var out    = col.querySelector('.wd-out');
+        var scan   = col.querySelector('.wd-scan');
+
+        out.innerHTML = '';
+        tgt.classList.remove('hit');
+        cur.classList.remove('click');
+        if (scan) scan.classList.remove('show');
+        cur.style.transition = 'none';
+        cur.style.left = '24px';
+        cur.style.top  = (stage.clientHeight - 40) + 'px';
+
+        var tx = tgt.offsetLeft + tgt.offsetWidth / 2 - 4;
+        var ty = tgt.offsetTop  + tgt.offsetHeight / 2 - 2;
+        var startDelay = 100;
+
+        if (mode === 'image') {
+          out.innerHTML = '<span class="wd-dim"><i class="fa-solid fa-magnifying-glass"></i> login_btn.png 화면에서 탐색 중&hellip;</span>';
+          setTimeout(function(){
+            if (scan){
+              scan.style.left   = (tgt.offsetLeft - 6) + 'px';
+              scan.style.top    = (tgt.offsetTop  - 6) + 'px';
+              scan.style.width  = (tgt.offsetWidth  + 12) + 'px';
+              scan.style.height = (tgt.offsetHeight + 12) + 'px';
+              scan.classList.add('show');
+            }
+          }, 350);
+          startDelay = 950;
+        } else if (mode === 'coord') {
+          out.innerHTML = '<span class="wd-dim">pyautogui.click(<b>' + Math.round(tx) + '</b>, <b>' + Math.round(ty) + '</b>)</span>';
+        }
+
+        var moveDur = (mode === 'coord') ? 350 : 900;
+
+        setTimeout(function(){
+          cur.style.transition = 'all ' + (moveDur/1000) + 's cubic-bezier(.4,0,.2,1)';
+          cur.style.left = tx + 'px';
+          cur.style.top  = ty + 'px';
+        }, startDelay);
+
+        var hitAt = startDelay + moveDur + 60;
+        setTimeout(function(){
+          tgt.classList.add('hit');
+          cur.classList.add('click');
+        }, hitAt);
+
+        setTimeout(function(){
+          cur.classList.remove('click');
+          var msg;
+          if (mode === 'image') msg = '<span class="wd-ok"><i class="fa-solid fa-check"></i> 이미지 매칭 위치에 클릭됨</span>';
+          else                  msg = '<span class="wd-ok"><i class="fa-solid fa-check"></i> 좌표 (' + Math.round(tx) + ', ' + Math.round(ty) + ') 클릭됨</span>';
+          out.innerHTML = msg;
+        }, hitAt + 260);
+      };
+    })();
+  </script>
+  <img src="wd-bootstrap-noimage" alt="" style="display:none" aria-hidden="true"
+       onerror="var s=document.createElement('script'); s.textContent=document.getElementById('wd-bootstrap-src').textContent; document.body.appendChild(s); this.remove();">
+
+</div>

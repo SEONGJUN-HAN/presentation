@@ -1,120 +1,75 @@
-<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
+<div class="sk tone-red">
 
-    <!-- 헤더 -->
-    <div style="display:flex; align-items:center; gap:14px;">
-      <span class="badge" style="background:rgba(163,230,53,0.12); color:rgba(163,230,53,0.95); border-color:rgba(163,230,53,0.3);">⑤ 기타</span>
-      <h2 class="slide-title" style="margin:0;">분류 밖의 자동화들</h2>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge">④ 초급 · 빠른 구현</span>
+      <h2 class="s-title">절대좌표 기반 자동화</h2>
     </div>
-  
-    <!-- 서브타이틀 -->
-    <div style="font-size:13px; color:var(--text-dim); margin-top:-12px; line-height:1.6;">
-      웹 수집도, 이미지 인식도 아닌 — <strong style="color:rgba(255,255,255,0.7);">로컬 환경에서 직접 돌아가는</strong> 자동화 도구들
-    </div>
-  
-    <!-- 카드 그리드 -->
-    <div style="flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:18px;">
-  
-      <!-- 카드 1: 공공구매계획 -->
-      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(163,230,53,0.2); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:42px; height:42px; border-radius:12px; background:rgba(163,230,53,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <i class="fa-solid fa-file-invoice" style="color:rgba(163,230,53,0.85); font-size:18px;"></i>
-          </div>
-          <div>
-            <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:15px; color:#fff; font-weight:700;"><span>공공구매계획 자동 작성</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px; white-space:nowrap;">Python_공공구매작성하기</span></div>
-            <div style="margin-top:3px;">
-              <span style="font-size:10px; background:rgba(163,230,53,0.12); color:rgba(163,230,53,0.8); border-radius:6px; padding:2px 8px; font-weight:600;">Python</span>
-            </div>
-          </div>
-        </div>
-        <div style="font-size:13px; color:var(--text-dim); line-height:1.65; flex:1;">
-          물품·용역·공사별 <strong style="color:rgba(255,255,255,0.75);">공공구매 비율</strong>에 맞춰<br>
-          월별 계획 금액를 자동으로 계산·작성
-        </div>
-        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(163,230,53,0.6);">
-          <i class="fa-solid fa-bolt"></i>
-          <span>수작업 계산 → 자동 산출</span>
-        </div>
-      </div>
-  
-      <!-- 카드 2: 사무인계인수서 -->
-      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(99,179,237,0.2); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:42px; height:42px; border-radius:12px; background:rgba(99,179,237,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <i class="fa-solid fa-handshake" style="color:rgba(99,179,237,0.85); font-size:18px;"></i>
-          </div>
-          <div>
-            <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:15px; color:#fff; font-weight:700;"><span>사무인계인수서 작성</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px; white-space:nowrap;">Python_인계인수서_작성</span></div>
-            <div style="margin-top:3px;">
-              <span style="font-size:10px; background:rgba(99,179,237,0.12); color:rgba(99,179,237,0.8); border-radius:6px; padding:2px 8px; font-weight:600;">엑셀 VBA</span>
-            </div>
-          </div>
-        </div>
-        <div style="font-size:13px; color:var(--text-dim); line-height:1.65; flex:1;">
-          회계관직 변경 시 <strong style="color:rgba(255,255,255,0.75);">빠른 시간 내</strong> 인계인수서 완성<br>
-          반복 입력 최소화
-        </div>
-        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(99,179,237,0.6);">
-          <i class="fa-solid fa-bolt"></i>
-          <span>지출 마감 후 즉시 생성</span>
-        </div>
-      </div>
-  
-      <!-- 카드 3: 연간근로계획서 -->
-      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(251,191,36,0.2); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:42px; height:42px; border-radius:12px; background:rgba(251,191,36,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <i class="fa-solid fa-calendar-days" style="color:rgba(251,191,36,0.85); font-size:18px;"></i>
-          </div>
-          <div>
-            <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:15px; color:#fff; font-weight:700;"><span>방중 비상시 연간근로계획서</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px; white-space:nowrap;">VBA_교육공무직원 근로계획서.xlsm</span></div>
-            <div style="margin-top:3px;">
-              <span style="font-size:10px; background:rgba(251,191,36,0.12); color:rgba(251,191,36,0.8); border-radius:6px; padding:2px 8px; font-weight:600;">엑셀 VBA</span>
-            </div>
-          </div>
-        </div>
-        <div style="font-size:13px; color:var(--text-dim); line-height:1.65; flex:1;">
-          방중 비상시 교육공무직원 근무 일정을<br>
-          <strong style="color:rgba(255,255,255,0.75);">연 달력 생성 및 일수 계산</strong>하여 계획서 완성
-        </div>
-        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(251,191,36,0.6);">
-          <i class="fa-solid fa-bolt"></i>
-          <span>달력에 색칠 → 근무일수 자동 계산</span>
-        </div>
-      </div>
-  
-      <!-- 카드 4: 엑셀 추가기능 -->
-      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(0,255,200,0.2); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:42px; height:42px; border-radius:12px; background:rgba(0,255,200,0.10); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <i class="fa-solid fa-table" style="color:rgba(0,255,200,0.85); font-size:18px;"></i>
-          </div>
-          <div>
-            <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:15px; color:#fff; font-weight:700;"><span>엑셀 추가기능 (VBA)</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px; white-space:nowrap;">VBA_추가기능</span></div>
-            <div style="margin-top:3px;">
-              <span style="font-size:10px; background:rgba(0,255,200,0.10); color:rgba(0,255,200,0.8); border-radius:6px; padding:2px 8px; font-weight:600;">엑셀 VBA</span>
-            </div>
-          </div>
-        </div>
-        <div style="font-size:13px; color:var(--text-dim); line-height:1.65; flex:1;">
-          기본 제공되지 않는 <strong style="color:rgba(255,255,255,0.75);">반복 작업을 버튼 하나</strong>로<br>
-          리본 메뉴에 추가해 즉시 실행
-        </div>
-        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(0,255,200,0.6);">
-          <i class="fa-solid fa-bolt"></i>
-          <span>클릭 한 번으로 자주 쓰는 작업 실행</span>
-        </div>
-      </div>
-  
-    </div>
-  
-    <!-- 하단 설명 -->
-    <div class="info-box" style="padding:13px 18px; border-left:3px solid rgba(163,230,53,0.6); background:rgba(163,230,53,0.05);">
-      <p style="margin:0; font-size:13px; color:var(--text-dim); line-height:1.6;">
-        💡 <strong style="color:#fff;">공통점:</strong>
-        인터넷 없이도 동작 · 보안 걱정 없음 · 한 번 만들어두면 계속 사용 가능
-      </p>
-    </div>
-  
   </div>
-  
+
+  <div class="cols">
+
+    <!-- 왼쪽 -->
+    <div class="col">
+
+      <!-- 좌표 시각화 -->
+      <div class="card card--plain" style="height:170px; overflow:hidden;">
+        <div class="dim" style="font-size:var(--fs-micro);">모니터 화면</div>
+        <div style="position:relative; width:100%; flex:1; background:var(--surface);
+                    border-radius:var(--r-sm); border:1px solid var(--surface-line);">
+          <div style="position:absolute; left:55%; top:0; bottom:0; width:1px; background:var(--tone); opacity:.5;"></div>
+          <div style="position:absolute; top:45%; left:0; right:0; height:1px; background:var(--tone); opacity:.5;"></div>
+          <div style="position:absolute; left:calc(55% - 6px); top:calc(45% - 6px); width:12px; height:12px;
+                      border-radius:50%; background:var(--tone);"></div>
+          <div class="hl" style="position:absolute; left:57%; top:20%; font-size:var(--fs-sm);
+                                 font-family:var(--font-mono); font-weight:700;">(314, 118)</div>
+          <div class="dim" style="position:absolute; right:10px; bottom:6px; font-size:var(--fs-micro);">1920 * 1080</div>
+        </div>
+      </div>
+
+      <ul class="list">
+        <li>가장 빠르게 구현 가능 (5분 내)</li>
+        <li>코딩 몰라도 좌표 하나로 바로 시작</li>
+        <li class="is-warn">화면이 조금만 바뀌어도 원래는 쉽게 깨짐</li>
+        <li><strong>단, 검증 로직을 더하면</strong> 실무 수준까지 신뢰도를 끌어올릴 수 있음</li>
+      </ul>
+
+    </div>
+
+    <!-- 오른쪽: 단일 심화 사례 -->
+    <div class="col">
+      <div class="dim" style="font-size:var(--fs-xs); font-weight:600; letter-spacing:.06em;">
+        💼 실전 사례 — 신뢰도를 끌어올린 좌표 자동화
+      </div>
+
+      <div class="card">
+        <div class="row" style="align-items:flex-start; gap:var(--sp-3);">
+          <span style="font-size:22px;">💬</span>
+          <div style="flex:1; min-width:0;">
+            <div class="row row--between">
+              <span style="font-size:var(--fs-body); color:#fff; font-weight:700;">JBEdu 메신저 통합 자동화</span>
+              <span class="tag">AHK_통합연락처</span>
+            </div>
+            <div class="dim" style="font-size:var(--fs-sm); margin-top:4px; line-height:var(--lh-body);">
+              담당자 DB(CSV)에서 대상자 검색 → 좌표 클릭으로 프로필·메시지창 열기 →
+              <strong>개인별 맞춤 쪽지·첨부파일</strong>을 순서대로 자동 발송
+            </div>
+          </div>
+        </div>
+
+        <ul class="list" style="gap:var(--sp-1);">
+          <li style="font-size:var(--fs-xs);">여러 명 그룹 일괄 추가도 명단만 넣으면 순차 처리</li>
+          <li style="font-size:var(--fs-xs);">클릭 전 "창이 떴는지 · 닫혔는지" 검증 → 좌표가 빗나가지 않게 보정</li>
+          <li style="font-size:var(--fs-xs);">실패한 대상은 로그로 남기고 나머지는 계속 진행 → 끝나면 결과 요약창</li>
+        </ul>
+
+        <div class="ba" style="padding-top:var(--sp-2); border-top:1px solid var(--surface-line);">
+          <div class="ba__item ba__before">Before<b>명단 보고 한 명씩 발송</b></div>
+          <i class="fa-solid fa-arrow-right ba__arrow"></i>
+          <div class="ba__item ba__after tone-lime">After<b>명단 등록 후 자동 순회</b></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

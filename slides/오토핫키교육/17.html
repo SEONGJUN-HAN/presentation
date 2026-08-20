@@ -10,7 +10,7 @@
                 <li><i class="fa-solid fa-check"></i> 영문·숫자는 그냥 타이핑해도 OK</li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    한글은 <strong>클립보드에 담아 <code>^v</code></strong> 로 붙이면 안 깨짐
+                    한글은 <strong><code>A_Clipboard</code> 에 담아 <code>^v</code></strong> 로 붙이면 안 깨짐
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
@@ -27,9 +27,10 @@
 
 <span class="c-comment">; ✅ 클립보드에 담아 붙여넣기 → 안 깨짐</span>
 ::/hello::
-    <span class="c-keyword">Clipboard</span> := "안녕하세요. 한성준입니다."
-    <span class="c-keyword">Send</span>, ^v
-<span class="c-keyword">Return</span></pre>
+{
+    <span class="c-keyword">A_Clipboard</span> := <span class="c-string">"안녕하세요. 한성준입니다."</span>
+    <span class="c-keyword">Send</span>(<span class="c-string">"^v"</span>)
+}</pre>
             </div>
         </div>
     </div>

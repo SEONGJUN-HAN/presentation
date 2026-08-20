@@ -14,9 +14,19 @@
    ============================================================ */
 
 // ─── 여기만 수정 ──────────────────────────────
+<<<<<<< Updated upstream
 const CURRENT_DECK = '업무자동화_경험_공유';   // slides/ 안의 폴더명
 const MAX_SLIDES   = 300;                     // 무한 루프 방지용 안전 상한
+=======
+const DEFAULT_DECK = '업무자동화_경험_공유';   // slides/ 안의 폴더명
+const MAX_SLIDES    = 300;                    // 무한 루프 방지용 안전 상한
+>>>>>>> Stashed changes
 // ──────────────────────────────────────────────
+
+// 주소 뒤에 ?deck=폴더명 을 붙이면 파일을 고치지 않고 그 덱을 미리 볼 수 있습니다.
+//   예) index.html?deck=_템플릿
+const CURRENT_DECK =
+    new URLSearchParams(location.search).get('deck') || DEFAULT_DECK;
 
 function padNum(n) {
     return String(n).padStart(2, '0');
@@ -25,6 +35,11 @@ function padNum(n) {
 async function loadSlides() {
     const deck = document.getElementById('deck');
     let loaded = 0;
+
+    // 덱 이름을 DOM에 남겨 둡니다.
+    // → 슬라이드가 자체 padding 을 갖는 덱은 css 에서
+    //   [data-deck="..."] 로 컨테이너 padding 을 0 으로 만들 수 있습니다.
+    deck.dataset.deck = CURRENT_DECK;
 
     for (let i = 0; i < MAX_SLIDES; i++) {
         const file = `slides/${CURRENT_DECK}/${padNum(i + 1)}.html`;

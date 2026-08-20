@@ -1,128 +1,119 @@
-<div style="height:100%; display:flex; flex-direction:column;
-            padding:48px 56px; box-sizing:border-box; gap:18px;">
+<div class="sk tone-cyan">
 
-    <!-- 제목 영역 -->
-    <div style="display:flex; align-items:center; gap:14px; flex-shrink:0;">
-        <span style="background:rgba(163,230,53,0.12); color:var(--accent-alt);
-                     border:1px solid rgba(163,230,53,0.3); padding:4px 12px;
-                     border-radius:6px; font-size:13px; font-weight:700;
-                     white-space:nowrap;">
-            ② 상급 완성도
-        </span>
-        <h2 class="slide-title" style="margin:0; border:none; padding:0;
-                                        font-size:36px; letter-spacing:-1px;">
-            브라우저 조작 (SELENIUM)
-        </h2>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge">① 최상급 완성도</span>
+      <h2 class="s-title" data-important="true">API 활용</h2>
+    </div>
+  </div>
+
+  <div class="cols">
+
+    <!-- 왼쪽: 개념 -->
+    <div class="col">
+
+      <div class="card card--plain center" style="gap:var(--sp-3);">
+        <div class="row" style="justify-content:center; font-size:var(--fs-sm);">
+          <div class="hl" style="background:var(--tone-bg-2); border:1px solid var(--tone-border);
+                                 border-radius:var(--r-sm); padding:8px 14px; font-weight:600;">내 코드</div>
+          <div class="center">
+            <div class="dim" style="font-size:var(--fs-micro);">요청</div>
+            <span class="hl" style="font-size:var(--fs-lead);">→</span>
+          </div>
+          <div class="hl" style="background:var(--tone-bg); border:1px solid var(--tone-border);
+                                 border-radius:var(--r-sm); padding:8px 14px; font-weight:600;">API 서버</div>
+          <div class="center">
+            <div class="dim" style="font-size:var(--fs-micro);">응답</div>
+            <span class="tone-lime hl" style="font-size:var(--fs-lead);">→</span>
+          </div>
+          <div class="tone-lime hl" style="background:var(--tone-bg-2); border:1px solid var(--tone-border);
+                                           border-radius:var(--r-sm); padding:8px 14px; font-weight:600;">데이터</div>
+        </div>
+        <div class="dim" style="font-size:var(--fs-xs);">화면 없이 데이터가 직접 오고 가는 구조</div>
+      </div>
+
+      <ul class="list">
+        <li>화면 없이 데이터가 직접 통신 → 가장 빠름</li>
+        <li>UI 변경에 영향 없음 → 에러 거의 없음</li>
+        <li class="is-warn">단점: API를 제공하는 서비스에만 적용 가능</li>
+      </ul>
+
+      <div class="note tone-amber">
+        <div class="row" style="align-items:flex-start;">
+          <span style="font-size:var(--fs-lead);">📈</span>
+          <div>
+            <div class="row">
+              <span style="font-size:var(--fs-body); color:#fff; font-weight:600;">주식 · 코인 자동매매</span>
+              <span class="s-badge" style="font-size:var(--fs-micro); padding:1px 7px;">API 활용의 꽃</span>
+            </div>
+            <div class="dim" style="font-size:var(--fs-xs); margin-top:2px;">
+              증권사·거래소 API → 시세 수집 후 조건 충족 시 자동 주문<br>
+              <span class="hl">KIS Developers(한투), 업비트 Open API 등 공개 제공</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- 위: 이미지 가로 길게 -->
-    <div style="border-radius:14px; overflow:hidden;
-                border:1px solid var(--border);
-                background:#000; flex:1; min-height:0;">
-        <img src="img/셀레니움.png"
-             alt="셀레니움 실전 예제"
-             onerror="handleImgError(this)"
-             style="width:100%; height:100%;
-                    object-fit:contain; display:block;">
-    </div>
+    <!-- 오른쪽: 실전 사례 -->
+    <div class="col" style="gap:var(--sp-2);">
+      <div class="dim" style="font-size:var(--fs-xs); font-weight:600; letter-spacing:.06em;">💼 실전 사례</div>
 
-    <!-- 아래: 텍스트 3컬럼 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr;
-                gap:14px; flex-shrink:0;">
-
-        <!-- 특징 -->
-        <div style="background:var(--bg-secondary); border-radius:12px;
-                    padding:16px 18px; border:1px solid var(--border);
-                    display:flex; flex-direction:column; gap:8px;">
-            <div style="font-size:12px; color:var(--text-dim);
-                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
-                ⚙️ 특징
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;
-                        font-size:13px; color:rgba(255,255,255,0.85);">
-                <i class="fa-solid fa-circle-check"
-                   style="color:var(--accent-alt); flex-shrink:0;"></i>
-                <span>API 없는 사이트에서도 작동</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;
-                        font-size:13px; color:rgba(255,255,255,0.85);">
-                <i class="fa-solid fa-circle-check"
-                   style="color:var(--accent-alt); flex-shrink:0;"></i>
-                <span>로그인·검색·클릭 전부 가능</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;
-                        font-size:13px; color:rgba(255,255,255,0.85);">
-                <i class="fa-solid fa-circle-check"
-                   style="color:var(--accent-alt); flex-shrink:0;"></i>
-                <span>HTML 구조 기반으로 안정적</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;
-                        font-size:13px; color:rgba(255,255,255,0.5);">
-                <i class="fa-solid fa-triangle-exclamation"
-                   style="color:rgba(251,191,36,0.7); flex-shrink:0;"></i>
-                <span>구조 변경 시 수정 필요</span>
-            </div>
+      <div class="card card--plain row" style="border-left:3px solid var(--tone); border-radius:var(--r-sm);
+                                              padding:var(--sp-2) var(--sp-4); flex-direction:row; align-items:flex-start;">
+        <span style="font-size:var(--fs-lead);">🏢</span>
+        <div style="flex:1; min-width:0;">
+          <div class="row row--between">
+            <span style="font-size:var(--fs-sm); color:#fff; font-weight:600;">사업자번호로 업체 정보 수집</span>
+            <span class="tag">VBA_Python_사업자번호찾기</span>
+          </div>
+          <div class="dim" style="font-size:var(--fs-xs); margin-top:2px;">공공업무포털 API → 대량 업체 정보 자동화</div>
         </div>
+      </div>
 
-        <!-- 실전 사례 -->
-        <div style="background:rgba(163,230,53,0.06);
-                    border:1px solid rgba(163,230,53,0.2);
-                    border-radius:12px; padding:16px 18px;
-                    display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:12px; color:var(--text-dim);
-                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
-                💼 실전 사례
-            </div>
-            <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span style="font-size:20px; flex-shrink:0;">🔍</span>
-                <div>
-                    <div style="font-size:14px; color:#fff;
-                                font-weight:700; margin-bottom:4px;">나라장터 미등록 업체의 정보 수집</div>
-                    <div style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-bottom:4px;">VBA_Python_사업자번호찾기</div>
-                    <div style="font-size:12px; color:var(--text-dim); line-height:1.6;">
-                        사업자번호 목록 입력 → 자동 검색
-                        → 결과를 엑셀로 저장
-                    </div>
-                </div>
-            </div>
-            <!-- Before / After -->
-            <div style="display:flex; align-items:center; gap:8px;
-                         padding-top:8px;
-                         border-top:1px solid rgba(255,255,255,0.06);">
-                <div style="background:rgba(239,68,68,0.12); border-radius:8px;
-                            padding:6px 10px; font-size:12px;
-                            color:rgba(239,68,68,0.9); flex:1; text-align:center;
-                            line-height:1.6;">
-                    Before<br><strong>수동 1건 3분</strong>
-                </div>
-                <i class="fa-solid fa-arrow-right"
-                   style="color:var(--text-dim); flex-shrink:0;"></i>
-                <div style="background:rgba(163,230,53,0.1); border-radius:8px;
-                            padding:6px 10px; font-size:12px;
-                            color:var(--accent-alt); flex:1; text-align:center;
-                            line-height:1.6;">
-                    After<br><strong>100건 자동</strong>
-                </div>
-            </div>
+      <div class="card card--plain row" style="border-left:3px solid var(--tone); border-radius:var(--r-sm);
+                                              padding:var(--sp-2) var(--sp-4); flex-direction:row; align-items:flex-start;">
+        <span style="font-size:var(--fs-lead);">💳</span>
+        <div style="flex:1; min-width:0;">
+          <div class="row row--between">
+            <span style="font-size:var(--fs-sm); color:#fff; font-weight:600;">법인카드 사용부 → 텔레그램 API 알림</span>
+            <span class="tag">Python_법인카드관리</span>
+          </div>
+          <div class="dim" style="font-size:var(--fs-xs); margin-top:2px;">담당자 및 관계자 핸드폰으로 전송</div>
         </div>
+      </div>
 
-        <!-- 팁 -->
-        <div style="background:var(--bg-secondary); border-radius:12px;
-                    padding:16px 18px; border:1px solid var(--border);
-                    border-left:3px solid var(--accent-alt);
-                    display:flex; flex-direction:column; gap:10px;">
-            <div style="font-size:12px; color:var(--text-dim);
-                         font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">
-                💡 선택 기준
-            </div>
-            <p style="margin:0; font-size:13px;
-                       color:var(--text-dim); line-height:1.8;">
-                <strong style="color:#fff;">공식 API 있음</strong><br>
-                → API 방식 사용<br><br>
-                <strong style="color:#fff;">공식 API 없음</strong><br>
-                → 브라우저 조작으로!
-            </p>
+      <div class="card card--plain row" style="border-left:3px solid var(--tone); border-radius:var(--r-sm);
+                                              padding:var(--sp-2) var(--sp-4); flex-direction:row; align-items:flex-start;">
+        <span style="font-size:var(--fs-lead);">🔍</span>
+        <div style="flex:1; min-width:0;">
+          <div class="row row--between">
+            <span style="font-size:var(--fs-sm); color:#fff; font-weight:600;">OCR 문자 인식 → 마트 영수증 디지털 변환</span>
+            <span class="tag">Automation_Runner.ahk</span>
+          </div>
+          <div class="dim" style="font-size:var(--fs-xs); margin-top:2px;">이미지 속 텍스트를 자동 추출 → 데이터화</div>
         </div>
+      </div>
+
+      <div class="card card--plain row" style="border-left:3px solid var(--tone); border-radius:var(--r-sm);
+                                              padding:var(--sp-2) var(--sp-4); flex-direction:row; align-items:flex-start;">
+        <span style="font-size:var(--fs-lead);">📅</span>
+        <div style="flex:1; min-width:0;">
+          <div style="font-size:var(--fs-sm); color:#fff; font-weight:600;">나이스 복무정보 → 구글 캘린더 동기화</div>
+          <div class="dim" style="font-size:var(--fs-xs); margin-top:2px;">직원 모두와 부서 일정 자동 공유</div>
+        </div>
+      </div>
+
+      <div class="card card--plain row" style="border-left:3px solid var(--tone); border-radius:var(--r-sm);
+                                              padding:var(--sp-2) var(--sp-4); flex-direction:row; align-items:flex-start;">
+        <span style="font-size:var(--fs-lead);">✍️</span>
+        <div style="flex:1; min-width:0;">
+          <div style="font-size:var(--fs-sm); color:#fff; font-weight:600;">LLM API → 에듀파인 본문 자동 작성</div>
+          <div class="dim" style="font-size:var(--fs-xs); margin-top:2px;">AI가 공문 초안을 자동으로 생성</div>
+        </div>
+      </div>
 
     </div>
+  </div>
 </div>

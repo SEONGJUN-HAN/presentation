@@ -7,24 +7,24 @@
     <div class="two-column">
         <div>
             <h3>버튼 모음 창 = 런처</h3>
-            <p>딱 세 가지만 알면 창이 만들어집니다.</p>
+            <p>창을 만들고 → 붙이고 → 보여주면 끝입니다.</p>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <code>Gui, Add, Button</code> — 버튼 추가
+                    <code>Gui()</code> · <code>.AddButton()</code> — 창 만들고 버튼 붙이기
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <code>gRun1</code> — 버튼을 누르면 <strong>Run1: 으로 점프</strong>
+                    <code>.OnEvent("Click", …)</code> — 누르면 할 일 연결
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <code>Gui, Show</code> — 창 보여주기
+                    <code>.Show()</code> — 창 보여주기
                 </li>
             </ul>
             <div class="info-box" style="padding: 14px 20px;">
                 <p style="font-size: 17px;"><i class="fa-solid fa-bolt"></i>&nbsp;
-                    <code>F5</code> 실행 → <code>Ctrl + Alt + L</code> →
+                    <code>Ctrl + F9</code> 실행 → <code>Ctrl + Alt + L</code> →
                     <strong style="color: var(--text-main)">내 런처 창이 처음으로 뜹니다!</strong>
                 </p>
             </div>
@@ -34,17 +34,15 @@
             <div class="code-tile">
 <pre><span class="c-comment">; Ctrl + Alt + L → 런처 창</span>
 ^!l::
-    <span class="c-keyword">Gui</span>, Destroy
-    <span class="c-keyword">Gui</span>, Add, Text, , 원하는 버튼을 누르세요
-    <span class="c-keyword">Gui</span>, Add, Button, w260 <span class="c-string">gRun1</span>, 🌐 나이스 접속
-    <span class="c-keyword">Gui</span>, Show, , 나만의 런처
-<span class="c-keyword">Return</span>
-
-<span class="c-comment">; 버튼을 누르면 여기가 실행됨</span>
-<span class="c-string">Run1:</span>
-    <span class="c-keyword">Gui</span>, Destroy
-    <span class="c-keyword">Run</span>, https://www.neis.go.kr
-<span class="c-keyword">Return</span></pre>
+{
+    <span class="c-comment">; 창 만들기 (제목: 나만의 런처)</span>
+    myGui := <span class="c-keyword">Gui</span>(, <span class="c-string">"나만의 런처"</span>)
+    myGui.AddText(, <span class="c-string">"원하는 버튼을 누르세요"</span>)
+    <span class="c-comment">; 버튼 붙이고, 누르면 할 일 연결</span>
+    btn := myGui.AddButton(<span class="c-string">"w260"</span>, <span class="c-string">"🌐 나이스 접속"</span>)
+    btn.OnEvent(<span class="c-string">"Click"</span>, (*) => <span class="c-keyword">Run</span>(<span class="c-string">"https://www.neis.go.kr"</span>))
+    myGui.Show()          <span class="c-comment">; 화면에 보여주기</span>
+}</pre>
             </div>
         </div>
     </div>

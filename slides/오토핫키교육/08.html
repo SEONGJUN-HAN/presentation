@@ -1,4 +1,4 @@
-<h2 class="slide-title">SciTE4AutoHotkey 설치</h2>
+<h2 class="slide-title">VS Code + AutoHotkey++ 설치</h2>
 
 <div class="content-area">
     <div class="two-column">
@@ -6,66 +6,67 @@
         <div>
             <h3>설치 순서</h3>
             <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 13px;">
                     <span style="min-width:28px; height:28px; background: var(--accent-alt);
                                  color: var(--bg-primary); border-radius: 50%; display: flex;
                                  align-items: center; justify-content: center;
                                  font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">1</span>
                     <span style="font-size: 16px; color: var(--text-dim);">
-                        공식 사이트에서 다운로드<br>
-                        <a href="https://www.autohotkey.com/scite4ahk" target="_blank"
-                           style="color: var(--accent); font-size: 15px;">
-                            autohotkey.com/scite4ahk
-                        </a>
+                        <a href="https://code.visualstudio.com" target="_blank"
+                           style="color: var(--accent);">code.visualstudio.com</a>
+                        에서 <strong style="color: var(--text-main)">VS Code</strong> 설치
                     </span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 13px;">
                     <span style="min-width:28px; height:28px; background: var(--accent-alt);
                                  color: var(--bg-primary); border-radius: 50%; display: flex;
                                  align-items: center; justify-content: center;
                                  font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">2</span>
                     <span style="font-size: 16px; color: var(--text-dim);">
-                        설치 파일 실행 후 기본값으로 설치 완료
+                        왼쪽 <strong style="color: var(--text-main)">확장</strong> 아이콘
+                        (<code>Ctrl+Shift+X</code>) → <strong style="color: var(--accent)">AutoHotkey Plus Plus</strong>
+                        검색 → 설치
                     </span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 13px;">
                     <span style="min-width:28px; height:28px; background: var(--accent-alt);
                                  color: var(--bg-primary); border-radius: 50%; display: flex;
                                  align-items: center; justify-content: center;
                                  font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">3</span>
                     <span style="font-size: 16px; color: var(--text-dim);">
-                        상단 메뉴 <code>Tools → Spy</code>로
-                        <strong style="color: var(--text-main)">WindowSpy 바로 실행</strong> 가능
+                        <code>.ahk</code> 파일을 VS Code로 열기
                     </span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent-alt);
+                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 13px;">
+                    <span style="min-width:28px; height:28px; background: var(--accent);
                                  color: var(--bg-primary); border-radius: 50%; display: flex;
                                  align-items: center; justify-content: center;
                                  font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">4</span>
                     <span style="font-size: 16px; color: var(--text-dim);">
-                        <code>F5</code> 키로 현재 스크립트 즉시 실행
+                        <strong style="color: var(--accent)">Ctrl + F9</strong> 로 실행 &nbsp;·&nbsp;
+                        <code>Ctrl + F6</code> 중지
                     </span>
                 </li>
             </ul>
-            <div class="info-box">
-                <p><i class="fa-solid fa-book-open"></i>
-                    &nbsp;아래 한국어 강좌 사이트를 적극 활용하세요.
+
+            <div class="info-box" style="margin: 10px 0;">
+                <p><i class="fa-solid fa-robot"></i>&nbsp;
+                    <strong style="color: var(--text-main)">왜 VS Code인가</strong> —
+                    문법에 색이 입혀지고 오타를 잡아주며, 무엇보다
+                    <strong style="color: var(--accent)">AI에게 바로 고쳐달라고 할 수 있습니다.</strong>
                 </p>
             </div>
-            <a href="https://ahkv1.pnal.dev/1" target="_blank"
-               style="display: inline-flex; align-items: center; gap: 8px;
-                      background: var(--accent-alt); color: var(--bg-primary);
-                      padding: 10px 20px; border-radius: 8px; font-weight: 700;
-                      font-size: 15px; text-decoration: none; margin-top: 16px;">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                AHK v1 한국어 강좌 바로가기
-            </a>
+            <div class="info-box" style="border-left-color: var(--accent-alt); padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-1"></i>&nbsp;
+                    첫 줄의 <code>#Requires AutoHotkey v2.0</code> 이
+                    "이건 v2입니다" 표시. 이게 있어야 v2로 실행됩니다.
+                </p>
+            </div>
         </div>
 
         <div class="image-wrapper" style="height: 460px;">
             <img src="img/scite_editor.png"
-                 alt="SciTE4AutoHotkey 편집기 화면"
+                 alt="VS Code 편집 화면"
                  onerror="handleImgError(this)">
         </div>
 

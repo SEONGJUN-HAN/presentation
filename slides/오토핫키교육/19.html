@@ -8,7 +8,7 @@
                 <li>
                     <i class="fa-solid fa-1"></i>
                     계산기를 켜 두고 <strong>WindowSpy</strong> 실행
-                    (SciTE 메뉴 <code>Tools → Spy</code>)
+(작업표시줄 <strong style="color: var(--text-main)">H 아이콘 우클릭 → Window Spy</strong>)
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
@@ -17,7 +17,7 @@
                 <li>
                     <i class="fa-solid fa-3"></i>
                     실습 파일 [보너스] 코드 줄 선택 → <code>Ctrl + Q</code> →
-                    좌표 바꿔서 <code>F5</code>
+                    좌표 바꿔서 <code>Ctrl + F9</code>
                 </li>
             </ul>
             <div class="info-box" style="border-left-color: #f59e0b;">
@@ -30,19 +30,19 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 클릭 한 번 : Ctrl + Alt + C</span>
-^!c::
-    <span class="c-keyword">CoordMode</span>, Mouse, Screen   <span class="c-comment">; WindowSpy와 같은 좌표계</span>
-    <span class="c-keyword">Click</span>, <span class="c-number">200 300</span>   <span class="c-comment">; ← WindowSpy로 본 좌표</span>
-<span class="c-keyword">Return</span>
+<pre><span class="c-comment">; 맨 위에 한 번만 — WindowSpy와 같은 좌표계</span>
+<span class="c-keyword">CoordMode</span> <span class="c-string">"Mouse"</span>, <span class="c-string">"Screen"</span>
+
+<span class="c-comment">; 클릭 한 번 : Ctrl + Alt + C</span>
+^!c::<span class="c-keyword">Click</span>(<span class="c-string">"200 300"</span>)    <span class="c-comment">; ← WindowSpy로 본 좌표</span>
 
 <span class="c-comment">; 슬립 넣고 두 번 : Ctrl + Alt + X</span>
 ^!x::
-    <span class="c-keyword">CoordMode</span>, Mouse, Screen
-    <span class="c-keyword">Click</span>, <span class="c-number">200 300</span>
-    <span class="c-keyword">Sleep</span>, <span class="c-number">1000</span>
-    <span class="c-keyword">Click</span>, <span class="c-number">250 300</span>
-<span class="c-keyword">Return</span></pre>
+{
+    <span class="c-keyword">Click</span>(<span class="c-string">"200 300"</span>)
+    <span class="c-keyword">Sleep</span>(<span class="c-number">1000</span>)
+    <span class="c-keyword">Click</span>(<span class="c-string">"250 300"</span>)
+}</pre>
             </div>
         </div>
     </div>

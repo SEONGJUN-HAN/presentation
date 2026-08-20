@@ -1,32 +1,89 @@
-<div style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+<div class="sk tone-amber">
 
-    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(0,255,200,0.07) 0%, transparent 65%);"></div>
-  
-    <div style="font-size:80px; margin-bottom:20px;">☕</div>
-  
-    <h2 style="font-size:48px; font-weight:900; color:#fff; margin:0 0 12px 0; text-align:center;">
-      잠깐 쉬어가요!
-    </h2>
-  
-    <p style="font-size:20px; color:var(--text-dim); margin:0 0 36px 0;">Break · 10~15분</p>
-  
-    <div style="display:flex; gap:24px;">
-      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:20px 28px; text-align:center;">
-        <div style="font-size:28px; margin-bottom:6px;">🚻</div>
-        <div style="font-size:13px; color:var(--text-dim);">화장실</div>
-      </div>
-      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:20px 28px; text-align:center;">
-        <div style="font-size:28px; margin-bottom:6px;">☕</div>
-        <div style="font-size:13px; color:var(--text-dim);">커피 & 음료</div>
-      </div>
-      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:20px 28px; text-align:center;">
-        <div style="font-size:28px; margin-bottom:6px;">💬</div>
-        <div style="font-size:13px; color:var(--text-dim);">네트워킹</div>
-      </div>
-    </div>
-  
-    <div style="margin-top:40px; font-size:15px; color:rgba(0,255,200,0.5);">
-      곧 자동화 무기 실전 사례가 계속됩니다
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge">⚠️ 오해하기 쉬운 것</span>
+      <h2 class="s-title">AI는 코드를 줄 뿐, 실행은 내 PC가 한다</h2>
     </div>
   </div>
-  
+
+  <div class="cols">
+
+    <!-- 왼쪽: 좋은 소식 -->
+    <div class="col tone-cyan">
+      <div class="dim" style="font-size:var(--fs-xs); font-weight:600; letter-spacing:.06em;">✅ 좋은 소식</div>
+
+      <div class="card">
+        <div class="card__head">
+          <div class="card__icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="card__title" style="font-size:var(--fs-body);">
+            AI는 이미 <span class="hl">코딩을 배우고</span> 왔습니다
+          </div>
+        </div>
+        <div class="card__body">
+          언어모델은 방대한 코드를 학습한 상태로 나옵니다.<br>
+          그래서 <strong>문법을 몰라도</strong> 필요한 코드를 받아낼 수 있습니다.
+        </div>
+      </div>
+
+      <div class="card card--plain">
+        <div class="dim" style="font-size:var(--fs-xs); font-weight:600;">비전문가에게 필요한 건 딱 두 가지</div>
+        <ul class="list" style="gap:var(--sp-1);">
+          <li style="font-size:var(--fs-sm);"><strong>언어와 편집기를 설치</strong>해 두는 것</li>
+          <li style="font-size:var(--fs-sm);"><strong>실행하는 방법</strong>을 아는 것</li>
+        </ul>
+        <div class="dim" style="font-size:var(--fs-xs);">나머지 — 문법, 알고리즘, 에러 수정 — 은 AI가 맡습니다.</div>
+      </div>
+    </div>
+
+    <!-- 오른쪽: 흔한 오해 -->
+    <div class="col">
+      <div class="dim" style="font-size:var(--fs-xs); font-weight:600; letter-spacing:.06em;">
+        ❌ 흔한 오해 — "AI가 알아서 다 해주겠지"
+      </div>
+
+      <div class="card tone-red">
+        <div class="row">
+          <span style="font-size:var(--fs-lead);">💬</span>
+          <div style="font-size:var(--fs-body); color:#fff; font-weight:700;">채팅창의 AI</div>
+        </div>
+        <div class="row" style="flex-wrap:wrap;">
+          <div class="card--plain" style="background:var(--surface); border-radius:var(--r-sm);
+                                          padding:6px 11px; font-size:var(--fs-xs); color:rgba(255,255,255,.85);">AI가 코드를 써 줌</div>
+          <i class="fa-solid fa-arrow-right dim" style="font-size:var(--fs-micro);"></i>
+          <div class="hl" style="background:var(--tone-bg-2); border:1px solid var(--tone-border);
+                                 border-radius:var(--r-sm); padding:6px 11px; font-size:var(--fs-xs); font-weight:600;">내가 복사해 와야 함</div>
+        </div>
+        <div class="dim" style="font-size:var(--fs-xs); line-height:var(--lh-body);">
+          코드는 <strong>'글'로 올 뿐</strong>입니다. 채팅창 안에서는 아무것도 실행되지 않습니다.
+        </div>
+      </div>
+
+      <div class="card tone-amber">
+        <div class="row">
+          <span style="font-size:var(--fs-lead);">🔌</span>
+          <div style="font-size:var(--fs-body); color:#fff; font-weight:700;">
+            AI를 내 PC에 연결해도 <span class="dim" style="font-size:var(--fs-micro); font-weight:400;">(클로드 코드 등)</span>
+          </div>
+        </div>
+        <div class="dim" style="font-size:var(--fs-sm); line-height:var(--lh-body);">
+          AI가 직접 실행까지 해 주지만, <strong class="hl">언어가 내 PC에 깔려 있어야</strong> 돌아갑니다.
+        </div>
+        <div class="row" style="flex-wrap:wrap; gap:var(--sp-1);">
+          <span class="s-badge">Python</span>
+          <span class="s-badge">Node.js</span>
+          <span class="s-badge">AutoHotkey</span>
+          <span class="dim" style="font-size:var(--fs-xs);">… 없으면 실행 불가</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="note tone-cyan" style="font-size:var(--fs-sm); color:#fff;">
+    🔑 <strong class="hl">결론:</strong>
+    AI는 <strong>머리</strong>를 빌려주는 것이지 <strong>손발</strong>까지 빌려주지 않습니다.
+    언어·편집기 설치와 실행 방법 — 딱 이 준비만 해두면 나머지는 AI가 채웁니다.
+  </div>
+
+</div>

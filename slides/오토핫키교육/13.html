@@ -16,7 +16,11 @@
             </div>
             <ul class="checklist-icon">
                 <li><i class="fa-solid fa-check"></i> <code>^!n</code> = Ctrl + Alt + N</li>
-                <li><i class="fa-solid fa-check"></i> 끝에는 항상 <code>Return</code></li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    할 일이 한 줄이면 <code>::</code> 뒤에 바로,
+                    여러 줄이면 <code>{ }</code> 로 감쌉니다
+                </li>
             </ul>
             <div class="info-box" style="padding: 14px 20px;">
                 <p style="font-size: 17px;"><i class="fa-solid fa-arrow-right"></i>&nbsp;
@@ -29,14 +33,17 @@
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
 <pre><span class="c-comment">; Ctrl + Alt + N → 나이스 열기</span>
-^!n::
-    <span class="c-keyword">Run</span>, https://www.neis.go.kr
-<span class="c-keyword">Return</span>
+^!n::<span class="c-keyword">Run</span>(<span class="c-string">"https://www.neis.go.kr"</span>)
 
 <span class="c-comment">; 파일·폴더도 똑같이 됩니다</span>
-^!e::
-    <span class="c-keyword">Run</span>, C:\Users\내이름\Documents\업무일지.xlsx
-<span class="c-keyword">Return</span></pre>
+^!e::<span class="c-keyword">Run</span>(<span class="c-string">"C:\Users\내이름\Documents\업무일지.xlsx"</span>)
+
+<span class="c-comment">; 여러 줄로 시킬 때는 { } 로 묶습니다</span>
+^!k::
+{
+    <span class="c-keyword">Run</span>(<span class="c-string">"https://www.neis.go.kr"</span>)
+    <span class="c-keyword">Run</span>(<span class="c-string">"https://klef.jbe.go.kr"</span>)
+}</pre>
             </div>
         </div>
     </div>

@@ -1,41 +1,38 @@
 <h2 class="slide-title" data-important="true">
-    응용 ①. 퇴근시간 타이머 만들기
-    <span class="badge"><i class="fa-solid fa-robot"></i> AI에게 통째로</span>
+    응용 ①. AI를 한글 문서 안으로
+    <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i> 공문 다듬기</span>
 </h2>
 
 <div class="content-area">
     <p style="font-size: 17px; margin-bottom: 10px;">
-        런처에 <strong style="color: var(--text-main)">버튼만 추가</strong>해 봤으니, 이번엔
-        <strong style="color: var(--accent)">프로그램 하나를 통째로</strong> AI에게 시켜봅시다.
-        내가 코드를 못 써도, <strong style="color: var(--text-main)">원하는 걸 말로 설명하면 됩니다.</strong>
+        문장을 <strong style="color: var(--text-main)">드래그하고 단축키 하나</strong>면,
+        AI가 공문체로 다듬어 <strong style="color: var(--accent)">그 자리에 바로 넣어줍니다.</strong>
     </p>
 
     <div class="two-column">
         <div>
-            <h3>말로 설명하면 프로그램이 됩니다</h3>
+            <h3>준비는 한 번만</h3>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    오른쪽 프롬프트를 <strong>그대로 복사</strong>해 AI에 붙여넣기
+                    <i class="fa-solid fa-1"></i>
+                    <a href="https://aistudio.google.com" target="_blank"
+                       style="color: var(--accent);">aistudio.google.com</a>
+                    에서 <strong>무료 API 키</strong> 발급 (구글 계정 필요)
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    받은 코드를 <strong>새 .ahk 파일</strong>에 붙여넣고 <code>F5</code>
+                    <i class="fa-solid fa-2"></i>
+                    옆에 <code>gemini_key.txt</code> 만들고 <strong>키 붙여넣기</strong>
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    에러가 나면? <strong>메시지 복붙해서 "고쳐줘"</strong>
+                    <i class="fa-solid fa-3"></i>
+                    문장 드래그 → <code>Ctrl + Alt + G</code>
                 </li>
             </ul>
-            <div class="info-box" style="border-left-color: var(--accent-alt); padding: 14px 20px;">
-                <p style="font-size: 17px;"><i class="fa-solid fa-seedling"></i>&nbsp;
-                    <strong style="color: var(--text-main)">되면 키워보세요</strong> —
-                    "퇴근 30분 전에 알림창을 띄워줘"
-                </p>
-                <p style="font-size: 17px; margin-top: 10px;">
-                    <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-alt);"></i>&nbsp;
-                    <strong style="color: var(--text-main)">요즘은 복붙도 안 합니다</strong> —
-                    AI가 파일을 <strong style="color: var(--text-main)">직접 만들고 고쳐줍니다</strong> (시연)
+            <div class="info-box" style="border-left-color: #f59e0b; padding: 14px 20px;">
+                <p style="font-size: 17px;">
+                    <i class="fa-solid fa-key" style="color: #f59e0b;"></i>&nbsp;
+                    키를 <strong style="color: var(--text-main)">파일로 분리</strong>한 이유 —
+                    스크립트를 남에게 줘도 <strong style="color: var(--text-main)">키가 딸려가지 않습니다.</strong>
                 </p>
             </div>
         </div>
@@ -43,17 +40,18 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre>AutoHotkey <span class="c-keyword">v1.1</span> 문법으로 만들어줘.
+<pre><span class="c-comment">; 드래그한 문장을 AI에게 보내고</span>
+<span class="c-comment">; 받은 문장으로 그 자리를 교체</span>
+^!g::
+{
+    <span class="c-keyword">A_Clipboard</span> := <span class="c-string">""</span>      <span class="c-comment">; 먼저 비우기!</span>
+    <span class="c-keyword">Send</span>(<span class="c-string">"^c"</span>)
+    <span class="c-keyword">ClipWait</span>(1)
 
-화면 오른쪽 아래에 뜨는 '퇴근 타이머'.
-
-- 퇴근 16:30, 1초마다 갱신
-- 검은 배경 큰 글씨, 테두리 없이 항상 위
-- 하루 진행률을 막대로도 표시
-- 30분 이내 주황, 퇴근 후엔 빨강
-- 끌어서 이동, 오른쪽 클릭으로 종료
-
-한국어 주석도 달아줘.</pre>
+    답 := AskGemini(키, 프롬프트 . <span class="c-keyword">A_Clipboard</span>)
+    <span class="c-keyword">A_Clipboard</span> := 답
+    <span class="c-keyword">Send</span>(<span class="c-string">"^v"</span>)      <span class="c-comment">; 선택된 문장을 교체</span>
+}</pre>
             </div>
         </div>
     </div>

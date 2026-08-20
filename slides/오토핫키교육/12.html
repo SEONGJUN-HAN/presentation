@@ -15,7 +15,7 @@
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    <code>F5</code> 로 실행 → <code>Ctrl + Alt + M</code> 누르기
+                    <code>Ctrl + F9</code> 로 실행 → <code>Ctrl + Alt + M</code> 누르기
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
@@ -33,10 +33,11 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; Ctrl + Alt + M 을 누르면 알림창</span>
-^!m::
-    <span class="c-keyword">MsgBox</span>, 반갑습니다! 첫 스크립트 성공!
-<span class="c-keyword">Return</span></pre>
+<pre><span class="c-comment">; 첫 줄 — "이건 v2입니다" 표시</span>
+<span class="c-keyword">#Requires</span> AutoHotkey v2.0
+
+<span class="c-comment">; Ctrl + Alt + M 을 누르면 알림창</span>
+^!m::<span class="c-keyword">MsgBox</span>(<span class="c-string">"반갑습니다! 첫 스크립트 성공!"</span>)</pre>
             </div>
         </div>
     </div>

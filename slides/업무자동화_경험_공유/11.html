@@ -1,108 +1,41 @@
-<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
+<div class="sk tone-red">
 
-  <div style="display:flex; align-items:center; gap:14px;">
-    <span class="badge" style="background:rgba(0,255,200,0.15); color:var(--accent); border-color:rgba(0,255,200,0.35);">① 최상급 완성도</span>
-    <h2 class="slide-title" style="margin:0;" data-important="true">API 활용</h2>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge">⚠️ 경고</span>
+      <h2 class="s-title" data-important="true">어설픈 자동화가 주는 덫</h2>
+    </div>
   </div>
 
-  <div class="two-column" style="flex:1; gap:28px;">
+  <div class="cols">
 
-    <!-- 왼쪽: 개념 설명 -->
-    <div style="display:flex; flex-direction:column; gap:16px; justify-content:center;">
-
-      <div class="image-wrapper" style="height:200px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.25); border-radius:14px; flex-direction:column; gap:12px;">
-        <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
-          <div style="background:rgba(0,255,200,0.15); border:1px solid rgba(0,255,200,0.4); border-radius:8px; padding:8px 14px; color:var(--accent); font-weight:600;">내 코드</div>
-          <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
-            <span style="font-size:10px; color:var(--text-dim);">요청</span>
-            <span style="color:var(--accent); font-size:18px;">→</span>
-          </div>
-          <div style="background:rgba(0,255,200,0.1); border:1px solid rgba(0,255,200,0.3); border-radius:8px; padding:8px 14px; color:var(--accent); font-weight:600;">API 서버</div>
-          <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
-            <span style="font-size:10px; color:var(--text-dim);">응답</span>
-            <span style="color:var(--accent-alt); font-size:18px;">→</span>
-          </div>
-          <div style="background:rgba(163,230,53,0.12); border:1px solid rgba(163,230,53,0.3); border-radius:8px; padding:8px 14px; color:var(--accent-alt); font-weight:600;">데이터</div>
-        </div>
-        <div style="font-size:12px; color:var(--text-dim);">화면 없이 데이터가 직접 오고 가는 구조</div>
+    <!-- 왼쪽: 나쁜 자동화 -->
+    <div class="card card--pick tone-red" style="border-radius:var(--r-xl); padding:var(--sp-5);">
+      <div style="font-size:var(--fs-body); font-weight:700; color:var(--tone);">❌ 어설픈 자동화</div>
+      <div style="aspect-ratio:16/9; border-radius:var(--r-md); overflow:hidden;">
+        <img src="img/불안한 표정으로 모니터 감시하는 이미지.png"
+             style="width:100%; height:100%; object-fit:contain; display:block;" />
       </div>
-
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-          <i class="fa-solid fa-bolt" style="color:var(--accent);"></i>
-          <span>화면 없이 데이터가 직접 통신 → 가장 빠름</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-          <i class="fa-solid fa-shield-halved" style="color:var(--accent);"></i>
-          <span>UI 변경에 영향 없음 → 에러 거의 없음</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-          <i class="fa-solid fa-triangle-exclamation" style="color:rgba(251,191,36,0.8);"></i>
-          <span style="color:rgba(255,255,255,0.5);">단점: API를 제공하는 서비스에만 적용 가능</span>
-        </div>
-      </div>
-            <!-- ✅ 추가: 주식/코인 자동매매 -->
-            <div style="background:rgba(251,191,36,0.06); border-left:3px solid rgba(251,191,36,0.7); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start; position:relative; overflow:hidden;">
-              <!-- 배경 강조 효과 -->
-              <div style="position:absolute; top:0; right:0; font-size:36px; opacity:0.07; line-height:1; padding:4px;">📈</div>
-              <span style="font-size:18px;">📈</span>
-              <div>
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <div style="font-size:14px; color:#fff; font-weight:600;">주식 · 코인 자동매매</div>
-                  <span style="font-size:10px; background:rgba(251,191,36,0.15); color:rgba(251,191,36,0.9); border-radius:6px; padding:1px 7px; font-weight:600; white-space:nowrap;">API 활용의 꽃</span>
-                </div>
-                <div style="font-size:12px; color:var(--text-dim); margin-top:2px; line-height:1.6;">
-                  증권사·거래소 API → 시세 수집 후 조건 충족 시 자동 주문<br>
-                  <span style="color:rgba(251,191,36,0.7);">KIS Developers(한투), 업비트 Open API 등 공개 제공</span>
-                </div>
-              </div>
-            </div>
+      <ul class="list">
+        <li class="is-no">자동화를 돌려놓고 모니터를 계속 감시</li>
+        <li class="is-no">'컴퓨터 감시 업무'가 하나 더 추가된 것</li>
+        <li class="is-no">오히려 스트레스와 업무량 증가</li>
+      </ul>
     </div>
 
-    <!-- 오른쪽: 실전 사례 -->
-    <div style="display:flex; flex-direction:column; gap:10px; justify-content:center;">
-      <div style="font-size:13px; color:var(--text-dim); font-weight:600; letter-spacing:0.08em; margin-bottom:2px;">💼 실전 사례</div>
-
-      <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-        <span style="font-size:18px;">🏢</span>
-        <div>
-          <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:14px; color:#fff; font-weight:600;"><span>사업자번호로 업체 정보 수집</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px;">VBA_Python_사업자번호찾기</span></div>
-          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">공공업무포털 API → 대량 업체 정보 자동화</div>
-        </div>
+    <!-- 오른쪽: 완성된 자동화 -->
+    <div class="card card--pick tone-cyan" style="border-radius:var(--r-xl); padding:var(--sp-5);">
+      <div style="font-size:var(--fs-body); font-weight:700; color:var(--tone);">✅ 완성도 100% 자동화</div>
+      <div style="aspect-ratio:16/9; border-radius:var(--r-md); overflow:hidden;">
+        <img src="img/여유롭게 자리를 떠나는 해방된 직장인 이미지.png"
+             style="width:100%; height:100%; object-fit:contain; display:block;" />
       </div>
-
-      <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-        <span style="font-size:18px;">💳</span>
-        <div>
-          <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:14px; color:#fff; font-weight:600;"><span>법인카드 사용부 → 텔레그램 API 알림</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px;">Python_법인카드관리</span></div>
-          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">담당자 및 관계자 핸드폰으로 전송</div>
-        </div>
-      </div>
-
-      <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-        <span style="font-size:18px;">🔍</span>
-        <div>
-          <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:14px; color:#fff; font-weight:600;"><span>OCR 문자 인식 → 마트 영수증 디지털 변환</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px;">기타내역.html / Automation_Runner.ahk</span></div>
-          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">이미지 속 텍스트를 자동 추출 → 데이터화</div>
-        </div>
-      </div>
-
-      <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-        <span style="font-size:18px;">📅</span>
-        <div>
-          <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:14px; color:#fff; font-weight:600;"><span>나이스 복무정보 → 구글 캘린더 동기화</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px;">-</span></div>
-          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">직원 모두와 부서 일정 자동 공유</div>
-        </div>
-      </div>
-
-      <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; display:flex; gap:12px; align-items:flex-start;">
-        <span style="font-size:18px;">✍️</span>
-        <div>
-          <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:14px; color:#fff; font-weight:600;"><span>LLM API → 에듀파인 본문 자동 작성</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px;">-</span></div>
-          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">AI가 공문 초안을 자동으로 생성</div>
-        </div>
-      </div>
-
+      <ul class="list">
+        <li>내 손을 완전히 떠나 스스로 처리</li>
+        <li>에러 없이 신뢰할 수 있다</li>
+        <li>진정한 업무 해방이 찾아온다</li>
+      </ul>
     </div>
+
   </div>
 </div>

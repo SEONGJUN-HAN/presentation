@@ -11,12 +11,12 @@
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <code>Sleep, 1000</code> = 1초 대기 — 창이 뜨기 전에
+                    <code>Sleep(1000)</code> = 1초 대기 — 창이 뜨기 전에
                     입력하면 사라지므로 <strong>기다림이 필수</strong>
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <code>Send, ^v</code> = 키보드 대신 눌러주기 (5단계 클립보드 방식 재활용)
+                    <code>Send("^v")</code> = 키보드 대신 눌러주기 (5단계 클립보드 방식 재활용)
                 </li>
             </ul>
             <div class="info-box" style="border-left-color: #f59e0b;">
@@ -30,16 +30,18 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 런처 버튼: 📝 메모장 열고 할 일 쓰기</span>
-<span class="c-keyword">Gui</span>, Add, Button, w260 <span class="c-string">gMacro1</span>, 📝 메모장 열고 할 일 쓰기
+<pre><span class="c-comment">; 목록에서 run 대신 go 를 쓰면 '함수'가 연결됩니다</span>
+{ label: <span class="c-string">"📝 메모장에 할 일 쓰기"</span>, go: WriteTodo }
 
-Macro1:
-    <span class="c-keyword">Gui</span>, Destroy
-    <span class="c-keyword">Run</span>, notepad.exe
-    <span class="c-keyword">Sleep</span>, <span class="c-number">1000</span>   <span class="c-comment">; 메모장이 뜰 때까지 대기</span>
-    <span class="c-keyword">Clipboard</span> := "📌 오늘 할 일`n1. `n2. "
-    <span class="c-keyword">Send</span>, ^v
-<span class="c-keyword">Return</span></pre>
+
+WriteTodo(*)
+{
+    <span class="c-keyword">Run</span>(<span class="c-string">"notepad.exe"</span>)
+    <span class="c-keyword">Sleep</span>(<span class="c-number">1000</span>)     <span class="c-comment">; 메모장이 뜰 때까지 대기</span>
+
+    <span class="c-keyword">A_Clipboard</span> := <span class="c-string">"📌 오늘 할 일`n1. `n2. "</span>
+    <span class="c-keyword">Send</span>(<span class="c-string">"^v"</span>)      <span class="c-comment">; 한글이라 클립보드로!</span>
+}</pre>
             </div>
         </div>
     </div>

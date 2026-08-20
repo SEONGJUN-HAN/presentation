@@ -1,24 +1,80 @@
-<div class="section-cover" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; position:relative; overflow:hidden;">
+<div class="sk tone-sky">
 
-    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 30% 50%, rgba(0,255,200,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(163,230,53,0.06) 0%, transparent 60%);"></div>
-  
-    <!-- 별빛 파티클 느낌 -->
-    <div style="position:absolute; top:15%; left:20%; width:4px; height:4px; border-radius:50%; background:rgba(0,255,200,0.6);"></div>
-    <div style="position:absolute; top:30%; right:25%; width:3px; height:3px; border-radius:50%; background:rgba(163,230,53,0.5);"></div>
-    <div style="position:absolute; bottom:25%; left:30%; width:5px; height:5px; border-radius:50%; background:rgba(0,255,200,0.4);"></div>
-    <div style="position:absolute; bottom:20%; right:20%; width:3px; height:3px; border-radius:50%; background:rgba(163,230,53,0.6);"></div>
-  
-    <div style="font-size:72px; margin-bottom:20px; position:relative; z-index:2;">🤖</div>
-  
-    <div style="background: linear-gradient(90deg, var(--accent), var(--accent-alt)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-size:15px; font-weight:700; letter-spacing:0.15em; margin-bottom:12px; text-transform:uppercase; position:relative; z-index:2;">Part 4</div>
-  
-    <h2 style="font-size:42px; font-weight:900; color:#fff; text-align:center; line-height:1.3; margin:0; position:relative; z-index:2;">
-      나도 할 수 있다:<br>
-      <span style="color:var(--accent);">LLM이라는 천군만마</span>
-    </h2>
-  
-    <p style="margin-top:20px; font-size:16px; color:var(--text-dim); text-align:center; position:relative; z-index:2;">
-      "저는 개발자가 아닙니다. 그런데 어떻게 이걸 다 만들었을까요?"
-    </p>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge">🔧 구현 도구</span>
+      <h2 class="s-title">Python — 저반복 업무도 자동화</h2>
+    </div>
+    <span class="s-pill">⏭️ 시간 부족하면 스킵 · 고반복 업무 아님</span>
   </div>
-  
+
+  <div class="cols">
+
+    <!-- 왼쪽: 개념 -->
+    <div class="col">
+
+      <div class="card card--plain center" style="gap:var(--sp-2);">
+        <i class="fa-brands fa-python hl" style="font-size:40px;"></i>
+        <div class="dim" style="font-size:var(--fs-xs);">범용 언어 — 계산 · 데이터 처리 · 문서 작성까지 뭐든 가능</div>
+      </div>
+
+      <ul class="list">
+        <li>여러 엑셀 파일을 읽어 하나로 병합·계산</li>
+        <li>엑셀 수식만으로 힘든 계산도 코드로는 간단</li>
+        <li class="is-warn">오늘 사례들은 1년에 몇 번 쓰는 저빈도 업무</li>
+      </ul>
+
+      <div class="note">
+        💡 <strong>솔직한 기준:</strong> 고반복이 아니어도 "계산 + 문서화"가 복잡하다면 여전히 시간을 아껴줍니다.
+      </div>
+
+    </div>
+
+    <!-- 오른쪽: 실전 사례 2건 -->
+    <div class="col">
+      <div class="dim" style="font-size:var(--fs-xs); font-weight:600; letter-spacing:.06em;">💼 실전 사례</div>
+
+      <div class="card">
+        <div class="row" style="align-items:flex-start; gap:var(--sp-3);">
+          <span style="font-size:var(--fs-h3);">📑</span>
+          <div style="flex:1; min-width:0;">
+            <div class="row row--between">
+              <span style="font-size:var(--fs-body); color:#fff; font-weight:700;">공공구매계획 자동 작성</span>
+              <span class="tag">Python_공공구매작성하기</span>
+            </div>
+            <div class="dim" style="font-size:var(--fs-sm); margin-top:4px; line-height:var(--lh-body);">
+              물품·용역·공사별 공공구매 비율에 맞춰 월별 계획 금액 자동 계산·작성
+            </div>
+          </div>
+        </div>
+        <div class="ba">
+          <div class="ba__item ba__before">Before<b>손계산 반나절</b></div>
+          <i class="fa-solid fa-arrow-right ba__arrow"></i>
+          <div class="ba__item ba__after">After<b>버튼 한 번</b></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="align-items:flex-start; gap:var(--sp-3);">
+          <span style="font-size:var(--fs-h3);">🤝</span>
+          <div style="flex:1; min-width:0;">
+            <div class="row row--between">
+              <span style="font-size:var(--fs-body); color:#fff; font-weight:700;">사무인계인수서 작성</span>
+              <span class="tag">Python_인수인계서_생성</span>
+            </div>
+            <div class="dim" style="font-size:var(--fs-sm); margin-top:4px; line-height:var(--lh-body);">
+              회계관직 변경 시 세입·세출 등 장표 여러 개를 자동 병합해 인수인계서 완성
+            </div>
+          </div>
+        </div>
+        <div class="ba">
+          <div class="ba__item ba__before">Before<b>장표 4종 수작업 취합</b></div>
+          <i class="fa-solid fa-arrow-right ba__arrow"></i>
+          <div class="ba__item ba__after">After<b>실행 한 번</b></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,47 +1,51 @@
 <h2 class="slide-title" data-important="true">
-    3단계. 버튼을 내 것으로 — 경로 바꾸기
+    3단계. 버튼 목록 만들기 — 한 줄 = 버튼 하나
     <span class="badge"><i class="fa-solid fa-star"></i> 내 런처 완성</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>바꿀 곳은 딱 두 군데</h3>
+            <h3>버튼을 늘리는 법</h3>
+            <p>코드를 여러 번 쓰지 않습니다. <strong>목록에 한 줄만 더</strong> 적으면 됩니다.</p>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    <strong>버튼 이름</strong> — 내 업무 이름으로
+                    <code>label</code> — 버튼에 보일 글자
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    <strong>Run 뒤의 경로</strong> — 내가 여는 파일·폴더·사이트로
+                    <code>run</code> — 열고 싶은 파일 · 폴더 · 사이트
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    <code>Bind</code> — 버튼마다 <strong>그 줄의 값으로 고정</strong>
                 </li>
             </ul>
-            <div class="info-box" style="padding: 16px 20px;">
-                <p style="font-size: 18px;"><i class="fa-solid fa-lightbulb"></i>&nbsp;
-                    경로 따는 법 — 파일을
-                    <strong style="color: var(--text-main)">Shift + 우클릭 → "경로로 복사"</strong>
+            <div class="info-box" style="padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-lightbulb"></i>&nbsp;
+                    경로 따는 법 —
+                    <strong style="color: var(--text-main)">파일 Shift + 우클릭 → "경로로 복사"</strong>
                 </p>
-                <p style="font-size: 18px; margin-top: 10px;"><i class="fa-solid fa-rotate-right"></i>&nbsp;
-                    고친 뒤에는 <code>F5</code> (또는 트레이 우클릭 →
-                    <strong style="color: var(--text-main)">Reload This Script</strong>)
+                <p style="font-size: 17px; margin-top: 8px;"><i class="fa-solid fa-rotate-right"></i>&nbsp;
+                    고친 뒤에는 <code>Ctrl + F9</code> 로 다시 실행
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; ▼ 여기만 바꾸세요 ① — 버튼 이름</span>
-<span class="c-keyword">Gui</span>, Add, Button, w260 gRun1, <span class="c-string">📄 업무일지 열기</span>
-<span class="c-keyword">Gui</span>, Add, Button, w260 gRun2, <span class="c-string">🌐 나이스 접속</span>
+<pre><span class="c-comment">; ▼ 여기만 바꾸세요 — 한 줄이 버튼 하나</span>
+buttons := [
+  { label: <span class="c-string">"📄 업무일지"</span>, run: <span class="c-string">"C:\업무\일지.xlsx"</span> },
+  { label: <span class="c-string">"🌐 나이스"</span>,  run: <span class="c-string">"https://neis.go.kr"</span> }
+]
 
-<span class="c-comment">; ▼ 여기만 바꾸세요 ② — 여는 대상</span>
-Run1:
-    <span class="c-keyword">Gui</span>, Destroy
-    <span class="c-keyword">Run</span>, <span class="c-string">C:\Users\내이름\Documents\업무일지.xlsx</span>
-<span class="c-keyword">Return</span>
-
-<span class="c-comment">; Run2, Run3 … 도 같은 방식</span></pre>
+<span class="c-comment">; ↓ 아래는 그대로 두세요</span>
+<span class="c-keyword">for</span> b <span class="c-keyword">in</span> buttons {
+    btn := myGui.AddButton(<span class="c-string">"w260"</span>, b.label)
+    btn.OnEvent(<span class="c-string">"Click"</span>, OpenIt.Bind(b.run))
+}</pre>
             </div>
         </div>
     </div>

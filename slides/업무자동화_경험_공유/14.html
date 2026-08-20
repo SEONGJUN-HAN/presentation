@@ -1,80 +1,83 @@
-<div style="height:100%; display:flex; flex-direction:column; padding:48px 56px; box-sizing:border-box; gap:24px;">
+<div class="sk tone-amber">
 
-    <div style="display:flex; align-items:center; gap:14px;">
-      <span class="badge" style="background:rgba(239,68,68,0.12); color:rgba(239,68,68,0.9); border-color:rgba(239,68,68,0.3);">④ 초급 · 빠른 구현</span>
-      <h2 class="slide-title" style="margin:0;">절대좌표 기반 자동화</h2>
-    </div>
-  
-    <div class="two-column" style="flex:1; gap:28px;">
-  
-      <!-- 왼쪽 -->
-      <div style="display:flex; flex-direction:column; gap:18px; justify-content:center;">
-  
-        <!-- 좌표 시각화 -->
-        <div style="background:rgba(0,0,0,0.3); border-radius:14px; padding:20px; position:relative; height:190px; overflow:hidden; border:1px solid rgba(255,255,255,0.06);">
-          <div style="font-size:11px; color:var(--text-dim); margin-bottom:8px;">모니터 화면</div>
-          <!-- 가상 화면 -->
-          <div style="position:relative; width:100%; height:130px; background:rgba(255,255,255,0.03); border-radius:8px; border:1px solid rgba(255,255,255,0.08);">
-            <!-- 십자선 -->
-            <div style="position:absolute; left:55%; top:0; bottom:0; width:1px; background:rgba(239,68,68,0.4); border:none;"></div>
-            <div style="position:absolute; top:45%; left:0; right:0; height:1px; background:rgba(239,68,68,0.4);"></div>
-            <!-- 좌표 점 -->
-            <div style="position:absolute; left:calc(55% - 6px); top:calc(45% - 6px); width:12px; height:12px; border-radius:50%; background:rgba(239,68,68,0.9);"></div>
-            <!-- 좌표 라벨 -->
-            <div style="position:absolute; left:57%; top:30%; font-size:13px; color:rgba(239,68,68,0.9); font-family:monospace; font-weight:700;">(720, 340)</div>
-            <div style="position:absolute; right:10px; bottom:8px; font-size:10px; color:var(--text-dim);">1920 * 1080</div>
-          </div>
-        </div>
-  
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-circle-check" style="color:rgba(239,68,68,0.8);"></i>
-            <span>가장 빠르게 구현 가능 (5분 내)</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.8);">
-            <i class="fa-solid fa-circle-check" style="color:rgba(239,68,68,0.8);"></i>
-            <span>코딩 몰라도 마우스 레코더로 바로 사용</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.5);">
-            <i class="fa-solid fa-circle-xmark" style="color:rgba(239,68,68,0.6);"></i>
-            <span>화면 조금만 바뀌어도 즉시 깨짐</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:rgba(255,255,255,0.5);">
-            <i class="fa-solid fa-circle-xmark" style="color:rgba(239,68,68,0.6);"></i>
-            <span>해상도 · 창 크기 변경에 매우 취약</span>
-          </div>
-        </div>
-      </div>
-  
-      <!-- 오른쪽 -->
-      <div style="display:flex; flex-direction:column; justify-content:center; gap:14px;">
-        <div style="font-size:13px; color:var(--text-dim); font-weight:600; letter-spacing:0.08em; margin-bottom:4px;">💼 실전 사례</div>
-  
-        <div style="background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.2); border-radius:14px; padding:20px; display:flex; flex-direction:column; gap:12px;">
-          <div style="display:flex; gap:12px; align-items:flex-start;">
-            <span style="font-size:22px;">💬</span>
-            <div>
-              <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:15px; color:#fff; font-weight:700;"><span>JBEdu 메신저 자동화</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px; white-space:nowrap;">AHK_통합연락처</span></div>
-              <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">고정된 UI에서 단순 반복 클릭 자동화</div>
-            </div>
-          </div>
-          <div style="display:flex; gap:12px; align-items:flex-start;">
-            <span style="font-size:22px;">🎮</span>
-            <div>
-              <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:15px; color:#fff; font-weight:700;"><span>마우스 레코더 / 단순 매크로</span><span style="font-size:9px; color:rgba(255,255,255,0.12); font-weight:400; margin-left:8px; white-space:nowrap;">AHK_마우스레코더.ahk / Automation_Runner.ahk</span></div>
-              <div style="font-size:13px; color:var(--text-dim); margin-top:3px;">녹화 후 재생 — 가장 입문하기 쉬운 방식</div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="info-box" style="padding:16px 18px; border-left:3px solid rgba(239,68,68,0.6);">
-          <p style="margin:0; font-size:14px; color:#fff; line-height:1.7;">
-            ⚡ <strong style="color:rgba(239,68,68,0.9);">언제 써야 하나?</strong><br>
-            <span style="font-size:13px; color:var(--text-dim);">화면이 절대 바뀌지 않는 고정 환경,<br>딱 한두 번 쓸 초단기 자동화에 적합</span>
-          </p>
-        </div>
-  
-      </div>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge">③ 중급 완성도</span>
+      <h2 class="s-title">이미지 기반 자동화</h2>
     </div>
   </div>
-  
+
+  <div class="cols">
+
+    <!-- 왼쪽 -->
+    <div class="col">
+
+      <div class="card card--plain center" style="gap:var(--sp-3);">
+        <div class="dim" style="font-size:var(--fs-xs);">작동 원리</div>
+        <div class="row" style="justify-content:center; gap:var(--sp-3);">
+          <div class="center" style="background:var(--tone-bg-2); border:1px dashed var(--tone-border);
+                                     border-radius:var(--r-sm); padding:10px 16px;">
+            <div class="dim" style="font-size:var(--fs-micro);">등록한 이미지</div>
+            <i class="fa-solid fa-image hl" style="font-size:24px; margin-top:4px;"></i>
+          </div>
+          <div class="hl" style="font-size:22px;">👁️</div>
+          <div class="center" style="background:var(--tone-bg-2); border:1px dashed var(--tone-border);
+                                     border-radius:var(--r-sm); padding:10px 16px;">
+            <div class="dim" style="font-size:var(--fs-micro);">화면에서 발견</div>
+            <i class="fa-solid fa-magnifying-glass hl" style="font-size:24px; margin-top:4px;"></i>
+          </div>
+          <div class="hl" style="font-size:22px;">→</div>
+          <div class="center" style="background:var(--tone-bg-2); border:1px dashed var(--tone-border);
+                                     border-radius:var(--r-sm); padding:10px 16px;">
+            <div class="dim" style="font-size:var(--fs-micro);">자동 클릭!</div>
+            <i class="fa-solid fa-computer-mouse hl" style="font-size:24px; margin-top:4px;"></i>
+          </div>
+        </div>
+      </div>
+
+      <ul class="list">
+        <li>개발자가 아니어도 직관적으로 설정</li>
+        <li>웹 · 데스크탑 앱 모두 적용 가능</li>
+        <li class="is-warn">해상도·테마 변경 시 인식 실패 가능</li>
+      </ul>
+
+      <div class="note">
+        💡 <strong>추천 언어:</strong> AutoHotkey
+      </div>
+
+    </div>
+
+    <!-- 오른쪽 -->
+    <div class="col">
+      <div class="dim" style="font-size:var(--fs-xs); font-weight:600; letter-spacing:.06em;">💼 실전 사례</div>
+
+      <div class="card">
+        <div class="row" style="align-items:flex-start; gap:var(--sp-3);">
+          <span style="font-size:24px;">🖱️</span>
+          <div>
+            <div style="font-size:var(--fs-body); color:#fff; font-weight:700;">
+              원인행위, 문서접수, 결재 요청 등 복잡한 UI 클릭 자동화
+            </div>
+            <div class="dim" style="font-size:var(--fs-sm); margin-top:4px; line-height:var(--lh-body);">
+              매일 반복되는 복잡한 버튼 순서 클릭을<br>이미지 인식으로 완전 자동 처리
+            </div>
+          </div>
+        </div>
+
+        <div style="position:relative; width:100%; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:var(--r-sm);">
+          <iframe
+            style="position:absolute; top:0; left:0; width:100%; height:100%;"
+            src="https://www.youtube.com/embed/nJSe5m9mYIM?si=IVtbKty3w2EOa0Zg"
+            title="이미지 기반 자동화 시연 영상"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
