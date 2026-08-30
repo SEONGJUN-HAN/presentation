@@ -1,56 +1,54 @@
 <h2 class="slide-title" data-important="true">
-    응용 ①. AI를 한글 문서 안으로
-    <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i> 공문 다듬기</span>
+    8단계. 버튼이 많아지면 — 그룹과 열
+    <span class="badge"><i class="fa-solid fa-layer-group"></i> 목록을 한 겹 감싸기</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        문장을 <strong style="color: var(--text-main)">드래그하고 단축키 하나</strong>면,
-        AI가 공문체로 다듬어 <strong style="color: var(--accent)">그 자리에 바로 넣어줍니다.</strong>
-    </p>
-
     <div class="two-column">
         <div>
-            <h3>준비는 한 번만</h3>
+            <h3>버튼이 많아지면 화면을 넘어갑니다</h3>
+            <p>창 그리는 코드는 그대로. <strong>목록을 그룹으로 한 겹 감싸면</strong> 끝입니다.</p>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-1"></i>
-                    <a href="https://aistudio.google.com" target="_blank"
-                       style="color: var(--accent);">aistudio.google.com</a>
-                    에서 <strong>무료 API 키</strong> 발급 (구글 계정 필요)
+                    <i class="fa-solid fa-box"></i>
+                    <code>{ col, title, items }</code> &mdash;
+                    <strong>몇 번째 열</strong>에 <strong>무슨 제목</strong>으로 <strong>어떤 버튼들</strong>
                 </li>
                 <li>
-                    <i class="fa-solid fa-2"></i>
-                    옆에 <code>gemini_key.txt</code> 만들고 <strong>키 붙여넣기</strong>
+                    <i class="fa-solid fa-repeat"></i>
+                    <code>for</code> 가 두 겹이 됩니다 &mdash;
+                    그룹을 돌고, 그 안의 버튼을 돕니다
                 </li>
                 <li>
-                    <i class="fa-solid fa-3"></i>
-                    문장 드래그 → <code>Ctrl + Alt + G</code>
+                    <i class="fa-solid fa-check"></i>
+                    좌표 계산은 <strong>그대로 두세요</strong> &mdash;
+                    버튼이 2개든 30개든 안 고칩니다
                 </li>
             </ul>
-            <div class="info-box" style="border-left-color: #f59e0b; padding: 14px 20px;">
-                <p style="font-size: 17px;">
-                    <i class="fa-solid fa-key" style="color: #f59e0b;"></i>&nbsp;
-                    키를 <strong style="color: var(--text-main)">파일로 분리</strong>한 이유 —
-                    스크립트를 남에게 줘도 <strong style="color: var(--text-main)">키가 딸려가지 않습니다.</strong>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-star"></i>&nbsp;
+                    <strong style="color: var(--text-main)">이게 강사 런처와 똑같은 구조입니다.</strong>
+                    거긴 열이 3개일 뿐입니다.
                 </p>
             </div>
         </div>
-
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 드래그한 문장을 AI에게 보내고</span>
-<span class="c-comment">; 받은 문장으로 그 자리를 교체</span>
-^!g::
-{
-    <span class="c-keyword">A_Clipboard</span> := <span class="c-string">""</span>      <span class="c-comment">; 먼저 비우기!</span>
-    <span class="c-keyword">Send</span>(<span class="c-string">"^c"</span>)
-    <span class="c-keyword">ClipWait</span>(1)
+<pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 그룹 하나가 이렇게</span>
+g := { col: <span class="c-number">1</span>, title: <span class="c-string">"문서·폴더"</span>, items: [] }
+g.items.Push({ key: <span class="c-string">"1"</span>, label: <span class="c-string">"업무일지"</span>,
+               run: g_PathWorkLog })
+<span class="c-comment">; (한 줄 더 붙이면 버튼 하나 더)</span>
+m.Push(g)
 
-    답 := AskGemini(키, 프롬프트 . <span class="c-keyword">A_Clipboard</span>)
-    <span class="c-keyword">A_Clipboard</span> := 답
-    <span class="c-keyword">Send</span>(<span class="c-string">"^v"</span>)      <span class="c-comment">; 선택된 문장을 교체</span>
+<span class="c-comment">; ↓ 아래는 그대로 — for 가 두 겹이 됩니다</span>
+<span class="c-keyword">for</span> grp <span class="c-keyword">in</span> BuildMyMenu()      <span class="c-comment">; ① 그룹</span>
+{
+    lg.AddGroupBox(..., grp.title)
+    <span class="c-keyword">for</span> it <span class="c-keyword">in</span> grp.items       <span class="c-comment">; ② 그 안의 버튼</span>
+        btn.OnEvent(<span class="c-string">"Click"</span>,
+                    RunMenuItem.Bind(it))
 }</pre>
             </div>
         </div>

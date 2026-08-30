@@ -3,7 +3,8 @@
 ;  나만의 업무 런처  (내업무도구.ahk)  — AutoHotkey v2
 ; ------------------------------------------------------------
 ;  ▶ 실행       : VS Code에서 Ctrl + F9   (중지는 Ctrl + F6)
-;  ▶ 런처 열기  : Ctrl + Alt + L
+;  ▶ 런처 열기  : Ctrl + Alt + L           (0~6단계에서 만드는 기본형)
+;                 Ctrl + Alt + Shift + L   (7~9단계에서 키우는 실전형)
 ;
 ;  ★ 슬라이드의 [N단계] = 이 파일의 [N단계] 주석 위치입니다.
 ;  ★ 바꿀 곳은 전부 "▼ 여기만 바꾸세요" 로 표시해 두었습니다.
@@ -179,11 +180,189 @@ WriteTodo(*)
 ShowMyHelp(*)
 {
     MsgBox("단축키 안내`n`n"
-         . "Ctrl+Alt+L : 런처 열기`n"
-         . "Ctrl+Alt+N : 나이스 바로가기`n"
+         . "Ctrl+Alt+L       : 런처 열기 (기본형)`n"
+         . "Ctrl+Alt+Shift+L : 런처 열기 (실전형)`n"
+         . "Ctrl+Alt+N       : 나이스 바로가기`n"
          . "/tel  /mail  /hi  /sign : 상용구`n"
-         . "Ctrl+Alt+1~3 : 빠른 붙여넣기",
+         . "Ctrl+Alt+1~3     : 빠른 붙여넣기",
            "나만의 업무 도구")
+}
+
+
+; ############################################################
+;  [7~9단계] 실전형 런처 — 여기서부터는 '키우는' 단계입니다
+; ------------------------------------------------------------
+;  위에서 만든 Ctrl + Alt + L 런처는 그대로 둡니다.
+;  대신 Ctrl + Alt + Shift + L 로 열리는 '실전형'을 나란히 만들어서,
+;  둘을 번갈아 열어 보며 무엇이 늘었는지 눈으로 비교합니다.
+;
+;     [7단계]  key    → Alt + 글자로 버튼 바로 실행
+;     [8단계]  col    → 버튼이 많아지면 '그룹'과 '열'로 나누기
+;     [9단계]  경로   → 경로를 한 곳에 모으고, 없으면 어디를 고칠지 알려주기
+;
+;  ★ 늘어나는 건 목록 한 줄에 적는 항목뿐입니다.
+;     { label, run }  →  { key, label, run }  →  { col, title, items }
+;     뼈대(목록 → for → Bind → 실행함수)는 처음부터 끝까지 그대로입니다.
+; ############################################################
+
+^!+l::ShowLauncher2()
+
+
+; ============================================================
+;  [9단계] 경로는 한 곳에 모읍니다
+; ------------------------------------------------------------
+;  버튼 목록 안에 경로를 직접 쓰면, PC를 바꿨을 때 목록을 다 뒤져야 합니다.
+;  이렇게 위로 빼두면 "여기만" 고치면 됩니다.
+;
+;  ※ 강사 실전판에서는 이 블록이 파일 맨 위 [2. 경로 설정] 에 있습니다.
+;     여기서는 단계 순서대로 보이도록 이 자리에 두었습니다.
+; ============================================================
+; ▼▼▼ 여기만 바꾸세요 ▼▼▼
+global g_PathWorkLog    := A_MyDocuments . "\업무일지.xlsx"
+global g_PathWorkFolder := A_MyDocuments . "\업무"
+global g_PathNeis       := "https://www.neis.go.kr"
+global g_PathEdufine    := "https://klef.jbe.go.kr"
+; ▲▲▲ 여기까지 ▲▲▲
+
+global g_Gui2 := ""          ; 실전형 런처 창을 담아 둘 자리
+
+
+; ============================================================
+;  [7·8단계] 버튼 목록 — key(단축글자) 와 col·그룹이 붙었습니다
+; ------------------------------------------------------------
+;     key   : Alt + 이 글자로 바로 실행 (버튼에 밑줄로 표시됩니다)
+;     label : 버튼에 보일 글자
+;     run   : 열고 싶은 파일 · 폴더 · 사이트
+;     go    : (파일 대신) 실행할 함수 이름
+;     col   : 몇 번째 열에 놓을지 (1 또는 2)
+; ============================================================
+BuildMyMenu()
+{
+    m := []                                   ; 그룹들을 담을 빈 목록
+
+    ; ▼▼▼ 여기만 바꾸세요 — 한 줄이 버튼 하나 ▼▼▼
+    g := { col: 1, title: "📄  문서 · 폴더", items: [] }
+    g.items.Push({ key: "1", label: "📄  업무일지 열기", run: g_PathWorkLog })
+    g.items.Push({ key: "2", label: "📁  내 업무 폴더",  run: g_PathWorkFolder })
+    m.Push(g)
+
+    g := { col: 1, title: "🌐  자주 가는 곳", items: [] }
+    g.items.Push({ key: "3", label: "🌐  나이스",   run: g_PathNeis })
+    g.items.Push({ key: "4", label: "🌐  에듀파인", run: g_PathEdufine })
+    m.Push(g)
+
+    g := { col: 2, title: "⚙  자주 하는 일", items: [] }
+    g.items.Push({ key: "Q", label: "📝  메모장에 할 일 쓰기", go: WriteTodo })
+    g.items.Push({ key: "F", label: "❓  단축키 도움말",       go: ShowMyHelp })
+    m.Push(g)
+    ; ▲▲▲ 여기까지 ▲▲▲
+
+    return m
+}
+
+; 버튼을 눌렀을 때 실제로 실행되는 부분 — [3단계]의 RunItem 과 하는 일이 같습니다.
+;   달라진 건 Run 대신 RunTarget 을 부른다는 것뿐입니다. ([9단계])
+RunMenuItem(item, *)
+{
+    CloseLauncher2()
+    if item.HasOwnProp("go")
+        item.go()
+    else
+        RunTarget(item.run)
+}
+
+
+; ============================================================
+;  [8단계] 실전형 런처 창 만들기
+; ------------------------------------------------------------
+;  아래 그리는 코드는 그대로 두세요. 목록이 늘어도 이 코드는 안 바뀝니다.
+;  ("버튼 하나 = 코드 한 줄"이 아니라 "버튼 하나 = 목록 한 줄"이 되는 이유입니다)
+; ============================================================
+ShowLauncher2(*)
+{
+    global g_Gui2
+
+    M := 20, ColW := 240, ColGap := 14        ; 여백 · 열 너비 · 열 간격
+    BtnH := 36, BtnGap := 7                   ; 버튼 높이 · 버튼 간격
+    GrpTop := 24, GrpPad := 12, TopY := 60    ; 그룹 제목 높이 · 그룹 아래 여백 · 시작 y
+
+    WinW := M * 2 + ColW * 2 + ColGap
+    CloseLauncher2()
+
+    lg := Gui("+AlwaysOnTop +ToolWindow", "나만의 런처 (실전형)")
+    lg.BackColor := "F7F8FA"
+    lg.SetFont("s13 bold", "맑은 고딕")
+    lg.AddText("x" M " y16 w" (WinW - M * 2), "🚀  나만의 런처")
+    lg.SetFont("s9 norm", "맑은 고딕")
+    lg.AddText("x" M " y+4 w" (WinW - M * 2), "Alt + 표시된 글자로 바로 실행,  Esc 로 닫기")
+
+    colX := [ M, M + ColW + ColGap ]           ; 각 열의 x 좌표
+    colY := [ TopY, TopY ]                     ; 각 열에서 다음에 그릴 y 좌표
+
+    for grp in BuildMyMenu()                   ; 그룹을 하나씩 꺼내서
+    {
+        c := grp.col, n := grp.items.Length
+        gx := colX[c], gy := colY[c]
+        gh := GrpTop + n * BtnH + (n - 1) * BtnGap + GrpPad    ; 그룹 상자 높이
+
+        lg.SetFont("s10 bold", "맑은 고딕")
+        lg.AddGroupBox("x" gx " y" gy " w" ColW " h" gh, grp.title)
+
+        lg.SetFont("s10 norm", "맑은 고딕")
+        by := gy + GrpTop
+        for it in grp.items                    ; 그 그룹의 버튼을 하나씩
+        {
+            ; [7단계] 글자 앞의 & 는 "Alt + 그 글자"로 누를 수 있게 해줍니다.
+            btn := lg.AddButton("x" (gx + 14) " y" by " w" (ColW - 28) " h" BtnH,
+                                it.label . " (&" . it.key . ")")
+            btn.OnEvent("Click", RunMenuItem.Bind(it))         ; [3단계]와 똑같은 Bind
+            by += BtnH + BtnGap
+        }
+        colY[c] := gy + gh + 12
+    }
+
+    footY := Max(colY[1], colY[2])
+    close := lg.AddButton("x" M " y" footY " w" (WinW - M * 2) " h34 Default", "❌  닫기 (Esc)")
+    close.OnEvent("Click", (*) => CloseLauncher2())
+
+    lg.OnEvent("Close",  (*) => CloseLauncher2())
+    lg.OnEvent("Escape", (*) => CloseLauncher2())
+
+    g_Gui2 := lg
+    lg.Show("w" WinW " h" (footY + 34 + M) " Center")
+}
+
+CloseLauncher2()
+{
+    global g_Gui2
+    if IsObject(g_Gui2)
+    {
+        try g_Gui2.Destroy()
+        g_Gui2 := ""
+    }
+}
+
+
+; ============================================================
+;  [9단계] 친절하게 여는 함수
+; ------------------------------------------------------------
+;  그냥 Run 을 쓰면, 경로를 잘못 적었을 때 아무 일도 안 일어납니다.
+;  "왜 안 되지?" 로 30분을 쓰게 되는 지점이라, 실전판은 이렇게 알려줍니다.
+; ============================================================
+RunTarget(target)
+{
+    isUrl := (SubStr(target, 1, 4) = "http")           ; 사이트 주소인가?
+
+    if (!isUrl && !FileExist(target))                  ; 파일인데 없으면 알려주기
+    {
+        MsgBox("경로가 없습니다.`n`n" . target
+             . "`n`n[9단계] 경로 설정을 고쳐 주세요.", "찾을 수 없음", 48)
+        return
+    }
+    ; catch 는 뒤에 에러 종류를 적는 자리라, 실행할 내용은 다음 줄에 씁니다.
+    try Run(isUrl ? target : '"' . target . '"')
+    catch
+        MsgBox("실행할 수 없습니다.`n`n" . target, "실행 실패", 48)
 }
 
 

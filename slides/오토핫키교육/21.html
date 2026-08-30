@@ -1,62 +1,62 @@
 <h2 class="slide-title" data-important="true">
-    직접 AI에게 시켜보기 (바이브코딩 실전)
-    <span class="badge"><i class="fa-solid fa-robot"></i> 직접 해보기</span>
+    7단계. 버튼에 단축키 달기 — <code>key</code> 한 칸 추가
+    <span class="badge"><i class="fa-solid fa-seedling"></i> 여기부터 키우기</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        이미 만든 편리한 프로그램(<strong style="color: var(--text-main)">.exe · 로컬 html</strong>)을,
-        백지에서 짜지 말고
-        <strong style="color: var(--accent)">있는 런처에 '버튼 + Run'만 AI로 추가</strong>해 연결합시다.
+    <p style="font-size: 17px; margin-bottom: 8px;">
+        지금부터 <strong style="color: var(--accent)">목록에 칸을 하나씩 더 붙여</strong>
+        강사 런처의 골격까지 갑니다. <strong style="color: var(--text-main)">코드 구조는 하나도 안 바뀝니다.</strong>
     </p>
 
     <div class="two-column">
         <div>
-            <h3>이렇게 시킵니다</h3>
+            <h3>마우스로 찾아 누르면 런처가 아깝습니다</h3>
+            <p>
+                창을 띄우고 &rarr; 눈으로 찾고 &rarr; 클릭. 그러면 결국 바탕화면 아이콘과 같습니다.
+                <strong>손이 키보드를 떠나지 않게</strong> 만들어 봅시다.
+            </p>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    런처(<code>내업무도구.ahk</code>) 코드 <strong>전부 복사</strong> → AI에 붙여넣기
+                    목록 한 줄에 <code>key: "1"</code> 만 추가
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    "이 프로그램 여는 <strong>버튼과 Run 추가</strong>해줘"
-                    (<span style="color:var(--accent)">v2</span> 명시)
+                    버튼 글자 뒤에 <code>(&amp;1)</code> 을 붙여서 만들기
                 </li>
                 <li>
-                    <i class="fa-solid fa-3"></i>
-                    교체 → <code>Ctrl+F9</code> → 에러 나면 <strong>메시지 복붙해서 고쳐줘</strong>
+                    <i class="fa-solid fa-check"></i>
+                    <code>&amp;</code> 는 윈도우에게
+                    <strong>"Alt + 이 글자로 누를 수 있다"</strong>고 알리는 표시
                 </li>
             </ul>
-            <div class="info-box">
-                <p>
-                    <i class="fa-solid fa-lightbulb"></i>&nbsp;
-                    <strong style="color: var(--text-main)">절대경로</strong>는 파일 우클릭 →
-                    <strong style="color: var(--text-main)">"경로로 복사"</strong>.
-                </p>
-                <p style="margin-top: 10px;">
-                    <i class="fa-solid fa-list-check"></i>&nbsp;
-                    <strong style="color: var(--text-main)">더 시켜보기</strong> —
-                    폴더 열기 버튼 · 새 핫스트링 · 사이트 여러 개 열기
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-keyboard"></i>&nbsp;
+                    <code>Ctrl+Alt+Shift+L</code> &rarr; <code>Alt+1</code> &mdash;
+                    창이 뜨자마자 <strong style="color: var(--text-main)">보지도 않고</strong> 실행.
+                    한 런처 안에서 <strong style="color: var(--text-main)">key 는 서로 다르게</strong>.
                 </p>
             </div>
         </div>
-
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; ── AI에게 이렇게 요청 ──</span>
+<pre style="font-size: 16px;"><span class="c-comment">; 지금까지 (3단계)</span>
+{ label: <span class="c-string">"업무일지"</span>, run: g_PathWorkLog }
 
-아래는 내 AutoHotkey <span class="c-keyword">v2</span> 런처야.
-여기에 버튼을 하나 추가하고,
-누르면 이 프로그램이 열리도록
-<span class="c-keyword">Run</span> 도 연결해줘.
+<span class="c-comment">; key 한 칸만 추가하면</span>
+{ key: <span class="c-string">"1"</span>, label: <span class="c-string">"업무일지"</span>, run: g_PathWorkLog }
+  <span class="c-comment">↑ Alt + 1 로 바로 실행</span>
 
-프로그램 경로:
-"C:\Tools\민원접수도우미.exe"
-버튼 이름: 📋 민원접수 도우미
 
-<span class="c-comment">; (그 아래 런처 코드 전체 붙여넣기)</span></pre>
+<span class="c-comment">; 버튼 만드는 곳도 딱 한 줄만 바뀝니다</span>
+btn := lg.AddButton(<span class="c-string">"w220 h36"</span>,
+        it.label . <span class="c-string">" (&amp;"</span> . it.key . <span class="c-string">")"</span>)
+<span class="c-comment">;                    ↑ 여기가 Alt 표시</span>
+
+btn.OnEvent(<span class="c-string">"Click"</span>, RunMenuItem.Bind(it))
+<span class="c-comment">;                  ↑ 3단계와 똑같은 Bind</span></pre>
             </div>
         </div>
     </div>
