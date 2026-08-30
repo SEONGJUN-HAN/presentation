@@ -9,7 +9,7 @@
             <h3>좌표는 창만 옮겨도 깨집니다</h3>
             <p>
                 <strong>"이 그림이 있는 자리"</strong>를 찾아서 누르면
-                창이 어디에 있든 맞습니다. 이게 실전에서 쓰는 방식입니다.
+                창이 어디에 있든 맞습니다. <strong>두 줄이면 됩니다.</strong>
             </p>
             <ul class="checklist-icon">
                 <li>
@@ -19,11 +19,12 @@
                 <li>
                     <i class="fa-solid fa-paintbrush"></i>
                     <code>mspaint</code> &rarr; <code>Ctrl+V</code> &rarr; <code>Ctrl+S</code> 로
-                    <strong>클릭이미지</strong> 폴더에 PNG 저장
+                    PNG 저장
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    파일 이름만 코드에 적으면 끝
+                    <i class="fa-solid fa-copy"></i>
+                    저장한 파일 <strong>Shift + 우클릭 &rarr; "경로로 복사"</strong> &rarr;
+                    따옴표 안에 붙여넣기
                 </li>
             </ul>
             <div class="info-box" style="border-left-color: #f59e0b; padding: 12px 20px;">
@@ -38,23 +39,22 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre style="font-size: 15px;"><span class="c-comment">; [클릭 3] 그림 찾아 누르기 : Ctrl + Alt + V</span>
-<span class="c-comment">; ▼ 여기만 바꾸세요 (저장한 파일 이름)</span>
-^!v::ClickImage(<span class="c-string">"계산기_5.png"</span>)
-
-ClickImage(fileName)
+<pre style="font-size: 16px;"><span class="c-comment">; [클릭 3] 그림 찾아 누르기 : Ctrl + Alt + V</span>
+^!v::
 {
-    imgPath := A_ScriptDir . <span class="c-string">"\클릭이미지\"</span> . fileName
-    <span class="c-comment">; *50 = 색이 조금 달라도 같은 것으로</span>
-    found := <span class="c-keyword">false</span>
-    <span class="c-keyword">try</span> found := ImageSearch(&amp;fx, &amp;fy,
+    <span class="c-comment">; ▼ 여기만 바꾸세요 ("경로로 복사" 붙여넣기)</span>
+    ImageSearch(&amp;x, &amp;y,
         <span class="c-number">0</span>, <span class="c-number">0</span>, A_ScreenWidth, A_ScreenHeight,
-        <span class="c-string">"*50 "</span> . imgPath)
-    <span class="c-keyword">if</span> found
-        Click(fx + <span class="c-number">10</span>, fy + <span class="c-number">10</span>)   <span class="c-comment">; 찾은 자리를 누름</span>
-    <span class="c-keyword">else</span>
-        MsgBox(<span class="c-string">"그 그림을 못 찾았습니다."</span>)
-}</pre>
+        <span class="c-string">"C:\Users\내이름\Pictures\계산기_5.png"</span>)
+    Click(x, y)
+}
+
+<span class="c-comment">; 첫 줄 — 화면에서 그림을 찾아</span>
+<span class="c-comment">;         그 자리를 x, y 에 담아라</span>
+<span class="c-comment">; 둘째 줄 — 그 자리를 눌러라</span>
+<span class="c-comment">; 못 찾으면 오류 없이 '지금 마우스 자리'를</span>
+<span class="c-comment">; 누릅니다. 엉뚱한 데가 눌리면</span>
+<span class="c-comment">; 그림을 못 찾은 것입니다.</span></pre>
             </div>
         </div>
     </div>

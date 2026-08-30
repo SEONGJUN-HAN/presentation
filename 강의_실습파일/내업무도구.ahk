@@ -38,13 +38,13 @@ global g_Gui := ""           ; 런처 창을 담아 둘 자리 (맨 위에서 �
 ; ------------------------------------------------------------
 ;  ^ = Ctrl,  ! = Alt,  + = Shift,  # = Win
 ; ============================================================
-^!n::Run("https://www.neis.go.kr")       ; Ctrl+Alt+N → 나이스
+^!n::Run("https://www.naver.com")        ; Ctrl+Alt+N → 네이버
 
 ; 할 일이 여러 줄이면 { } 로 묶습니다
 ^!k::
 {
-    Run("https://www.neis.go.kr")
-    Run("https://klef.jbe.go.kr")
+    Run("https://www.naver.com")
+    Run("https://www.google.com")
 }
 
 
@@ -75,8 +75,8 @@ ShowLauncher(*)
     b1 := g_Gui.AddButton("xm w280 h34", "📄  업무일지 열기")
     b1.OnEvent("Click", (*) => OpenIt("C:\Users\내이름\Documents\업무일지.xlsx"))
 
-    b2 := g_Gui.AddButton("xm w280 h34", "🌐  나이스 접속")
-    b2.OnEvent("Click", (*) => OpenIt("https://www.neis.go.kr"))
+    b2 := g_Gui.AddButton("xm w280 h34", "🌐  네이버 열기")
+    b2.OnEvent("Click", (*) => OpenIt("https://www.naver.com"))
 
     b3 := g_Gui.AddButton("xm w280 h34", "📁  올해 업무 폴더")
     b3.OnEvent("Click", (*) => OpenIt("C:\Users\내이름\Documents\2026_업무"))
@@ -200,7 +200,7 @@ ShowMyHelp(*)
     MsgBox("단축키 안내`n`n"
          . "Ctrl+Alt+L       : 런처 열기 (기본형)`n"
          . "Ctrl+Alt+Shift+L : 런처 열기 (실전형)`n"
-         . "Ctrl+Alt+N       : 나이스 바로가기`n"
+         . "Ctrl+Alt+N       : 네이버 바로가기`n"
          . "/tel  /mail  /hi  /sign : 상용구`n"
          . "Ctrl+Alt+1~3     : 빠른 붙여넣기`n"
          . "Ctrl+Alt+C/X/V   : 클릭 1·2·3단계",
@@ -247,43 +247,28 @@ CoordMode "Mouse", "Screen"      ; WindowSpy 와 같은 '화면 전체' 기준
 ;    좌표는 창을 옮기거나 해상도가 바뀌면 그대로 깨집니다.
 ;    "이 그림이 있는 자리"를 찾아 누르면 창이 어디에 있든 맞습니다.
 ;
-;    ▶ 그림 만드는 법 (한 번만 해 보면 감이 옵니다)
+;    ▶ 그림 만드는 법
 ;       1) Win + Shift + S  →  누르고 싶은 버튼만 잘라내기
 ;       2) Win + R → mspaint → Ctrl + V
 ;       3) Ctrl + S → 옆의 '클릭이미지' 폴더에 PNG 로 저장
+;       4) 저장한 파일 Shift + 우클릭 → "경로로 복사" → 아래 따옴표 안에 붙여넣기
 ;
-;    ※ 잘라낼 때 버튼 주변 배경까지 넓게 넣으면 잘 못 찾습니다. 버튼만 딱.
-;    ※ 배경이 '투명'한 PNG 는 절대 못 찾습니다. 그림판으로 저장하면 안전합니다.
-;       (옆 이모티콘 폴더의 배경지우기.html 로 만든 그림은 여기에 쓸 수 없습니다)
-;    ※ 화면 배율(125% 등)이 다른 PC에서 만든 그림도 안 맞습니다.
-;       그래서 그림은 반드시 '내 PC에서 내가' 캡처해야 합니다.
-; ▼▼▼ 여기만 바꾸세요 (저장한 파일 이름) ▼▼▼
-^!v::ClickImage("계산기_5.png")
-
-
-ClickImage(fileName)
+;    아래 두 줄이 전부입니다.
+;       첫 줄 : 화면 전체에서 그림을 찾아 그 자리를 &x, &y 에 담아라
+;       둘째 줄 : 그 자리를 눌러라
+;
+;    ※ 못 찾아도 오류창이 안 뜹니다. 그냥 '지금 마우스가 있는 자리'를 누릅니다.
+;       → 엉뚱한 데가 눌리거나 아무 일도 없어 보이면, 그림을 못 찾은 것입니다.
+;    ※ 버튼 주변 배경까지 넓게 자르면 못 찾습니다. 버튼만 딱.
+;    ※ 배경이 '투명'한 PNG 는 절대 못 찾습니다. 그림판으로 저장하세요.
+;    ※ 화면 배율이 다른 PC에서 만든 그림도 안 맞습니다. 내 PC에서 내가 캡처.
+^!v::
 {
-    imgPath := A_ScriptDir . "\클릭이미지\" . fileName
-
-    if !FileExist(imgPath)
-    {
-        MsgBox("이미지 파일이 없습니다.`n`n" . imgPath
-             . "`n`n먼저 버튼을 캡처해서 이 이름으로 저장하세요.", "클릭 이미지", 48)
-        return
-    }
-
-    ; 화면 전체에서 그 그림을 찾습니다.
-    ;   *50 = 색이 조금 달라도 같은 것으로 봐 줍니다. (못 찾으면 숫자를 올려 보세요)
-    found := false
-    try found := ImageSearch(&fx, &fy, 0, 0, A_ScreenWidth, A_ScreenHeight,
-                             "*50 " . imgPath)
-
-    if found
-        Click(fx + 10, fy + 10)          ; 찾은 자리를 누릅니다
-    else
-        MsgBox("화면에서 그 그림을 못 찾았습니다.`n`n" . fileName
-             . "`n`n· 그 창이 화면에 보이고 있나요?`n"
-             . "· 캡처할 때 배경을 너무 넓게 넣지 않았나요?", "클릭 이미지", 48)
+    ; ▼▼▼ 여기만 바꾸세요 (따옴표 안에 "경로로 복사" 붙여넣기) ▼▼▼
+    ImageSearch(&x, &y, 0, 0, A_ScreenWidth, A_ScreenHeight,
+                "C:\Users\내이름\Pictures\계산기_5.png")
+    Click(x, y)
+    ; ▲▲▲ 여기까지 ▲▲▲
 }
 
 
@@ -331,8 +316,8 @@ global g_PathContact  := A_ScriptDir . "\통합연락처\통합연락처.ahk"
 
 ; ▼▼▼ 여기만 바꾸세요 — 내 것들 ▼▼▼
 global g_PathMyDocs  := A_MyDocuments                     ; 내 문서 폴더
-global g_PathNeis    := "https://www.neis.go.kr"
-global g_PathEdufine := "https://klef.jbe.go.kr"
+global g_PathNaver   := "https://www.naver.com"
+global g_PathGoogle  := "https://www.google.com"
 ; ▲▲▲ 여기까지 ▲▲▲
 
 global g_Gui2 := ""          ; 실전형 런처 창을 담아 둘 자리
@@ -369,8 +354,8 @@ BuildMyMenu()
     ; ▼▼▼ 여기만 바꾸세요 — 한 줄이 버튼 하나 ▼▼▼
     g := { title: "🌐  내가 자주 쓰는 것", items: [] }
     g.items.Push({ key: "Q", label: "📁  내 문서 폴더", run: g_PathMyDocs })
-    g.items.Push({ key: "W", label: "🌐  나이스",       run: g_PathNeis })
-    g.items.Push({ key: "E", label: "🌐  에듀파인",     run: g_PathEdufine })
+    g.items.Push({ key: "W", label: "🌐  네이버",       run: g_PathNaver })
+    g.items.Push({ key: "E", label: "🌐  구글",         run: g_PathGoogle })
 
     ; 버튼을 늘리려면 — 위 한 줄을 복사해 붙여넣고 key·label·run 만 바꾸세요.
     ;   경로 따는 법 : 파일을 Shift + 우클릭 → "경로로 복사"

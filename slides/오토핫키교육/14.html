@@ -39,8 +39,8 @@
     myGui := <span class="c-keyword">Gui</span>(, <span class="c-string">"나만의 런처"</span>)
     myGui.AddText(, <span class="c-string">"원하는 버튼을 누르세요"</span>)
     <span class="c-comment">; 버튼 붙이고, 누르면 할 일 연결</span>
-    btn := myGui.AddButton(<span class="c-string">"w260"</span>, <span class="c-string">"🌐 나이스 접속"</span>)
-    btn.OnEvent(<span class="c-string">"Click"</span>, (*) => <span class="c-keyword">Run</span>(<span class="c-string">"https://www.neis.go.kr"</span>))
+    btn := myGui.AddButton(<span class="c-string">"w260"</span>, <span class="c-string">"🌐 네이버 열기"</span>)
+    btn.OnEvent(<span class="c-string">"Click"</span>, (*) => <span class="c-keyword">Run</span>(<span class="c-string">"https://www.naver.com"</span>))
     myGui.Show()          <span class="c-comment">; 화면에 보여주기</span>
 }</pre>
             </div>
