@@ -1,62 +1,75 @@
 <h2 class="slide-title" data-important="true">
-    7단계. 버튼에 단축키 달기 — <code>key</code> 한 칸 추가
-    <span class="badge"><i class="fa-solid fa-seedling"></i> 여기부터 키우기</span>
+    7단계. 여기부터는 이미 만들어져 있습니다
+    <span class="badge"><i class="fa-solid fa-bolt"></i> 지금 눌러보세요</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 8px;">
-        지금부터 <strong style="color: var(--accent)">목록에 칸을 하나씩 더 붙여</strong>
-        강사 런처의 골격까지 갑니다. <strong style="color: var(--text-main)">코드 구조는 하나도 안 바뀝니다.</strong>
+    <p style="font-size: 18px; margin-bottom: 10px;">
+        파일 <strong style="color: var(--text-main)">아래쪽</strong>에는 제가 미리 만들어 둔 런처가 있습니다.
+        <strong style="color: var(--accent)">Ctrl + Alt + Shift + L</strong> 을 눌러보세요.
+        <strong style="color: var(--text-main)">지금은 이해하지 않아도 됩니다.</strong>
     </p>
 
-    <div class="two-column">
+    <div class="two-column" style="gap: 30px; align-items: stretch;">
+
+        <!-- 좌: 실전형 런처 목업 -->
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="background: var(--bg-code); border: 1px solid var(--border);
+                        border-radius: 12px; padding: 14px 18px; width: 300px;
+                        box-shadow: 0 8px 24px rgba(0,0,0,0.35);">
+                <p style="font-size: 13px; color: var(--text-dim); margin: 0 0 8px 0;">나만의 런처 (실전형)</p>
+
+                <p style="font-size: 12px; color: var(--accent); margin: 0 0 5px 0; font-weight: 700;">📄 문서 · 서식</p>
+                <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; margin-bottom: 9px;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">📝 한글 서식도우미 <span style="color:var(--text-dim)">(1)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">📑 PDF·한글 문서정리 <span style="color:var(--text-dim)">(2)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">🗜 이미지 용량 줄이기 <span style="color:var(--text-dim)">(3)</span></div>
+                </div>
+
+                <p style="font-size: 12px; color: var(--accent); margin: 0 0 5px 0; font-weight: 700;">🧰 도구 모음</p>
+                <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; margin-bottom: 9px;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">🧮 간단 도구 모음 <span style="color:var(--text-dim)">(4)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">📞 통합연락처 <span style="color:var(--text-dim)">(5)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">😀 이모티콘 입력기 <span style="color:var(--text-dim)">(6)</span></div>
+                </div>
+
+                <p style="font-size: 12px; color: var(--accent-alt); margin: 0 0 5px 0; font-weight: 700;">🌐 내가 자주 쓰는 것</p>
+                <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--accent-alt); border-radius: 5px; padding: 5px 9px;">📁 내 문서 폴더 <span style="color:var(--text-dim)">(Q)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">🌐 나이스 <span style="color:var(--text-dim)">(W)</span></div>
+                </div>
+            </div>
+            <p style="font-size: 13px; margin-top: 10px; text-align: center; color: var(--text-dim);">
+                괄호 안 글자는 <strong style="color: var(--text-main)">Alt + 그 글자</strong>로 바로 실행
+            </p>
+        </div>
+
+        <!-- 우: 안내 -->
         <div>
-            <h3>마우스로 찾아 누르면 런처가 아깝습니다</h3>
+            <h3>왜 이걸 미리 만들어 뒀나</h3>
             <p>
-                창을 띄우고 &rarr; 눈으로 찾고 &rarr; 클릭. 그러면 결국 바탕화면 아이콘과 같습니다.
-                <strong>손이 키보드를 떠나지 않게</strong> 만들어 봅시다.
+                오늘 배운 것만으로 이만큼 만들려면 시간이 모자랍니다.
+                그래서 <strong>쓸 수 있는 상태로 먼저 드리고</strong>, 원리는 뒤에서 짧게 봅니다.
             </p>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-1"></i>
-                    목록 한 줄에 <code>key: "1"</code> 만 추가
+                    <i class="fa-solid fa-box-open"></i>
+                    나눠드린 폴더 안에 <strong>프로그램이 전부 같이 들어 있습니다</strong>
                 </li>
                 <li>
-                    <i class="fa-solid fa-2"></i>
-                    버튼 글자 뒤에 <code>(&amp;1)</code> 을 붙여서 만들기
+                    <i class="fa-solid fa-plug"></i>
+                    경로 설정 <strong>없이</strong> 바로 열립니다 &mdash; 이유는 9단계에서
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    <code>&amp;</code> 는 윈도우에게
-                    <strong>"Alt + 이 글자로 누를 수 있다"</strong>고 알리는 표시
+                    <i class="fa-solid fa-pen"></i>
+                    <strong>"내가 자주 쓰는 것"</strong> 한 칸만 내 것으로 바꾸면 끝
                 </li>
             </ul>
-            <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 17px;"><i class="fa-solid fa-keyboard"></i>&nbsp;
-                    <code>Ctrl+Alt+Shift+L</code> &rarr; <code>Alt+1</code> &mdash;
-                    창이 뜨자마자 <strong style="color: var(--text-main)">보지도 않고</strong> 실행.
-                    한 런처 안에서 <strong style="color: var(--text-main)">key 는 서로 다르게</strong>.
+            <div class="info-box" style="padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-hand-pointer"></i>&nbsp;
+                    지금 <strong style="color: var(--text-main)">여섯 개를 하나씩 눌러보세요.</strong>
+                    쓸 만한 게 있으면 그게 오늘의 수확입니다.
                 </p>
-            </div>
-        </div>
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; 지금까지 (3단계)</span>
-{ label: <span class="c-string">"업무일지"</span>, run: g_PathWorkLog }
-
-<span class="c-comment">; key 한 칸만 추가하면</span>
-{ key: <span class="c-string">"1"</span>, label: <span class="c-string">"업무일지"</span>, run: g_PathWorkLog }
-  <span class="c-comment">↑ Alt + 1 로 바로 실행</span>
-
-
-<span class="c-comment">; 버튼 만드는 곳도 딱 한 줄만 바뀝니다</span>
-btn := lg.AddButton(<span class="c-string">"w220 h36"</span>,
-        it.label . <span class="c-string">" (&amp;"</span> . it.key . <span class="c-string">")"</span>)
-<span class="c-comment">;                    ↑ 여기가 Alt 표시</span>
-
-btn.OnEvent(<span class="c-string">"Click"</span>, RunMenuItem.Bind(it))
-<span class="c-comment">;                  ↑ 3단계와 똑같은 Bind</span></pre>
             </div>
         </div>
     </div>

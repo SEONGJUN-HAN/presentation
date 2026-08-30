@@ -2,12 +2,20 @@
 ; ============================================================
 ;  나만의 업무 런처  (내업무도구.ahk)  — AutoHotkey v2
 ; ------------------------------------------------------------
-;  ▶ 실행       : VS Code에서 Ctrl + F9   (중지는 Ctrl + F6)
-;  ▶ 런처 열기  : Ctrl + Alt + L           (0~6단계에서 만드는 기본형)
-;                 Ctrl + Alt + Shift + L   (7~9단계에서 키우는 실전형)
+;  ▶ 실행 : VS Code에서 Ctrl + F9   (중지는 Ctrl + F6)
+;
+;  이 파일은 위아래로 성격이 다릅니다.
+;
+;   ┌ 윗부분 [0~6단계]  — 배우는 곳.  Ctrl + Alt + L
+;   │   가장 쉬운 것부터 직접 쳐 보면서 만듭니다. 전부 이해하고 넘어갑니다.
+;   │
+;   └ 아랫부분 [7~9단계] — 쓰는 곳.   Ctrl + Alt + Shift + L
+;       같이 드린 프로그램들이 이미 연결돼 있습니다.
+;       이해 못 해도 됩니다. 눌러서 바로 써 보세요.
 ;
 ;  ★ 슬라이드의 [N단계] = 이 파일의 [N단계] 주석 위치입니다.
 ;  ★ 바꿀 곳은 전부 "▼ 여기만 바꾸세요" 로 표시해 두었습니다.
+;  ★ 이 파일은 배포 폴더 안에 그대로 두세요. 옆의 도구 폴더를 찾아 씁니다.
 ; ============================================================
 
 #SingleInstance Force        ; 두 번 실행하면 이전 것을 끄고 새로 시작
@@ -49,48 +57,58 @@ ShowLauncher(*)
 {
     global g_Gui
 
-    ; ▼▼▼ [3단계] 여기만 바꾸세요 — 한 줄이 버튼 하나 ▼▼▼
-    ;     label : 버튼에 보일 글자
-    ;     run   : 열고 싶은 파일 · 폴더 · 사이트
-    ;     go    : (파일 대신) 실행할 함수 이름
-    ;
-    ;     경로 따는 법 : 파일을 Shift + 우클릭 → "경로로 복사"
-    buttons := [
-        { label: "📄  업무일지 열기",   run: "C:\Users\내이름\Documents\업무일지.xlsx" },
-        { label: "🌐  나이스 접속",     run: "https://www.neis.go.kr" },
-        { label: "📁  올해 업무 폴더",  run: "C:\Users\내이름\Documents\2026_업무" },
-        { label: "✉️  메일 쓰기",       run: "mailto:" },
-        { label: "📝  메모장에 할 일 쓰기", go: WriteTodo },   ; [6단계] 일하는 버튼
-        { label: "❓  단축키 도움말",   go: ShowMyHelp }       ; [0단계] MsgBox 재활용
-    ]
-    ; ▲▲▲ 여기까지 ▲▲▲
-
     CloseLauncher()                                   ; 이미 열려 있으면 먼저 닫기
 
     g_Gui := Gui("+AlwaysOnTop", "나만의 런처")
     g_Gui.SetFont("s11", "맑은 고딕")
     g_Gui.AddText(, "원하는 버튼을 누르세요")
 
-    for b in buttons                                  ; 목록을 하나씩 꺼내서
-    {
-        btn := g_Gui.AddButton("w260 h34", b.label)
-        btn.OnEvent("Click", RunItem.Bind(b))         ; Bind = 이 줄의 값으로 고정
-    }
+    ; ▼▼▼ [3단계] 여기만 바꾸세요 — 버튼 하나가 두 줄 ▼▼▼
+    ;     첫 줄 : 버튼을 만들고        (글자만 바꾸면 됩니다)
+    ;     둘째 줄 : 누르면 뭘 열지     (따옴표 안만 바꾸면 됩니다)
+    ;
+    ;     버튼을 늘리려면 두 줄을 복사해 붙여넣고
+    ;     b1 → b2 → b3 … 처럼 이름만 겹치지 않게 바꾸세요.
+    ;
+    ;     경로 따는 법 : 파일을 Shift + 우클릭 → "경로로 복사"
+
+    b1 := g_Gui.AddButton("xm w280 h34", "📄  업무일지 열기")
+    b1.OnEvent("Click", (*) => OpenIt("C:\Users\내이름\Documents\업무일지.xlsx"))
+
+    b2 := g_Gui.AddButton("xm w280 h34", "🌐  나이스 접속")
+    b2.OnEvent("Click", (*) => OpenIt("https://www.neis.go.kr"))
+
+    b3 := g_Gui.AddButton("xm w280 h34", "📁  올해 업무 폴더")
+    b3.OnEvent("Click", (*) => OpenIt("C:\Users\내이름\Documents\2026_업무"))
+
+    b4 := g_Gui.AddButton("xm w280 h34", "✉️  메일 쓰기")
+    b4.OnEvent("Click", (*) => OpenIt("mailto:"))
+
+    ; 파일 대신 '함수'를 부르는 버튼도 똑같이 두 줄입니다.
+    b5 := g_Gui.AddButton("xm w280 h34", "📝  메모장에 할 일 쓰기")
+    b5.OnEvent("Click", (*) => DoIt(WriteTodo))       ; [6단계] 일하는 버튼
+
+    b6 := g_Gui.AddButton("xm w280 h34", "❓  단축키 도움말")
+    b6.OnEvent("Click", (*) => DoIt(ShowMyHelp))      ; [0단계] MsgBox 재활용
+    ; ▲▲▲ 여기까지 ▲▲▲
 
     g_Gui.OnEvent("Close",  (*) => CloseLauncher())
     g_Gui.OnEvent("Escape", (*) => CloseLauncher())   ; Esc 로 닫기
     g_Gui.Show()
 }
 
-; 버튼을 눌렀을 때 실제로 실행되는 부분
+; 버튼 두 줄을 짧게 쓰려고 만들어 둔 도우미 둘입니다.
 ;   ( * 는 "넘어오는 값이 더 있어도 무시하라"는 뜻입니다)
-RunItem(item, *)
+OpenIt(target)          ; 런처를 닫고 → 파일·폴더·사이트를 엽니다
 {
     CloseLauncher()
-    if item.HasOwnProp("go")
-        item.go()          ; 함수 실행
-    else
-        Run(item.run)      ; 파일·폴더·사이트 열기
+    Run(target)
+}
+
+DoIt(func)              ; 런처를 닫고 → 그 함수를 실행합니다
+{
+    CloseLauncher()
+    func()
 }
 
 CloseLauncher()
@@ -196,65 +214,95 @@ ShowMyHelp(*)
 ;  대신 Ctrl + Alt + Shift + L 로 열리는 '실전형'을 나란히 만들어서,
 ;  둘을 번갈아 열어 보며 무엇이 늘었는지 눈으로 비교합니다.
 ;
-;     [7단계]  key    → Alt + 글자로 버튼 바로 실행
-;     [8단계]  col    → 버튼이 많아지면 '그룹'과 '열'로 나누기
-;     [9단계]  경로   → 경로를 한 곳에 모으고, 없으면 어디를 고칠지 알려주기
+;     [7단계]  목록   → 버튼을 배열로 묶고 for 로 한꺼번에 만들기
+;     [8단계]  key    → Alt + 글자로 바로 실행 · 그룹으로 묶기
+;     [9단계]  경로   → A_ScriptDir 기준으로 적어서 어디로 옮겨도 그대로 실행
 ;
-;  ★ 늘어나는 건 목록 한 줄에 적는 항목뿐입니다.
-;     { label, run }  →  { key, label, run }  →  { col, title, items }
-;     뼈대(목록 → for → Bind → 실행함수)는 처음부터 끝까지 그대로입니다.
+;  ★ 여기는 이해 못 해도 괜찮습니다. 지금 바로 눌러서 써 보는 곳입니다.
+;     고칠 데가 필요하면 아래 "▼ 여기만 바꾸세요" 한 군데뿐입니다.
 ; ############################################################
 
 ^!+l::ShowLauncher2()
 
 
 ; ============================================================
-;  [9단계] 경로는 한 곳에 모읍니다
+;  [9단계] 경로는 'A_ScriptDir 기준'으로 적습니다
 ; ------------------------------------------------------------
-;  버튼 목록 안에 경로를 직접 쓰면, PC를 바꿨을 때 목록을 다 뒤져야 합니다.
-;  이렇게 위로 빼두면 "여기만" 고치면 됩니다.
+;  A_ScriptDir = 이 파일이 지금 들어 있는 폴더.
 ;
-;  ※ 강사 실전판에서는 이 블록이 파일 맨 위 [2. 경로 설정] 에 있습니다.
-;     여기서는 단계 순서대로 보이도록 이 자리에 두었습니다.
+;  그래서 아래 도구들은 경로를 한 글자도 안 고쳐도 됩니다.
+;  이 폴더를 통째로 USB나 내 PC로 복사하기만 하면
+;  그 자리에서 바로 실행됩니다. (C:\... 로 적었다면 전부 깨졌을 것입니다)
+;
+;      오토핫키연수_배포\
+;        ├── 내업무도구.ahk      ← 지금 이 파일
+;        ├── 도구\               ← 아래 g_ToolDir
+;        ├── 이모티콘\
+;        └── 통합연락처\
 ; ============================================================
-; ▼▼▼ 여기만 바꾸세요 ▼▼▼
-global g_PathWorkLog    := A_MyDocuments . "\업무일지.xlsx"
-global g_PathWorkFolder := A_MyDocuments . "\업무"
-global g_PathNeis       := "https://www.neis.go.kr"
-global g_PathEdufine    := "https://klef.jbe.go.kr"
+global g_ToolDir      := A_ScriptDir . "\도구"
+
+global g_PathHwpForm  := g_ToolDir . "\전북교육_한글_서식도우미_v2.6.exe"
+global g_PathDocTidy  := g_ToolDir . "\PDF·한글 문서정리 도우미 v2.1.exe"
+global g_PathImgSmall := g_ToolDir . "\이미지용량줄이기_image-compressor.html"
+global g_PathToolBox  := g_ToolDir . "\전북특별자치도교육청_간단 도구 모음(v1.0).html"
+global g_PathEmoticon := A_ScriptDir . "\이모티콘\이모티콘.ahk"
+global g_PathContact  := A_ScriptDir . "\통합연락처\통합연락처.ahk"
+
+; ▼▼▼ 여기만 바꾸세요 — 내 것들 ▼▼▼
+global g_PathMyDocs  := A_MyDocuments                     ; 내 문서 폴더
+global g_PathNeis    := "https://www.neis.go.kr"
+global g_PathEdufine := "https://klef.jbe.go.kr"
 ; ▲▲▲ 여기까지 ▲▲▲
 
 global g_Gui2 := ""          ; 실전형 런처 창을 담아 둘 자리
 
 
 ; ============================================================
-;  [7·8단계] 버튼 목록 — key(단축글자) 와 그룹이 붙었습니다
+;  [7·8단계] 버튼 목록 — 배열로 묶고, key(단축글자)와 그룹을 붙였습니다
 ; ------------------------------------------------------------
 ;     key   : Alt + 이 글자로 바로 실행 (버튼에 밑줄로 표시됩니다)
 ;     label : 버튼에 보일 글자
 ;     run   : 열고 싶은 파일 · 폴더 · 사이트
 ;     go    : (파일 대신) 실행할 함수 이름
+;
+;  [3단계]에서는 버튼 하나가 두 줄이었습니다. 여기서는 한 줄입니다.
+;  대신 아래 ShowLauncher2 가 그 목록을 읽어서 버튼을 대신 만들어 줍니다.
 ; ============================================================
 BuildMyMenu()
 {
     m := []                                   ; 그룹들을 담을 빈 목록
 
+    ; ── 같이 드린 도구들 (배포 폴더 안에 있어서 경로를 안 고쳐도 됩니다) ──
+    g := { title: "📄  문서 · 서식", items: [] }
+    g.items.Push({ key: "1", label: "📝  한글 서식도우미",    run: g_PathHwpForm })
+    g.items.Push({ key: "2", label: "📑  PDF·한글 문서정리",  run: g_PathDocTidy })
+    g.items.Push({ key: "3", label: "🗜  이미지 용량 줄이기",  run: g_PathImgSmall })
+    m.Push(g)
+
+    g := { title: "🧰  도구 모음", items: [] }
+    g.items.Push({ key: "4", label: "🧮  간단 도구 모음",   run: g_PathToolBox })
+    g.items.Push({ key: "5", label: "📞  통합연락처",       run: g_PathContact })
+    g.items.Push({ key: "6", label: "😀  이모티콘 입력기",  run: g_PathEmoticon })
+    m.Push(g)
+
     ; ▼▼▼ 여기만 바꾸세요 — 한 줄이 버튼 하나 ▼▼▼
-    g := { title: "📄  문서 · 폴더", items: [] }
-    g.items.Push({ key: "1", label: "📄  업무일지 열기", run: g_PathWorkLog })
-    g.items.Push({ key: "2", label: "📁  내 업무 폴더",  run: g_PathWorkFolder })
-    m.Push(g)
+    g := { title: "🌐  내가 자주 쓰는 것", items: [] }
+    g.items.Push({ key: "Q", label: "📁  내 문서 폴더", run: g_PathMyDocs })
+    g.items.Push({ key: "W", label: "🌐  나이스",       run: g_PathNeis })
+    g.items.Push({ key: "E", label: "🌐  에듀파인",     run: g_PathEdufine })
 
-    g := { title: "🌐  자주 가는 곳", items: [] }
-    g.items.Push({ key: "3", label: "🌐  나이스",   run: g_PathNeis })
-    g.items.Push({ key: "4", label: "🌐  에듀파인", run: g_PathEdufine })
-    m.Push(g)
+    ; 버튼을 늘리려면 — 위 한 줄을 복사해 붙여넣고 key·label·run 만 바꾸세요.
+    ;   경로 따는 법 : 파일을 Shift + 우클릭 → "경로로 복사"
+    ; g.items.Push({ key: "R", label: "📄  업무일지", run: "C:\업무\업무일지.xlsx" })
 
-    g := { title: "⚙  자주 하는 일", items: [] }
-    g.items.Push({ key: "Q", label: "📝  메모장에 할 일 쓰기", go: WriteTodo })
-    g.items.Push({ key: "F", label: "❓  단축키 도움말",       go: ShowMyHelp })
     m.Push(g)
     ; ▲▲▲ 여기까지 ▲▲▲
+
+    g := { title: "⚙  자주 하는 일", items: [] }
+    g.items.Push({ key: "A", label: "📝  메모장에 할 일 쓰기", go: WriteTodo })
+    g.items.Push({ key: "F", label: "❓  단축키 도움말",       go: ShowMyHelp })
+    m.Push(g)
 
     return m
 }

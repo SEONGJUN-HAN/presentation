@@ -1,51 +1,52 @@
 <h2 class="slide-title" data-important="true">
-    9단계. 경로는 위로, 오류는 친절하게
-    <span class="badge"><i class="fa-solid fa-wrench"></i> 계속 쓸 수 있게</span>
+    9단계. 경로 설정이 없었던 이유 — <code>A_ScriptDir</code>
+    <span class="badge"><i class="fa-solid fa-box-open"></i> 폴더째 가져가기</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>내일도 쓰려면 이 두 가지가 필요합니다</h3>
-            <p>오늘 만든 런처가 <strong>다음 주에도 살아 있게</strong> 하는 마지막 손질입니다.</p>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-arrow-up"></i>
-                    <strong>경로를 맨 위에 모읍니다</strong> &mdash;
-                    PC를 바꾸거나 폴더를 옮겨도 <strong>여기만</strong> 고치면 됩니다
-                </li>
-                <li>
-                    <i class="fa-solid fa-comment-dots"></i>
-                    <strong>없는 파일이면 알려줍니다</strong> &mdash;
-                    <code>Run</code> 은 경로가 틀려도 <strong>아무 말도 안 합니다</strong>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <code>RunTarget</code> 은 "어디를 고치면 되는지"까지 말해 줍니다
-                </li>
-            </ul>
+            <h3>"이 파일이 들어 있는 폴더"</h3>
+            <p>
+                <code>C:\Users\한성준\...</code> 라고 적었으면 여러분 PC에서 전부 깨졌을 겁니다.
+                <strong>내 위치를 기준으로</strong> 적으면 어디에 두든 그대로 돌아갑니다.
+            </p>
+
+            <div style="background: var(--bg-code); border: 1px solid var(--border);
+                        border-radius: 10px; padding: 14px 18px; margin: 12px 0;
+                        font-family: var(--font-mono); font-size: 14px; line-height: 1.75;
+                        color: var(--text-dim);">
+                <span style="color: var(--accent);">오토핫키연수_배포\</span><br>
+                &nbsp;&nbsp;├── <strong style="color: var(--text-main)">내업무도구.ahk</strong>
+                &nbsp;<span style="font-size:12px;">← A_ScriptDir 은 여기</span><br>
+                &nbsp;&nbsp;├── 도구\ &nbsp;<span style="font-size:12px;">한글서식 · PDF정리 · 도구모음</span><br>
+                &nbsp;&nbsp;├── 이모티콘\<br>
+                &nbsp;&nbsp;└── 통합연락처\
+            </div>
+
             <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 17px;"><i class="fa-solid fa-flag-checkered"></i>&nbsp;
-                    <strong style="color: var(--text-main)">"눌러도 아무 일이 없다"</strong>로 30분을
-                    태우는 지점이 여기입니다. 그리고 여기까지가
-                    <strong style="color: var(--text-main)">강사 런처의 골격 전부</strong>입니다.
+                <p style="font-size: 17px;"><i class="fa-solid fa-usb"></i>&nbsp;
+                    <strong style="color: var(--text-main)">이 폴더를 통째로 USB에 복사해서 사무실 PC에 붙여넣으세요.</strong>
+                    설치도 설정도 없이 그 자리에서 바로 돌아갑니다.
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile" style="font-size: 17px;">
-<pre style="font-size: 16px;"><span class="c-comment">; ▼ 경로는 맨 위에 모아 둡니다</span>
-<span class="c-keyword">global</span> g_PathLog  := <span class="c-string">"C:\업무\업무일지.xlsx"</span>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">; A_ScriptDir = 이 파일이 있는 폴더</span>
+<span class="c-keyword">global</span> g_ToolDir := A_ScriptDir . <span class="c-string">"\도구"</span>
+<span class="c-keyword">global</span> g_PathToolBox := g_ToolDir . <span class="c-string">"\도구모음.html"</span>
+
+<span class="c-comment">; ▼ 내 것만 여기서 바꾸면 됩니다</span>
 <span class="c-keyword">global</span> g_PathNeis := <span class="c-string">"https://www.neis.go.kr"</span>
-<span class="c-comment">; ▼ 없으면 어디를 고칠지 알려주고 엽니다</span>
+
+<span class="c-comment">; 없으면 어디를 고칠지 알려주고 엽니다</span>
 RunTarget(target)
 {
-    <span class="c-comment">; ":\" 가 있으면 파일·폴더라는 뜻</span>
     <span class="c-keyword">if</span> (InStr(target, <span class="c-string">":\"</span>) &amp;&amp; !FileExist(target))
     {
-        MsgBox(<span class="c-string">"경로가 없습니다.`n`n"</span> . target
-             . <span class="c-string">"`n`n[9단계]를 고쳐 주세요."</span>)
+        MsgBox(<span class="c-string">"경로가 없습니다.`n`n"</span> . target)
         <span class="c-keyword">return</span>
     }
     Run(target)

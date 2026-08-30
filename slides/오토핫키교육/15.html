@@ -1,50 +1,56 @@
 <h2 class="slide-title" data-important="true">
-    3단계. 버튼 목록 만들기 — 한 줄 = 버튼 하나
+    3단계. 버튼 늘리기 — 두 줄 복사가 전부
     <span class="badge"><i class="fa-solid fa-star"></i> 내 런처 완성</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>버튼을 늘리는 법</h3>
-            <p>코드를 여러 번 쓰지 않습니다. <strong>목록에 한 줄만 더</strong> 적으면 됩니다.</p>
+            <h3>버튼 하나가 두 줄입니다</h3>
+            <p>
+                외울 것도, 새로 배울 것도 없습니다.
+                <strong>두 줄을 복사해서 이름만 바꾸면</strong> 버튼이 늘어납니다.
+            </p>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    <code>label</code> — 버튼에 보일 글자
+                    <strong>첫 줄</strong> — 버튼을 만든다 (따옴표 안의 글자만 바꾸기)
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    <code>run</code> — 열고 싶은 파일 · 폴더 · 사이트
+                    <strong>둘째 줄</strong> — 누르면 뭘 열지 (경로만 바꾸기)
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <code>Bind</code> — 버튼마다 <strong>그 줄의 값으로 고정</strong>
+                    <code>b1</code> &rarr; <code>b2</code> &rarr; <code>b3</code> …
+                    <strong>이름만 겹치지 않게</strong>
                 </li>
             </ul>
-            <div class="info-box" style="padding: 14px 20px;">
+            <div class="info-box" style="padding: 12px 20px;">
                 <p style="font-size: 17px;"><i class="fa-solid fa-lightbulb"></i>&nbsp;
                     경로 따는 법 —
-                    <strong style="color: var(--text-main)">파일 Shift + 우클릭 → "경로로 복사"</strong>
-                </p>
-                <p style="font-size: 17px; margin-top: 8px;"><i class="fa-solid fa-rotate-right"></i>&nbsp;
-                    고친 뒤에는 <code>Ctrl + F9</code> 로 다시 실행
+                    <strong style="color: var(--text-main)">파일 Shift + 우클릭 → "경로로 복사"</strong>.
+                    고친 뒤에는 <code>Ctrl + F9</code>.
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; ▼ 여기만 바꾸세요 — 한 줄이 버튼 하나</span>
-buttons := [
-  { label: <span class="c-string">"📄 업무일지"</span>, run: <span class="c-string">"C:\업무\일지.xlsx"</span> },
-  { label: <span class="c-string">"🌐 나이스"</span>,  run: <span class="c-string">"https://neis.go.kr"</span> }
-]
+<pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 버튼 하나가 두 줄</span>
+b1 := g_Gui.AddButton(<span class="c-string">"xm w280 h34"</span>, <span class="c-string">"📄 업무일지"</span>)
+b1.OnEvent(<span class="c-string">"Click"</span>, (*) =&gt; OpenIt(<span class="c-string">"C:\업무\일지.xlsx"</span>))
 
-<span class="c-comment">; ↓ 아래는 그대로 두세요</span>
-<span class="c-keyword">for</span> b <span class="c-keyword">in</span> buttons {
-    btn := myGui.AddButton(<span class="c-string">"w260"</span>, b.label)
-    btn.OnEvent(<span class="c-string">"Click"</span>, OpenIt.Bind(b.run))
+b2 := g_Gui.AddButton(<span class="c-string">"xm w280 h34"</span>, <span class="c-string">"🌐 나이스"</span>)
+b2.OnEvent(<span class="c-string">"Click"</span>, (*) =&gt; OpenIt(<span class="c-string">"https://neis.go.kr"</span>))
+
+<span class="c-comment">; ↑ 이 두 줄을 복사해 붙여넣고 b3, b4 …</span>
+
+<span class="c-comment">; ↓ 아래는 그대로 두세요 (한 번만 만들어 둡니다)</span>
+OpenIt(target)          <span class="c-comment">; 런처를 닫고 → 엽니다</span>
+{
+    CloseLauncher()
+    Run(target)
 }</pre>
             </div>
         </div>

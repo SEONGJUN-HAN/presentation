@@ -1,54 +1,55 @@
 <h2 class="slide-title" data-important="true">
-    8단계. 버튼이 많아지면 — 그룹으로 묶기
-    <span class="badge"><i class="fa-solid fa-layer-group"></i> 목록을 한 겹 감싸기</span>
+    8단계. 어떻게 만들었나 — 목록으로 묶었을 뿐
+    <span class="badge"><i class="fa-solid fa-layer-group"></i> 가볍게 보고 넘어가기</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>버튼이 많아지면 뭐가 뭔지 모릅니다</h3>
-            <p>목록을 <strong>그룹으로 한 겹 감싸면</strong> 끝입니다.</p>
+            <h3>버튼 12개를 두 줄씩 쓰면 24줄입니다</h3>
+            <p>
+                그래서 <strong>버튼을 목록에 적어두고</strong>, 만드는 코드는 한 벌만 써서 돌립니다.
+            </p>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-box"></i>
-                    <code>{ title, items }</code> &mdash;
-                    <strong>무슨 제목</strong>으로 <strong>어떤 버튼들</strong>
+                    <i class="fa-solid fa-list"></i>
+                    버튼 하나가 <strong>목록 한 줄</strong>로 줄어듭니다
                 </li>
                 <li>
                     <i class="fa-solid fa-repeat"></i>
-                    <code>for</code> 가 <strong>두 겹</strong>이 됩니다 &mdash;
-                    한 겹 감쌌으니 꺼낼 때도 한 겹 더
+                    <code>for</code> 가 목록을 돌면서 버튼을 <strong>대신 만들어 줍니다</strong>
                 </li>
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    <code>xm</code> 만 붙이면 <strong>오토핫키가 알아서 아래로 쌓아 줍니다</strong>
-                    (2단계와 같은 방식)
+                    <i class="fa-solid fa-thumbtack"></i>
+                    <code>.Bind(it)</code> &mdash; 버튼마다
+                    <strong>그 줄의 값으로 고정</strong> (없으면 전부 마지막 것만 열립니다)
                 </li>
             </ul>
             <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 17px;"><i class="fa-solid fa-star"></i>&nbsp;
-                    <strong style="color: var(--text-main)">강사 런처도 여기까지가 전부입니다.</strong>
-                    거긴 좌표를 계산해 3열로 나누는 코드가 더 붙어 있을 뿐입니다.
+                <p style="font-size: 17px;"><i class="fa-solid fa-robot"></i>&nbsp;
+                    <code>Bind</code> 가 바로 안 와닿아도 괜찮습니다.
+                    <strong style="color: var(--text-main)">편하려고 넣은 부분</strong>이니
+                    <strong style="color: var(--accent)">그냥 두고 넘어가세요.</strong>
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 그룹 하나가 이렇게</span>
-g := { title: <span class="c-string">"문서·폴더"</span>, items: [] }
-g.items.Push({ key: <span class="c-string">"1"</span>, label: <span class="c-string">"업무일지"</span>,
-               run: g_PathWorkLog })
-<span class="c-comment">; (한 줄 더 붙이면 버튼 하나 더)</span>
+<pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 한 줄이 버튼 하나</span>
+g := { title: <span class="c-string">"내가 자주 쓰는 것"</span>, items: [] }
+g.items.Push({ key: <span class="c-string">"W"</span>, label: <span class="c-string">"나이스"</span>,
+               run: g_PathNeis })
 m.Push(g)
 
-<span class="c-comment">; ↓ 아래는 그대로 — for 가 두 겹이 됩니다</span>
+<span class="c-comment">; ↓ 아래는 그대로 — 목록을 읽어서 대신 만듭니다</span>
 <span class="c-keyword">for</span> grp <span class="c-keyword">in</span> BuildMyMenu()      <span class="c-comment">; ① 그룹을 하나씩</span>
 {
     lg.AddText(<span class="c-string">"xm y+14"</span>, grp.title)
     <span class="c-keyword">for</span> it <span class="c-keyword">in</span> grp.items       <span class="c-comment">; ② 그 안의 버튼</span>
     {
-        btn := lg.AddButton(<span class="c-string">"xm w280 h34"</span>, ...)
+        btn := lg.AddButton(<span class="c-string">"xm w280 h34"</span>,
+               it.label . <span class="c-string">" (&amp;"</span> . it.key . <span class="c-string">")"</span>)
         btn.OnEvent(<span class="c-string">"Click"</span>, RunMenuItem.Bind(it))
     }
 }</pre>
