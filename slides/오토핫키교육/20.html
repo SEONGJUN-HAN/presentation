@@ -9,7 +9,7 @@
             <h3>좌표는 창만 옮겨도 깨집니다</h3>
             <p>
                 <strong>"이 그림이 있는 자리"</strong>를 찾아서 누르면
-                창이 어디에 있든 맞습니다. <strong>두 줄이면 됩니다.</strong>
+                창이 어디에 있든 맞습니다. <strong>세 줄이면 됩니다.</strong>
             </p>
             <ul class="checklist-icon">
                 <li>
@@ -46,15 +46,16 @@
     ImageSearch(&amp;x, &amp;y,
         <span class="c-number">0</span>, <span class="c-number">0</span>, A_ScreenWidth, A_ScreenHeight,
         <span class="c-string">"C:\Users\내이름\Pictures\계산기_5.png"</span>)
-    Click(x, y)
+    MouseMove(x, y)      <span class="c-comment">; 그 자리로 옮기고</span>
+    Click()              <span class="c-comment">; 누른다</span>
 }
 
-<span class="c-comment">; 첫 줄 — 화면에서 그림을 찾아</span>
-<span class="c-comment">;         그 자리를 x, y 에 담아라</span>
-<span class="c-comment">; 둘째 줄 — 그 자리를 눌러라</span>
-<span class="c-comment">; 못 찾으면 오류 없이 '지금 마우스 자리'를</span>
-<span class="c-comment">; 누릅니다. 엉뚱한 데가 눌리면</span>
-<span class="c-comment">; 그림을 못 찾은 것입니다.</span></pre>
+<span class="c-comment">; ImageSearch — 그림을 찾아 x, y 에 담아라</span>
+<span class="c-comment">; MouseMove   — 그 자리로 옮겨라</span>
+<span class="c-comment">; Click       — 거기를 눌러라</span>
+<span class="c-comment">; 못 찾으면 MouseMove 에서 멈추고</span>
+<span class="c-comment">; 오류창이 뜹니다. 마우스가 안 움직이니</span>
+<span class="c-comment">; 엉뚱한 데가 눌릴 일은 없습니다.</span></pre>
             </div>
         </div>
     </div>

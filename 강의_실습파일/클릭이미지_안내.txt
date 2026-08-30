@@ -14,21 +14,26 @@
   {
       ImageSearch(&x, &y, 0, 0, A_ScreenWidth, A_ScreenHeight,
                   "C:\Users\내이름\Pictures\계산기_5.png")
-      Click(x, y)
+      MouseMove(x, y)
+      Click()
   }
 
-  첫 줄  = 화면 전체에서 그림을 찾아 그 자리를 x, y 에 담아라
-  둘째 줄 = 그 자리를 눌러라
+  ImageSearch = 화면 전체에서 그림을 찾아 그 자리를 x, y 에 담아라
+  MouseMove   = 그 자리로 마우스를 옮겨라
+  Click       = 거기를 눌러라
+
+  잘 되면 마우스가 그 버튼으로 쓱 옮겨가서 눌리는 게 눈에 보입니다.
 
 
 잘 안 될 때
 
-  · 엉뚱한 데가 눌리거나, 아무 일도 안 일어난 것 같다
-      그림을 못 찾은 것입니다.
-      (못 찾으면 오류창 없이 그냥 지금 마우스가 있는 자리를 누릅니다)
-      누르려는 창이 지금 화면에 보이고 있는지 먼저 확인하세요.
+  · "MouseMove requires a Number, but received an empty string" 오류창
+      화면에서 그 그림을 못 찾았다는 뜻입니다. (가장 흔한 경우)
+      x, y 에 담긴 게 없어서 마우스를 옮길 수 없다는 말입니다.
+      마우스가 움직이지 않으니 엉뚱한 데가 눌릴 걱정은 없습니다.
+      → 누르려는 창이 지금 화면에 보이고 있는지 먼저 확인하세요.
 
-  · "Parameter #7 of ImageSearch is invalid" 오류창이 뜬다
+  · "Parameter #7 of ImageSearch is invalid" 오류창
       경로가 틀렸거나 그 파일이 없다는 뜻입니다.
       따옴표 안의 경로를 "경로로 복사" 로 다시 따서 붙여넣으세요.
 
