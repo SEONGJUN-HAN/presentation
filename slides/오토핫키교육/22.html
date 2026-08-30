@@ -1,34 +1,34 @@
 <h2 class="slide-title" data-important="true">
-    8단계. 버튼이 많아지면 — 그룹과 열
+    8단계. 버튼이 많아지면 — 그룹으로 묶기
     <span class="badge"><i class="fa-solid fa-layer-group"></i> 목록을 한 겹 감싸기</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>버튼이 많아지면 화면을 넘어갑니다</h3>
-            <p>창 그리는 코드는 그대로. <strong>목록을 그룹으로 한 겹 감싸면</strong> 끝입니다.</p>
+            <h3>버튼이 많아지면 뭐가 뭔지 모릅니다</h3>
+            <p>목록을 <strong>그룹으로 한 겹 감싸면</strong> 끝입니다.</p>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-box"></i>
-                    <code>{ col, title, items }</code> &mdash;
-                    <strong>몇 번째 열</strong>에 <strong>무슨 제목</strong>으로 <strong>어떤 버튼들</strong>
+                    <code>{ title, items }</code> &mdash;
+                    <strong>무슨 제목</strong>으로 <strong>어떤 버튼들</strong>
                 </li>
                 <li>
                     <i class="fa-solid fa-repeat"></i>
-                    <code>for</code> 가 두 겹이 됩니다 &mdash;
-                    그룹을 돌고, 그 안의 버튼을 돕니다
+                    <code>for</code> 가 <strong>두 겹</strong>이 됩니다 &mdash;
+                    한 겹 감쌌으니 꺼낼 때도 한 겹 더
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    좌표 계산은 <strong>그대로 두세요</strong> &mdash;
-                    버튼이 2개든 30개든 안 고칩니다
+                    <code>xm</code> 만 붙이면 <strong>오토핫키가 알아서 아래로 쌓아 줍니다</strong>
+                    (2단계와 같은 방식)
                 </li>
             </ul>
             <div class="info-box" style="padding: 12px 20px;">
                 <p style="font-size: 17px;"><i class="fa-solid fa-star"></i>&nbsp;
-                    <strong style="color: var(--text-main)">이게 강사 런처와 똑같은 구조입니다.</strong>
-                    거긴 열이 3개일 뿐입니다.
+                    <strong style="color: var(--text-main)">강사 런처도 여기까지가 전부입니다.</strong>
+                    거긴 좌표를 계산해 3열로 나누는 코드가 더 붙어 있을 뿐입니다.
                 </p>
             </div>
         </div>
@@ -36,19 +36,21 @@
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
 <pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 그룹 하나가 이렇게</span>
-g := { col: <span class="c-number">1</span>, title: <span class="c-string">"문서·폴더"</span>, items: [] }
+g := { title: <span class="c-string">"문서·폴더"</span>, items: [] }
 g.items.Push({ key: <span class="c-string">"1"</span>, label: <span class="c-string">"업무일지"</span>,
                run: g_PathWorkLog })
 <span class="c-comment">; (한 줄 더 붙이면 버튼 하나 더)</span>
 m.Push(g)
 
 <span class="c-comment">; ↓ 아래는 그대로 — for 가 두 겹이 됩니다</span>
-<span class="c-keyword">for</span> grp <span class="c-keyword">in</span> BuildMyMenu()      <span class="c-comment">; ① 그룹</span>
+<span class="c-keyword">for</span> grp <span class="c-keyword">in</span> BuildMyMenu()      <span class="c-comment">; ① 그룹을 하나씩</span>
 {
-    lg.AddGroupBox(..., grp.title)
+    lg.AddText(<span class="c-string">"xm y+14"</span>, grp.title)
     <span class="c-keyword">for</span> it <span class="c-keyword">in</span> grp.items       <span class="c-comment">; ② 그 안의 버튼</span>
-        btn.OnEvent(<span class="c-string">"Click"</span>,
-                    RunMenuItem.Bind(it))
+    {
+        btn := lg.AddButton(<span class="c-string">"xm w280 h34"</span>, ...)
+        btn.OnEvent(<span class="c-string">"Click"</span>, RunMenuItem.Bind(it))
+    }
 }</pre>
             </div>
         </div>

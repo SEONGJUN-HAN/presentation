@@ -228,30 +228,29 @@ global g_Gui2 := ""          ; 실전형 런처 창을 담아 둘 자리
 
 
 ; ============================================================
-;  [7·8단계] 버튼 목록 — key(단축글자) 와 col·그룹이 붙었습니다
+;  [7·8단계] 버튼 목록 — key(단축글자) 와 그룹이 붙었습니다
 ; ------------------------------------------------------------
 ;     key   : Alt + 이 글자로 바로 실행 (버튼에 밑줄로 표시됩니다)
 ;     label : 버튼에 보일 글자
 ;     run   : 열고 싶은 파일 · 폴더 · 사이트
 ;     go    : (파일 대신) 실행할 함수 이름
-;     col   : 몇 번째 열에 놓을지 (1 또는 2)
 ; ============================================================
 BuildMyMenu()
 {
     m := []                                   ; 그룹들을 담을 빈 목록
 
     ; ▼▼▼ 여기만 바꾸세요 — 한 줄이 버튼 하나 ▼▼▼
-    g := { col: 1, title: "📄  문서 · 폴더", items: [] }
+    g := { title: "📄  문서 · 폴더", items: [] }
     g.items.Push({ key: "1", label: "📄  업무일지 열기", run: g_PathWorkLog })
     g.items.Push({ key: "2", label: "📁  내 업무 폴더",  run: g_PathWorkFolder })
     m.Push(g)
 
-    g := { col: 1, title: "🌐  자주 가는 곳", items: [] }
+    g := { title: "🌐  자주 가는 곳", items: [] }
     g.items.Push({ key: "3", label: "🌐  나이스",   run: g_PathNeis })
     g.items.Push({ key: "4", label: "🌐  에듀파인", run: g_PathEdufine })
     m.Push(g)
 
-    g := { col: 2, title: "⚙  자주 하는 일", items: [] }
+    g := { title: "⚙  자주 하는 일", items: [] }
     g.items.Push({ key: "Q", label: "📝  메모장에 할 일 쓰기", go: WriteTodo })
     g.items.Push({ key: "F", label: "❓  단축키 도움말",       go: ShowMyHelp })
     m.Push(g)
@@ -275,61 +274,42 @@ RunMenuItem(item, *)
 ; ============================================================
 ;  [8단계] 실전형 런처 창 만들기
 ; ------------------------------------------------------------
-;  아래 그리는 코드는 그대로 두세요. 목록이 늘어도 이 코드는 안 바뀝니다.
-;  ("버튼 하나 = 코드 한 줄"이 아니라 "버튼 하나 = 목록 한 줄"이 되는 이유입니다)
+;  좌표를 하나도 안 씁니다. xm 만 붙이면 오토핫키가 알아서 아래로 쌓아 줍니다.
+;  [2단계]에서 AddButton 을 쓰던 감각 그대로입니다.
+;
+;  달라진 건 딱 하나 — for 가 두 겹이 된 것뿐입니다.
+;  목록을 그룹으로 한 겹 감쌌으니, 꺼낼 때도 한 겹 더 들어갑니다.
 ; ============================================================
 ShowLauncher2(*)
 {
     global g_Gui2
 
-    M := 20, ColW := 240, ColGap := 14        ; 여백 · 열 너비 · 열 간격
-    BtnH := 36, BtnGap := 7                   ; 버튼 높이 · 버튼 간격
-    GrpTop := 24, GrpPad := 12, TopY := 60    ; 그룹 제목 높이 · 그룹 아래 여백 · 시작 y
-
-    WinW := M * 2 + ColW * 2 + ColGap
     CloseLauncher2()
+    lg := Gui("+AlwaysOnTop", "나만의 런처 (실전형)")
+    lg.SetFont("s11", "맑은 고딕")
 
-    lg := Gui("+AlwaysOnTop +ToolWindow", "나만의 런처 (실전형)")
-    lg.BackColor := "F7F8FA"
-    lg.SetFont("s13 bold", "맑은 고딕")
-    lg.AddText("x" M " y16 w" (WinW - M * 2), "🚀  나만의 런처")
-    lg.SetFont("s9 norm", "맑은 고딕")
-    lg.AddText("x" M " y+4 w" (WinW - M * 2), "Alt + 표시된 글자로 바로 실행,  Esc 로 닫기")
-
-    colX := [ M, M + ColW + ColGap ]           ; 각 열의 x 좌표
-    colY := [ TopY, TopY ]                     ; 각 열에서 다음에 그릴 y 좌표
-
-    for grp in BuildMyMenu()                   ; 그룹을 하나씩 꺼내서
+    for grp in BuildMyMenu()                   ; ① 그룹을 하나씩 꺼내서
     {
-        c := grp.col, n := grp.items.Length
-        gx := colX[c], gy := colY[c]
-        gh := GrpTop + n * BtnH + (n - 1) * BtnGap + GrpPad    ; 그룹 상자 높이
+        lg.SetFont("s11 bold")
+        lg.AddText("xm y+14", grp.title)       ; 그룹 제목 한 줄
+        lg.SetFont("s11 norm")
 
-        lg.SetFont("s10 bold", "맑은 고딕")
-        lg.AddGroupBox("x" gx " y" gy " w" ColW " h" gh, grp.title)
-
-        lg.SetFont("s10 norm", "맑은 고딕")
-        by := gy + GrpTop
-        for it in grp.items                    ; 그 그룹의 버튼을 하나씩
+        for it in grp.items                    ; ② 그 안의 버튼을 하나씩
         {
             ; [7단계] 글자 앞의 & 는 "Alt + 그 글자"로 누를 수 있게 해줍니다.
-            btn := lg.AddButton("x" (gx + 14) " y" by " w" (ColW - 28) " h" BtnH,
-                                it.label . " (&" . it.key . ")")
-            btn.OnEvent("Click", RunMenuItem.Bind(it))         ; [3단계]와 똑같은 Bind
-            by += BtnH + BtnGap
+            btn := lg.AddButton("xm w280 h34", it.label . " (&" . it.key . ")")
+            btn.OnEvent("Click", RunMenuItem.Bind(it))     ; [3단계]와 똑같은 Bind
         }
-        colY[c] := gy + gh + 12
     }
 
-    footY := Max(colY[1], colY[2])
-    close := lg.AddButton("x" M " y" footY " w" (WinW - M * 2) " h34 Default", "❌  닫기 (Esc)")
+    close := lg.AddButton("xm y+16 w280 h32 Default", "❌  닫기 (Esc)")
     close.OnEvent("Click", (*) => CloseLauncher2())
 
     lg.OnEvent("Close",  (*) => CloseLauncher2())
     lg.OnEvent("Escape", (*) => CloseLauncher2())
 
     g_Gui2 := lg
-    lg.Show("w" WinW " h" (footY + 34 + M) " Center")
+    lg.Show()
 }
 
 CloseLauncher2()
@@ -351,18 +331,14 @@ CloseLauncher2()
 ; ============================================================
 RunTarget(target)
 {
-    isUrl := (SubStr(target, 1, 4) = "http")           ; 사이트 주소인가?
-
-    if (!isUrl && !FileExist(target))                  ; 파일인데 없으면 알려주기
+    ; 경로에 ":\" 가 있으면 파일·폴더라는 뜻입니다. (사이트 주소에는 없습니다)
+    if (InStr(target, ":\") && !FileExist(target))
     {
         MsgBox("경로가 없습니다.`n`n" . target
              . "`n`n[9단계] 경로 설정을 고쳐 주세요.", "찾을 수 없음", 48)
         return
     }
-    ; catch 는 뒤에 에러 종류를 적는 자리라, 실행할 내용은 다음 줄에 씁니다.
-    try Run(isUrl ? target : '"' . target . '"')
-    catch
-        MsgBox("실행할 수 없습니다.`n`n" . target, "실행 실패", 48)
+    Run(target)
 }
 
 

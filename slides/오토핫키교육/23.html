@@ -41,16 +41,14 @@
 <span class="c-comment">; ▼ 없으면 어디를 고칠지 알려주고 엽니다</span>
 RunTarget(target)
 {
-    isUrl := (SubStr(target, <span class="c-number">1</span>, <span class="c-number">4</span>) = <span class="c-string">"http"</span>)
-    <span class="c-keyword">if</span> (!isUrl &amp;&amp; !FileExist(target))
+    <span class="c-comment">; ":\" 가 있으면 파일·폴더라는 뜻</span>
+    <span class="c-keyword">if</span> (InStr(target, <span class="c-string">":\"</span>) &amp;&amp; !FileExist(target))
     {
         MsgBox(<span class="c-string">"경로가 없습니다.`n`n"</span> . target
              . <span class="c-string">"`n`n[9단계]를 고쳐 주세요."</span>)
         <span class="c-keyword">return</span>
     }
-    <span class="c-keyword">try</span> Run(isUrl ? target : <span class="c-string">'"'</span> . target . <span class="c-string">'"'</span>)
-    <span class="c-keyword">catch</span>
-        MsgBox(<span class="c-string">"실행할 수 없습니다."</span>)
+    Run(target)
 }</pre>
             </div>
         </div>
