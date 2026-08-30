@@ -1,62 +1,56 @@
 <h2 class="slide-title" data-important="true">
-    직접 AI에게 시켜보기 (바이브코딩 실전)
-    <span class="badge"><i class="fa-solid fa-robot"></i> 직접 해보기</span>
+    9단계. 경로 설정이 없었던 이유 — <code>A_ScriptDir</code>
+    <span class="badge"><i class="fa-solid fa-box-open"></i> 폴더째 가져가기</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        이미 만든 편리한 프로그램(<strong style="color: var(--text-main)">.exe · 로컬 html</strong>)을,
-        백지에서 짜지 말고
-        <strong style="color: var(--accent)">있는 런처에 '버튼 + Run'만 AI로 추가</strong>해 연결합시다.
-    </p>
-
     <div class="two-column">
         <div>
-            <h3>이렇게 시킵니다</h3>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    런처(<code>내업무도구.ahk</code>) 코드 <strong>전부 복사</strong> → AI에 붙여넣기
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    "이 프로그램 여는 <strong>버튼과 Run 추가</strong>해줘"
-                    (<span style="color:var(--accent)">v2</span> 명시)
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    교체 → <code>Ctrl+F9</code> → 에러 나면 <strong>메시지 복붙해서 고쳐줘</strong>
-                </li>
-            </ul>
-            <div class="info-box">
-                <p>
-                    <i class="fa-solid fa-lightbulb"></i>&nbsp;
-                    <strong style="color: var(--text-main)">절대경로</strong>는 파일 우클릭 →
-                    <strong style="color: var(--text-main)">"경로로 복사"</strong>.
-                </p>
-                <p style="margin-top: 10px;">
-                    <i class="fa-solid fa-list-check"></i>&nbsp;
-                    <strong style="color: var(--text-main)">더 시켜보기</strong> —
-                    폴더 열기 버튼 · 새 핫스트링 · 사이트 여러 개 열기
+            <h3>"이 파일이 들어 있는 폴더"</h3>
+            <p>
+                <code>C:\Users\한성준\...</code> 라고 적었으면 여러분 PC에서 전부 깨졌을 겁니다.
+                <strong>내 위치를 기준으로</strong> 적으면 어디에 두든 그대로 돌아갑니다.
+            </p>
+
+            <div style="background: var(--bg-code); border: 1px solid var(--border);
+                        border-radius: 10px; padding: 14px 18px; margin: 12px 0;
+                        font-family: var(--font-mono); font-size: 14px; line-height: 1.75;
+                        color: var(--text-dim);">
+                <span style="color: var(--accent);">오토핫키연수_배포\</span><br>
+                &nbsp;&nbsp;├── <strong style="color: var(--text-main)">내업무도구.ahk</strong>
+                &nbsp;<span style="font-size:12px;">← A_ScriptDir 은 여기</span><br>
+                &nbsp;&nbsp;├── 도구\ &nbsp;<span style="font-size:12px;">한글서식 · PDF정리 · 도구모음</span><br>
+                &nbsp;&nbsp;├── 이모티콘\<br>
+                &nbsp;&nbsp;└── 통합연락처\
+            </div>
+
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-usb"></i>&nbsp;
+                    <strong style="color: var(--text-main)">이 폴더를 통째로 USB에 복사해서 사무실 PC에 붙여넣으세요.</strong>
+                    설치도 설정도 없이 그 자리에서 바로 돌아갑니다.
                 </p>
             </div>
         </div>
-
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; ── AI에게 이렇게 요청 ──</span>
+<pre style="font-size: 16px;"><span class="c-comment">; A_ScriptDir = 이 파일이 있는 폴더</span>
+<span class="c-keyword">global</span> g_ToolDir := A_ScriptDir . <span class="c-string">"\도구"</span>
+<span class="c-keyword">global</span> g_PathToolBox := g_ToolDir . <span class="c-string">"\도구모음.html"</span>
 
-아래는 내 AutoHotkey <span class="c-keyword">v2</span> 런처야.
-여기에 버튼을 하나 추가하고,
-누르면 이 프로그램이 열리도록
-<span class="c-keyword">Run</span> 도 연결해줘.
+<span class="c-comment">; ▼ 내 것만 여기서 바꾸면 됩니다</span>
+<span class="c-keyword">global</span> g_PathNeis := <span class="c-string">"https://www.neis.go.kr"</span>
 
-프로그램 경로:
-"C:\Tools\민원접수도우미.exe"
-버튼 이름: 📋 민원접수 도우미
-
-<span class="c-comment">; (그 아래 런처 코드 전체 붙여넣기)</span></pre>
+<span class="c-comment">; 없으면 어디를 고칠지 알려주고 엽니다</span>
+RunTarget(target)
+{
+    <span class="c-keyword">if</span> (InStr(target, <span class="c-string">":\"</span>) &amp;&amp; !FileExist(target))
+    {
+        MsgBox(<span class="c-string">"경로가 없습니다.`n`n"</span> . target)
+        <span class="c-keyword">return</span>
+    }
+    Run(target)
+}</pre>
             </div>
         </div>
     </div>

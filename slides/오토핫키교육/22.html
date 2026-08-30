@@ -1,58 +1,45 @@
-<h2 class="slide-title" data-important="true">
-    8단계. 어떻게 만들었나 — 목록으로 묶었을 뿐
-    <span class="badge"><i class="fa-solid fa-layer-group"></i> 가볍게 보고 넘어가기</span>
-</h2>
+<h2 class="slide-title">참고. 창 다루기 — 더 깊이 가면 <span class="badge" style="background-color:#64748b; box-shadow:none;">참고</span></h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>버튼 12개를 두 줄씩 쓰면 24줄입니다</h3>
-            <p>
-                그래서 <strong>버튼을 목록에 적어두고</strong>, 만드는 코드는 한 벌만 써서 돌립니다.
-            </p>
+            <h3>오늘 런처엔 없지만, 알아두면 좋은 두 가지</h3>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-list"></i>
-                    버튼 하나가 <strong>목록 한 줄</strong>로 줄어듭니다
+                    <i class="fa-solid fa-check"></i>
+                    <strong>WinActivate</strong> — 창 제목으로
+                    원하는 창을 맨 앞으로 (해상도와 무관해 안정적)
                 </li>
                 <li>
-                    <i class="fa-solid fa-repeat"></i>
-                    <code>for</code> 가 목록을 돌면서 버튼을 <strong>대신 만들어 줍니다</strong>
-                </li>
-                <li>
-                    <i class="fa-solid fa-thumbtack"></i>
-                    <code>.Bind(it)</code> &mdash; 버튼마다
-                    <strong>그 줄의 값으로 고정</strong> (없으면 전부 마지막 것만 열립니다)
+                    <i class="fa-solid fa-check"></i>
+                    <strong>#HotIf</strong> — 특정 프로그램에서만
+                    단축키가 작동 (충돌 방지)
                 </li>
             </ul>
-            <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 17px;"><i class="fa-solid fa-robot"></i>&nbsp;
-                    <code>Bind</code> 가 바로 안 와닿아도 괜찮습니다.
-                    <strong style="color: var(--text-main)">편하려고 넣은 부분</strong>이니
-                    <strong style="color: var(--accent)">그냥 두고 넘어가세요.</strong>
+            <div class="info-box">
+                <p><i class="fa-solid fa-robot"></i>&nbsp;
+                    필요해지면 외울 필요 없이 —
+                    <strong style="color: var(--text-main)">"AI에게 v2 문법으로 짜달라"</strong>고 하면 됩니다.
+                    다음 슬라이드에서 그 방법을 실습합니다.
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 한 줄이 버튼 하나</span>
-g := { title: <span class="c-string">"내가 자주 쓰는 것"</span>, items: [] }
-g.items.Push({ key: <span class="c-string">"W"</span>, label: <span class="c-string">"나이스"</span>,
-               run: g_PathNeis })
-m.Push(g)
+<pre><span class="c-comment">; 메신저 창을 맨 앞으로</span>
+^!w::<span class="c-keyword">WinActivate</span>(<span class="c-string">"JBEdu Messenger+"</span>)
 
-<span class="c-comment">; ↓ 아래는 그대로 — 목록을 읽어서 대신 만듭니다</span>
-<span class="c-keyword">for</span> grp <span class="c-keyword">in</span> BuildMyMenu()      <span class="c-comment">; ① 그룹을 하나씩</span>
+<span class="c-comment">; 크롬에서만 작동하는 단축키</span>
+<span class="c-keyword">#HotIf</span> WinActive(<span class="c-string">"ahk_exe chrome.exe"</span>)
+
+^!s::
 {
-    lg.AddText(<span class="c-string">"xm y+14"</span>, grp.title)
-    <span class="c-keyword">for</span> it <span class="c-keyword">in</span> grp.items       <span class="c-comment">; ② 그 안의 버튼</span>
-    {
-        btn := lg.AddButton(<span class="c-string">"xm w280 h34"</span>,
-               it.label . <span class="c-string">" (&amp;"</span> . it.key . <span class="c-string">")"</span>)
-        btn.OnEvent(<span class="c-string">"Click"</span>, RunMenuItem.Bind(it))
-    }
-}</pre>
+    <span class="c-keyword">Send</span>(<span class="c-string">"^l"</span>)
+    <span class="c-keyword">Send</span>(<span class="c-string">"https://www.google.com{Enter}"</span>)
+}
+
+<span class="c-keyword">#HotIf</span>          <span class="c-comment">; 제한 닫기 (필수)</span></pre>
             </div>
         </div>
     </div>

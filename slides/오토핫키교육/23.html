@@ -1,56 +1,75 @@
 <h2 class="slide-title" data-important="true">
-    9단계. 경로 설정이 없었던 이유 — <code>A_ScriptDir</code>
-    <span class="badge"><i class="fa-solid fa-box-open"></i> 폴더째 가져가기</span>
+    7단계. 여기부터는 이미 만들어져 있습니다
+    <span class="badge"><i class="fa-solid fa-bolt"></i> 지금 눌러보세요</span>
 </h2>
 
 <div class="content-area">
-    <div class="two-column">
-        <div>
-            <h3>"이 파일이 들어 있는 폴더"</h3>
-            <p>
-                <code>C:\Users\한성준\...</code> 라고 적었으면 여러분 PC에서 전부 깨졌을 겁니다.
-                <strong>내 위치를 기준으로</strong> 적으면 어디에 두든 그대로 돌아갑니다.
-            </p>
+    <p style="font-size: 18px; margin-bottom: 10px;">
+        파일 <strong style="color: var(--text-main)">아래쪽</strong>에는 제가 미리 만들어 둔 런처가 있습니다.
+        <strong style="color: var(--accent)">Ctrl + Alt + Shift + L</strong> 을 눌러보세요.
+        <strong style="color: var(--text-main)">지금은 이해하지 않아도 됩니다.</strong>
+    </p>
 
+    <div class="two-column" style="gap: 30px; align-items: stretch;">
+
+        <!-- 좌: 실전형 런처 목업 -->
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <div style="background: var(--bg-code); border: 1px solid var(--border);
-                        border-radius: 10px; padding: 14px 18px; margin: 12px 0;
-                        font-family: var(--font-mono); font-size: 14px; line-height: 1.75;
-                        color: var(--text-dim);">
-                <span style="color: var(--accent);">오토핫키연수_배포\</span><br>
-                &nbsp;&nbsp;├── <strong style="color: var(--text-main)">내업무도구.ahk</strong>
-                &nbsp;<span style="font-size:12px;">← A_ScriptDir 은 여기</span><br>
-                &nbsp;&nbsp;├── 도구\ &nbsp;<span style="font-size:12px;">한글서식 · PDF정리 · 도구모음</span><br>
-                &nbsp;&nbsp;├── 이모티콘\<br>
-                &nbsp;&nbsp;└── 통합연락처\
-            </div>
+                        border-radius: 12px; padding: 14px 18px; width: 300px;
+                        box-shadow: 0 8px 24px rgba(0,0,0,0.35);">
+                <p style="font-size: 13px; color: var(--text-dim); margin: 0 0 8px 0;">나만의 런처 (실전형)</p>
 
-            <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 17px;"><i class="fa-solid fa-usb"></i>&nbsp;
-                    <strong style="color: var(--text-main)">이 폴더를 통째로 USB에 복사해서 사무실 PC에 붙여넣으세요.</strong>
-                    설치도 설정도 없이 그 자리에서 바로 돌아갑니다.
-                </p>
+                <p style="font-size: 12px; color: var(--accent); margin: 0 0 5px 0; font-weight: 700;">📄 문서 · 서식</p>
+                <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; margin-bottom: 9px;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">📝 한글 서식도우미 <span style="color:var(--text-dim)">(1)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">📑 PDF·한글 문서정리 <span style="color:var(--text-dim)">(2)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">🗜 이미지 용량 줄이기 <span style="color:var(--text-dim)">(3)</span></div>
+                </div>
+
+                <p style="font-size: 12px; color: var(--accent); margin: 0 0 5px 0; font-weight: 700;">🧰 도구 모음</p>
+                <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; margin-bottom: 9px;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">🧮 간단 도구 모음 <span style="color:var(--text-dim)">(4)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">📞 통합연락처 <span style="color:var(--text-dim)">(5)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">😀 이모티콘 입력기 <span style="color:var(--text-dim)">(6)</span></div>
+                </div>
+
+                <p style="font-size: 12px; color: var(--accent-alt); margin: 0 0 5px 0; font-weight: 700;">🌐 내가 자주 쓰는 것</p>
+                <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--accent-alt); border-radius: 5px; padding: 5px 9px;">📁 내 문서 폴더 <span style="color:var(--text-dim)">(Q)</span></div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 5px 9px;">🌐 나이스 <span style="color:var(--text-dim)">(W)</span></div>
+                </div>
             </div>
+            <p style="font-size: 13px; margin-top: 10px; text-align: center; color: var(--text-dim);">
+                괄호 안 글자는 <strong style="color: var(--text-main)">Alt + 그 글자</strong>로 바로 실행
+            </p>
         </div>
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; A_ScriptDir = 이 파일이 있는 폴더</span>
-<span class="c-keyword">global</span> g_ToolDir := A_ScriptDir . <span class="c-string">"\도구"</span>
-<span class="c-keyword">global</span> g_PathToolBox := g_ToolDir . <span class="c-string">"\도구모음.html"</span>
 
-<span class="c-comment">; ▼ 내 것만 여기서 바꾸면 됩니다</span>
-<span class="c-keyword">global</span> g_PathNeis := <span class="c-string">"https://www.neis.go.kr"</span>
-
-<span class="c-comment">; 없으면 어디를 고칠지 알려주고 엽니다</span>
-RunTarget(target)
-{
-    <span class="c-keyword">if</span> (InStr(target, <span class="c-string">":\"</span>) &amp;&amp; !FileExist(target))
-    {
-        MsgBox(<span class="c-string">"경로가 없습니다.`n`n"</span> . target)
-        <span class="c-keyword">return</span>
-    }
-    Run(target)
-}</pre>
+        <!-- 우: 안내 -->
+        <div>
+            <h3>왜 이걸 미리 만들어 뒀나</h3>
+            <p>
+                오늘 배운 것만으로 이만큼 만들려면 시간이 모자랍니다.
+                그래서 <strong>쓸 수 있는 상태로 먼저 드리고</strong>, 원리는 뒤에서 짧게 봅니다.
+            </p>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-box-open"></i>
+                    나눠드린 폴더 안에 <strong>프로그램이 전부 같이 들어 있습니다</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-plug"></i>
+                    경로 설정 <strong>없이</strong> 바로 열립니다 &mdash; 이유는 9단계에서
+                </li>
+                <li>
+                    <i class="fa-solid fa-pen"></i>
+                    <strong>"내가 자주 쓰는 것"</strong> 한 칸만 내 것으로 바꾸면 끝
+                </li>
+            </ul>
+            <div class="info-box" style="padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-hand-pointer"></i>&nbsp;
+                    지금 <strong style="color: var(--text-main)">여섯 개를 하나씩 눌러보세요.</strong>
+                    쓸 만한 게 있으면 그게 오늘의 수확입니다.
+                </p>
             </div>
         </div>
     </div>

@@ -1,45 +1,60 @@
-<h2 class="slide-title">참고. 창 다루기 — 더 깊이 가면 <span class="badge" style="background-color:#64748b; box-shadow:none;">참고</span></h2>
+<h2 class="slide-title" data-important="true">
+    클릭 3단계. 좌표 대신 <em>그림</em>을 찾아 누르기
+    <span class="badge"><i class="fa-solid fa-image"></i> 창이 움직여도 맞는다</span>
+</h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>오늘 런처엔 없지만, 알아두면 좋은 두 가지</h3>
+            <h3>좌표는 창만 옮겨도 깨집니다</h3>
+            <p>
+                <strong>"이 그림이 있는 자리"</strong>를 찾아서 누르면
+                창이 어디에 있든 맞습니다. 이게 실전에서 쓰는 방식입니다.
+            </p>
             <ul class="checklist-icon">
                 <li>
-                    <i class="fa-solid fa-check"></i>
-                    <strong>WinActivate</strong> — 창 제목으로
-                    원하는 창을 맨 앞으로 (해상도와 무관해 안정적)
+                    <i class="fa-solid fa-scissors"></i>
+                    <code>Win + Shift + S</code> 로 <strong>버튼만</strong> 잘라 복사
+                </li>
+                <li>
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <code>mspaint</code> &rarr; <code>Ctrl+V</code> &rarr; <code>Ctrl+S</code> 로
+                    <strong>클릭이미지</strong> 폴더에 PNG 저장
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <strong>#HotIf</strong> — 특정 프로그램에서만
-                    단축키가 작동 (충돌 방지)
+                    파일 이름만 코드에 적으면 끝
                 </li>
             </ul>
-            <div class="info-box">
-                <p><i class="fa-solid fa-robot"></i>&nbsp;
-                    필요해지면 외울 필요 없이 —
-                    <strong style="color: var(--text-main)">"AI에게 v2 문법으로 짜달라"</strong>고 하면 됩니다.
-                    다음 슬라이드에서 그 방법을 실습합니다.
+            <div class="info-box" style="border-left-color: #f59e0b; padding: 12px 20px;">
+                <p style="font-size: 16px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+                    <strong style="color: var(--text-main)">투명 배경 PNG는 못 찾습니다</strong>(그림판으로 저장).
+                    화면 배율이 다른 PC의 그림도 안 맞으니
+                    <strong style="color: var(--text-main)">내 PC에서 내가 캡처</strong>하세요.
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 메신저 창을 맨 앞으로</span>
-^!w::<span class="c-keyword">WinActivate</span>(<span class="c-string">"JBEdu Messenger+"</span>)
+<pre style="font-size: 15px;"><span class="c-comment">; [클릭 3] 그림 찾아 누르기 : Ctrl + Alt + V</span>
+<span class="c-comment">; ▼ 여기만 바꾸세요 (저장한 파일 이름)</span>
+^!v::ClickImage(<span class="c-string">"계산기_5.png"</span>)
 
-<span class="c-comment">; 크롬에서만 작동하는 단축키</span>
-<span class="c-keyword">#HotIf</span> WinActive(<span class="c-string">"ahk_exe chrome.exe"</span>)
-
-^!s::
+ClickImage(fileName)
 {
-    <span class="c-keyword">Send</span>(<span class="c-string">"^l"</span>)
-    <span class="c-keyword">Send</span>(<span class="c-string">"https://www.google.com{Enter}"</span>)
-}
-
-<span class="c-keyword">#HotIf</span>          <span class="c-comment">; 제한 닫기 (필수)</span></pre>
+    imgPath := A_ScriptDir . <span class="c-string">"\클릭이미지\"</span> . fileName
+    <span class="c-comment">; *50 = 색이 조금 달라도 같은 것으로</span>
+    found := <span class="c-keyword">false</span>
+    <span class="c-keyword">try</span> found := ImageSearch(&amp;fx, &amp;fy,
+        <span class="c-number">0</span>, <span class="c-number">0</span>, A_ScreenWidth, A_ScreenHeight,
+        <span class="c-string">"*50 "</span> . imgPath)
+    <span class="c-keyword">if</span> found
+        Click(fx + <span class="c-number">10</span>, fy + <span class="c-number">10</span>)   <span class="c-comment">; 찾은 자리를 누름</span>
+    <span class="c-keyword">else</span>
+        MsgBox(<span class="c-string">"그 그림을 못 찾았습니다."</span>)
+}</pre>
             </div>
         </div>
     </div>

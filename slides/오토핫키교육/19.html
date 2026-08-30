@@ -1,47 +1,62 @@
-<h2 class="slide-title">보너스. 좌표 클릭 — WindowSpy &amp; Click <span class="badge" style="background-color:#f59e0b; box-shadow:none;">보너스</span></h2>
+<h2 class="slide-title" data-important="true">
+    클릭 1·2단계. 마우스를 대신 눌러 주기
+    <span class="badge"><i class="fa-solid fa-arrow-pointer"></i> 여는 것 → 누르는 것</span>
+</h2>
 
 <div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 8px;">
+        지금까지는 <strong style="color: var(--text-main)">여는</strong> 것만 했습니다.
+        에듀파인·메신저처럼 <strong style="color: var(--accent)">우리가 손댈 수 없는 프로그램</strong>은
+        열고 나서 결국 사람이 눌러야 합니다. 그 클릭을 대신 시킵니다.
+    </p>
+
     <div class="two-column">
         <div>
-            <h3>화면의 아무 곳이나 대신 클릭</h3>
+            <h3>계산기를 켜 놓고 해 봅시다</h3>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    계산기를 켜 두고 <strong>WindowSpy</strong> 실행
-(작업표시줄 <strong style="color: var(--text-main)">H 아이콘 우클릭 → Window Spy</strong>)
+                    <code>Win + R</code> &rarr; <code>calc</code> 로 계산기 열기
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    버튼 위에 마우스 → <strong>화면 좌표(X, Y)</strong> 확인
+                    작업표시줄 <strong>H 아이콘 우클릭 &rarr; Window Spy</strong>
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    실습 파일 [보너스] 코드 줄 선택 → <code>Ctrl + Q</code> →
-                    좌표 바꿔서 <code>Ctrl + F9</code>
+                    버튼 위에 마우스를 올리면 <strong>Screen 좌표</strong>가 보입니다
+                </li>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    그 숫자를 <code>Click()</code> 안에 넣으면 끝
                 </li>
             </ul>
-            <div class="info-box" style="border-left-color: #f59e0b;">
-                <p><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
-                    좌표 클릭은 <strong style="color: var(--text-main)">해상도·창 위치가 바뀌면 깨집니다.</strong>
-                    Run·Send로 안 될 때만 쓰는 최후의 수단!
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-flask"></i>&nbsp;
+                    <strong style="color: var(--text-main)">실험 —</strong>
+                    2단계의 <code>Sleep</code> 을 <code>0</code> 으로 바꿔 보세요.
+                    프로그램이 못 따라와서 <strong style="color: var(--text-main)">두 번째 클릭이 헛나갑니다.</strong>
                 </p>
             </div>
         </div>
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 맨 위에 한 번만 — WindowSpy와 같은 좌표계</span>
-<span class="c-keyword">CoordMode</span> <span class="c-string">"Mouse"</span>, <span class="c-string">"Screen"</span>
+<pre style="font-size: 16px;"><span class="c-comment">; 맨 위에 한 번만 — WindowSpy 와 같은 기준</span>
+CoordMode <span class="c-string">"Mouse"</span>, <span class="c-string">"Screen"</span>
 
-<span class="c-comment">; 클릭 한 번 : Ctrl + Alt + C</span>
-^!c::<span class="c-keyword">Click</span>(<span class="c-string">"200 300"</span>)    <span class="c-comment">; ← WindowSpy로 본 좌표</span>
 
-<span class="c-comment">; 슬립 넣고 두 번 : Ctrl + Alt + X</span>
+<span class="c-comment">; [클릭 1] 한 곳 누르기 : Ctrl + Alt + C</span>
+<span class="c-comment">; ▼ 여기만 바꾸세요</span>
+^!c::Click(<span class="c-number">200</span>, <span class="c-number">300</span>)
+
+
+<span class="c-comment">; [클릭 2] 두 곳을 순서대로 : Ctrl + Alt + X</span>
 ^!x::
 {
-    <span class="c-keyword">Click</span>(<span class="c-string">"200 300"</span>)
-    <span class="c-keyword">Sleep</span>(<span class="c-number">1000</span>)
-    <span class="c-keyword">Click</span>(<span class="c-string">"250 300"</span>)
+    Click(<span class="c-number">200</span>, <span class="c-number">300</span>)          <span class="c-comment">; 첫 번째 자리</span>
+    Sleep(<span class="c-number">300</span>)               <span class="c-comment">; 0.3초 기다렸다가</span>
+    Click(<span class="c-number">250</span>, <span class="c-number">300</span>)          <span class="c-comment">; 두 번째 자리</span>
 }</pre>
             </div>
         </div>

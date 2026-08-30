@@ -1,58 +1,109 @@
 <h2 class="slide-title" data-important="true">
-    응용 ①. AI를 한글 문서 안으로
-    <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i> 공문 다듬기</span>
+    강사 런처 해부 — 같은 뼈대, 나중에 붙인 살
+    <span class="badge"><i class="fa-solid fa-bone"></i> 오늘의 결론</span>
 </h2>
 
+<style>
+    .anat-table { width: 100%; border-collapse: collapse; }
+    .anat-table th, .anat-table td { padding: 7px 10px; font-size: 14px; }
+    .anat-table th { font-size: 13px; }
+    .anat-table td.what { color: var(--text-main); font-weight: 700; white-space: nowrap; }
+    .anat-table code { font-size: 13px; }
+    .anat-table tr.sum td { color: var(--text-dim); font-size: 13px; }
+</style>
+
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        문장을 <strong style="color: var(--text-main)">드래그하고 단축키 하나</strong>면,
-        AI가 공문체로 다듬어 <strong style="color: var(--accent)">그 자리에 바로 넣어줍니다.</strong>
+    <p style="font-size: 18px; margin-bottom: 10px;">
+        강사 런처는 <strong style="color: var(--text-main)">1,352줄</strong>입니다.
+        <strong style="color: var(--accent)">어려운 게 아니라 긴 것</strong>입니다 &mdash;
+        방금 여러분이 만든 것과 뼈대가 <strong style="color: var(--text-main)">글자 하나까지 같습니다.</strong>
     </p>
 
-    <div class="two-column">
+    <div class="two-column" style="gap: 26px; align-items: stretch;">
+
+        <!-- 좌: 뼈대 대조 -->
         <div>
-            <h3>준비는 한 번만</h3>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    <a href="https://aistudio.google.com" target="_blank"
-                       style="color: var(--accent);">aistudio.google.com</a>
-                    에서 <strong>무료 API 키</strong> 발급 (구글 계정 필요)
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    옆에 <code>gemini_key.txt</code> 만들고 <strong>키 붙여넣기</strong>
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    문장 드래그 → <code>Ctrl + Alt + G</code>
-                </li>
-            </ul>
-            <div class="info-box" style="border-left-color: #f59e0b; padding: 14px 20px;">
-                <p style="font-size: 17px;">
-                    <i class="fa-solid fa-key" style="color: #f59e0b;"></i>&nbsp;
-                    키를 <strong style="color: var(--text-main)">파일로 분리</strong>한 이유 —
-                    스크립트를 남에게 줘도 <strong style="color: var(--text-main)">키가 딸려가지 않습니다.</strong>
+            <h3 style="font-size: 20px; margin-bottom: 6px;">🦴 뼈대 &mdash; 셋 다 똑같습니다</h3>
+            <table class="anat-table">
+                <thead>
+                    <tr>
+                        <th style="width: 26%;">하는 일</th>
+                        <th style="width: 37%;">내업무도구<br><span style="font-weight:400;">(방금 눌러본 아랫부분)</span></th>
+                        <th style="width: 37%;">AHK_런처<br><span style="font-weight:400;">(강사 실전판)</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td class="what">① 목록</td>
+                        <td><code>BuildMyMenu()</code></td>
+                        <td><code>BuildLauncherMenu()</code></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td class="what">② 꺼내기</td>
+                        <td><code>for grp / for it</code></td>
+                        <td><code>for grp / for it</code></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td class="what">③ 묶기</td>
+                        <td><code>.Bind(it)</code></td>
+                        <td><code>.Bind(it)</code></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td class="what">④ 실행</td>
+                        <td><code>RunMenuItem()</code></td>
+                        <td><code>RunMenuItem()</code></td>
+                    </tr>
+                    <tr class="sum">
+                        <td class="what">줄 수</td>
+                        <td>414줄</td>
+                        <td>1,352줄</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="info-box" style="margin-top: 12px; padding: 14px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;
+                    강사 파일을 열면 <strong style="color: var(--text-main)">4번 항목</strong>부터 보세요.
+                    거기가 여러분이 방금 고친 그 목록입니다.
                 </p>
             </div>
         </div>
 
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
-<pre><span class="c-comment">; 드래그한 문장을 AI에게 보내고</span>
-<span class="c-comment">; 받은 문장으로 그 자리를 교체</span>
-^!g::
-{
-    <span class="c-keyword">A_Clipboard</span> := <span class="c-string">""</span>      <span class="c-comment">; 먼저 비우기!</span>
-    <span class="c-keyword">Send</span>(<span class="c-string">"^c"</span>)
-    <span class="c-keyword">ClipWait</span>(1)
+        <!-- 우: 붙은 살 -->
+        <div>
+            <h3 style="font-size: 20px; margin-bottom: 6px;">🍖 살 &mdash; 몇 년에 걸쳐 붙인 것들</h3>
+            <p style="font-size: 15px; margin: 0 0 10px 0;">
+                나머지 <strong style="color: var(--text-main)">약 960줄</strong>은
+                전부 <strong>뼈대 밖</strong>입니다. <strong style="color: var(--accent)">안 봐도 됩니다.</strong>
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
+                       color: var(--text-dim); line-height: 1.75;">
+                <li>· <strong style="color: var(--text-main)">3열로 나누는 좌표 계산</strong>
+                    <span style="font-size:13px;">&mdash; 보기 편하려고 넣은 산수. 안 읽어도 됩니다</span></li>
+                <li>· <strong style="color: var(--text-main)">강의용 스포트라이트 · 확대경</strong> (약 200줄)
+                    <span style="font-size:13px;">&mdash; 지금 제가 쓰고 있는 그것</span></li>
+                <li>· <strong style="color: var(--text-main)">핫스트링 검색창</strong> (약 100줄)
+                    <span style="font-size:13px;">&mdash; 상용구가 40개 넘어가서 만든 것</span></li>
+                <li>· <strong style="color: var(--text-main)">GDI+ 헬퍼</strong> · 이미지 찾아 클릭 · 창 자동 정렬</li>
+                <li>· 경로 상수 12개 · 메일 서명 조립 · 개인 핫스트링 30여 개</li>
+            </ul>
 
-    답 := AskGemini(키, 프롬프트 . <span class="c-keyword">A_Clipboard</span>)
-    <span class="c-keyword">A_Clipboard</span> := 답
-    <span class="c-keyword">Send</span>(<span class="c-string">"^v"</span>)      <span class="c-comment">; 선택된 문장을 교체</span>
-}</pre>
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 14px 18px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--accent);
+                        margin-top: 12px;">
+                <h3 style="font-size: 17px; margin: 0 0 6px 0;">📦 그 사이를 메우는 것도 드립니다</h3>
+                <p style="font-size: 15px; margin: 0; line-height: 1.6;">
+                    <code>참고\업무런처_실전.ahk</code> &mdash; 강사 런처에서 살을 걷어내고
+                    <strong style="color: var(--text-main)">뼈대만 남긴 716줄</strong>.
+                    414 &rarr; 716 &rarr; 1,352, <strong style="color: var(--text-main)">같은 뼈대가 자라는 순서</strong>로 읽어보세요.
+                </p>
             </div>
         </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 10px; padding: 12px 20px;">
+        <p style="font-size: 17px;"><i class="fa-solid fa-robot"></i>&nbsp;
+            읽어도 <strong style="color: var(--text-main)">바로 이해가 안 되는 코드가 나오면 — 그건 편하려고 AI에게 시킨 부분</strong>입니다.
+            뼈대만 알면 됩니다. 나머지는 <strong style="color: var(--accent)">그냥 두고 넘어가세요.</strong>
+        </p>
     </div>
 </div>
