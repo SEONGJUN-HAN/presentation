@@ -1,43 +1,50 @@
 <h2 class="slide-title" data-important="true">
-    직접 AI에게 시켜보기 (바이브코딩 실전)
-    <span class="badge"><i class="fa-solid fa-robot"></i> 직접 해보기</span>
+    10단계. 덤 ② 메일 상용구 — 내 정보만 바꾸면 끝
+    <span class="badge"><i class="fa-solid fa-envelope"></i> /ad 한 번</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        이미 만든 편리한 프로그램(<strong style="color: var(--text-main)">.exe · 로컬 html</strong>)을,
-        백지에서 짜지 말고
-        <strong style="color: var(--accent)">있는 런처에 '버튼 + Run'만 AI로 추가</strong>해 연결합시다.
-    </p>
+    <div class="two-column" style="gap: 26px; align-items: stretch;">
 
-    <div class="two-column">
         <div>
-            <h3>이렇게 시킵니다</h3>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    런처(<code>내업무도구.ahk</code>) 코드 <strong>전부 복사</strong> → AI에 붙여넣기
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    "이 프로그램 여는 <strong>버튼과 Run 추가</strong>해줘"
-                    (<span style="color:var(--accent)">v2</span> 명시)
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    교체 → <code>Ctrl+F9</code> → 에러 나면 <strong>메시지 복붙해서 고쳐줘</strong>
-                </li>
-            </ul>
-            <div class="info-box">
-                <p>
-                    <i class="fa-solid fa-lightbulb"></i>&nbsp;
-                    <strong style="color: var(--text-main)">절대경로</strong>는 파일 우클릭 →
-                    <strong style="color: var(--text-main)">"경로로 복사"</strong>.
+            <h3>여섯 줄만 내 것으로</h3>
+            <p>
+                이름·학교·연락처 <strong>여섯 줄</strong>만 고치면
+                인사말도 서명도 <strong style="color: var(--accent)">한꺼번에 바뀝니다.</strong>
+            </p>
+
+            <table style="width: 100%; font-size: 15px; border-collapse: collapse; margin-top: 4px;">
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0; white-space: nowrap;"><code>/ad</code></td>
+                    <td style="padding: 6px 0 6px 12px;"><strong style="color: var(--text-main)">메일 한 통 통째로</strong>
+                        <span style="color: var(--text-dim); font-size: 13px;">(인사 + 본문자리 + 서명)</span></td></tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0;"><code>/sg</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">서명 블록만</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0;"><code>/gr</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">첫인사만</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0;"><code>/rq</code> <code>/fw</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">협조 요청 · 붙임 안내</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0;"><code>/dt</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">오늘 날짜</td></tr>
+                <tr>
+                    <td style="padding: 6px 0;"><code>//1</code> <code>//2</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">① ② 원문자</td></tr>
+            </table>
+
+            <div class="info-box" style="margin-top: 12px; margin-bottom: 0; padding: 12px 20px;">
+                <p style="font-size: 16px;"><i class="fa-solid fa-clipboard"></i>&nbsp;
+                    <code>Ctrl+Shift+C</code> / <code>Ctrl+Shift+V</code> &mdash;
+                    <strong style="color: var(--text-main)">서식 없이 복사·붙여넣기</strong>.
+                    글꼴·색·표를 버리고 글자만 옮깁니다.
                 </p>
-                <p style="margin-top: 10px;">
-                    <i class="fa-solid fa-list-check"></i>&nbsp;
-                    <strong style="color: var(--text-main)">더 시켜보기</strong> —
-                    폴더 열기 버튼 · 새 핫스트링 · 사이트 여러 개 열기
+                <p style="font-size: 16px; margin-top: 6px;"><i class="fa-solid fa-circle-question"></i>&nbsp;
+                    <code>Ctrl+Alt+H</code> &mdash; 스크립트가 <strong style="color: var(--text-main)">자기 파일을 읽어</strong>
+                    단축키 목록을 만들어 줍니다.
+                    <span style="font-size: 14px;">새로 만들고 <code>; 설명</code>만 달면 저절로 등장.</span>
                 </p>
             </div>
         </div>
@@ -45,18 +52,24 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; ── AI에게 이렇게 요청 ──</span>
+<pre style="font-size: 15px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 내 정보</span>
+<span class="c-keyword">global</span> g_SignName := <span class="c-string">"홍길동"</span>
+<span class="c-keyword">global</span> g_SignOrg  := <span class="c-string">"○○학교 행정실"</span>
+<span class="c-keyword">global</span> g_SignTel  := <span class="c-string">"063-000-0000"</span>
+<span class="c-keyword">global</span> g_SignMail := <span class="c-string">"hong@korea.kr"</span>
+<span class="c-keyword">global</span> g_SignFax  := <span class="c-string">""</span>          <span class="c-comment">; 비우면 빠짐</span>
 
-아래는 내 AutoHotkey <span class="c-keyword">v2</span> 런처야.
-여기에 버튼을 하나 추가하고,
-누르면 이 프로그램이 열리도록
-<span class="c-keyword">Run</span> 도 연결해줘.
+<span class="c-comment">; /ad 를 치면 이게 통째로 들어갑니다</span>
+안녕하세요.
 
-프로그램 경로:
-"C:\Tools\민원접수도우미.exe"
-버튼 이름: 📋 민원접수 도우미
+○○학교 행정실 홍길동입니다.
 
-<span class="c-comment">; (그 아래 런처 코드 전체 붙여넣기)</span></pre>
+감사합니다.
+──────────────────────────
+  🏫  홍길동  |  ○○학교 행정실
+  ☎  063-000-0000
+  ✉  hong@korea.kr
+──────────────────────────</pre>
             </div>
         </div>
     </div>

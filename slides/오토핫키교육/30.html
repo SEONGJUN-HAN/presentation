@@ -1,39 +1,38 @@
 <h2 class="slide-title" data-important="true">
-    응용 ③. 자바스크립트 — 장바구니를 엑셀로
-    <span class="badge"><i class="fa-brands fa-js"></i> 설치 0</span>
+    응용 ①. AI를 한글 문서 안으로
+    <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i> 공문 다듬기</span>
 </h2>
 
 <div class="content-area">
     <p style="font-size: 17px; margin-bottom: 10px;">
-        물품 구매 품의 낼 때, 장바구니를 보며 하나씩 옮겨 적으셨죠?
-        <strong style="color: var(--accent)">북마크 하나로 표가 통째로 복사</strong>됩니다.
-        설치도, 프로그램도 필요 없습니다.
+        문장을 <strong style="color: var(--text-main)">드래그하고 단축키 하나</strong>면,
+        AI가 공문체로 다듬어 <strong style="color: var(--accent)">그 자리에 바로 넣어줍니다.</strong>
     </p>
 
     <div class="two-column">
         <div>
-            <h3>북마클릿 = 북마크에 담은 코드</h3>
+            <h3>준비는 한 번만</h3>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    아무 페이지나 <code>Ctrl + D</code> 로 북마크 → 이름은
-                    <strong>"장바구니→엑셀"</strong>
+                    <a href="https://aistudio.google.com" target="_blank"
+                       style="color: var(--accent);">aistudio.google.com</a>
+                    에서 <strong>무료 API 키</strong> 발급 (구글 계정 필요)
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    북마크 <strong>우클릭 → 수정</strong> → URL 칸에 AI가 준 코드 붙여넣기
+                    옆에 <code>gemini_key.txt</code> 만들고 <strong>키 붙여넣기</strong>
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    11번가 장바구니에서 원하는 것만 체크 → 북마크 클릭 →
-                    엑셀에 <code>Ctrl + V</code>
+                    문장 드래그 → <code>Ctrl + Alt + G</code>
                 </li>
             </ul>
             <div class="info-box" style="border-left-color: #f59e0b; padding: 14px 20px;">
                 <p style="font-size: 17px;">
-                    <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
-                    주소창에 붙여넣으면 <code>javascript:</code>가 지워집니다.
-                    <strong style="color: var(--text-main)">반드시 북마크 수정 화면에서</strong>!
+                    <i class="fa-solid fa-key" style="color: #f59e0b;"></i>&nbsp;
+                    키를 <strong style="color: var(--text-main)">파일로 분리</strong>한 이유 —
+                    스크립트를 남에게 줘도 <strong style="color: var(--text-main)">키가 딸려가지 않습니다.</strong>
                 </p>
             </div>
         </div>
@@ -41,18 +40,18 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">// (F12 → 상품 줄 우클릭 →</span>
-<span class="c-comment">//  Copy → Copy outerHTML 후 붙여넣기)</span>
+<pre><span class="c-comment">; 드래그한 문장을 AI에게 보내고</span>
+<span class="c-comment">; 받은 문장으로 그 자리를 교체</span>
+^!g::
+{
+    <span class="c-keyword">A_Clipboard</span> := <span class="c-string">""</span>      <span class="c-comment">; 먼저 비우기!</span>
+    <span class="c-keyword">Send</span>(<span class="c-string">"^c"</span>)
+    <span class="c-keyword">ClipWait</span>(1)
 
-이건 11번가 장바구니의 상품 한 줄 <span class="c-keyword">HTML</span>이야.
-
-<span class="c-keyword">체크된 상품만</span> 골라서 상품명·옵션·
-수량·단가·금액을 탭으로 구분해
-클립보드에 복사하는
-<span class="c-keyword">북마클릿</span>을 만들어줘.
-
-외부 라이브러리 없이,
-javascript: 한 줄로 쓸 수 있게.</pre>
+    답 := AskGemini(키, 프롬프트 . <span class="c-keyword">A_Clipboard</span>)
+    <span class="c-keyword">A_Clipboard</span> := 답
+    <span class="c-keyword">Send</span>(<span class="c-string">"^v"</span>)      <span class="c-comment">; 선택된 문장을 교체</span>
+}</pre>
             </div>
         </div>
     </div>

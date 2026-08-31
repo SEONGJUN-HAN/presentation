@@ -9,9 +9,11 @@
 ;   ┌ 윗부분 [0~6단계]  — 배우는 곳.  Ctrl + Alt + L
 ;   │   가장 쉬운 것부터 직접 쳐 보면서 만듭니다. 전부 이해하고 넘어갑니다.
 ;   │
-;   └ 아랫부분 [7~9단계] — 쓰는 곳.   Ctrl + Alt + Shift + L
-;       같이 드린 프로그램들이 이미 연결돼 있습니다.
+;   └ 아랫부분 [7~10단계] — 쓰는 곳.  Ctrl + Alt + Shift + L
+;       같이 드린 프로그램들이 이미 연결돼 있고,
+;       Alt + 마우스로 창 다루기 같은 편의 기능도 들어 있습니다.
 ;       이해 못 해도 됩니다. 눌러서 바로 써 보세요.
+;       무슨 단축키가 있는지는 Ctrl + Alt + H (자동 목록)
 ;
 ;  ★ 슬라이드의 [N단계] = 이 파일의 [N단계] 주석 위치입니다.
 ;  ★ 바꿀 곳은 전부 "▼ 여기만 바꾸세요" 로 표시해 두었습니다.
@@ -30,7 +32,7 @@ global g_Gui := ""           ; 런처 창을 담아 둘 자리 (맨 위에서 �
 ;  문구를 바꿔 다시 실행해 보세요.
 ;  (이 MsgBox 는 아래 ❓ 도움말 버튼에서 다시 만납니다)
 ; ============================================================
-^!m::MsgBox("반갑습니다! 첫 스크립트 성공!")
+^!m::MsgBox("반갑습니다! 첫 스크립트 성공!")          ; 첫 알림창 (0단계 워밍업)
 
 
 ; ============================================================
@@ -41,7 +43,7 @@ global g_Gui := ""           ; 런처 창을 담아 둘 자리 (맨 위에서 �
 ^!n::Run("https://www.naver.com")        ; Ctrl+Alt+N → 네이버
 
 ; 할 일이 여러 줄이면 { } 로 묶습니다
-^!k::
+^!k::                                     ; 네이버 + 구글 한꺼번에 열기
 {
     Run("https://www.naver.com")
     Run("https://www.google.com")
@@ -51,7 +53,7 @@ global g_Gui := ""           ; 런처 창을 담아 둘 자리 (맨 위에서 �
 ; ============================================================
 ;  [2단계] 런처 창 : Ctrl + Alt + L → 버튼 모음 창이 뜹니다
 ; ============================================================
-^!l::ShowLauncher()
+^!l::ShowLauncher()                       ; 런처 열기 (기본형)
 
 ShowLauncher(*)
 {
@@ -144,33 +146,34 @@ CloseLauncher()
 ;     { } 없이 ::/hi::PasteText(...) 라고 쓰면 그 글자가 그대로 입력됩니다.
 ; ============================================================
 ; ▼▼▼ 여기만 바꾸세요 ▼▼▼
-::/hi::
+::/hi::                                    ; 인사말 (한 줄)
 {
     A_Clipboard := "안녕하세요. 이리고등학교 행정실 홍길동입니다."
     Send("^v")
 }
 
-::/sign::                                  ; 여러 줄은 `n 으로 줄바꿈
+::/sign::                                  ; 내 서명 (짧은 버전)
 {
+    ; 여러 줄로 만들 때는 `n 으로 줄을 바꿉니다.
     A_Clipboard := "홍길동 | 행정실`n☎ 063-000-0000`n✉ hong@korea.kr"
     Send("^v")
 }
 
 ; 단축키로도 붙여넣기 : Ctrl + Alt + 1~3
 ;   (Ctrl+숫자는 브라우저 탭 전환과 겹쳐서 Alt 까지 함께 누릅니다)
-^!1::
+^!1::                                     ; 빠른 붙여넣기 - 계좌번호
 {
     A_Clipboard := "○○은행 123-456-789 홍길동"
     Send("^v")
 }
 
-^!2::
+^!2::                                     ; 빠른 붙여넣기 - 인사말
 {
     A_Clipboard := "늘 감사드립니다. 오늘도 좋은 하루 보내세요."
     Send("^v")
 }
 
-^!3::
+^!3::                                     ; 빠른 붙여넣기 - 회신 문구
 {
     A_Clipboard := "확인 후 회신드리겠습니다."
     Send("^v")
@@ -227,13 +230,13 @@ CoordMode "Mouse", "Screen"      ; WindowSpy 와 같은 '화면 전체' 기준
 
 ; ── [클릭 1단계] 한 곳 누르기 : Ctrl + Alt + C ──
 ; ▼▼▼ 여기만 바꾸세요 (WindowSpy 로 본 좌표) ▼▼▼
-^!c::Click(200, 300)
+^!c::Click(200, 300)                      ; 클릭 1단계 - 한 곳 누르기
 
 
 ; ── [클릭 2단계] 두 곳을 순서대로 : Ctrl + Alt + X ──
 ;    사이의 Sleep 을 0 으로 바꿔 실행해 보세요.
 ;    프로그램이 못 따라와서 두 번째 클릭이 헛나갑니다. 그게 Sleep 이 필요한 이유입니다.
-^!x::
+^!x::                                     ; 클릭 2단계 - 두 곳 순서대로
 {
     ; ▼▼▼ 여기만 바꾸세요 ▼▼▼
     Click(200, 300)              ; 첫 번째 자리
@@ -264,7 +267,7 @@ CoordMode "Mouse", "Screen"      ; WindowSpy 와 같은 '화면 전체' 기준
 ;    ※ 버튼 주변 배경까지 넓게 자르면 못 찾습니다. 버튼만 딱.
 ;    ※ 배경이 '투명'한 PNG 는 절대 못 찾습니다. 그림판으로 저장하세요.
 ;    ※ 화면 배율이 다른 PC에서 만든 그림도 안 맞습니다. 내 PC에서 내가 캡처.
-^!v::
+^!v::                                     ; 클릭 3단계 - 그림 찾아 누르기
 {
     ; ▼▼▼ 여기만 바꾸세요 (따옴표 안에 "경로로 복사" 붙여넣기) ▼▼▼
     ImageSearch(&x, &y, 0, 0, A_ScreenWidth, A_ScreenHeight,
@@ -290,7 +293,7 @@ CoordMode "Mouse", "Screen"      ; WindowSpy 와 같은 '화면 전체' 기준
 ;     고칠 데가 필요하면 아래 "▼ 여기만 바꾸세요" 한 군데뿐입니다.
 ; ############################################################
 
-^!+l::ShowLauncher2()
+^!+l::ShowLauncher2()                     ; 런처 열기 (실전형)
 
 
 ; ============================================================
@@ -369,7 +372,7 @@ BuildMyMenu()
 
     g := { title: "⚙  자주 하는 일", items: [] }
     g.items.Push({ key: "A", label: "📝  메모장에 할 일 쓰기", go: WriteTodo })
-    g.items.Push({ key: "F", label: "❓  단축키 도움말",       go: ShowMyHelp })
+    g.items.Push({ key: "F", label: "❓  단축키 도움말",       go: ShowAllHotkeys })
     m.Push(g)
 
     return m
@@ -459,3 +462,371 @@ RunTarget(target)
 
 
 ; (클릭 실습 [클릭 1~3단계] 은 위쪽 [6단계] 뒤로 옮겼습니다)
+
+
+; ############################################################
+;  [10단계] 덤 — 받아서 그냥 쓰는 기능들
+; ------------------------------------------------------------
+;  여기는 읽지 않아도 됩니다. 눌러서 써 보는 곳입니다.
+;  전부 위에서 배운 것의 확장일 뿐입니다.
+;
+;     핫키 + 함수 부르기   → 창 제어 · 창 배치
+;     클립보드 ([5단계])   → 서식 없이 복사·붙여넣기
+;     파일 읽기            → 단축키 도움말 자동 생성
+;
+;  ▶ 바꾸고 싶으면 단축키 글자만 바꾸세요.
+;       ^ = Ctrl    ! = Alt    # = Win    + = Shift
+; ############################################################
+
+global g_DoubleAlt := false      ; Alt 를 연달아 두 번 눌렀는지 기억해 두는 곳
+
+
+; ── 창 제어 : Alt 를 누른 채 마우스로 어떤 창이든 다룹니다 ──
+;    최대화되지 않은 창이면 제목표시줄을 안 잡아도 옮겨집니다.
+!LButton::                                       ; Alt + 왼쪽 드래그 = 창 옮기기
+{
+    global g_DoubleAlt
+    MouseGetPos(&x1, &y1, &id)
+    if !id
+        return
+    if (g_DoubleAlt)                             ; Alt 두 번 + 클릭 = 창 이동 메뉴
+    {
+        PostMessage(0x112, 0xF020, , , "ahk_id " id)
+        g_DoubleAlt := false
+        return
+    }
+    if WinGetMinMax("ahk_id " id)                ; 최대화된 창은 옮기지 않음
+        return
+    WinGetPos(&wx, &wy, , , "ahk_id " id)
+    Loop                                         ; 버튼을 놓을 때까지 계속 따라다님
+    {
+        if !GetKeyState("LButton", "P")
+            break
+        MouseGetPos(&x2, &y2)
+        try WinMove(wx + x2 - x1, wy + y2 - y1, , , "ahk_id " id)
+    }
+}
+
+!RButton::                                       ; Alt + 오른쪽 드래그 = 크기 조절
+{
+    global g_DoubleAlt
+    MouseGetPos(&x1, &y1, &id)
+    if !id
+        return
+    if (g_DoubleAlt)                             ; Alt 두 번 + 우클릭 = 최대화/복원
+    {
+        if WinGetMinMax("ahk_id " id)
+            WinRestore("ahk_id " id)
+        else
+            WinMaximize("ahk_id " id)
+        g_DoubleAlt := false
+        return
+    }
+    if WinGetMinMax("ahk_id " id)
+        return
+    WinGetPos(&wx, &wy, &ww, &wh, "ahk_id " id)
+    isLeft := (x1 < wx + ww / 2)                 ; 창의 어느 모서리를 잡았는지 판단
+    isTop  := (y1 < wy + wh / 2)
+    Loop
+    {
+        if !GetKeyState("RButton", "P")
+            break
+        MouseGetPos(&x2, &y2)
+        newX := isLeft ? wx + (x2 - x1) : wx
+        newY := isTop  ? wy + (y2 - y1) : wy
+        newW := isLeft ? ww - (x2 - x1) : ww + (x2 - x1)
+        newH := isTop  ? wh - (y2 - y1) : wh + (y2 - y1)
+        try WinMove(newX, newY, newW, newH, "ahk_id " id)
+    }
+}
+
+!MButton::                                       ; Alt + 가운데 클릭 = 항상 위 켜기/끄기
+{
+    global g_DoubleAlt
+    if (g_DoubleAlt)                             ; Alt 두 번 + 가운데 클릭 = 창 닫기
+    {
+        MouseGetPos( , , &id)
+        if id
+            try WinClose("ahk_id " id)
+        g_DoubleAlt := false
+    }
+    else
+        try WinSetAlwaysOnTop(-1, "A")           ; -1 = 켜짐/꺼짐 뒤집기
+}
+
+!WheelUp::WinSetTransparent(255, "A")            ; Alt + 휠 위 = 불투명하게
+!WheelDown::WinSetTransparent(200, "A")          ; Alt + 휠 아래 = 반투명하게
+
+; Alt 를 짧은 시간에 두 번 눌렀는지 기억해 둡니다(위 창 제어에서 사용).
+~Alt::
+{
+    global g_DoubleAlt
+    g_DoubleAlt := (A_PriorHotkey = "~Alt" && A_TimeSincePriorHotkey < 400)
+    KeyWait("Alt")
+}
+
+#f3::Macro_ResetWindows()                        ; 투명도·항상위 전체 해제
+
+; 열려 있는 모든 창의 '항상 위'와 '투명도'를 원래대로 되돌립니다.
+Macro_ResetWindows(*)
+{
+    for hwnd in WinGetList()
+    {
+        try WinSetAlwaysOnTop(0, "ahk_id " hwnd)
+        try WinSetTransparent("Off", "ahk_id " hwnd)
+    }
+}
+
+
+; ── 창 격자 배치 : 활성 창이 있는 모니터를 3x3 으로 나눠 그 칸에 맞춥니다 ──
+;       7 8 9              좌상  상단  우상
+;       4 5 6      =       좌측  중앙  우측
+;       1 2 3              좌하  하단  우하
+#Numpad7::MoveToGrid(0, 0)                       ; 창 배치 - 좌상단
+#Numpad8::MoveToGrid(1, 0)                       ; 창 배치 - 상단
+#Numpad9::MoveToGrid(2, 0)                       ; 창 배치 - 우상단
+#Numpad4::MoveToGrid(0, 1)                       ; 창 배치 - 좌측
+#Numpad5::MoveToGrid(1, 1)                       ; 창 배치 - 중앙
+#Numpad6::MoveToGrid(2, 1)                       ; 창 배치 - 우측
+#Numpad1::MoveToGrid(0, 2)                       ; 창 배치 - 좌하단
+#Numpad2::MoveToGrid(1, 2)                       ; 창 배치 - 하단
+#Numpad3::MoveToGrid(2, 2)                       ; 창 배치 - 우하단
+
+MoveToGrid(col, row)
+{
+    hwnd := WinExist("A")
+    if !hwnd
+        return
+    if WinGetMinMax("ahk_id " hwnd)
+        WinRestore("ahk_id " hwnd)               ; 최대화 상태면 먼저 복원
+
+    MonitorGetWorkArea(MonitorFromWindow(hwnd), &left, &top, &right, &bottom)
+    cw := (right - left) // 3
+    ch := (bottom - top) // 3
+
+    x := left + col * cw
+    y := top  + row * ch
+    w := (col = 2) ? (right - x)  : cw           ; 맨 끝 칸은 나머지까지 채워 틈 방지
+    h := (row = 2) ? (bottom - y) : ch
+
+    WinMove(x, y, w, h, "ahk_id " hwnd)
+}
+
+; 창의 중심이 있는 모니터 번호(1부터)를 구합니다. 못 찾으면 1번.
+MonitorFromWindow(hwnd)
+{
+    WinGetPos(&wx, &wy, &ww, &wh, "ahk_id " hwnd)
+    cx := wx + ww // 2
+    cy := wy + wh // 2
+    Loop MonitorGetCount()
+    {
+        MonitorGet(A_Index, &l, &t, &r, &b)
+        if (cx >= l && cx < r && cy >= t && cy < b)
+            return A_Index
+    }
+    return 1
+}
+
+
+; ── 서식 없이 복사 / 붙여넣기 ──
+;    한글·워드·메일에서 글꼴·색·표를 버리고 '글자만' 옮깁니다.
+;    [5단계]에서 쓴 A_Clipboard 를 한 번 더 활용한 것입니다.
+^+c::CopyAsPlainText()                           ; 서식 없이 복사
+^+v::PasteAsPlainText()                          ; 서식 없이 붙여넣기
+
+CopyAsPlainText()
+{
+    A_Clipboard := ""            ; 복사가 실제로 됐는지 확인하려고 먼저 비움
+    SendInput("^c")
+    if !ClipWait(1)
+        return
+    A_Clipboard := A_Clipboard   ; 문자열로 한 번 받았다 넣으면 서식이 사라집니다
+}
+
+PasteAsPlainText()
+{
+    text := A_Clipboard
+    if (text = "")
+        return
+    savedClip := ClipboardAll()  ; 원래 클립보드를 잠시 보관
+    A_Clipboard := ""
+    A_Clipboard := text
+    if !ClipWait(1, 1)
+    {
+        A_Clipboard := savedClip
+        return
+    }
+    SendInput("^v")
+    Sleep(150)
+    A_Clipboard := savedClip     ; 원래 클립보드로 되돌려 놓기
+}
+
+
+; ── 단축키 도움말 : 스크립트가 자기 자신을 읽어서 만듭니다 ──
+;    단축키 목록을 손으로 적어두면 반드시 코드와 어긋납니다.
+;    그래서 이 파일을 읽어, 단축키 줄 옆에 붙은 ; 설명을 모아 보여줍니다.
+;    → 새 단축키를 만들고 옆에 ; 설명만 달면 목록에 저절로 나타납니다.
+^!h::ShowAllHotkeys()                            ; 단축키 도움말 (자동 생성)
+
+ShowAllHotkeys(*)
+{
+    list := "이 파일에 들어 있는 단축키`n"
+    list .= "================================`n"
+
+    scriptText := FileRead(A_ScriptFullPath, "UTF-8")
+
+    Loop Parse scriptText, "`n", "`r"
+    {
+        line := A_LoopField
+        if !InStr(line, ";")
+            continue
+        parts := StrSplit(line, ";")             ; ; 앞뒤로 자르고
+        desc  := Trim(parts.Length >= 2 ? parts[2] : "")
+        if (desc = "")
+            continue
+        if RegExMatch(line, "^\s*([#^!+<>*~$\w\.]+)::", &m)    ; 단축키 줄인가?
+            list .= Format("{:-22}", Trim(m[1])) . desc . "`n"
+    }
+
+    ; 핫스트링도 같은 방식으로 모읍니다.
+    list .= "`n상용구 (치면 바뀌는 글자)`n"
+    list .= "================================`n"
+
+    Loop Parse scriptText, "`n", "`r"
+    {
+        line := A_LoopField
+        if !InStr(line, ";")
+            continue
+        parts := StrSplit(line, ";")
+        desc  := Trim(parts.Length >= 2 ? parts[2] : "")
+        if (desc = "")
+            continue
+        if RegExMatch(line, "^\s*::(.*?)::", &m2)
+            list .= Format("{:-22}", Trim(m2[1])) . desc . "`n"
+    }
+
+    MsgBox(list, "단축키 · 상용구 도움말", 64)
+}
+
+
+; ############################################################
+;  [11단계] 덤 — 메일 상용구 (내 정보만 바꾸면 전부 반영됩니다)
+; ------------------------------------------------------------
+;  공문·메일 쓸 때 매번 치던 것들입니다.
+;  아래 '내 정보' 여섯 줄만 내 것으로 바꾸면, 서명도 인사말도 한꺼번에 바뀝니다.
+;
+;     /ad   →  메일 한 통 통째로 (첫인사 + 본문 자리 + 감사 + 서명)
+;     /sg   →  서명 블록만
+;     /gr   →  첫인사만
+;     /rq   →  협조 요청 문구        /fw  →  붙임 자료 안내 문구
+;     /dt   →  오늘 날짜             //1  →  ①  (//2 //3 …)
+; ############################################################
+
+; ▼▼▼ 여기만 바꾸세요 — 내 정보 ▼▼▼
+;    빈 칸("")으로 두면 그 줄은 서명에서 통째로 빠집니다.
+global g_SignName := "홍길동"
+global g_SignOrg  := "○○학교 행정실"
+global g_SignTel  := "063-000-0000"
+global g_SignFax  := ""
+global g_SignMail := "hong@korea.kr"
+global g_SignAddr := ""
+; ▲▲▲ 여기까지 ▲▲▲
+
+
+; ── 한 줄짜리 핫스트링 ──
+;    ⚠ 한 줄 형식은 :: 뒤가 끝까지 전부 '나올 내용'이라
+;       옆에 ; 주석을 달면 주석까지 그대로 입력됩니다. 그래서 여기엔 주석이 없습니다.
+:://1::①
+:://2::②
+:://3::③
+:://4::④
+:://5::⑤
+
+
+; ── 한글이 들어가는 것은 { } 로 감싸서 클립보드로 ──
+;    ([5단계]에서 배운 그대로입니다. 주석도 달 수 있어 도움말에 나옵니다)
+::/dt::                                    ; 오늘 날짜
+{
+    PasteText(FormatTime(A_Now, "yyyy. M. d."))
+}
+
+::/gr::                                    ; 메일 첫인사
+{
+    PasteText(MailGreeting())
+}
+
+::/sg::                                    ; 메일 서명 블록
+{
+    PasteText(MailSignature())
+}
+
+::/ad::                                    ; 메일 한 통 통째로
+{
+    PasteText(MailFullText())
+}
+
+::/rq::                                    ; 협조 요청 문구
+{
+    PasteText("업무에 협조해 주셔서 감사합니다.`r`n아래 내용 확인하시고 회신 부탁드립니다.")
+}
+
+::/fw::                                    ; 붙임 자료 안내 문구
+{
+    PasteText("관련 자료를 붙임과 같이 보내드립니다.`r`n확인 후 회신 부탁드립니다.")
+}
+
+
+; ── 메일 문구 만드는 곳 ──
+;    위 '내 정보'를 가져다 조립합니다. 문구가 마음에 안 들면 여기서 고치세요.
+MailGreeting()          ; 첫인사
+{
+    NL := "`r`n"
+    return "안녕하세요." . NL . NL . g_SignOrg . " " . g_SignName . "입니다."
+}
+
+MailSignature()         ; 서명 블록 (빈 칸으로 둔 항목은 알아서 빠집니다)
+{
+    NL   := "`r`n"
+    rule := "──────────────────────────────"
+
+    s := rule . NL
+    s .= "  🏫  " . g_SignName
+    if (g_SignOrg != "")
+        s .= "  |  " . g_SignOrg
+    s .= NL
+    if (g_SignTel != "")
+        s .= "  ☎  " . g_SignTel . NL
+    if (g_SignFax != "")
+        s .= "  📠  " . g_SignFax . NL
+    if (g_SignMail != "")
+        s .= "  ✉  " . g_SignMail . NL
+    if (g_SignAddr != "")
+        s .= "  📍  " . g_SignAddr . NL
+    s .= rule
+    return s
+}
+
+MailFullText()          ; 첫인사 + 본문 자리 + 맺음말 + 서명
+{
+    NL := "`r`n"
+    return MailGreeting() . NL . NL . NL . NL . "감사합니다." . NL . NL . MailSignature()
+}
+
+
+; 한글 IME 와 상관없이 글자를 넣습니다.
+;   Send 로 한글을 길게 내보내면 글자가 깨지므로([5단계]에서 본 그것),
+;   클립보드에 담아 Ctrl+V 로 붙여넣고 원래 클립보드를 되돌려 놓습니다.
+PasteText(text)
+{
+    savedClip := ClipboardAll()          ; 원래 클립보드를 잠시 보관
+    A_Clipboard := ""
+    A_Clipboard := text
+    if !ClipWait(1, 1)
+    {
+        A_Clipboard := savedClip
+        return
+    }
+    SendInput("^v")
+    Sleep(150)
+    A_Clipboard := savedClip             ; 원래대로 되돌리기
+}

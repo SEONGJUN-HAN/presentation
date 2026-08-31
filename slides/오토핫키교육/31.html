@@ -1,80 +1,58 @@
-<h2 class="slide-title">부팅 시 자동 실행 등록</h2>
+<h2 class="slide-title" data-important="true">
+    응용 ②. 엑셀 VBA — 급여명세서 개인별 PDF
+    <span class="badge"><i class="fa-solid fa-file-excel"></i> 오토핫키 밖으로</span>
+</h2>
 
 <div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        같은 방식이 엑셀에서도 통합니다(VBA는 엑셀에 이미 있어 설치 불필요).
+        비결은 <strong style="color: var(--accent)">말로 설명하지 말고 화면을 보여주는 것</strong>.
+    </p>
+
     <div class="two-column">
-
         <div>
-            <h3>shell:startup 이란?</h3>
-            <p>윈도우가 켜질 때
-                <strong style="color: var(--text-main)">자동으로 실행되는 프로그램 폴더</strong>입니다.
-                여기에 <code>.ahk</code> 파일의
-                <strong style="color: var(--text-main)">바로가기</strong>를 넣어두면
-                부팅 시마다 자동으로 핫키가 활성화됩니다.
-            </p>
-
-            <h3 style="margin-top: 12px;">등록 방법</h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">1</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        윈도우 키 + <code>R</code> → 실행창 열기
-                    </span>
+            <h3>엑셀을 AI에게 '보여주기'</h3>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-camera" style="color: var(--accent);"></i>
+                    시트를 <code>Win + Shift + S</code> 로 캡처해
+                    채팅창에 <code>Ctrl + V</code>
+                    <span style="color: var(--accent);">(가장 확실 ★)</span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">2</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        <code>shell:startup</code> 입력 후 엔터
-                    </span>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    받은 코드는 <code>개발 도구</code> → <strong>Visual Basic</strong> →
+                    <code>삽입</code> → <strong>모듈</strong>에 붙여넣고 <code>F5</code>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">3</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        등록할 <code>.ahk</code> 파일 우클릭 →
-                        <strong style="color: var(--text-main)">바로가기 만들기</strong>
-                    </span>
-                </li>
-                <li style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 8px;">
-                    <span style="min-width:28px; height:28px; background: var(--accent);
-                                 color: var(--bg-primary); border-radius: 50%; display: flex;
-                                 align-items: center; justify-content: center;
-                                 font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px;">4</span>
-                    <span style="font-size: 16px; color: var(--text-dim);">
-                        생성된 바로가기를
-                        <strong style="color: var(--text-main)">startup 폴더로 이동</strong>
-                    </span>
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    반드시 <strong>사본</strong>으로 먼저, 저장은
+                    <strong>매크로 사용 통합 문서(.xlsm)</strong>
                 </li>
             </ul>
-            <div class="info-box" style="padding: 14px 20px; margin: 10px 0 0 0;">
-                <p><i class="fa-solid fa-link"></i>
-                    &nbsp;<strong style="color: var(--text-main)">바로가기</strong>를 넣는 이유 —
-                    원본 파일 수정 시 <strong style="color: var(--text-main)">항상 최신 내용이 자동 반영</strong>됩니다.
+            <div class="info-box" style="border-left-color: #ef4444; padding: 14px 20px;">
+                <p style="font-size: 17px;">
+                    <i class="fa-solid fa-shield-halved" style="color: #ef4444;"></i>&nbsp;
+                    <strong style="color: var(--text-main)">실제 급여·주민번호는 올리지 마세요.</strong>
+                    가상 데이터로 코드만 받아 내 파일에 적용.
                 </p>
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div class="image-wrapper" style="height: 210px;">
-                <img src="img/startup_folder.png"
-                     alt="startup 폴더 화면"
-                     onerror="handleImgError(this)">
-            </div>
-            <div class="info-box">
-                <p><i class="fa-solid fa-rotate-right"></i>
-                    &nbsp;파일 수정 후에는 트레이 아이콘 우클릭 →
-                    <strong style="color: var(--text-main)">Reload This Script</strong>로
-                    즉시 적용. 재부팅 불필요!
-                </p>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre><span class="c-comment">; (시트 캡처를 붙여넣은 뒤 이렇게)</span>
+
+이 엑셀의 '급여명세서' 시트야.
+직원별 명세서가 세로로 반복돼 있어.
+
+직원 한 명당 <span class="c-keyword">PDF</span> 파일 하나로 나눠서
+바탕화면 '명세서' 폴더에 저장하는
+엑셀 <span class="c-keyword">VBA</span> 코드를 만들어줘.
+
+파일 이름은 직원 이름으로 해줘.</pre>
             </div>
         </div>
-
     </div>
 </div>
