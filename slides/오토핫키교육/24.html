@@ -21,8 +21,8 @@
                 </li>
                 <li>
                     <i class="fa-solid fa-thumbtack"></i>
-                    <code>.Bind(it)</code> &mdash; 버튼마다
-                    <strong>그 줄의 값으로 고정</strong> (없으면 전부 마지막 것만 열립니다)
+                    <code>.Bind(it)</code> &mdash; <strong>그 줄의 값으로 고정</strong>
+                    (없으면 전부 마지막 것만 열림)
                 </li>
             </ul>
             <div class="info-box" style="padding: 12px 20px;">
@@ -36,19 +36,18 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 한 줄이 버튼 하나</span>
-g := { title: <span class="c-string">"내가 자주 쓰는 것"</span>, items: [] }
-g.items.Push({ key: <span class="c-string">"W"</span>, label: <span class="c-string">"네이버"</span>,
-               run: g_PathNaver })
+<pre style="font-size: 15px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 한 줄이 버튼 하나</span>
+g := { col: <span class="c-number">2</span>, title: <span class="c-string">"내가 자주 쓰는 것"</span>, items: [] }
+g.items.Push({ key: <span class="c-string">"W"</span>, label: <span class="c-string">"네이버"</span>, run: g_PathNaver })
 m.Push(g)
-
+<span class="c-comment">;      ↑ col 숫자만 바꾸면 다른 열로 옮겨갑니다</span>
 <span class="c-comment">; ↓ 아래는 그대로 — 목록을 읽어서 대신 만듭니다</span>
 <span class="c-keyword">for</span> grp <span class="c-keyword">in</span> BuildMyMenu()      <span class="c-comment">; ① 그룹을 하나씩</span>
 {
-    lg.AddText(<span class="c-string">"xm y+14"</span>, grp.title)
+    lg.AddText(opt . <span class="c-string">" w280"</span>, grp.title)
     <span class="c-keyword">for</span> it <span class="c-keyword">in</span> grp.items       <span class="c-comment">; ② 그 안의 버튼</span>
     {
-        btn := lg.AddButton(<span class="c-string">"xm w280 h34"</span>,
+        btn := lg.AddButton(<span class="c-string">"xp y+4 w280 h31"</span>,
                it.label . <span class="c-string">" (&amp;"</span> . it.key . <span class="c-string">")"</span>)
         btn.OnEvent(<span class="c-string">"Click"</span>, RunMenuItem.Bind(it))
     }

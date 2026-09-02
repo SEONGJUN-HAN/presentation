@@ -320,6 +320,11 @@ global g_PathToolBox  := g_ToolDir . "\전북특별자치도교육청_간단 도
 global g_PathEmoticon := A_ScriptDir . "\이모티콘\이모티콘.ahk"
 global g_PathContact  := A_ScriptDir . "\통합연락처\통합연락처.ahk"
 
+; PY 로 시작하는 버튼은 파이썬 프로그램입니다. (숙제 — 아래 [숙제] 설명 참고)
+global g_PathPyPage   := g_ToolDir . "\PY\pdf_page_number_gui.py"
+global g_PathPyMask   := g_ToolDir . "\PY\pdf_mask_tool.py"
+global g_PathPyMart   := g_ToolDir . "\PY\Python_mart_calc.py"
+
 ; ▼▼▼ 여기만 바꾸세요 — 내 것들 ▼▼▼
 global g_PathMyDocs  := A_MyDocuments                     ; 내 문서 폴더
 global g_PathNaver   := "https://www.naver.com"
@@ -336,6 +341,8 @@ global g_Gui2 := ""          ; 실전형 런처 창을 담아 둘 자리
 ;     label : 버튼에 보일 글자
 ;     run   : 열고 싶은 파일 · 폴더 · 사이트
 ;     go    : (파일 대신) 실행할 함수 이름
+;     exe   : (없어도 됨) 그 파일을 열어 줄 프로그램. 파이썬 파일이면 "pyw.exe"
+;     col   : 이 그룹을 몇 번째 열에 놓을지 (1 또는 2). 숫자만 바꾸면 옮겨집니다.
 ;
 ;  [3단계]에서는 버튼 하나가 두 줄이었습니다. 여기서는 한 줄입니다.
 ;  대신 아래 ShowLauncher2 가 그 목록을 읽어서 버튼을 대신 만들어 줍니다.
@@ -345,20 +352,20 @@ BuildMyMenu()
     m := []                                   ; 그룹들을 담을 빈 목록
 
     ; ── 같이 드린 도구들 (배포 폴더 안에 있어서 경로를 안 고쳐도 됩니다) ──
-    g := { title: "📄  문서 · 서식", items: [] }
+    g := { col: 1, title: "📄  문서 · 서식", items: [] }
     g.items.Push({ key: "1", label: "📝  한글 서식도우미",    run: g_PathHwpForm })
     g.items.Push({ key: "2", label: "📑  PDF·한글 문서정리",  run: g_PathDocTidy })
     g.items.Push({ key: "3", label: "🗜  이미지 용량 줄이기",  run: g_PathImgSmall })
     m.Push(g)
 
-    g := { title: "🧰  도구 모음", items: [] }
+    g := { col: 1, title: "🧰  도구 모음", items: [] }
     g.items.Push({ key: "4", label: "🧮  간단 도구 모음",   run: g_PathToolBox })
     g.items.Push({ key: "5", label: "📞  통합연락처",       run: g_PathContact })
     g.items.Push({ key: "6", label: "😀  이모티콘 입력기",  run: g_PathEmoticon })
     m.Push(g)
 
     ; ▼▼▼ 여기만 바꾸세요 — 한 줄이 버튼 하나 ▼▼▼
-    g := { title: "🌐  내가 자주 쓰는 것", items: [] }
+    g := { col: 2, title: "🌐  내가 자주 쓰는 것", items: [] }
     g.items.Push({ key: "Q", label: "📁  내 문서 폴더", run: g_PathMyDocs })
     g.items.Push({ key: "W", label: "🌐  네이버",       run: g_PathNaver })
     g.items.Push({ key: "E", label: "🌐  구글",         run: g_PathGoogle })
@@ -370,9 +377,18 @@ BuildMyMenu()
     m.Push(g)
     ; ▲▲▲ 여기까지 ▲▲▲
 
-    g := { title: "⚙  자주 하는 일", items: [] }
+    g := { col: 2, title: "⚙  자주 하는 일", items: [] }
     g.items.Push({ key: "A", label: "📝  메모장에 할 일 쓰기", go: WriteTodo })
-    g.items.Push({ key: "F", label: "❓  단축키 도움말",       go: ShowAllHotkeys })
+    m.Push(g)
+
+    ; ── [숙제] 파이썬 프로그램 ──
+    ;   지금 누르면 안 열립니다. 파이썬이 없기 때문입니다.
+    ;   파이썬을 깔고 필요한 것을 더 설치하면 그때부터 열립니다.
+    ;   어떻게 하는지는 AI 에게 물어보세요. 그게 이번 숙제입니다.
+    g := { col: 2, title: "🐍  PY — 파이썬 깔고 나면 (숙제)", items: [] }
+    g.items.Push({ key: "7", label: "PY  📄 PDF 페이지 번호", run: g_PathPyPage, exe: "pyw.exe" })
+    g.items.Push({ key: "8", label: "PY  🖨 PDF 마스킹 출력", run: g_PathPyMask, exe: "pyw.exe" })
+    g.items.Push({ key: "9", label: "PY  🧺 마트 계산기",     run: g_PathPyMart, exe: "pyw.exe" })
     m.Push(g)
 
     return m
@@ -385,6 +401,8 @@ RunMenuItem(item, *)
     CloseLauncher2()
     if item.HasOwnProp("go")
         item.go()
+    else if item.HasOwnProp("exe")     ; 파이썬 파일처럼 '열어 줄 프로그램'이 따로 있는 경우
+        RunTarget(item.run, item.exe)
     else
         RunTarget(item.run)
 }
@@ -407,22 +425,42 @@ ShowLauncher2(*)
     lg := Gui("+AlwaysOnTop", "나만의 런처 (실전형)")
     lg.SetFont("s11", "맑은 고딕")
 
+    lg.SetFont("s9")
+    lg.AddText("xm w584", "Alt + 괄호 안 글자로 바로 실행    ·    Esc 로 닫기")
+
+    ; 좌표는 여전히 안 씁니다. 오토핫키가 알아둘 '기준점'만 잡아 주면 됩니다.
+    ;   Section  = 여기를 기준점으로 삼아라
+    ;   ys       = 기준점과 같은 높이에서 시작해라   (→ 2열의 첫 줄)
+    ;   x+24     = 바로 앞 컨트롤 오른쪽으로 24만큼  (→ 2열의 가로 위치)
+    ;   xp       = 바로 앞 컨트롤과 같은 x           (→ 같은 열에 계속 쌓기)
+    firstDone := false, col2Done := false
+
     for grp in BuildMyMenu()                   ; ① 그룹을 하나씩 꺼내서
     {
+        col := grp.HasOwnProp("col") ? grp.col : 1
+
+        if !firstDone
+            opt := "xm Section"                ; 맨 처음 — 여기가 기준점
+        else if (col = 2 && !col2Done)
+            opt := "ys x+24"                   ; 2열 시작
+        else
+            opt := "xp y+10"                   ; 같은 열에서 아래로
+
         lg.SetFont("s11 bold")
-        lg.AddText("xm y+14", grp.title)       ; 그룹 제목 한 줄
+        lg.AddText(opt . " w280", grp.title)   ; 그룹 제목 한 줄
         lg.SetFont("s11 norm")
+
+        firstDone := true
+        if (col = 2)
+            col2Done := true
 
         for it in grp.items                    ; ② 그 안의 버튼을 하나씩
         {
             ; [7단계] 글자 앞의 & 는 "Alt + 그 글자"로 누를 수 있게 해줍니다.
-            btn := lg.AddButton("xm w280 h34", it.label . " (&" . it.key . ")")
+            btn := lg.AddButton("xp y+4 w280 h31", it.label . " (&" . it.key . ")")
             btn.OnEvent("Click", RunMenuItem.Bind(it))     ; [3단계]와 똑같은 Bind
         }
     }
-
-    close := lg.AddButton("xm y+16 w280 h32 Default", "❌  닫기 (Esc)")
-    close.OnEvent("Click", (*) => CloseLauncher2())
 
     lg.OnEvent("Close",  (*) => CloseLauncher2())
     lg.OnEvent("Escape", (*) => CloseLauncher2())
@@ -448,7 +486,7 @@ CloseLauncher2()
 ;  그냥 Run 을 쓰면, 경로를 잘못 적었을 때 아무 일도 안 일어납니다.
 ;  "왜 안 되지?" 로 30분을 쓰게 되는 지점이라, 실전판은 이렇게 알려줍니다.
 ; ============================================================
-RunTarget(target)
+RunTarget(target, exe := "")
 {
     ; 경로에 ":\" 가 있으면 파일·폴더라는 뜻입니다. (사이트 주소에는 없습니다)
     if (InStr(target, ":\") && !FileExist(target))
@@ -457,7 +495,12 @@ RunTarget(target)
              . "`n`n[9단계] 경로 설정을 고쳐 주세요.", "찾을 수 없음", 48)
         return
     }
-    Run(target)
+
+    ; exe 를 적어 두면 그 프로그램으로 엽니다. (파이썬 파일이면 pyw.exe)
+    if (exe = "")
+        Run(target)
+    else
+        Run(exe . ' "' . target . '"')
 }
 
 
