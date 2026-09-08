@@ -69,48 +69,37 @@ ShowLauncher(*)
     ;     첫 줄 : 버튼을 만들고        (글자만 바꾸면 됩니다)
     ;     둘째 줄 : 누르면 뭘 열지     (따옴표 안만 바꾸면 됩니다)
     ;
+    ;     CloseLauncher() = "이 창을 닫아라",  Run(...) = "이걸 열어라".
+    ;     쉼표로 이으면 "닫고, 그다음 열어라"가 됩니다.
+    ;
     ;     버튼을 늘리려면 두 줄을 복사해 붙여넣고
     ;     b1 → b2 → b3 … 처럼 이름만 겹치지 않게 바꾸세요.
     ;
     ;     경로 따는 법 : 파일을 Shift + 우클릭 → "경로로 복사"
 
     b1 := g_Gui.AddButton("xm w280 h34", "📄  업무일지 열기")
-    b1.OnEvent("Click", (*) => OpenIt("C:\Users\내이름\Documents\업무일지.xlsx"))
+    b1.OnEvent("Click", (*) => (CloseLauncher(), Run("C:\Users\내이름\Documents\업무일지.xlsx")))
 
     b2 := g_Gui.AddButton("xm w280 h34", "🌐  네이버 열기")
-    b2.OnEvent("Click", (*) => OpenIt("https://www.naver.com"))
+    b2.OnEvent("Click", (*) => (CloseLauncher(), Run("https://www.naver.com")))
 
     b3 := g_Gui.AddButton("xm w280 h34", "📁  올해 업무 폴더")
-    b3.OnEvent("Click", (*) => OpenIt("C:\Users\내이름\Documents\2026_업무"))
+    b3.OnEvent("Click", (*) => (CloseLauncher(), Run("C:\Users\내이름\Documents\2026_업무")))
 
     b4 := g_Gui.AddButton("xm w280 h34", "✉️  메일 쓰기")
-    b4.OnEvent("Click", (*) => OpenIt("mailto:"))
+    b4.OnEvent("Click", (*) => (CloseLauncher(), Run("mailto:")))
 
-    ; 파일 대신 '함수'를 부르는 버튼도 똑같이 두 줄입니다.
+    ; 함수를 부르는 버튼도 똑같습니다 — Run(...) 자리에 그 함수 이름만 넣으면 됩니다.
     b5 := g_Gui.AddButton("xm w280 h34", "📝  메모장에 할 일 쓰기")
-    b5.OnEvent("Click", (*) => DoIt(WriteTodo))       ; [6단계] 일하는 버튼
+    b5.OnEvent("Click", (*) => (CloseLauncher(), WriteTodo()))        ; [6단계] 일하는 버튼
 
     b6 := g_Gui.AddButton("xm w280 h34", "❓  단축키 도움말")
-    b6.OnEvent("Click", (*) => DoIt(ShowMyHelp))      ; [0단계] MsgBox 재활용
+    b6.OnEvent("Click", (*) => (CloseLauncher(), ShowMyHelp()))       ; [0단계] MsgBox 재활용
     ; ▲▲▲ 여기까지 ▲▲▲
 
     g_Gui.OnEvent("Close",  (*) => CloseLauncher())
     g_Gui.OnEvent("Escape", (*) => CloseLauncher())   ; Esc 로 닫기
     g_Gui.Show()
-}
-
-; 버튼 두 줄을 짧게 쓰려고 만들어 둔 도우미 둘입니다.
-;   ( * 는 "넘어오는 값이 더 있어도 무시하라"는 뜻입니다)
-OpenIt(target)          ; 런처를 닫고 → 파일·폴더·사이트를 엽니다
-{
-    CloseLauncher()
-    Run(target)
-}
-
-DoIt(func)              ; 런처를 닫고 → 그 함수를 실행합니다
-{
-    CloseLauncher()
-    func()
 }
 
 CloseLauncher()
@@ -394,7 +383,8 @@ BuildMyMenu()
     return m
 }
 
-; 버튼을 눌렀을 때 실제로 실행되는 부분 — [3단계]의 RunItem 과 하는 일이 같습니다.
+; 버튼을 눌렀을 때 실제로 실행되는 부분 — [3단계]에서 버튼마다 적던
+;   "닫고 → 연다"를, 목록을 쓰니 함수 하나로 모아 둔 것입니다.
 ;   달라진 건 Run 대신 RunTarget 을 부른다는 것뿐입니다. ([9단계])
 RunMenuItem(item, *)
 {
@@ -458,7 +448,7 @@ ShowLauncher2(*)
         {
             ; [7단계] 글자 앞의 & 는 "Alt + 그 글자"로 누를 수 있게 해줍니다.
             btn := lg.AddButton("xp y+4 w280 h31", it.label . " (&" . it.key . ")")
-            btn.OnEvent("Click", RunMenuItem.Bind(it))     ; [3단계]와 똑같은 Bind
+            btn.OnEvent("Click", RunMenuItem.Bind(it))     ; Bind = 이 줄의 값으로 고정
         }
     }
 
