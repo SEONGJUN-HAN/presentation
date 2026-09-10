@@ -38,17 +38,17 @@
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
 <pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 버튼 하나가 두 줄</span>
-b1 := g_Gui.AddButton(<span class="c-string">"xm w280 h34"</span>, <span class="c-string">"📄 업무일지"</span>)
+b1 := g_Gui.AddButton(<span class="c-string">"w280 h34"</span>, <span class="c-string">"📄 업무일지"</span>)
 b1.OnEvent(<span class="c-string">"Click"</span>, (*) =&gt;
-    (CloseLauncher(), Run(<span class="c-string">"C:\업무\일지.xlsx"</span>)))
+    (g_Gui.Destroy(), Run(<span class="c-string">"C:\업무\일지.xlsx"</span>)))
 
-b2 := g_Gui.AddButton(<span class="c-string">"xm w280 h34"</span>, <span class="c-string">"🌐 네이버"</span>)
+b2 := g_Gui.AddButton(<span class="c-string">"w280 h34"</span>, <span class="c-string">"🌐 네이버"</span>)
 b2.OnEvent(<span class="c-string">"Click"</span>, (*) =&gt;
-    (CloseLauncher(), Run(<span class="c-string">"https://www.naver.com"</span>)))
+    (g_Gui.Destroy(), Run(<span class="c-string">"https://www.naver.com"</span>)))
 
 <span class="c-comment">; ↑ 이 두 줄을 복사해 붙여넣고 b3, b4 …</span>
 
-<span class="c-comment">; CloseLauncher() = 창을 닫아라,  Run(...) = 이걸 열어라</span>
+<span class="c-comment">; g_Gui.Destroy() = 창을 닫아라,  Run(...) = 이걸 열어라</span>
 <span class="c-comment">; 쉼표로 이으면 "닫고, 그다음 열어라"가 됩니다</span></pre>
             </div>
         </div>
