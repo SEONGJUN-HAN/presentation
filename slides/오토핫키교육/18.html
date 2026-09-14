@@ -30,9 +30,10 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre style="font-size: 17px;"><span class="c-comment">; Run(...) 자리에 그 함수 이름만 넣으면 됩니다.</span>
-b5 := g_Gui.AddButton("w280 h34", <span class="c-string">"📝 메모장에 할 일 쓰기"</span>)
-b5.OnEvent("Click", (*) => (g_Gui.Destroy(), <span class="c-string">WriteTodo()</span>))
+<pre style="font-size: 16px;"><span class="c-comment">; Run(...) 자리에 그 함수 이름만 넣으면 됩니다.</span>
+g_Gui.AddButton("w280 h34", <span class="c-string">"📝 메모장에 할 일 쓰기"</span>)
+    .OnEvent("Click", (*) =&gt;
+        (g_Gui.Destroy(), <span class="c-string">WriteTodo()</span>))
 
 
 WriteTodo(*)
