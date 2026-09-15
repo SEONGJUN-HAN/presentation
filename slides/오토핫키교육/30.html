@@ -1,38 +1,38 @@
 <h2 class="slide-title" data-important="true">
-    응용 ①. AI를 한글 문서 안으로
-    <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i> 공문 다듬기</span>
+    응용 ①. 금액을 한글로 — 규칙은 AI가 짠다
+    <span class="badge"><i class="fa-solid fa-won-sign"></i> 품의 · 계약서</span>
 </h2>
 
 <div class="content-area">
     <p style="font-size: 17px; margin-bottom: 10px;">
-        문장을 <strong style="color: var(--text-main)">드래그하고 단축키 하나</strong>면,
-        AI가 공문체로 다듬어 <strong style="color: var(--accent)">그 자리에 바로 넣어줍니다.</strong>
+        숫자를 드래그하고 단축키 하나면 <code>1234000</code> &rarr;
+        <strong style="color: var(--accent)">금 일백이십삼만사천원정 (₩1,234,000)</strong>.
+        만·억 끊기, '일' 붙이기 같은 규칙은 <strong style="color: var(--text-main)">몰라도 됩니다.</strong>
     </p>
 
     <div class="two-column">
         <div>
-            <h3>준비는 한 번만</h3>
+            <h3>이렇게 시킵니다</h3>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    <a href="https://aistudio.google.com" target="_blank"
-                       style="color: var(--accent);">aistudio.google.com</a>
-                    에서 <strong>무료 API 키</strong> 발급 (구글 계정 필요)
+                    오른쪽 요청문을 <strong>AI 채팅창</strong>에 그대로 붙여넣기
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    옆에 <code>gemini_key.txt</code> 만들고 <strong>키 붙여넣기</strong>
+                    받은 코드를 <code>내업무도구.ahk</code> <strong>맨 아래</strong>에 붙여넣고
+                    <code>Ctrl + F9</code>
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    문장 드래그 → <code>Ctrl + Alt + G</code>
+                    아무 데서나 숫자 드래그 &rarr; <code>Ctrl + Alt + W</code>
                 </li>
             </ul>
-            <div class="info-box" style="border-left-color: #f59e0b; padding: 14px 20px;">
-                <p style="font-size: 17px;">
-                    <i class="fa-solid fa-key" style="color: #f59e0b;"></i>&nbsp;
-                    키를 <strong style="color: var(--text-main)">파일로 분리</strong>한 이유 —
-                    스크립트를 남에게 줘도 <strong style="color: var(--text-main)">키가 딸려가지 않습니다.</strong>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 16px;"><i class="fa-solid fa-user-check"></i>&nbsp;
+                    <strong style="color: var(--text-main)">맞는지 확인하는 건 우리 몫입니다.</strong>
+                    <code>10000</code> <code>100010000</code> <code>1010</code> 을 넣어 보고,
+                    틀리면 "○○을 넣었더니 △△가 나왔어, 고쳐줘".
                 </p>
             </div>
         </div>
@@ -40,18 +40,20 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre><span class="c-comment">; 드래그한 문장을 AI에게 보내고</span>
-<span class="c-comment">; 받은 문장으로 그 자리를 교체</span>
-^!g::
-{
-    <span class="c-keyword">A_Clipboard</span> := <span class="c-string">""</span>      <span class="c-comment">; 먼저 비우기!</span>
-    <span class="c-keyword">Send</span>(<span class="c-string">"^c"</span>)
-    <span class="c-keyword">ClipWait</span>(1)
+<pre style="font-size: 16px;"><span class="c-comment">; (AI 채팅창에 이렇게)</span>
 
-    답 := AskGemini(키, 프롬프트 . <span class="c-keyword">A_Clipboard</span>)
-    <span class="c-keyword">A_Clipboard</span> := 답
-    <span class="c-keyword">Send</span>(<span class="c-string">"^v"</span>)      <span class="c-comment">; 선택된 문장을 교체</span>
-}</pre>
+<span class="c-keyword">AutoHotkey v2</span> 문법으로 만들어줘.
+
+드래그한 숫자를 Ctrl+Alt+W 로
+한글 금액으로 바꿔서
+그 자리에 붙여넣는 단축키.
+
+형식 예시:
+금 일백이십삼만사천원정 (₩1,234,000)
+
+- 쉼표나 '원'이 섞여 있어도 숫자만 읽기
+- 공문서처럼 일십·일백·일천으로
+  '일'을 붙이기</pre>
             </div>
         </div>
     </div>

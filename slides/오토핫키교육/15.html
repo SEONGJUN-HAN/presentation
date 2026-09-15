@@ -1,29 +1,28 @@
 <h2 class="slide-title" data-important="true">
-    3단계. 버튼 늘리기 — 두 줄 복사가 전부
+    3단계. 버튼 늘리기 — 한 덩어리가 버튼 하나
     <span class="badge"><i class="fa-solid fa-star"></i> 내 런처 완성</span>
 </h2>
 
 <div class="content-area">
     <div class="two-column">
         <div>
-            <h3>버튼 하나가 두 줄입니다</h3>
+            <h3>이름을 붙일 것도 없습니다</h3>
             <p>
+                버튼을 만들고, <strong>만든 그 자리에 바로 이어서</strong> 할 일을 붙입니다.
                 외울 것도, 새로 배울 것도 없습니다.
-                <strong>두 줄을 복사해서 이름만 바꾸면</strong> 버튼이 늘어납니다.
             </p>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    <strong>첫 줄</strong> — 버튼을 만든다 (따옴표 안의 글자만 바꾸기)
+                    <code>AddButton</code> — 버튼을 만든다 (따옴표 안의 글자만 바꾸기)
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    <strong>둘째 줄</strong> — 누르면 뭘 열지 (경로만 바꾸기)
+                    <code>.OnEvent</code> — 이어서 <strong>누르면 할 일</strong> (경로만 바꾸기)
                 </li>
                 <li>
                     <i class="fa-solid fa-check"></i>
-                    <code>b1</code> &rarr; <code>b2</code> &rarr; <code>b3</code> …
-                    <strong>이름만 겹치지 않게</strong>
+                    <strong>한 덩어리를 통째로 복사</strong>해 붙여넣으면 버튼이 하나 더
                 </li>
             </ul>
             <div class="info-box" style="padding: 12px 20px;">
@@ -37,19 +36,19 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 버튼 하나가 두 줄</span>
-b1 := g_Gui.AddButton(<span class="c-string">"w280 h34"</span>, <span class="c-string">"📄 업무일지"</span>)
-b1.OnEvent(<span class="c-string">"Click"</span>, (*) =&gt;
-    (g_Gui.Destroy(), Run(<span class="c-string">"C:\업무\일지.xlsx"</span>)))
+<pre style="font-size: 16px;"><span class="c-comment">; ▼ 여기만 바꾸세요 — 한 덩어리가 버튼 하나</span>
+g_Gui.AddButton(<span class="c-string">"w280 h34"</span>, <span class="c-string">"📄 업무일지"</span>)
+    .OnEvent(<span class="c-string">"Click"</span>, (*) =&gt; (g_Gui.Destroy(),
+        Run(<span class="c-string">"C:\업무\일지.xlsx"</span>)))
 
-b2 := g_Gui.AddButton(<span class="c-string">"w280 h34"</span>, <span class="c-string">"🌐 네이버"</span>)
-b2.OnEvent(<span class="c-string">"Click"</span>, (*) =&gt;
-    (g_Gui.Destroy(), Run(<span class="c-string">"https://www.naver.com"</span>)))
+g_Gui.AddButton(<span class="c-string">"w280 h34"</span>, <span class="c-string">"🌐 네이버"</span>)
+    .OnEvent(<span class="c-string">"Click"</span>, (*) =&gt; (g_Gui.Destroy(),
+        Run(<span class="c-string">"https://www.naver.com"</span>)))
 
-<span class="c-comment">; ↑ 이 두 줄을 복사해 붙여넣고 b3, b4 …</span>
+<span class="c-comment">; ↑ 통째로 복사해 붙여넣으면 버튼이 하나 더</span>
 
-<span class="c-comment">; g_Gui.Destroy() = 창을 닫아라,  Run(...) = 이걸 열어라</span>
-<span class="c-comment">; 쉼표로 이으면 "닫고, 그다음 열어라"가 됩니다</span></pre>
+<span class="c-comment">; g_Gui.Destroy() = 창을 닫아라</span>
+<span class="c-comment">; Run(...) = 이걸 열어라</span></pre>
             </div>
         </div>
     </div>
