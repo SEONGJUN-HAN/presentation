@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- ?v= 숫자는 캐시 무효화용입니다.
          css 를 고쳤는데 브라우저에 반영이 안 되면 이 숫자를 올리세요. -->
-    <link rel="stylesheet" href="css/base.css?v=3">
-    <link rel="stylesheet" href="css/components.css?v=3">
+    <link rel="stylesheet" href="css/base.css?v=4">
+    <link rel="stylesheet" href="css/components.css?v=4">
     <!-- 디자인 시스템: 새 슬라이드는 이 클래스들만 조합하면 됩니다 -->
-    <link rel="stylesheet" href="css/slide-kit.css?v=3">
+    <link rel="stylesheet" href="css/slide-kit.css?v=4">
 </head>
 <body>
 
@@ -34,6 +34,9 @@
 
     <!-- 하단 네비게이션 -->
     <div class="controls" title="H 키를 누르면 이 바가 숨겨지고 다시 나타납니다">
+        <button id="homeBtn" title="덱 선택 화면으로" onclick="location.href='./'">
+            <i class="fa-solid fa-house"></i>
+        </button>
         <button id="prevBtn" title="이전 (← 방향키)" onclick="navigateSlide(-1)" disabled>
             <i class="fa-solid fa-chevron-left"></i>
         </button>
@@ -51,8 +54,8 @@
     </div>
 
     <!-- JS: loader.js를 먼저 → navigation.js는 로드 완료 후 실행됨 -->
-    <script src="js/loader.js"></script>
-    <script src="js/navigation.js"></script>
+    <script src="js/loader.js?v=4"></script>
+    <script src="js/navigation.js?v=4"></script>
 
 </body>
 </html>

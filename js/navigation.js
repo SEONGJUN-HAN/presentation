@@ -155,6 +155,9 @@
        const forward  = ['ArrowRight', ' ', 'Enter', 'PageDown'];
        const backward = ['ArrowLeft', 'Backspace', 'PageUp'];
 
+       // 덱 선택 화면에서는 Enter/Space 로 링크를 열 수 있게 그대로 둠
+       if (document.body.classList.contains('picker-mode')) return;
+
        // 입력 중이거나 조합키가 눌린 경우는 무시
        if (e.ctrlKey || e.altKey || e.metaKey) return;
        const tag = e.target.tagName;

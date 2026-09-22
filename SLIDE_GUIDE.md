@@ -11,10 +11,10 @@
 cp -r slides/_템플릿 slides/새프로젝트이름
 ```
 
-2) `js/loader.js` 맨 위에서 폴더명만 바꿉니다.
+2) `js/loader.js` 맨 위 `DECKS` 목록에 한 줄 추가합니다. (첫 화면 덱 선택 목록)
 
 ```js
-const DEFAULT_DECK = '새프로젝트이름';
+{ folder: '새프로젝트이름', title: '표지 제목', desc: '한 줄 설명' },
 ```
 
 3) 로컬 서버로 엽니다. (`file://` 로 직접 열면 안 됩니다)
@@ -23,8 +23,8 @@ const DEFAULT_DECK = '새프로젝트이름';
 npx serve
 ```
 
-> 💡 파일을 안 고치고 잠깐 다른 덱을 보고 싶으면 주소 뒤에 `?deck=폴더명` 을 붙이세요.
-> 예) `index.html?deck=_템플릿`
+> 💡 `index.html` 을 그냥 열면 덱 선택 화면이 나오고, 주소 뒤에 `?deck=폴더명` 을 붙이면 그 덱이 바로 열립니다.
+> 예) `index.html?deck=_템플릿` — 목록에 없는 덱도 이렇게 열 수 있고, 탭마다 다른 덱을 동시에 띄울 수 있습니다.
 
 ---
 
@@ -139,7 +139,7 @@ presentation/
 │   ├── base.css        ← 화면 껍데기(덱·네비·인쇄)
 │   ├── components.css  ← 예전 덱용 (건드리지 말 것)
 │   └── slide-kit.css   ← ★ 디자인 시스템. 새 덱은 여기만 보면 됨
-├── js/loader.js        ← DEFAULT_DECK 지정 / ?deck= 지원
+├── js/loader.js        ← DECKS 목록(덱 선택 화면) / ?deck= 지원
 └── slides/
     ├── _템플릿/        ← ★ 새로 만들 때 복사
     └── <각 발표자료>/

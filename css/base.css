@@ -198,6 +198,71 @@ body {
     transition: color 0.2s;
 }
 
+/* ─── 덱 선택 화면 (?deck= 없이 열었을 때) ─── */
+body.picker-mode {
+    overflow: auto;
+    align-items: flex-start;
+}
+
+body.picker-mode .progress-bar-container,
+body.picker-mode .presentation-wrapper,
+body.picker-mode .controls {
+    display: none;
+}
+
+.deck-picker {
+    width: 100%;
+    max-width: 720px;
+    padding: 64px 16px;
+}
+
+.picker-heading {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.picker-hint {
+    color: var(--text-dim);
+    margin-bottom: 32px;
+}
+
+.picker-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.picker-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px 24px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.picker-card:hover,
+.picker-card:focus-visible {
+    background-color: var(--bg-primary);
+    border-color: var(--accent);
+    outline: none;
+}
+
+.picker-card__title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.picker-card__desc {
+    font-size: 15px;
+    color: var(--text-dim);
+}
+
 .controls span#slideIndicator:hover {
     color: var(--accent);
 }

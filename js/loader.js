@@ -14,14 +14,20 @@
    ============================================================ */
 
 // ─── 여기만 수정 ──────────────────────────────
-const DEFAULT_DECK = '오토핫키교육';   // slides/ 안의 폴더명
-const MAX_SLIDES   = 300;                     // 무한 루프 방지용 안전 상한
+// 첫 화면(덱 선택)에 보일 목록. folder 는 slides/ 안의 폴더명입니다.
+// 여기 없는 덱도 ?deck=폴더명 으로는 열립니다. (예: index.html?deck=_템플릿)
+const DECKS = [
+    { folder: '오토핫키교육',        title: '업무 자동화를 내 손으로 만든다', desc: 'AutoHotkey 실전 가이드' },
+    { folder: '업무자동화_경험_공유', title: '업무자동화, 컴퓨터에게 일을 맡기자', desc: '4가지 무기, 그리고 AI' },
+    { folder: '장학사_엑셀',         title: '학교 자료, 데이터로 다루기', desc: '신규 장학사 직무연수 · 엑셀 실무' },
+    { folder: '1정_예산회계',        title: '스마트한 학교 예산 집행 가이드', desc: '신규~중견 교사 실무 특강' },
+];
+const MAX_SLIDES = 300;                       // 무한 루프 방지용 안전 상한
 // ──────────────────────────────────────────────
 
-// 주소 뒤에 ?deck=폴더명 을 붙이면 파일을 고치지 않고 그 덱을 미리 볼 수 있습니다.
-//   예) index.html?deck=_템플릿
-const CURRENT_DECK =
-    new URLSearchParams(location.search).get('deck') || DEFAULT_DECK;
+// 주소 뒤에 ?deck=폴더명 이 있으면 그 덱을, 없으면 덱 선택 화면을 띄웁니다.
+// 링크마다 독립적으로 동작하므로 여러 덱을 탭 여러 개로 동시에 열 수 있습니다.
+const CURRENT_DECK = new URLSearchParams(location.search).get('deck');
 
 function padNum(n) {
     return String(n).padStart(2, '0');
@@ -114,4 +120,30 @@ function showFatalError(deck, file, err) {
     if (ind) ind.innerText = '0 / 0';
 }
 
-window.addEventListener('DOMContentLoaded', loadSlides);
+/* ?deck= 없이 열었을 때: 덱 선택 화면 */
+function showDeckPicker() {
+    document.body.classList.add('picker-mode');
+
+    const cards = DECKS.map(d => `
+        <a class="picker-card" href="?deck=${encodeURIComponent(d.folder)}">
+            <span class="picker-card__title">${d.title}</span>
+            <span class="picker-card__desc">${d.desc}</span>
+        </a>`).join('');
+
+    const picker = document.createElement('main');
+    picker.className = 'deck-picker';
+    picker.innerHTML = `
+        <h1 class="picker-heading">발표자료</h1>
+        <p class="picker-hint">볼 자료를 고르세요. 여러 개를 동시에 보려면 새 탭으로 여세요.</p>
+        <div class="picker-list">${cards}</div>`;
+    document.body.appendChild(picker);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    if (CURRENT_DECK) {
+        document.title = CURRENT_DECK;
+        loadSlides();
+    } else {
+        showDeckPicker();
+    }
+});
