@@ -1,0 +1,59 @@
+<h2 class="slide-title" data-important="true">
+    런처 속을 열어 보면 — 목록 한 줄이 버튼 하나
+    <span class="badge"><i class="fa-solid fa-layer-group"></i> 가볍게 보고 넘어가기</span>
+</h2>
+
+<div class="content-area">
+    <div class="two-column">
+        <div>
+            <h3>버튼 12개를 하나씩 다 쓰면 화면을 넘어갑니다</h3>
+            <p>
+                그래서 <strong>버튼을 목록에 적어두고</strong>, 만드는 코드는 한 벌만 써서 돌립니다.
+            </p>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-list"></i>
+                    버튼 하나가 <strong>목록 한 줄</strong>로 줄어듭니다
+                </li>
+                <li>
+                    <i class="fa-solid fa-repeat"></i>
+                    <code>for</code> 가 목록을 돌면서 버튼을 <strong>대신 만들어 줍니다</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-thumbtack"></i>
+                    <code>.Bind(it)</code> &mdash; <strong>그 줄의 값으로 고정</strong>
+                    (없으면 전부 마지막 것만 열림)
+                </li>
+            </ul>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-robot"></i>&nbsp;
+                    잠시 뒤 AI에게 버튼을 시키면
+                    <strong style="color: var(--text-main)">바로 이 목록에 한 줄이 늘어납니다.</strong>
+                    나머지는 <strong style="color: var(--accent)">그냥 두고 넘어가세요.</strong>
+                </p>
+            </div>
+        </div>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 15px;"><span class="c-comment">; 실전형런처.ahk 안의 BuildMyMenu()</span>
+<span class="c-comment">; ▼ 여기만 바꾸세요 — 한 줄이 버튼 하나</span>
+g := { col: <span class="c-number">2</span>, title: <span class="c-string">"내가 자주 쓰는 것"</span>, items: [] }
+g.items.Push({ key: <span class="c-string">"W"</span>, label: <span class="c-string">"네이버"</span>, run: g_PathNaver })
+m.Push(g)
+<span class="c-comment">;      ↑ col 숫자만 바꾸면 다른 열로 옮겨갑니다</span>
+<span class="c-comment">; ↓ 아래는 그대로 — 목록을 읽어서 대신 만듭니다</span>
+<span class="c-keyword">for</span> grp <span class="c-keyword">in</span> BuildMyMenu()      <span class="c-comment">; ① 그룹을 하나씩</span>
+{
+    lg.AddText(opt . <span class="c-string">" w280"</span>, grp.title)
+    <span class="c-keyword">for</span> it <span class="c-keyword">in</span> grp.items       <span class="c-comment">; ② 그 안의 버튼</span>
+    {
+        btn := lg.AddButton(<span class="c-string">"xp y+4 w280 h31"</span>,
+               it.label . <span class="c-string">" (&amp;"</span> . it.key . <span class="c-string">")"</span>)
+        btn.OnEvent(<span class="c-string">"Click"</span>, RunMenuItem.Bind(it))
+    }
+}</pre>
+            </div>
+        </div>
+    </div>
+</div>

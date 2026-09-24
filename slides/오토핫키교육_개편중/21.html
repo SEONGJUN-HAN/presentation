@@ -1,0 +1,63 @@
+<h2 class="slide-title" data-important="true">
+    집중 실습 ①. 엑셀 VBA — 급여명세서를 개인별 PDF로
+    <span class="badge"><i class="fa-solid fa-file-excel"></i> 설치 0</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        명세 시트의 <strong style="color: var(--text-main)">이름 칸(F4)</strong>만 바꾸면 한 사람 명세서가 채워지는 파일입니다.
+        이름을 하나씩 넣고 PDF로 저장하는 일을 <strong style="color: var(--accent)">20명이든 200명이든 한 번에.</strong>
+    </p>
+
+    <div class="two-column">
+        <div>
+            <h3>이렇게 합니다</h3>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    실습 폴더 <code>엑셀실습\</code> 의 파일을 열고 두 시트를 훑어보기
+                </li>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    요청문을 AI에게 &rarr; 받은 코드 복사
+                </li>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    <code>Alt + F11</code> &rarr; <strong>삽입 &rarr; 모듈</strong> &rarr; 붙여넣기 &rarr; <code>F5</code>
+                </li>
+                <li>
+                    <i class="fa-solid fa-4"></i>
+                    바탕화면 <strong>명세서</strong> 폴더에서 PDF 몇 개 열어 <strong>숫자 맞는지 확인</strong>
+                </li>
+            </ul>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 15px;"><i class="fa-solid fa-user-check"></i>&nbsp;
+                    <strong style="color: var(--text-main)">확인은 우리 몫</strong> &mdash;
+                    숨겨 둔 퇴사자까지 나왔거나 소계 행이 섞였으면
+                    "○○가 나왔어, 빼줘". 매크로 저장은 안 해도 됩니다(닫을 때 <strong>아니요</strong>).
+                </p>
+            </div>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">' (AI 채팅창에 이렇게)</span>
+
+엑셀 <span class="c-keyword">VBA</span> 코드를 만들어줘.
+
+'급여 지급내역' 시트 D7:D52 에
+직원 이름이 있어. (중간에 소계 행,
+숨긴 행이 있으니 건너뛰어 줘)
+
+'급여명세' 시트 <span class="c-keyword">F4</span>에 이름을 넣으면
+그 사람 명세서가 채워져.
+
+이름을 하나씩 F4에 넣고
+'급여명세' 시트를 <span class="c-keyword">PDF</span>로 저장해줘.
+바탕화면 '명세서' 폴더에,
+파일 이름은 직원 이름으로.</pre>
+            </div>
+        </div>
+    </div>
+</div>

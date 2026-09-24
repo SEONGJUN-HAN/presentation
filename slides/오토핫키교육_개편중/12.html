@@ -1,0 +1,87 @@
+<h2 class="slide-title" data-important="true">
+    실습 ①. 받은 런처 켜서 눌러 보기
+    <span class="badge"><i class="fa-solid fa-bolt"></i> 지금 눌러보세요</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 8px;">
+        <code>내업무도구.ahk</code> 는 끄고(<code>H</code> 우클릭 &rarr; Exit)
+        <strong style="color: var(--text-main)">실전형런처.ahk</strong> 더블클릭 &rarr;
+        <strong style="color: var(--accent)">Ctrl + Alt + Shift + L</strong>. 이해 말고 눌러 보세요.
+    </p>
+
+    <div class="two-column" style="gap: 26px; align-items: stretch;">
+
+        <!-- 좌: 실전형 런처 목업 (2열) -->
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div style="background: var(--bg-code); border: 1px solid var(--border);
+                        border-radius: 10px; padding: 12px 14px;
+                        box-shadow: 0 8px 24px rgba(0,0,0,0.35);">
+                <p style="font-size: 11px; color: var(--text-dim); margin: 0 0 8px 0;">
+                    Alt + 괄호 안 글자로 바로 실행 · Esc 로 닫기</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <p style="font-size: 11px; color: var(--accent); margin: 0 0 4px 0; font-weight: 700;">📄 문서 · 서식</p>
+                        <div style="display: flex; flex-direction: column; gap: 3px; font-size: 11px; margin-bottom: 8px;">
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px;">한글 서식도우미 (1)</div>
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px;">PDF·한글 정리 (2)</div>
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px;">이미지 용량 (3)</div>
+                        </div>
+                        <p style="font-size: 11px; color: var(--accent); margin: 0 0 4px 0; font-weight: 700;">🧰 도구 모음</p>
+                        <div style="display: flex; flex-direction: column; gap: 3px; font-size: 11px;">
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px;">간단 도구 모음 (4)</div>
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px;">통합연락처 (5)</div>
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px;">이모티콘 (6)</div>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="font-size: 11px; color: var(--accent-alt); margin: 0 0 4px 0; font-weight: 700;">🌐 내가 자주 쓰는 것</p>
+                        <div style="display: flex; flex-direction: column; gap: 3px; font-size: 11px; margin-bottom: 8px;">
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--accent-alt); border-radius: 4px; padding: 4px 7px;">내 문서 폴더 (Q)</div>
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px;">네이버 (W)</div>
+                            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px;">구글 (E)</div>
+                        </div>
+                        <p style="font-size: 11px; color: #f59e0b; margin: 0 0 4px 0; font-weight: 700;">🐍 PY — 숙제</p>
+                        <div style="display: flex; flex-direction: column; gap: 3px; font-size: 11px;">
+                            <div style="background: var(--bg-secondary); border: 1px dashed #f59e0b; border-radius: 4px; padding: 4px 7px;"><strong style="color:#f59e0b">PY</strong> PDF 페이지번호 (7)</div>
+                            <div style="background: var(--bg-secondary); border: 1px dashed #f59e0b; border-radius: 4px; padding: 4px 7px;"><strong style="color:#f59e0b">PY</strong> PDF 마스킹 (8)</div>
+                            <div style="background: var(--bg-secondary); border: 1px dashed #f59e0b; border-radius: 4px; padding: 4px 7px;"><strong style="color:#f59e0b">PY</strong> 마트 계산기 (9)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 우: 안내 -->
+        <div>
+            <h3>쓸 수 있는 상태로 먼저 드립니다</h3>
+            <p>
+                처음부터 만들 필요 없습니다. 돌아가는 것을 받아서
+                <strong>내 것으로 키우는 게</strong> 오늘의 방식입니다.
+            </p>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-box-open"></i>
+                    나눠드린 폴더 안에 <strong>프로그램이 전부 같이 들어 있습니다</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-plug"></i>
+                    경로 설정 <strong>없이</strong> 바로 열립니다 &mdash;
+                    "이 파일이 있는 폴더"(<code>A_ScriptDir</code>) 기준으로 적어 뒀기 때문
+                </li>
+                <li class="is-warn">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <strong style="color: #f59e0b">PY</strong> 붙은 셋은 <strong>지금은 안 열립니다</strong> &mdash;
+                    파이썬이 없기 때문. 그게 <strong>숙제</strong>입니다
+                </li>
+            </ul>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 17px;"><i class="fa-solid fa-hand-pointer"></i>&nbsp;
+                    <strong style="color: var(--text-main)">1~6번을 하나씩 눌러보세요.</strong>
+                    쓸 만한 게 있으면 그게 오늘의 수확입니다.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

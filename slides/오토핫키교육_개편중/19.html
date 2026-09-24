@@ -1,0 +1,61 @@
+<h2 class="slide-title" data-important="true">
+    새 기능 붙이기 — 금액을 한글로, 규칙은 AI가 짠다
+    <span class="badge"><i class="fa-solid fa-eye"></i> 강사 시연</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        숫자를 드래그하고 단축키 하나면 <code>1234000</code> &rarr;
+        <strong style="color: var(--accent)">금 일백이십삼만사천원정 (₩1,234,000)</strong>.
+        만·억 끊기, '일' 붙이기 같은 규칙은 <strong style="color: var(--text-main)">몰라도 됩니다.</strong>
+    </p>
+
+    <div class="two-column">
+        <div>
+            <h3>이렇게 시킵니다</h3>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    오른쪽 요청문을 <strong>AI 채팅창</strong>에 그대로 붙여넣기
+                </li>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    받은 코드를 빈 파일 <code>기능\기타기능.ahk</code> 에 붙여넣고 저장(이미 연결돼 있음)
+                    &rarr; <code>실전형런처.ahk</code> 에서 <code>F5</code>
+                </li>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    아무 데서나 숫자 드래그 &rarr; <code>Ctrl + Alt + W</code>
+                </li>
+            </ul>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 16px;"><i class="fa-solid fa-user-check"></i>&nbsp;
+                    <code>기타기능.ahk</code> 는 <strong style="color: var(--text-main)">AI가 준 새 기능을 받는 자리</strong>입니다.
+                    <strong style="color: var(--text-main)">맞는지 확인하는 건 우리 몫</strong> &mdash;
+                    <code>10000</code> <code>100010000</code> <code>1010</code> 을 넣어 보고,
+                    틀리면 "○○을 넣었더니 △△가 나왔어, 고쳐줘".
+                </p>
+            </div>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">; (AI 채팅창에 이렇게)</span>
+
+<span class="c-keyword">AutoHotkey v2</span> 문법으로 만들어줘.
+
+드래그한 숫자를 Ctrl+Alt+W 로
+한글 금액으로 바꿔서
+그 자리에 붙여넣는 단축키.
+
+형식 예시:
+금 일백이십삼만사천원정 (₩1,234,000)
+
+- 쉼표나 '원'이 섞여 있어도 숫자만 읽기
+- 공문서처럼 일십·일백·일천으로
+  '일'을 붙이기</pre>
+            </div>
+        </div>
+    </div>
+</div>

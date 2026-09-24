@@ -1,0 +1,71 @@
+<h2 class="slide-title" data-important="true">
+    집중 실습 ②. 북마클릿 — 11번가 장바구니를 엑셀로
+    <span class="badge"><i class="fa-brands fa-js"></i> 설치 0</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        물품 품의 낼 때 장바구니를 보며 하나씩 옮겨 적으셨죠?
+        <strong style="color: var(--accent)">북마크 한 번이면 목록이 통째로 엑셀로.</strong>
+        로그인 안 해도 됩니다. 아무거나 두세 개 담으세요.
+    </p>
+
+    <div class="two-column">
+        <div>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    상품 한 줄 우클릭 &rarr; <strong>검사</strong> &rarr; 상품 한 줄이 통째로 칠해지는 줄 찾기
+                    &rarr; 우클릭 <strong>Copy &rarr; Copy outerHTML</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    요청문 아래에 붙여넣어 AI에게 &rarr; 받은 코드 복사
+                </li>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    <code>Ctrl + Shift + B</code> 북마크바 &rarr; <code>Ctrl + D</code> &rarr;
+                    북마크 <strong>우클릭 &rarr; 수정</strong> &rarr; URL 칸에 붙여넣기
+                </li>
+                <li>
+                    <i class="fa-solid fa-4"></i>
+                    장바구니에서 북마크 클릭 &rarr; 엑셀에 <code>Ctrl + V</code>
+                </li>
+            </ul>
+            <div class="info-box" style="border-left-color: #f59e0b; padding: 10px 20px;">
+                <p style="font-size: 15px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+                    주소창에 붙여넣으면 <code>javascript:</code>가 지워집니다. <strong style="color: var(--text-main)">반드시 북마크 수정 화면에서!</strong>
+                </p>
+            </div>
+            <div class="info-box" style="padding: 10px 20px;">
+                <p style="font-size: 15px;"><i class="fa-solid fa-comments"></i>&nbsp;
+                    <strong style="color: var(--text-main)">데이터가 넘어오면 절반은 성공.</strong>
+                    배송비가 섞였거나 칸이 밀리면 "○○가 이렇게 나왔어, 고쳐줘".
+                    "체크한 것만"도 이어서 시켜 보세요.
+                </p>
+            </div>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">// (AI 채팅창에 이렇게)</span>
+
+이건 11번가 장바구니의
+상품 한 줄 <span class="c-keyword">HTML</span>이야.
+
+장바구니 상품마다
+상품명·옵션·수량·단가·금액을
+탭으로 구분해 클립보드에
+복사하는 <span class="c-keyword">북마클릿</span>을 만들어줘.
+
+끝나면 "○개 복사됨" 알림.
+외부 라이브러리 없이,
+javascript: 한 줄로.
+
+<span class="c-comment">// (그 아래 복사한 HTML 붙여넣기)</span></pre>
+            </div>
+        </div>
+    </div>
+</div>

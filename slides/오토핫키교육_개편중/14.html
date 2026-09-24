@@ -1,0 +1,77 @@
+<h2 class="slide-title" data-important="true">
+    메일 상용구 — /ad 한 번이면 메일 한 통
+    <span class="badge"><i class="fa-solid fa-envelope"></i> /ad 한 번</span>
+</h2>
+
+<div class="content-area">
+    <div class="two-column" style="gap: 26px; align-items: stretch;">
+
+        <div>
+            <h3>여섯 줄만 내 것으로</h3>
+            <p>
+                <code>기능\메일상용구.ahk</code> 의 이름·학교·연락처 <strong>여섯 줄</strong>만 고치면
+                인사말도 서명도 <strong style="color: var(--accent)">한꺼번에 바뀝니다.</strong>
+            </p>
+
+            <table style="width: 100%; font-size: 15px; border-collapse: collapse; margin-top: 4px;">
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0; white-space: nowrap;"><code>/ad</code></td>
+                    <td style="padding: 6px 0 6px 12px;"><strong style="color: var(--text-main)">메일 한 통 통째로</strong>
+                        <span style="color: var(--text-dim); font-size: 13px;">(인사 + 본문자리 + 서명)</span></td></tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0;"><code>/sg</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">서명 블록만</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0;"><code>/gr</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">첫인사만</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0;"><code>/rq</code> <code>/fw</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">협조 요청 · 붙임 안내</td></tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 6px 0;"><code>/dt</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">오늘 날짜</td></tr>
+                <tr>
+                    <td style="padding: 6px 0;"><code>//1</code> <code>//2</code></td>
+                    <td style="padding: 6px 0 6px 12px; color: var(--text-dim);">① ② 원문자</td></tr>
+            </table>
+
+            <div class="info-box" style="margin-top: 12px; margin-bottom: 0; padding: 12px 20px;">
+                <p style="font-size: 16px;"><i class="fa-solid fa-clipboard"></i>&nbsp;
+                    <code>Ctrl+Shift+C</code> / <code>Ctrl+Shift+V</code> &mdash;
+                    <strong style="color: var(--text-main)">서식 없이 복사·붙여넣기</strong>.
+                    글꼴·색·표를 버리고 글자만 옮깁니다.
+                </p>
+                <p style="font-size: 16px; margin-top: 6px;"><i class="fa-solid fa-circle-question"></i>&nbsp;
+                    <code>Ctrl+Alt+H</code> (런처 ❓ 버튼도) &mdash; 스크립트가 <strong style="color: var(--text-main)">자기 파일들을 읽어</strong>
+                    단축키 목록을 만들어 줍니다.
+                    <span style="font-size: 14px;">새로 만들고 <code>; 설명</code>만 달면 저절로 등장.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 15px;"><span class="c-comment">; 기능\메일상용구.ahk</span>
+<span class="c-comment">; ▼ 여기만 바꾸세요 — 내 정보</span>
+<span class="c-keyword">global</span> g_SignName := <span class="c-string">"홍길동"</span>
+<span class="c-keyword">global</span> g_SignOrg  := <span class="c-string">"○○학교 행정실"</span>
+<span class="c-keyword">global</span> g_SignTel  := <span class="c-string">"063-000-0000"</span>
+<span class="c-keyword">global</span> g_SignMail := <span class="c-string">"hong@korea.kr"</span>
+<span class="c-keyword">global</span> g_SignFax  := <span class="c-string">""</span>          <span class="c-comment">; 비우면 빠짐</span>
+
+<span class="c-comment">; /ad 를 치면 이게 통째로 들어갑니다</span>
+안녕하세요.
+
+○○학교 행정실 홍길동입니다.
+
+감사합니다.
+──────────────────────────
+  🏫  홍길동  |  ○○학교 행정실
+  ☎  063-000-0000
+  ✉  hong@korea.kr
+──────────────────────────</pre>
+            </div>
+        </div>
+    </div>
+</div>

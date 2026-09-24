@@ -1,0 +1,49 @@
+<h2 class="slide-title" data-important="true">
+    코드 읽는 법 — 이 모양이면 이 뜻
+    <span class="badge"><i class="fa-solid fa-eye"></i> 강사 시연</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        외울 필요 없습니다. AI가 준 코드를 받았을 때 <strong style="color: var(--accent)">어디가 뭔지 알아보는</strong> 정도면 됩니다.
+        지금 <code>내업무도구.ahk</code> 를 열고 하나씩 바꿔 보여드립니다.
+    </p>
+
+    <style>
+        .read-table td { padding: 11px 12px; font-size: 17px; }
+        .read-table th { padding: 8px 12px; font-size: 15px; }
+        .read-table code { font-size: 16px; }
+        .read-table td:first-child { white-space: nowrap; }
+    </style>
+    <div class="two-column" style="gap: 22px;">
+        <table class="read-table">
+            <thead><tr><th style="width: 46%;">이 모양</th><th>뜻</th></tr></thead>
+            <tbody>
+                <tr><td><code>; 설명</code></td><td>주석. 사람 보라고 쓴 글, 실행 안 됨</td></tr>
+                <tr class="highlight"><td><code>^!n::</code></td><td>단축키 &mdash; Ctrl+Alt+N 을 누르면</td></tr>
+                <tr><td><code>^</code> <code>!</code> <code>+</code> <code>#</code></td><td>Ctrl · Alt · Shift · Win</td></tr>
+                <tr class="highlight"><td><code>::/tel::</code></td><td>상용구 &mdash; /tel 을 치면</td></tr>
+                <tr><td><code>{ &hellip; }</code></td><td>여러 줄을 한 묶음으로</td></tr>
+                <tr><td><code>"따옴표 안"</code></td><td><strong style="color: var(--text-main)">바꿔도 되는 글자</strong></td></tr>
+            </tbody>
+        </table>
+        <table class="read-table">
+            <thead><tr><th style="width: 46%;">이 모양</th><th>뜻</th></tr></thead>
+            <tbody>
+                <tr class="highlight"><td><code>Run("&hellip;")</code></td><td>열어라 (프로그램·폴더·사이트)</td></tr>
+                <tr><td><code>MsgBox("&hellip;")</code></td><td>알림창 띄워라</td></tr>
+                <tr><td><code>A_Clipboard :=</code><br><code>Send("^v")</code></td><td>복사해 두고 붙여넣어라<br><span style="font-size: 13px;">(한글은 이렇게 넣어야 안 깨짐)</span></td></tr>
+                <tr><td><code>Sleep(1000)</code></td><td>1초 기다려라</td></tr>
+                <tr><td><code>Gui()</code> · <code>AddButton</code></td><td>창 · 버튼 만들어라</td></tr>
+                <tr><td><code>Click</code> · <code>ImageSearch</code></td><td>마우스로 눌러라 · 그림 찾아라</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="info-box" style="margin-top: 14px; padding: 12px 20px;">
+        <p style="font-size: 16px;"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;
+            모르는 단어가 나오면 Notepad++ 에서 그 단어에 커서를 두고 <code>F1</code>,
+            아니면 AI에게 <strong style="color: var(--text-main)">"이 줄이 무슨 뜻이야?"</strong>
+        </p>
+    </div>
+</div>

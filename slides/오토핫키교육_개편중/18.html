@@ -1,0 +1,63 @@
+<h2 class="slide-title" data-important="true">
+    실습 ③. 상용구도 AI에게 — 내 것으로 바꾸고 하나 더
+    <span class="badge"><i class="fa-solid fa-keyboard"></i> 직접 해보기</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        파일이 짧을수록 AI가 정확합니다. 상용구만 모아 둔 <code>기능\기본단축키.ahk</code>(61줄)를 통째로 맡깁니다.
+    </p>
+
+    <div class="two-column">
+        <div>
+            <h3>이렇게 합니다</h3>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    <code>기본단축키.ahk</code> 우클릭 &rarr; <strong>편집</strong> &rarr;
+                    <code>Ctrl + A</code> <code>Ctrl + C</code> &rarr; 요청문 아래에 붙여넣기
+                </li>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    받은 코드로 <strong>통째로 바꾸고</strong> <code>Ctrl + S</code>
+                </li>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    <strong style="color: var(--accent)">실전형런처.ahk</strong> 탭으로 가서 <code>F5</code>
+                    &rarr; 메모장에 <code>/bank</code>
+                </li>
+            </ul>
+            <div class="info-box" style="border-left-color: #f59e0b; padding: 12px 20px;">
+                <p style="font-size: 16px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+                    <code>기능\</code> 파일에서 <code>F5</code>를 누르면 그 파일만 따로 켜집니다.
+                    <strong style="color: var(--text-main)">실행은 언제나 실전형런처.ahk 에서.</strong>
+                </p>
+            </div>
+            <p style="font-size: 15px; margin-top: 10px;">
+                <i class="fa-solid fa-circle-check" style="color: var(--accent);"></i>&nbsp;
+                <code>Ctrl + Alt + H</code> 목록에 새 상용구가 보이면 끝.
+            </p>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">; (AI 채팅창에 이렇게)</span>
+
+아래는 내 AutoHotkey <span class="c-keyword">v2</span> 상용구 파일이야.
+
+1. 전화번호·이메일·인사말·서명을
+   내 정보로 바꿔줘.
+   (이름: ○○○ / ○○학교 행정실
+    / 063-000-0000)
+2. <span class="c-keyword">/bank</span> 를 치면 우리 학교 계좌가
+   들어가는 상용구를 하나 추가해줘.
+3. 새로 넣은 줄 옆에는 <span class="c-keyword">; 설명</span>을 달아줘.
+4. 파일 전체를 다시 보여줘.
+
+<span class="c-comment">; (그 아래 기본단축키.ahk 붙여넣기)</span></pre>
+            </div>
+        </div>
+    </div>
+</div>
