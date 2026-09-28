@@ -282,8 +282,21 @@ body.picker-mode .controls {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* ─── 인쇄 전용 스타일 ─── */
+/* ─── 인쇄 전용 스타일 ───
+   용지를 슬라이드와 똑같은 1280×720 으로 만들고 여백을 없앱니다.
+   (용지 크기(A4 등)에 맞춰 폭을 100% 로 두면 폭이 좁아져 줄바꿈이 늘고,
+    그만큼 내용이 길어져 아래가 잘립니다 → 화면과 똑같은 크기로 고정) */
+@page {
+    size: 1280px 720px;
+    margin: 0;
+}
+
 @media print {
+
+    html, body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 
     /* 네비게이션/진행바 숨기기 */
     .controls,
@@ -304,7 +317,7 @@ body.picker-mode .controls {
     /* 래퍼 크기 해제 */
     .presentation-wrapper,
     .deck {
-        width: 100% !important;
+        width: var(--slide-w) !important;
         height: auto !important;
         transform: none !important;
         box-shadow: none !important;
@@ -315,12 +328,14 @@ body.picker-mode .controls {
 
     /* 모든 슬라이드 보이게 + 한 장씩 페이지 나누기 */
     .slide-container {
-        position: static !important;
+        position: relative !important;   /* ::after 글로우가 슬라이드 안에 머물도록 */
         opacity: 1 !important;
         visibility: visible !important;
         display: flex !important;
-        width: 100% !important;
-        height: 100vh !important;
+        width: var(--slide-w) !important;
+        height: var(--slide-h) !important;
+        overflow: hidden !important;
+        transition: none !important;
         page-break-after: always !important;
         break-after: page !important;
         pointer-events: auto !important;
