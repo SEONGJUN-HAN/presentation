@@ -1,0 +1,58 @@
+<h2 class="slide-title">먼저, 반복되는 구조를 찾습니다</h2>
+
+<div class="content-area">
+    <p style="font-size: 18px; margin-bottom: 14px;">
+        매달 하는 급여명세서 발송을 뜯어 보면, <strong style="color: var(--text-main)">바뀌는 것</strong>과
+        <strong style="color: var(--accent)">안 바뀌는 것</strong>이 나뉩니다.<br>
+        안 바뀌는 부분이 함수가 될 자리입니다.
+    </p>
+
+    <div class="two-column" style="gap: 26px; align-items: stretch;">
+
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 22px 26px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--border);
+                    display: flex; flex-direction: column;">
+            <h3 style="font-size: 22px; margin: 0 0 6px 0;">🔄 매달 바뀌는 것 &mdash; 내용</h3>
+            <p style="font-size: 15px; margin: 0 0 14px 0; color: var(--text-dim);">함수에 넣는 값</p>
+            <ul class="checklist-icon" style="margin: 0;">
+                <li style="font-size: 18px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-user"></i> 직원 명단 (들어오고 나가고)
+                </li>
+                <li style="font-size: 18px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-won-sign"></i> 지급액 · 공제액
+                </li>
+                <li style="font-size: 18px; margin-bottom: 0;">
+                    <i class="fa-solid fa-calendar"></i> 몇 월분인지
+                </li>
+            </ul>
+        </div>
+
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 22px 26px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--accent);
+                    display: flex; flex-direction: column;">
+            <h3 style="font-size: 22px; margin: 0 0 6px 0;">📐 안 바뀌는 것 &mdash; 구조</h3>
+            <p style="font-size: 15px; margin: 0 0 14px 0; color: var(--accent);">코드로 만들 규칙</p>
+            <ul class="checklist-icon" style="margin: 0;">
+                <li style="font-size: 18px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-1"></i> 명단에서 이름을 하나씩 꺼내
+                </li>
+                <li style="font-size: 18px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-2"></i> 명세서 이름 칸에 넣고
+                </li>
+                <li style="font-size: 18px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-3"></i> PDF로 저장, 파일 이름은 직원 이름
+                </li>
+                <li style="font-size: 18px; margin-bottom: 0;">
+                    <i class="fa-solid fa-4"></i> 그 사람에게 메신저로 보내기
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 16px;">
+        <p><i class="fa-solid fa-user-pen"></i>&nbsp;
+            <strong style="color: var(--text-main)">구조를 찾는 건 사람의 몫</strong>입니다.<br>
+            업무를 가장 잘 아는 사람이 여러분이기 때문입니다.
+        </p>
+    </div>
+</div>

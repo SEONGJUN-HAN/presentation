@@ -1,0 +1,58 @@
+<h2 class="slide-title" data-important="true">
+    ③ 안티그래비티 — AI가 파일을 직접 고치고 검사까지
+    <span class="badge"><i class="fa-solid fa-flag"></i> 시연 · 도전</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        숫자를 드래그하고 단축키 하나면 <code>1234000</code> &rarr;
+        <strong style="color: var(--accent)">금 일백이십삼만사천원정 (₩1,234,000)</strong>.<br>
+        만·억 끊기 같은 규칙은 AI가 짜고, <strong style="color: var(--text-main)">확인도 AI가 먼저</strong> 합니다.
+    </p>
+
+    <div class="two-column">
+        <div>
+            <h3>②와 무엇이 다른가</h3>
+            <table style="margin-bottom: 12px;">
+                <thead><tr><th></th><th>② 웹 AI</th><th>③ 안티그래비티</th></tr></thead>
+                <tbody>
+                    <tr><td>코드 넣기</td><td>내가 붙여넣기</td><td class="hl-cell"><strong style="color: var(--accent)">AI가 파일 수정</strong></td></tr>
+                    <tr><td>문법 검사</td><td>실행해 봐야 앎</td><td><strong style="color: var(--accent)">AI가 검사</strong></td></tr>
+                    <tr><td>오류 나면</td><td>내가 복사해 전달</td><td><strong style="color: var(--accent)">AI가 보고 고침</strong></td></tr>
+                </tbody>
+            </table>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 15px;"><i class="fa-solid fa-flag-checkered"></i>&nbsp;
+                    <strong style="color: var(--text-main)">쉬는 시간에 설치·로그인한 분</strong>은 같이 해 보세요.<br>
+                    나머지 분은 사무실에서 도전 과제로.
+                </p>
+            </div>
+            <p style="font-size: 15px; margin-top: 10px;">
+                <i class="fa-solid fa-user-check" style="color: var(--accent);"></i>&nbsp;
+                그래도 마지막 확인은 사람 &mdash; <code>10000</code> <code>100010000</code> <code>1010</code>
+            </p>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 15px;"><span class="c-comment">; (안티그래비티에 이렇게)</span>
+
+이 폴더는 AutoHotkey <span class="c-keyword">v2</span> 런처야.
+<span class="c-keyword">기능\기타기능.ahk 에만</span>, 드래그한
+숫자를 Ctrl+Alt+W 로 한글 금액으로
+바꿔 붙여넣는 기능을 넣어줘.
+
+형식: 금 일백이십삼만사천원정
+      (₩1,234,000)
+- 쉼표나 '원'이 섞여도 숫자만 읽기
+- 일십·일백·일천처럼 '일'을 붙이기
+
+<span class="c-keyword">다른 파일은 건드리지 마.</span>
+다 만들면 AutoHotkey 의 <span class="c-keyword">/validate</span> 로
+문법을 검사하고, 10000 · 100010000
+· 1010 이 어떻게 바뀌는지 알려줘.</pre>
+            </div>
+        </div>
+    </div>
+</div>

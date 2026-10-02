@@ -1,0 +1,62 @@
+<h2 class="slide-title" data-important="true">
+    실습 ④. 런처에 내 버튼 — 단축키까지 한 번에
+    <span class="badge"><i class="fa-solid fa-forward"></i> 시간 되면</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        버튼 목록은 <code>기능\런처메뉴.ahk</code>(99줄) 하나에 모여 있습니다.<br>
+        버튼 줄에 <strong style="color: var(--accent)">단축키</strong>를 같이 적으면 런처를 안 열어도 바로 실행됩니다.
+    </p>
+
+    <div class="two-column">
+        <div>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    열 파일 우클릭 &rarr; <strong>경로로 복사</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    요청문 + <code>런처메뉴.ahk</code> 전체를 AI에게
+                </li>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    받은 코드로 <strong>통째로 바꾸고</strong> <code>Ctrl + S</code> &rarr;
+                    <strong style="color: var(--accent)">실전형런처.ahk</strong> 에서 <code>F5</code>
+                </li>
+                <li>
+                    <i class="fa-solid fa-4"></i>
+                    런처 버튼과 <code>Ctrl + Alt + J</code> 둘 다 확인
+                </li>
+            </ul>
+            <div class="info-box" style="border-left-color: #f59e0b; padding: 12px 20px;">
+                <p style="font-size: 15px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+                    받은 코드에 <code>...</code> 나 "기존 코드 동일"이 보이면 붙이지 말고 다시 요청.<br>
+                    단축키가 잘못되면 어느 버튼인지 창으로 알려 줍니다.
+                </p>
+            </div>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">; (AI 채팅창에 이렇게)</span>
+
+아래는 내 AutoHotkey <span class="c-keyword">v2</span> 런처 메뉴 파일이야.
+'내가 자주 쓰는 것' 묶음에
+버튼을 하나 추가해줘.
+
+- 경로 : <span class="c-keyword">(경로로 복사한 것)</span>
+- 버튼 이름 : <span class="c-keyword">(원하는 이름)</span>
+- 런처 단축 글자 : R
+- 단축키 : <span class="c-keyword">Ctrl+Alt+J</span> 로도 열리게
+
+<span class="c-keyword">생략 없이 파일 전체</span>를 다시 줘.
+
+<span class="c-comment">; (그 아래 런처메뉴.ahk 붙여넣기)</span></pre>
+            </div>
+        </div>
+    </div>
+</div>

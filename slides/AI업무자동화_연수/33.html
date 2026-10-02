@@ -1,0 +1,61 @@
+<h2 class="slide-title" data-important="true">
+    실습 ③. 지시문을 /ocr 로 — 무료 스킬
+    <span class="badge"><i class="fa-solid fa-star"></i> 오늘의 핵심</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        영수증 지시문을 <code>/ocr</code> 만 치면 제미나이 입력창에 통째로 들어가게.<br>
+        <strong style="color: var(--accent)">유료 스킬이 하던 일을 오토핫키로</strong>, 런처 버튼까지 한 번에.
+    </p>
+
+    <div class="two-column">
+        <div>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    오른쪽 요청문 + <code>영수증.txt</code> 지시문 + <code>기능\런처메뉴.ahk</code> 전체를 AI에게
+                </li>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    받은 코드로 <strong>통째로 바꾸고</strong> <code>Ctrl + S</code>
+                </li>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    <strong style="color: var(--accent)">실전형런처.ahk</strong> 에서 <code>F5</code>
+                </li>
+                <li>
+                    <i class="fa-solid fa-4"></i>
+                    제미나이 <strong>새 채팅</strong> &rarr; <code>/ocr</code> &rarr; 영수증 사진 올리기
+                </li>
+            </ul>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 15px;"><i class="fa-solid fa-plus"></i>&nbsp;
+                    되면 쪽지 지시문도 <code>/ww</code> 로 하나 더.<br>
+                    트리거는 <strong style="color: var(--text-main)">영문으로</strong> &mdash;
+                    한글 트리거는 입력기 때문에 잘 안 먹힙니다.
+                </p>
+            </div>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">; (AI 채팅창에 이렇게)</span>
+
+아래는 내 AutoHotkey <span class="c-keyword">v2</span> 런처 메뉴 파일이야.
+'내가 자주 쓰는 것' 묶음에
+버튼을 하나 추가해줘.
+
+- label : 🧾 영수증 지시문
+- key   : O
+- paste : 아래 지시문 전체 (줄바꿈 그대로)
+- hotstring : <span class="c-keyword">/ocr</span>
+
+<span class="c-keyword">생략 없이 파일 전체</span>를 다시 줘.
+
+<span class="c-comment">; (그 아래 지시문, 그다음 런처메뉴.ahk)</span></pre>
+            </div>
+        </div>
+    </div>
+</div>

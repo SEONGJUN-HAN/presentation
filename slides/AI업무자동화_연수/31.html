@@ -1,0 +1,56 @@
+<h2 class="slide-title" data-important="true">
+    ① 직접 고치기 — 이 모양이면 이 뜻
+    <span class="badge"><i class="fa-solid fa-eye"></i> 강사 시연</span>
+</h2>
+
+<div class="content-area">
+    <p style="font-size: 17px; margin-bottom: 12px;">
+        외울 필요 없습니다.<br> AI가 준 코드에서 <strong style="color: var(--accent)">어디가 뭔지 알아보는</strong> 정도면 됩니다.<br>
+        지금 <code>기능\기본단축키.ahk</code> 를 열고 따옴표 안을 바꿔 보여드립니다.
+    </p>
+
+    <style>
+        .read-table td { padding: 13px 14px; font-size: 18px; }
+        .read-table th { padding: 9px 14px; font-size: 16px; }
+        .read-table code { font-size: 17px; }
+        .read-table td:first-child { white-space: nowrap; }
+    </style>
+    <div class="two-column" style="gap: 26px; align-items: start;">
+        <table class="read-table">
+            <thead><tr><th style="width: 42%;">이 모양</th><th>뜻</th></tr></thead>
+            <tbody>
+                <tr><td><code>; 설명</code></td><td>주석. 사람 보라고 쓴 글, 실행 안 됨</td></tr>
+                <tr class="highlight"><td><code>^!n::</code></td><td>단축키 &mdash; Ctrl+Alt+N 을 누르면</td></tr>
+                <tr><td><code>^</code> <code>!</code> <code>+</code> <code>#</code></td><td>Ctrl · Alt · Shift · Win</td></tr>
+                <tr class="highlight"><td><code>::/tel::</code></td><td>상용구 &mdash; /tel 을 치면</td></tr>
+                <tr><td><code>"따옴표 안"</code></td><td><strong style="color: var(--text-main)">바꿔도 되는 글자</strong></td></tr>
+            </tbody>
+        </table>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--accent-alt);">
+                <h3 style="font-size: 19px; margin: 0 0 8px 0;">📂 바꿀 것에 따라 파일 하나만</h3>
+                <table style="margin: 0;">
+                    <tbody>
+                        <tr class="highlight"><td>런처 버튼 + 그 단축키</td><td><code>런처메뉴.ahk</code></td></tr>
+                        <tr><td>내 단축키 · 상용구</td><td><code>기본단축키.ahk</code></td></tr>
+                        <tr><td>AI가 준 새 기능</td><td><code>기타기능.ahk</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--accent);">
+                <h3 style="font-size: 19px; margin: 0 0 8px 0;">🔁 고친 뒤에는 항상</h3>
+                <p style="font-size: 17px; margin: 0; line-height: 1.7;">
+                    <code>Ctrl + S</code> 저장 &rarr; <strong style="color: var(--text-main)">실전형런처.ahk</strong> 탭에서 <code>F5</code>
+                </p>
+            </div>
+            <div class="info-box" style="margin: 0;">
+                <p style="font-size: 16px;"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;
+                    모르는 줄이 나오면 AI에게 <strong style="color: var(--text-main)">"이 줄이 무슨 뜻이야?"</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

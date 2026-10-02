@@ -1,0 +1,61 @@
+<h2 class="slide-title" data-important="true">
+    실습 ①. 영수증 → 에듀파인용 표 대화방
+    <span class="badge"><i class="fa-solid fa-receipt"></i> 같이 해보기</span>
+</h2>
+
+<div class="content-area">
+    <div class="two-column">
+        <div style="display: flex; flex-direction: column;">
+            <h3 style="margin: 0 0 8px 0;">이런 표가 나오게</h3>
+            <table style="margin: 0 0 6px 0;">
+                <thead><tr><th>품명</th><th style="text-align: right;">금액</th><th>비고</th></tr></thead>
+                <tbody>
+                    <tr><td>A4 복사용지 (3개)</td><td style="text-align: right;">75,000</td><td></td></tr>
+                    <tr><td>보드마카 (12개)</td><td style="text-align: right;">14,400</td><td></td></tr>
+                    <tr><td>종이컵 (2봉)</td><td style="text-align: right;">6,000</td><td></td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 15px; margin: 0 0 10px 0;">
+                영수증 여러 장도 <strong>표 하나</strong>로, 품목마다 한 줄.<br>
+                수량은 품명 뒤 <strong>(3개)</strong>.
+            </p>
+            <ul class="checklist-icon" style="margin: 0;">
+                <li style="font-size: 18px; margin-bottom: 8px;">
+                    <i class="fa-solid fa-1"></i>
+                    새 채팅 &rarr; 오른쪽 요청문 &rarr; AI 질문에 대답
+                </li>
+                <li style="font-size: 18px; margin-bottom: 8px;">
+                    <i class="fa-solid fa-2"></i>
+                    받은 지시문을 <strong>메모장에 저장</strong> (<code>영수증.txt</code>)
+                </li>
+                <li style="font-size: 18px; margin-bottom: 0;">
+                    <i class="fa-solid fa-3"></i>
+                    <strong>또 새 채팅</strong> &rarr; 지시문 + 샘플 영수증 사진 &rarr; 엑셀에 <code>Ctrl+V</code>
+                </li>
+            </ul>
+        </div>
+
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 15px;">나는 학교 행정실에서 일하는 직원이야.
+영수증 사진을 올리면 <span class="c-keyword">에듀파인</span>에 붙일
+표로 바꿔주는 대화방을 만들고 싶어.
+처음 붙여넣을 지시문을 작성해줘.
+
+꼭 지킬 조건:
+- 영수증이 여러 장이어도 <span class="c-keyword">표는 하나</span>
+- 칸은 <span class="c-keyword">품명 | 금액 | 비고</span>
+- 품목마다 한 줄, 수량은 품명 뒤에
+  예) A4 복사용지 (3개)
+- 영수증마다 품목 합이 총액과
+  다르면 경고
+- 흐린 글자는 추측 말고 [?]
+- 설명 없이 표만
+
+더 정할 게 있으면 하나씩 물어보고,
+끝나면 지시문을 코드 블록으로 줘.</pre>
+            </div>
+        </div>
+    </div>
+</div>
