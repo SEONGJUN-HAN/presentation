@@ -1,12 +1,12 @@
 <h2 class="slide-title" data-important="true">
-    집중 실습 ②. 북마클릿 — 지마켓 장바구니를 엑셀로
-    <span class="badge"><i class="fa-brands fa-js"></i> 설치 0</span>
+    집중 실습 ②. 첨부 10MB 초과 — 사진만 줄이는 프로그램
+    <span class="badge"><i class="fa-solid fa-file-zipper"></i> 설치 0</span>
 </h2>
 
 <div class="content-area">
     <p style="font-size: 17px; margin-bottom: 10px;">
-        품의 낼 때 장바구니를 보며 옮겨 적던 목록, <strong style="color: var(--accent)">북마크 한 번이면 통째로 엑셀로.</strong><br>
-        아무거나 두세 개 담으세요.
+        지금까지는 사진을 하나씩 빼서 줄이고 다시 붙였습니다.<br>
+        <strong style="color: var(--accent)">한글·엑셀 파일을 통째로 넣으면 사진만 줄여 주는 프로그램</strong>을 AI에게 만들게 합니다.
     </p>
 
     <div class="two-column">
@@ -14,56 +14,48 @@
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    상품 우클릭 &rarr; <strong>검사</strong> &rarr;
-                    <strong style="color: var(--accent)">상품 2~3개가 함께 칠해지는 줄</strong>
-                    &rarr; <strong>Copy outerHTML</strong>
+                    <code>요청문.txt</code> 를 <strong>전체 복사</strong>해 AI에게
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    요청문 아래에 붙여넣어 AI에게 &rarr; 받은 코드 복사
+                    받은 코드를 메모장에 붙여넣고 <strong>다른 이름으로 저장</strong> &rarr;
+                    <code>용량줄이기.html</code>
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    <code>Ctrl + Shift + B</code> 북마크바 &rarr; <code>Ctrl + D</code> &rarr;
-                    북마크 <strong>우클릭 &rarr; 수정</strong> &rarr; URL 칸에 붙여넣기
+                    더블클릭 &rarr; 예시 <strong>한글·엑셀</strong> 끌어다 놓기
                 </li>
                 <li>
                     <i class="fa-solid fa-4"></i>
-                    장바구니에서 북마크 클릭 &rarr; 엑셀에 <code>Ctrl + V</code>
+                    줄인 파일을 <strong>한글·엑셀에서 열어</strong> 사진 확인
                 </li>
             </ul>
             <div class="info-box" style="border-left-color: #f59e0b; padding: 10px 20px;">
                 <p style="font-size: 15px;">
                     <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
-                    주소창에 붙여넣으면 <code>javascript:</code>가 지워집니다.<br> <strong style="color: var(--text-main)">반드시 북마크 수정 화면에서!</strong>
-                </p>
-            </div>
-            <div class="info-box" style="padding: 10px 20px;">
-                <p style="font-size: 15px;"><i class="fa-solid fa-comments"></i>&nbsp;
-                    <strong style="color: var(--text-main)">개수</strong>가 다르거나 칸이 밀리면 "이렇게 나왔어, 고쳐줘".
+                    메모장 저장 때 <strong style="color: var(--text-main)">파일 형식 "모든 파일", 인코딩 UTF-8</strong>.<br>
+                    안 되면 화면의 결과 표나 오류를 복사해 "고쳐줘".
                 </p>
             </div>
         </div>
 
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
-<pre style="font-size: 15px;"><span class="c-comment">// (AI 채팅창에 이렇게)</span>
-
-이건 지마켓 장바구니 상품 몇 개의
-<span class="c-keyword">HTML</span>이야. 먼저 상품 개수를 세어줘.
-
-그다음 상품마다 상품명·옵션·
-수량·단가·금액을 탭으로 구분해
-클립보드에 복사하는 <span class="c-keyword">북마클릿</span>을
-만들어줘. 추천 상품·광고는 빼고.
-
-끝나면 "○개 복사됨" 알림.
-복사가 안 되면 텍스트 상자로 띄워줘.
-외부 라이브러리 없이, javascript: 한 줄로.
-
-<span class="c-comment">// (그 아래 복사한 HTML 붙여넣기)</span></pre>
-            </div>
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 22px;
+                    border: 1px solid var(--border); border-left: 4px solid var(--accent);
+                    display: flex; flex-direction: column;">
+            <h3 style="font-size: 19px; margin: 0 0 10px 0;">📄 요청문에 들어 있는 것 = 구조 설명</h3>
+            <table style="margin: 0;">
+                <tbody>
+                    <tr><td style="white-space: nowrap;">무엇을</td><td>안에 든 <strong>사진만</strong>, 같은 형식으로</td></tr>
+                    <tr><td>어디서</td><td>한글 <code>BinData\</code> · 엑셀 <code>xl\media\</code></td></tr>
+                    <tr class="highlight"><td>지킬 것</td><td>이름·순서·나머지 파일 그대로</td></tr>
+                    <tr><td>목표</td><td>10MB 이하가 될 때까지 4단계</td></tr>
+                    <tr><td>함정</td><td>휴대폰 사진 회전 · 이름만 .bmp 인 PNG</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 15px; margin: auto 0 0 0; padding-top: 12px;">
+                <i class="fa-solid fa-lightbulb" style="color: var(--accent);"></i>&nbsp;
+                한글·엑셀 파일은 사실 <strong style="color: var(--text-main)">압축(ZIP) 파일</strong>이라 사진만 꺼낼 수 있습니다.
+            </p>
         </div>
     </div>
 </div>
