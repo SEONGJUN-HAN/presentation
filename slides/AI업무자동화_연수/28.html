@@ -1,13 +1,12 @@
 <h2 class="slide-title">
     설치 — 파일 하나 더블클릭이면 실습 준비 끝
-    <span class="badge"><i class="fa-solid fa-download"></i> 관리자 권한 불필요</span>
+    <span class="badge"><i class="fa-solid fa-download"></i> 쉬는 시간에 미리</span>
 </h2>
 
 <div class="content-area">
     <p style="font-size: 17px; margin-bottom: 10px;">
-        오토핫키, 편집기(<strong style="color: var(--text-main)">Notepad++</strong>),
-        <strong style="color: var(--accent)">실습 파일 전부</strong>가 한 번에 들어갑니다.<br>
-        쉬는 시간에 실행했다면 <strong style="color: var(--text-main)">3번만 확인</strong>하세요.
+        오토핫키 · 파이썬 · Node.js · <strong style="color: var(--accent)">안티그래비티 2.0</strong> · 런처와 도구까지 한 번에 들어갑니다.<br>
+        쉬는 시간에 실행했다면 <strong style="color: var(--text-main)">4번만 확인</strong>하세요.
     </p>
 
     <div class="two-column">
@@ -15,52 +14,50 @@
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    <code>AHK실습설치</code> 폴더의 <strong>설치.bat</strong> 더블클릭
+                    <code>통합업무런처_v4.2.zip</code> <strong>압축 풀기</strong> (바탕화면 등, zip 안에서 바로 실행 X)
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    끝나면 <strong>실습 폴더</strong>와 Notepad++(<code>설명용_1파일.ahk</code>)가 저절로 열립니다
+                    <strong>설치하기.bat</strong> 더블클릭 &rarr; 관리자 확인 창은 <strong>예</strong>
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    <code>F5</code> &rarr; <code>Ctrl + Alt + M</code> &rarr;
-                    <strong style="color: var(--accent)">"첫 스크립트 성공!"</strong> 알림창이면 끝
+                    질문 두 개에 <code>Y</code> &mdash; <strong>안티그래비티 설치</strong>, <strong>켤 때 자동 실행</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-4"></i>
+                    트레이에 <strong style="color: var(--accent)">초록 H 아이콘</strong> &rarr;
+                    <code>Ctrl + Alt + Win + Home</code> 으로 런처가 뜨면 끝
                 </li>
             </ul>
-            <table style="margin-top: 4px;">
-                <tbody>
-                    <tr class="highlight"><td style="width: 30%;"><code>F5</code></td><td>저장하고 실행</td></tr>
-                    <tr><td>끄기</td><td>작업표시줄 <code>H</code> 아이콘 우클릭 &rarr; <strong>Exit</strong></td></tr>
-                </tbody>
-            </table>
-            <div class="info-box" style="border-left-color: #f59e0b; padding: 10px 20px; margin-top: 12px;">
+            <div class="info-box" style="border-left-color: #f59e0b; padding: 10px 20px; margin-top: 4px;">
                 <p style="font-size: 15px;">
                     <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
                     파란 <strong style="color: var(--text-main)">"Windows의 PC 보호"</strong> 창 &rarr;
                     <strong style="color: var(--text-main)">추가 정보 &rarr; 실행</strong>.<br>
-                    지우려면 <code>제거.bat</code>.
+                    설치가 막힌 PC는 화면에 나온 사이트에서 직접 깔고 <strong style="color: var(--text-main)">한 번 더</strong> 실행.
                 </p>
             </div>
         </div>
 
         <div>
-            <h3>바탕화면 <span style="color: var(--accent)">[AHK 실습 폴더]</span> 안</h3>
+            <h3>압축 푼 <span style="color: var(--accent)">[런처]</span> 폴더 안</h3>
             <div style="background: var(--bg-code); border: 1px solid var(--border);
                         border-radius: 10px; padding: 14px 18px;
                         font-family: var(--font-mono); font-size: 15px; line-height: 1.85;
                         color: var(--text-dim);">
-                문서\AHK실습\<br>
-                &nbsp;├ <strong style="color: var(--accent)">실전형런처.ahk</strong> &nbsp;← 실행하는 파일<br>
-                &nbsp;├ 설명용_1파일.ahk &nbsp;← 문법 시연용<br>
-                &nbsp;├ 기능\ &nbsp;<strong style="color: var(--text-main)">런처메뉴</strong> · 상용구 · <strong style="color: var(--text-main)">기타기능</strong> …<br>
-                &nbsp;├ 도구\ &nbsp;한글서식 · PDF정리 · 도구모음<br>
-                &nbsp;├ <strong style="color: var(--text-main)">엑셀실습\</strong> &nbsp;← 급여명세서 VBA<br>
-                &nbsp;└ 통합연락처\ · 이모티콘\ · 클릭이미지\
+                런처\<br>
+                &nbsp;├ AHK_런처.ahk &nbsp;← 실행하는 파일<br>
+                &nbsp;├ <strong style="color: var(--accent)">내설정.ahk</strong> &nbsp;← 고치는 건 <strong style="color: var(--text-main)">이 파일 하나</strong><br>
+                &nbsp;├ <strong style="color: var(--accent-alt)">AGENTS.md</strong> &nbsp;← AI에게 주는 인수인계서<br>
+                &nbsp;├ 도구\ &nbsp;PDF · 연락처 · 이모티콘 · 계산기 …<br>
+                &nbsp;├ includes\ &nbsp;← 기능 본체 (안 건드림)<br>
+                &nbsp;└ setup\ &nbsp;&nbsp;&nbsp;← 설치 파일
             </div>
             <div class="info-box" style="margin-top: 12px; padding: 10px 20px;">
                 <p style="font-size: 15px;"><i class="fa-solid fa-gear"></i>&nbsp;
-                    <code>.ahk</code> 우클릭 <strong style="color: var(--text-main)">[편집]</strong>이 Notepad++ 로 열립니다.<br>
-                    다시 설치해도 <strong style="color: var(--text-main)">내가 고친 파일은 그대로</strong>입니다.
+                    <code>내설정.ahk</code> 는 런처를 처음 켤 때 <strong style="color: var(--text-main)">저절로 생깁니다.</strong><br>
+                    다시 설치해도 <strong style="color: var(--text-main)">내가 고친 설정은 그대로</strong>입니다.
                 </p>
             </div>
         </div>

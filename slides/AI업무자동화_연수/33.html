@@ -14,19 +14,19 @@
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    오른쪽 요청문 + <code>영수증.txt</code> 지시문 + <code>기능\런처메뉴.ahk</code> 전체를 AI에게
+                    오른쪽 요청문 아래에 메모장 <code>영수증.txt</code> 지시문을 <strong>그대로 붙여넣어</strong> 보내기
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    받은 코드로 <strong>통째로 바꾸고</strong> <code>Ctrl + S</code>
+                    AI 보고 확인 &rarr; <strong style="color: var(--accent)">스크립트 재시작</strong>
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    <strong style="color: var(--accent)">실전형런처.ahk</strong> 에서 <code>F5</code>
+                    제미나이 <strong>새 채팅</strong> &rarr; <code>/ocr</code> &rarr; 영수증 사진 올리기
                 </li>
                 <li>
                     <i class="fa-solid fa-4"></i>
-                    제미나이 <strong>새 채팅</strong> &rarr; <code>/ocr</code> &rarr; 영수증 사진 올리기
+                    런처를 열어 <strong>🧾 영수증 지시문</strong> 버튼도 눌러 보기
                 </li>
             </ul>
             <div class="info-box" style="padding: 12px 20px;">
@@ -41,20 +41,21 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; (AI 채팅창에 이렇게)</span>
+<pre style="font-size: 16px;"><span class="c-comment">; (안티그래비티에 이렇게)</span>
 
-아래는 내 AutoHotkey <span class="c-keyword">v2</span> 런처 메뉴 파일이야.
-'내가 자주 쓰는 것' 묶음에
-버튼을 하나 추가해줘.
+<span class="c-keyword">AGENTS.md 읽고,</span>
 
-- label : 🧾 영수증 지시문
-- key   : O
-- paste : 아래 지시문 전체 (줄바꿈 그대로)
-- hotstring : <span class="c-keyword">/ocr</span>
+1. <span class="c-keyword">/ocr</span> 를 치면 아래 지시문 전체가
+   줄바꿈 그대로 들어가는
+   핫스트링을 만들어줘.
 
-<span class="c-keyword">생략 없이 파일 전체</span>를 다시 줘.
+2. 런처에 '🧾 영수증 지시문' 버튼도
+   추가해줘. (Alt 글자: O)
+   누르면 같은 지시문이 들어가게.
 
-<span class="c-comment">; (그 아래 지시문, 그다음 런처메뉴.ahk)</span></pre>
+다 하면 문법 검사하고 알려줘.
+
+<span class="c-comment">; (그 아래 영수증.txt 지시문 붙여넣기)</span></pre>
             </div>
         </div>
     </div>
