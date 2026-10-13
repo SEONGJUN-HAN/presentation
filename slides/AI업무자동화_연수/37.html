@@ -1,74 +1,74 @@
-<h2 class="slide-title">오늘 가져가는 것 &amp; 숙제</h2>
+<h2 class="slide-title" data-important="true">
+    AI에 손발 달기 — 법령 MCP
+    <span class="badge"><i class="fa-solid fa-scale-balanced"></i> 강사 시연</span>
+</h2>
 
 <div class="content-area">
-    <style>
-        .take-grid li { font-size: 16px; margin-bottom: 6px; line-height: 1.55; }
-    </style>
-    <p style="font-size: 18px; margin-bottom: 4px;">
-        <code>통합업무런처</code> <strong style="color: var(--accent)">zip 하나</strong>를 USB에 담아 가서
-        사무실에서 <strong style="color: var(--text-main)">설치하기.bat 한 번</strong>이면 오늘 그대로.
+    <p style="font-size: 17px; margin-bottom: 12px;">
+        AI는 법 조문을 <strong style="color: var(--text-main)">그럴듯하게 지어낼</strong> 때가 있습니다.<br>
+        <strong style="color: var(--accent)">MCP</strong>로 법제처 법령 DB를 연결하면, 기억 대신
+        <strong style="color: var(--accent)">지금 시행 중인 조문을 찾아보고</strong> 답합니다.
     </p>
 
-    <div class="take-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;
-                flex-grow: 1; align-items: stretch; margin-top: 8px;">
+    <div class="two-column" style="gap: 26px;">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: grid; grid-template-columns: 1fr 48px 1fr; gap: 8px; align-items: stretch;">
+                <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 18px;
+                            border: 1px solid var(--border); border-top: 4px solid var(--border);">
+                    <p style="font-size: 14px; color: var(--text-dim); margin: 0 0 6px 0;">MCP 없이</p>
+                    <p style="font-size: 16px; margin: 0; line-height: 1.6;">
+                        🧠 학습한 기억으로 답<br>
+                        <span style="color: var(--text-dim);">조문 번호 · 개정 여부 불확실</span>
+                    </p>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;
+                            font-size: 30px; color: var(--accent);">&rarr;</div>
+                <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 18px;
+                            border: 1px solid var(--border); border-top: 4px solid var(--accent);">
+                    <p style="font-size: 14px; color: var(--accent); margin: 0 0 6px 0;">MCP 연결</p>
+                    <p style="font-size: 16px; margin: 0; line-height: 1.6;">
+                        🔎 법령 · 판례 · 자치법규 검색<br>
+                        <span style="color: var(--text-dim);">원문 조문을 근거로 답</span>
+                    </p>
+                </div>
+            </div>
 
-        <!-- ① 직접 만든 것 -->
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
-                    border: 1px solid var(--border); border-top: 4px solid var(--accent);">
-            <h3 style="font-size: 18px; margin: 0 0 12px 0;">🤖 AI로 만든 것</h3>
-            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
-                       line-height: 1.7; color: var(--text-dim);">
-                <li>🧾 <strong style="color: var(--text-main)">영수증 · 쪽지</strong> 지시문</li>
-                <li>📑 급여명세서 <strong style="color: var(--text-main)">개인별 PDF</strong> 매크로</li>
-                <li>📎 <strong style="color: var(--text-main)">문서 용량 줄이기</strong> 프로그램</li>
-                <li>⌨ <strong style="color: var(--text-main)">내 상용구</strong> + <code>/ocr</code> 지시문</li>
-                <li>⭐ <strong style="color: var(--text-main)">내 버튼</strong> 들어간 런처</li>
+            <ul class="checklist-icon" style="margin: 0;">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    안티그래비티에 <strong>"AGENTS.md 읽고, 법령 MCP 연결해줘"</strong>
+                </li>
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    안티그래비티 <strong>껐다 켜기</strong> &rarr; MCP Servers 에 <code>korean-law</code> 확인
+                </li>
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    오른쪽처럼 물어보기
+                </li>
             </ul>
-            <p style="font-size: 14px; margin: 10px 0 0 0; line-height: 1.5;">
-                3시간째는 <strong style="color: var(--text-main)">코드 창을 한 번도 안 열었습니다.</strong>
-            </p>
+
+            <div class="info-box" style="padding: 12px 20px; margin: 0;">
+                <p style="font-size: 15px;"><i class="fa-solid fa-key"></i>&nbsp;
+                    연결 정보는 AGENTS.md 에 <strong style="color: var(--text-main)">연수용 키까지</strong> 넣어 두었습니다.<br>
+                    오래 쓰려면 <strong style="color: var(--text-main)">open.law.go.kr</strong> 에서 내 키 신청 (승인 1~2일).
+                </p>
+            </div>
         </div>
 
-        <!-- ② 받아서 바로 쓰는 것 -->
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
-                    border: 1px solid var(--border); border-top: 4px solid var(--accent-alt);">
-            <h3 style="font-size: 18px; margin: 0 0 10px 0;">🎁 런처에 같이 담긴 것</h3>
-            <p style="font-size: 14px; margin: 0 0 8px 0; line-height: 1.5; color: var(--text-dim);">
-                <code>Ctrl+Alt+Win+Home</code> 에 <strong style="color: var(--text-main)">이미 연결돼 있습니다.</strong>
-            </p>
-            <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px;
-                       line-height: 1.5; color: var(--text-dim);">
-                <li>🖨 PDF 마스킹 · 페이지 번호</li>
-                <li>✍ 공문 만들기 (HWPX)</li>
-                <li>📞 통합연락처 <span style="font-size:12px;">— CSV만 채우기</span></li>
-                <li>🧑‍💼 직원 등 현황 검색</li>
-                <li>📢 EAT 공고 · 원인행위 도우미</li>
-                <li>🪟 창 위치 기억 · 이모티콘</li>
-            </ul>
-        </div>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">; (연결된 뒤 이렇게)</span>
 
-        <!-- ③ 숙제 -->
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
-                    border: 1px solid var(--border); border-top: 4px solid #f59e0b;">
-            <h3 style="font-size: 18px; margin: 0 0 10px 0;">📝 숙제 두 가지</h3>
-            <p style="font-size: 15px; margin: 0 0 10px 0; line-height: 1.5;">
-                <strong style="color: var(--text-main)">① 내 불편 하나 없애기</strong><br>
-                매주 손으로 하는 일 하나를 골라
-                안티그래비티에 <strong style="color: #f59e0b">"AGENTS.md 읽고,"</strong> + 그대로 설명.
-            </p>
-            <p style="font-size: 15px; margin: 0; line-height: 1.5;">
-                <strong style="color: var(--text-main)">② 법령 MCP 내 것으로</strong><br>
-                <strong style="color: var(--text-main)">open.law.go.kr</strong> 에서 Open API 키 신청 &rarr;
-                승인되면 "법령 MCP 를 내 키로 바꿔줘".
-            </p>
-        </div>
-    </div>
+학교 운동장을 지역 주민에게
+빌려줄 때 <span class="c-keyword">공유재산 사용허가</span>
+기간과 사용료 근거 조문을
+찾아줘.
 
-    <div class="info-box" style="margin-top: 12px; padding: 12px 20px;">
-        <p style="font-size: 17px;"><i class="fa-solid fa-seedling"></i>&nbsp;
-            "코딩을 배운다"가 아니라
-            <strong style="color: var(--text-main)">"내 업무를 내가 제어한다"</strong>.<br>
-            동료에게 줄 때는 트레이 우클릭 &rarr; <strong style="color: var(--text-main)">배포판 만들기</strong> (내 정보는 자동으로 빠집니다).
-        </p>
+<span class="c-keyword">조문 번호와 원문</span>을 같이 보여주고,
+최근에 개정된 게 있으면 알려줘.</pre>
+            </div>
+        </div>
     </div>
 </div>

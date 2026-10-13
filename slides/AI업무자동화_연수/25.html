@@ -1,59 +1,61 @@
-<h2 class="slide-title">확인은 사람 몫 — 그리고 이 일은 함수감인가?</h2>
+<h2 class="slide-title" data-important="true">
+    집중 실습 ②. 첨부 10MB 초과 — 사진만 줄이는 프로그램
+    <span class="badge"><i class="fa-solid fa-file-zipper"></i> 설치 0</span>
+</h2>
 
 <div class="content-area">
-    <div class="two-column" style="gap: 26px; align-items: stretch;">
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        지금까지는 사진을 하나씩 빼서 줄이고 다시 붙였습니다.<br>
+        <strong style="color: var(--accent)">한글·엑셀 파일을 통째로 넣으면 사진만 줄여 주는 프로그램</strong>을 AI에게 만들게 합니다.
+    </p>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 22px 26px;
-                    border: 1px solid var(--border); border-top: 4px solid var(--accent-alt);
-                    display: flex; flex-direction: column;">
-            <p style="font-size: 15px; color: var(--accent-alt); margin: 0 0 4px 0;">줄인 파일 확인</p>
-            <h3 style="font-size: 22px; margin: 0 0 14px 0;">🔍 네 가지만 보세요</h3>
-            <ul class="checklist-icon" style="margin: 0;">
-                <li style="font-size: 17px; margin-bottom: 10px;">
-                    <i class="fa-solid fa-1"></i> 한글·엑셀에서 <strong>오류 없이 열리나</strong>
+    <div class="two-column">
+        <div>
+            <ul class="checklist-icon">
+                <li>
+                    <i class="fa-solid fa-1"></i>
+                    <code>요청문.txt</code> 를 <strong>전체 복사</strong>해 AI에게
                 </li>
-                <li style="font-size: 17px; margin-bottom: 10px;">
-                    <i class="fa-solid fa-2"></i> 사진이 <strong>같은 자리, 같은 크기</strong>인가
+                <li>
+                    <i class="fa-solid fa-2"></i>
+                    받은 코드를 메모장에 붙여넣고 <strong>다른 이름으로 저장</strong> &rarr;
+                    <code>용량줄이기.html</code>
                 </li>
-                <li style="font-size: 17px; margin-bottom: 10px;">
-                    <i class="fa-solid fa-3"></i> 휴대폰 사진이 <strong>옆으로 눕지</strong> 않았나
+                <li>
+                    <i class="fa-solid fa-3"></i>
+                    더블클릭 &rarr; <code>2_실습\3_html실습</code> 의 예시 <strong>한글 파일</strong> 끌어다 놓기
                 </li>
-                <li style="font-size: 17px; margin-bottom: 0;">
-                    <i class="fa-solid fa-4"></i> 인쇄해도 <strong>볼 만한가</strong>
+                <li>
+                    <i class="fa-solid fa-4"></i>
+                    줄인 파일을 <strong>한글·엑셀에서 열어</strong> 사진 확인
                 </li>
             </ul>
-            <p style="font-size: 16px; margin: auto 0 0 0; padding-top: 12px; border-top: 1px solid var(--border);">
-                "손상된 파일"이 뜨면 <strong style="color: var(--text-main)">그 메시지 그대로</strong> AI에게.
-            </p>
+            <div class="info-box" style="border-left-color: #f59e0b; padding: 10px 20px;">
+                <p style="font-size: 15px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+                    메모장 저장 때 <strong style="color: var(--text-main)">파일 형식 "모든 파일", 인코딩 UTF-8</strong>.<br>
+                    안 되면 화면의 결과 표나 오류를 복사해 "고쳐줘".
+                </p>
+            </div>
         </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 22px 26px;
-                    border: 1px solid var(--border); border-top: 4px solid var(--accent);
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 22px;
+                    border: 1px solid var(--border); border-left: 4px solid var(--accent);
                     display: flex; flex-direction: column;">
-            <p style="font-size: 15px; color: var(--accent); margin: 0 0 4px 0;">판단 기준</p>
-            <h3 style="font-size: 22px; margin: 0 0 14px 0;">🧭 이 일은 함수감인가?</h3>
-            <ul class="checklist-icon" style="margin: 0;">
-                <li style="font-size: 17px; margin-bottom: 10px;">
-                    <i class="fa-solid fa-check"></i> 매번 <strong>같은 순서</strong>로 하나?
-                </li>
-                <li style="font-size: 17px; margin-bottom: 10px;">
-                    <i class="fa-solid fa-check"></i> 매주 · 매달 <strong>반복</strong>되나?
-                </li>
-                <li style="font-size: 17px; margin-bottom: 0;">
-                    <i class="fa-solid fa-check"></i> <strong>개인정보</strong>가 섞여 있나?
-                </li>
-            </ul>
-            <p style="font-size: 16px; margin: auto 0 0 0; padding-top: 12px; border-top: 1px solid var(--border);">
-                방금 두 실습은 셋 다 "예".<br>
-                하나라도 "예"면 <strong style="color: var(--text-main)">코드로 만들 가치</strong>가 있습니다.
+            <h3 style="font-size: 19px; margin: 0 0 10px 0;">📄 요청문에 들어 있는 것 = 구조 설명</h3>
+            <table style="margin: 0;">
+                <tbody>
+                    <tr><td style="white-space: nowrap;">무엇을</td><td>안에 든 <strong>사진만</strong>, 같은 형식으로</td></tr>
+                    <tr><td>어디서</td><td>한글 <code>BinData\</code> · 엑셀 <code>xl\media\</code></td></tr>
+                    <tr class="highlight"><td>지킬 것</td><td>이름·순서·나머지 파일 그대로</td></tr>
+                    <tr><td>목표</td><td>10MB 이하가 될 때까지 4단계</td></tr>
+                    <tr><td>함정</td><td>휴대폰 사진 회전 · 이름만 .bmp 인 PNG</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 15px; margin: auto 0 0 0; padding-top: 12px;">
+                <i class="fa-solid fa-lightbulb" style="color: var(--accent);"></i>&nbsp;
+                한글·엑셀 파일은 사실 <strong style="color: var(--text-main)">압축(ZIP) 파일</strong>이라 사진만 꺼낼 수 있습니다.
             </p>
         </div>
-    </div>
-
-    <div class="info-box" style="margin-top: 14px;">
-        <p><i class="fa-solid fa-mug-hot"></i>&nbsp;
-            쉬는 시간에 <strong style="color: var(--text-main)">설치하기.bat</strong>이 끝났는지, 안티그래비티 로그인이 됐는지 확인해 두세요.<br>
-            3시간째는 확인만 하고 바로 시작합니다.
-        </p>
     </div>
 </div>

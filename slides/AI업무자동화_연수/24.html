@@ -1,61 +1,64 @@
 <h2 class="slide-title" data-important="true">
-    집중 실습 ②. 첨부 10MB 초과 — 사진만 줄이는 프로그램
-    <span class="badge"><i class="fa-solid fa-file-zipper"></i> 설치 0</span>
+    집중 실습 ①. 엑셀 VBA — 급여명세서를 개인별 PDF로
+    <span class="badge"><i class="fa-solid fa-file-excel"></i> 설치 0</span>
 </h2>
 
 <div class="content-area">
     <p style="font-size: 17px; margin-bottom: 10px;">
-        지금까지는 사진을 하나씩 빼서 줄이고 다시 붙였습니다.<br>
-        <strong style="color: var(--accent)">한글·엑셀 파일을 통째로 넣으면 사진만 줄여 주는 프로그램</strong>을 AI에게 만들게 합니다.
+        <strong style="color: var(--text-main)">라이브 ②의 앞부분</strong>입니다.<br>
+        <strong style="color: var(--text-main)">이름 칸(F4)</strong>만 바꾸면 채워지는 명세서를
+        <strong style="color: var(--accent)">20명이든 200명이든 한 번에 PDF로.</strong>
     </p>
 
     <div class="two-column">
         <div>
+            <h3>이렇게 합니다</h3>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    <code>요청문.txt</code> 를 <strong>전체 복사</strong>해 AI에게
+                    <code>2_실습\2_VBA실습</code> 엑셀 파일 열고 두 시트 훑기
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    받은 코드를 메모장에 붙여넣고 <strong>다른 이름으로 저장</strong> &rarr;
-                    <code>용량줄이기.html</code>
+                    요청문을 AI에게 &rarr; 받은 코드 복사
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    더블클릭 &rarr; 예시 <strong>한글·엑셀</strong> 끌어다 놓기
+                    <code>Alt + F11</code> &rarr; <strong>삽입 &rarr; 모듈</strong> &rarr; 붙여넣기 &rarr; <code>F5</code>
                 </li>
                 <li>
                     <i class="fa-solid fa-4"></i>
-                    줄인 파일을 <strong>한글·엑셀에서 열어</strong> 사진 확인
+                    바탕화면 <strong>명세서</strong> 폴더의 PDF로 <strong>숫자 확인</strong>
                 </li>
             </ul>
-            <div class="info-box" style="border-left-color: #f59e0b; padding: 10px 20px;">
-                <p style="font-size: 15px;">
-                    <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
-                    메모장 저장 때 <strong style="color: var(--text-main)">파일 형식 "모든 파일", 인코딩 UTF-8</strong>.<br>
-                    안 되면 화면의 결과 표나 오류를 복사해 "고쳐줘".
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 15px;"><i class="fa-solid fa-user-check"></i>&nbsp;
+                    <strong style="color: var(--text-main)">확인은 우리 몫</strong> &mdash;
+                    숨긴 퇴사자나 소계 행이 나오면 "빼줘".<br>
+                    닫을 때 매크로 저장은 <strong>아니요</strong>.
                 </p>
             </div>
         </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 22px;
-                    border: 1px solid var(--border); border-left: 4px solid var(--accent);
-                    display: flex; flex-direction: column;">
-            <h3 style="font-size: 19px; margin: 0 0 10px 0;">📄 요청문에 들어 있는 것 = 구조 설명</h3>
-            <table style="margin: 0;">
-                <tbody>
-                    <tr><td style="white-space: nowrap;">무엇을</td><td>안에 든 <strong>사진만</strong>, 같은 형식으로</td></tr>
-                    <tr><td>어디서</td><td>한글 <code>BinData\</code> · 엑셀 <code>xl\media\</code></td></tr>
-                    <tr class="highlight"><td>지킬 것</td><td>이름·순서·나머지 파일 그대로</td></tr>
-                    <tr><td>목표</td><td>10MB 이하가 될 때까지 4단계</td></tr>
-                    <tr><td>함정</td><td>휴대폰 사진 회전 · 이름만 .bmp 인 PNG</td></tr>
-                </tbody>
-            </table>
-            <p style="font-size: 15px; margin: auto 0 0 0; padding-top: 12px;">
-                <i class="fa-solid fa-lightbulb" style="color: var(--accent);"></i>&nbsp;
-                한글·엑셀 파일은 사실 <strong style="color: var(--text-main)">압축(ZIP) 파일</strong>이라 사진만 꺼낼 수 있습니다.
-            </p>
+        <div class="code-tile-wrapper">
+            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+            <div class="code-tile">
+<pre style="font-size: 16px;"><span class="c-comment">' (AI 채팅창에 이렇게)</span>
+
+엑셀 <span class="c-keyword">VBA</span> 코드를 만들어줘.
+
+'급여 지급내역' 시트 D7:D52 에
+직원 이름이 있어. (중간에 소계 행,
+숨긴 행이 있으니 건너뛰어 줘)
+
+'급여명세' 시트 <span class="c-keyword">F4</span>에 이름을 넣으면
+그 사람 명세서가 채워져.
+
+이름을 하나씩 F4에 넣고
+'급여명세' 시트를 <span class="c-keyword">PDF</span>로 저장해줘.
+바탕화면 '명세서' 폴더에,
+파일 이름은 직원 이름으로.</pre>
+            </div>
         </div>
     </div>
 </div>

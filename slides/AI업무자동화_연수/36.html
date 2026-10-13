@@ -1,57 +1,31 @@
 <h2 class="slide-title" data-important="true">
-    AI에 손발 달기 — 법령 MCP
-    <span class="badge"><i class="fa-solid fa-scale-balanced"></i> 강사 시연</span>
+    도전. 새 기능 하나 — 숫자를 한글 금액으로
+    <span class="badge"><i class="fa-solid fa-flag"></i> 시간 되면</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 12px;">
-        AI는 법 조문을 <strong style="color: var(--text-main)">그럴듯하게 지어낼</strong> 때가 있습니다.<br>
-        <strong style="color: var(--accent)">MCP</strong>로 법제처 법령 DB를 연결하면, 기억 대신
-        <strong style="color: var(--accent)">지금 시행 중인 조문을 찾아보고</strong> 답합니다.
+    <p style="font-size: 17px; margin-bottom: 10px;">
+        숫자를 드래그하고 단축키 하나면 <code>1234000</code> &rarr;
+        <strong style="color: var(--accent)">금 일백이십삼만사천원정 (₩1,234,000)</strong>.<br>
+        만·억 끊기 같은 규칙은 AI가 짜고, <strong style="color: var(--text-main)">확인도 AI가 먼저</strong> 합니다.
     </p>
 
-    <div class="two-column" style="gap: 26px;">
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div style="display: grid; grid-template-columns: 1fr 48px 1fr; gap: 8px; align-items: stretch;">
-                <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 18px;
-                            border: 1px solid var(--border); border-top: 4px solid var(--border);">
-                    <p style="font-size: 14px; color: var(--text-dim); margin: 0 0 6px 0;">MCP 없이</p>
-                    <p style="font-size: 16px; margin: 0; line-height: 1.6;">
-                        🧠 학습한 기억으로 답<br>
-                        <span style="color: var(--text-dim);">조문 번호 · 개정 여부 불확실</span>
-                    </p>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: center;
-                            font-size: 30px; color: var(--accent);">&rarr;</div>
-                <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 18px;
-                            border: 1px solid var(--border); border-top: 4px solid var(--accent);">
-                    <p style="font-size: 14px; color: var(--accent); margin: 0 0 6px 0;">MCP 연결</p>
-                    <p style="font-size: 16px; margin: 0; line-height: 1.6;">
-                        🔎 법령 · 판례 · 자치법규 검색<br>
-                        <span style="color: var(--text-dim);">원문 조문을 근거로 답</span>
-                    </p>
-                </div>
-            </div>
-
-            <ul class="checklist-icon" style="margin: 0;">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    안티그래비티에 <strong>"AGENTS.md 읽고, 법령 MCP 연결해줘"</strong>
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    안티그래비티 <strong>껐다 켜기</strong> &rarr; MCP Servers 에 <code>korean-law</code> 확인
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    오른쪽처럼 물어보기
-                </li>
-            </ul>
-
-            <div class="info-box" style="padding: 12px 20px; margin: 0;">
-                <p style="font-size: 15px;"><i class="fa-solid fa-key"></i>&nbsp;
-                    연결 정보는 AGENTS.md 에 <strong style="color: var(--text-main)">연수용 키까지</strong> 넣어 두었습니다.<br>
-                    오래 쓰려면 <strong style="color: var(--text-main)">open.law.go.kr</strong> 에서 내 키 신청 (승인 1~2일).
+    <div class="two-column">
+        <div>
+            <h3>웹 AI로 했다면 &mdash; 무엇이 다른가</h3>
+            <table style="margin-bottom: 12px;">
+                <thead><tr><th></th><th>② 웹 AI</th><th>③ 안티그래비티</th></tr></thead>
+                <tbody>
+                    <tr><td>어느 파일에</td><td>내가 찾아서</td><td class="hl-cell"><strong style="color: var(--accent)">AGENTS.md 보고 AI가</strong></td></tr>
+                    <tr><td>코드 넣기</td><td>내가 붙여넣기</td><td><strong style="color: var(--accent)">AI가 파일 수정</strong></td></tr>
+                    <tr><td>문법 검사</td><td>실행해 봐야 앎</td><td><strong style="color: var(--accent)">AI가 검사</strong></td></tr>
+                    <tr><td>오류 나면</td><td>내가 복사해 전달</td><td><strong style="color: var(--accent)">AI가 보고 고침</strong></td></tr>
+                </tbody>
+            </table>
+            <div class="info-box" style="padding: 12px 20px;">
+                <p style="font-size: 15px;"><i class="fa-solid fa-user-check"></i>&nbsp;
+                    그래도 <strong style="color: var(--text-main)">마지막 확인은 사람</strong> &mdash;
+                    <code>10000</code> <code>100010000</code> <code>1010</code> 을 직접 드래그해 보기
                 </p>
             </div>
         </div>
@@ -59,15 +33,21 @@
         <div class="code-tile-wrapper">
             <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
             <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; (연결된 뒤 이렇게)</span>
+<pre style="font-size: 15px;"><span class="c-comment">; (안티그래비티에 이렇게)</span>
 
-학교 운동장을 지역 주민에게
-빌려줄 때 <span class="c-keyword">공유재산 사용허가</span>
-기간과 사용료 근거 조문을
-찾아줘.
+<span class="c-keyword">AGENTS.md 읽고,</span>
+드래그한 숫자를 <span class="c-keyword">Ctrl+Alt+W</span> 로
+한글 금액으로 바꿔 붙여넣는
+기능을 새로 만들어줘.
 
-<span class="c-keyword">조문 번호와 원문</span>을 같이 보여주고,
-최근에 개정된 게 있으면 알려줘.</pre>
+형식: 금 일백이십삼만사천원정
+      (₩1,234,000)
+- 쉼표나 '원'이 섞여도 숫자만 읽기
+- 일십·일백·일천처럼 '일'을 붙이기
+
+다 만들면 문법 검사하고, 10000 ·
+100010000 · 1010 이 어떻게
+바뀌는지 알려줘.</pre>
             </div>
         </div>
     </div>

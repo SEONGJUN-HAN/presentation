@@ -1,64 +1,50 @@
 <h2 class="slide-title" data-important="true">
-    집중 실습 ①. 엑셀 VBA — 급여명세서를 개인별 PDF로
-    <span class="badge"><i class="fa-solid fa-file-excel"></i> 설치 0</span>
+    언어는 AI가 통역합니다 — 말하고, 붙이고, 실행
+    <span class="badge"><i class="fa-solid fa-robot"></i> 바이브코딩</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        <strong style="color: var(--text-main)">라이브 ②의 앞부분</strong>입니다.<br>
-        <strong style="color: var(--text-main)">이름 칸(F4)</strong>만 바꾸면 채워지는 명세서를
-        <strong style="color: var(--accent)">20명이든 200명이든 한 번에 PDF로.</strong>
+    <p style="font-size: 18px; margin-bottom: 12px;">
+        문법은 외우지 않습니다.<br>
+        우리말로 구조를 설명하면 <strong style="color: var(--accent)">AI가 코드로 통역</strong>합니다.
     </p>
 
-    <div class="two-column">
-        <div>
-            <h3>이렇게 합니다</h3>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    <code>엑셀실습\</code> 의 파일을 열고 두 시트 훑어보기
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    요청문을 AI에게 &rarr; 받은 코드 복사
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    <code>Alt + F11</code> &rarr; <strong>삽입 &rarr; 모듈</strong> &rarr; 붙여넣기 &rarr; <code>F5</code>
-                </li>
-                <li>
-                    <i class="fa-solid fa-4"></i>
-                    바탕화면 <strong>명세서</strong> 폴더의 PDF로 <strong>숫자 확인</strong>
-                </li>
-            </ul>
-            <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 15px;"><i class="fa-solid fa-user-check"></i>&nbsp;
-                    <strong style="color: var(--text-main)">확인은 우리 몫</strong> &mdash;
-                    숨긴 퇴사자나 소계 행이 나오면 "빼줘".<br>
-                    닫을 때 매크로 저장은 <strong>아니요</strong>.
-                </p>
-            </div>
-        </div>
+    <style>
+        .beat-table td { padding: 13px 14px; font-size: 18px; vertical-align: top; }
+        .beat-table th { padding: 10px 14px; font-size: 18px; }
+        .beat-table td:first-child { color: var(--text-main); font-weight: 700; white-space: nowrap; }
+    </style>
+    <table class="beat-table">
+        <thead>
+            <tr>
+                <th style="width: 18%;"></th>
+                <th style="width: 41%;"><i class="fa-solid fa-file-excel"></i>&nbsp; 엑셀 VBA</th>
+                <th style="width: 41%;"><i class="fa-brands fa-html5"></i>&nbsp; HTML 프로그램</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>① 말하기</td>
+                <td>"엑셀 <strong>VBA</strong>로 만들어줘" + 구조 설명</td>
+                <td>"<strong>HTML 파일 하나</strong>로 만들어줘" + 구조 설명</td>
+            </tr>
+            <tr class="highlight">
+                <td>② 붙이기</td>
+                <td><code>Alt + F11</code> &rarr; 삽입 &rarr; 모듈</td>
+                <td>메모장에 붙여 <code>.html</code> 로 저장</td>
+            </tr>
+            <tr>
+                <td>③ 실행</td>
+                <td>코드 안에 커서 두고 <code>F5</code></td>
+                <td>파일 더블클릭 &rarr; 브라우저에서 열림</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">' (AI 채팅창에 이렇게)</span>
-
-엑셀 <span class="c-keyword">VBA</span> 코드를 만들어줘.
-
-'급여 지급내역' 시트 D7:D52 에
-직원 이름이 있어. (중간에 소계 행,
-숨긴 행이 있으니 건너뛰어 줘)
-
-'급여명세' 시트 <span class="c-keyword">F4</span>에 이름을 넣으면
-그 사람 명세서가 채워져.
-
-이름을 하나씩 F4에 넣고
-'급여명세' 시트를 <span class="c-keyword">PDF</span>로 저장해줘.
-바탕화면 '명세서' 폴더에,
-파일 이름은 직원 이름으로.</pre>
-            </div>
-        </div>
+    <div class="info-box" style="margin-top: 14px;">
+        <p><i class="fa-solid fa-user-check"></i>&nbsp;
+            사람의 몫은 셋 &mdash; <strong style="color: var(--text-main)">구조를 정하고, 붙일 자리를 알고, 결과를 확인하기.</strong><br>
+            안 되면 오류를 그대로 붙여 "고쳐줘".
+        </p>
     </div>
 </div>

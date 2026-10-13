@@ -1,63 +1,59 @@
-<h2 class="slide-title" data-important="true">
-    안티그래비티 시작 — 폴더를 열고, 인수인계서부터
-    <span class="badge"><i class="fa-solid fa-robot"></i> 같이 해보기</span>
-</h2>
+<h2 class="slide-title">코드를 고치는 세 가지 방법</h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 12px;">
-        새로 온 직원에게 업무 인수인계서를 주듯, AI에게도 <code>AGENTS.md</code> 를 줍니다.<br>
-        그래서 모든 요청은 <strong style="color: var(--accent)">"AGENTS.md 읽고,"</strong> 로 시작합니다.
+    <p style="font-size: 18px; margin-bottom: 12px;">
+        누가 고치느냐의 차이입니다.<br> 오늘은 <strong style="color: var(--accent)">③을 손에 쥐고</strong>,
+        ①은 눈으로, ②는 안티그래비티가 안 되는 PC를 위한 예비입니다.
     </p>
 
-    <div class="two-column" style="gap: 26px;">
-        <div>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    안티그래비티 실행 &rarr; <strong>구글 계정</strong> 로그인 (제미나이와 같은 계정)
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    <strong>Open Folder</strong> &rarr; 압축 푼 <code>런처</code> 폴더
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    명령 실행은 <strong>나에게 확인받도록</strong> 설정
-                </li>
-                <li>
-                    <i class="fa-solid fa-4"></i>
-                    오른쪽 질문 붙여넣기 &rarr; 대답 읽어 보기
-                </li>
-            </ul>
-            <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 16px;"><i class="fa-solid fa-rotate"></i>&nbsp;
-                    AI가 고친 뒤에는 항상 트레이 <strong style="color: var(--text-main)">H 아이콘 우클릭 &rarr; 스크립트 재시작</strong>.
-                </p>
-            </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+                flex-grow: 1; align-items: stretch;">
+
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--border);
+                    display: flex; flex-direction: column;">
+            <p style="font-size: 15px; color: var(--text-dim); margin: 0 0 4px 0;">① 강사 시연</p>
+            <h3 style="font-size: 23px; margin: 0 0 12px 0;">✋ 직접 고치기</h3>
+            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6;">
+                <strong style="color: var(--text-main)">내가</strong> 파일을 열어 글자를 바꿉니다.
+            </p>
+            <p style="font-size: 15px; margin: auto 0 0 0; padding-top: 12px; border-top: 1px solid var(--border);
+                      line-height: 1.6;">
+                이름 · 전화번호 글자 하나.<br>
+                <strong style="color: var(--text-main)">코드 창을 봐야 합니다.</strong>
+            </p>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div class="code-tile-wrapper" style="flex-grow: 0;">
-                <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-                <div class="code-tile">
-<pre style="font-size: 17px;"><span class="c-comment">; (안티그래비티에 이렇게)</span>
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
+                    border: 1px solid var(--border); border-top: 4px solid var(--accent-alt);
+                    display: flex; flex-direction: column;">
+            <p style="font-size: 15px; color: var(--accent-alt); margin: 0 0 4px 0;">② 예비</p>
+            <h3 style="font-size: 23px; margin: 0 0 12px 0;">💬 웹 AI + 붙여넣기</h3>
+            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6;">
+                <strong style="color: var(--text-main)">AI가</strong> 코드를 주고,
+                <strong style="color: var(--text-main)">내가</strong> 붙이고 실행합니다.
+            </p>
+            <p style="font-size: 15px; margin: auto 0 0 0; padding-top: 12px; border-top: 1px solid var(--border);
+                      line-height: 1.6;">
+                2시간째와 같은 방식.<br>
+                <strong style="color: var(--text-main)">오류는 내가 옮겨 줘야</strong> 합니다.
+            </p>
+        </div>
 
-<span class="c-keyword">AGENTS.md 읽고,</span>
-이 폴더가 뭐 하는 건지,
-내가 바꿀 수 있는 게 뭔지
-쉬운 말로 알려줘.</pre>
-                </div>
-            </div>
-            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
-                        border: 1px solid var(--border); border-left: 4px solid var(--accent-alt);">
-                <h3 style="font-size: 19px; margin: 0 0 8px 0;">📋 AGENTS.md 에 적어 둔 것</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 16px;
-                           color: var(--text-dim); line-height: 1.8;">
-                    <li>· 버튼 · 단축키 · 상용구는 <strong style="color: var(--text-main)">내설정.ahk 에만</strong></li>
-                    <li>· 같은 단축키가 있는지 <strong style="color: var(--text-main)">먼저 검색</strong></li>
-                    <li>· 고친 뒤 <strong style="color: var(--text-main)">문법 검사</strong>, 바꾼 곳을 쉬운 말로 보고</li>
-                </ul>
-            </div>
+        <div style="background: var(--accent); border-radius: 12px; padding: 20px 22px;
+                    border: 1px solid var(--accent); color: var(--bg-primary);
+                    display: flex; flex-direction: column;">
+            <p style="font-size: 15px; margin: 0 0 4px 0; color: var(--bg-primary); opacity: 0.8;">③ 오늘의 실습</p>
+            <h3 style="font-size: 23px; margin: 0 0 12px 0; color: var(--bg-primary);">🤖 안티그래비티</h3>
+            <p style="font-size: 16px; margin: 0 0 12px 0; line-height: 1.6; color: var(--bg-primary);">
+                <strong style="color: var(--bg-primary);">AI가</strong> 파일을 직접 열어 고치고,
+                검사까지 합니다.
+            </p>
+            <p style="font-size: 15px; margin: auto 0 0 0; padding-top: 12px; line-height: 1.6;
+                      color: var(--bg-primary); border-top: 1px solid rgba(0,0,0,0.25);">
+                나는 <strong style="color: var(--bg-primary);">말하고, 결과만 확인</strong>.<br>
+                코드 창은 <strong style="color: var(--bg-primary);">안 봐도 됩니다.</strong>
+            </p>
         </div>
     </div>
 </div>

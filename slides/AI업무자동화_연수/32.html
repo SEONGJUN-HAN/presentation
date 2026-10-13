@@ -1,61 +1,62 @@
 <h2 class="slide-title" data-important="true">
-    실습 ②. 상용구를 내 것으로 — 말로만
-    <span class="badge"><i class="fa-solid fa-keyboard"></i> 핫스트링 추가</span>
+    안티그래비티 시작 — 폴더를 열고, 인수인계서부터
+    <span class="badge"><i class="fa-solid fa-robot"></i> 같이 해보기</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        짧은 글자를 치면 긴 문장이 들어가는 <strong style="color: var(--accent)">핫스트링</strong>.<br>
-        파일을 열지도, 복사하지도 않습니다. <strong style="color: var(--text-main)">요청문의 빈칸만 내 것으로.</strong>
+    <p style="font-size: 17px; margin-bottom: 12px;">
+        새로 온 직원에게 업무 인수인계서를 주듯, AI에게도 <code>AGENTS.md</code> 를 줍니다.<br>
+        그래서 모든 요청은 <strong style="color: var(--accent)">"AGENTS.md 읽고,"</strong> 로 시작합니다.
     </p>
 
-    <div class="two-column">
+    <div class="two-column" style="gap: 26px;">
         <div>
             <ul class="checklist-icon">
                 <li>
                     <i class="fa-solid fa-1"></i>
-                    오른쪽 요청문을 안티그래비티에 붙여넣고 <strong>○○ 칸만</strong> 고쳐서 보내기
+                    안티그래비티 실행 &rarr; <strong>구글 계정</strong> 로그인 (제미나이와 같은 계정)
                 </li>
                 <li>
                     <i class="fa-solid fa-2"></i>
-                    AI의 보고 읽기 &mdash; <strong>어디를 바꿨는지</strong>, 검사 통과했는지
+                    <strong>Open Folder</strong> &rarr; 압축 푼 <code>런처</code> 폴더
                 </li>
                 <li>
                     <i class="fa-solid fa-3"></i>
-                    <strong style="color: var(--accent)">스크립트 재시작</strong>
-                    &rarr; 메모장에 <code>/bank</code> · <code>/qg</code>
+                    명령 실행은 <strong>나에게 확인받도록</strong> 설정
+                </li>
+                <li>
+                    <i class="fa-solid fa-4"></i>
+                    오른쪽 질문 붙여넣기 &rarr; 대답 읽어 보기
                 </li>
             </ul>
             <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 16px;"><i class="fa-solid fa-wand-magic-sparkles"></i>&nbsp;
-                    내 정보만 바꾸면 이미 있는 <code>/qg</code>(전화) <code>/sg</code>(서명) <code>/ad</code>(메일)도
-                    <strong style="color: var(--text-main)">저절로 내 것</strong>이 됩니다.
+                <p style="font-size: 16px;"><i class="fa-solid fa-rotate"></i>&nbsp;
+                    AI가 고친 뒤에는 항상 트레이 <strong style="color: var(--text-main)">H 아이콘 우클릭 &rarr; 스크립트 재시작</strong>.
                 </p>
             </div>
-            <p style="font-size: 15px; margin-top: 10px;">
-                <i class="fa-solid fa-magnifying-glass" style="color: var(--accent);"></i>&nbsp;
-                뭐가 있는지 모르겠으면 <code>Ctrl + Alt + Win + S</code> &mdash; 핫스트링 검색창
-            </p>
         </div>
 
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
-<pre style="font-size: 16px;"><span class="c-comment">; (안티그래비티에 이렇게)</span>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div class="code-tile-wrapper" style="flex-grow: 0;">
+                <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+                <div class="code-tile">
+<pre style="font-size: 17px;"><span class="c-comment">; (안티그래비티에 이렇게)</span>
 
 <span class="c-keyword">AGENTS.md 읽고,</span>
-
-1. 내 정보를 바꿔줘.
-   이름: ○○○
-   소속: ○○학교 행정실
-   전화: 063-000-0000
-
-2. <span class="c-keyword">/bank</span> 를 치면 아래 문장이
-   들어가는 핫스트링을 추가해줘.
-   "○○은행 000-0000-0000 (예금주 ○○학교)"
-
-다 하면 문법 검사하고,
-뭘 바꿨는지 알려줘.</pre>
+이 폴더가 뭐 하는 건지,
+내가 바꿀 수 있는 게 뭔지
+쉬운 말로 알려줘.</pre>
+                </div>
+            </div>
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--accent-alt);">
+                <h3 style="font-size: 19px; margin: 0 0 8px 0;">📋 AGENTS.md 에 적어 둔 것</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 16px;
+                           color: var(--text-dim); line-height: 1.8;">
+                    <li>· 버튼 · 단축키 · 상용구는 <strong style="color: var(--text-main)">내설정.ahk 에만</strong></li>
+                    <li>· 같은 단축키가 있는지 <strong style="color: var(--text-main)">먼저 검색</strong></li>
+                    <li>· 고친 뒤 <strong style="color: var(--text-main)">문법 검사</strong>, 바꾼 곳을 쉬운 말로 보고</li>
+                </ul>
             </div>
         </div>
     </div>

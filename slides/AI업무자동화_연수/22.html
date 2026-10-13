@@ -1,50 +1,53 @@
-<h2 class="slide-title" data-important="true">
-    언어는 AI가 통역합니다 — 말하고, 붙이고, 실행
-    <span class="badge"><i class="fa-solid fa-robot"></i> 바이브코딩</span>
-</h2>
+<h2 class="slide-title">함수를 만들려면 '언어'가 필요합니다</h2>
 
 <div class="content-area">
-    <p style="font-size: 18px; margin-bottom: 12px;">
-        문법은 외우지 않습니다.<br>
-        우리말로 구조를 설명하면 <strong style="color: var(--accent)">AI가 코드로 통역</strong>합니다.
-    </p>
+    <div class="two-column" style="gap: 32px; align-items: stretch;">
 
-    <style>
-        .beat-table td { padding: 13px 14px; font-size: 18px; vertical-align: top; }
-        .beat-table th { padding: 10px 14px; font-size: 18px; }
-        .beat-table td:first-child { color: var(--text-main); font-weight: 700; white-space: nowrap; }
-    </style>
-    <table class="beat-table">
-        <thead>
-            <tr>
-                <th style="width: 18%;"></th>
-                <th style="width: 41%;"><i class="fa-solid fa-file-excel"></i>&nbsp; 엑셀 VBA</th>
-                <th style="width: 41%;"><i class="fa-brands fa-html5"></i>&nbsp; HTML 프로그램</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>① 말하기</td>
-                <td>"엑셀 <strong>VBA</strong>로 만들어줘" + 구조 설명</td>
-                <td>"<strong>HTML 파일 하나</strong>로 만들어줘" + 구조 설명</td>
-            </tr>
-            <tr class="highlight">
-                <td>② 붙이기</td>
-                <td><code>Alt + F11</code> &rarr; 삽입 &rarr; 모듈</td>
-                <td>메모장에 붙여 <code>.html</code> 로 저장</td>
-            </tr>
-            <tr>
-                <td>③ 실행</td>
-                <td>코드 안에 커서 두고 <code>F5</code></td>
-                <td>파일 더블클릭 &rarr; 브라우저에서 열림</td>
-            </tr>
-        </tbody>
-    </table>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <p style="font-size: 17px; margin: 0;">
+                사람에게는 "대충 이렇게 해 줘"가 통합니다.<br>
+                컴퓨터는 <strong style="color: var(--text-main)">정해진 말로, 정확하게</strong> 시켜야 합니다.
+            </p>
 
-    <div class="info-box" style="margin-top: 14px;">
-        <p><i class="fa-solid fa-user-check"></i>&nbsp;
-            사람의 몫은 셋 &mdash; <strong style="color: var(--text-main)">구조를 정하고, 붙일 자리를 알고, 결과를 확인하기.</strong><br>
-            안 되면 오류를 그대로 붙여 "고쳐줘".
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--border);">
+                <p style="font-size: 14px; color: var(--text-dim); margin: 0 0 4px 0;">🙋 동료에게</p>
+                <p style="font-family: var(--font-mono); font-size: 16px; margin: 0; color: var(--text-dim);">
+                    "명세서 사람별로 뽑아 줘요"
+                </p>
+            </div>
+            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
+                        border: 1px solid var(--border); border-left: 4px solid var(--accent);
+                        flex-grow: 1;">
+                <p style="font-size: 14px; color: var(--accent); margin: 0 0 4px 0;">💻 컴퓨터에게</p>
+                <p style="font-family: var(--font-mono); font-size: 16px; margin: 0; color: var(--accent); line-height: 1.6;">
+                    D7부터 D52까지 하나씩,<br>
+                    숨긴 행은 건너뛰고,<br>
+                    F4에 넣고, PDF로, 이름.pdf
+                </p>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column;">
+            <p style="font-size: 17px; margin: 0 0 12px 0;">
+                그 정해진 말이 프로그래밍 언어입니다.<br>
+                오늘은 <strong style="color: var(--text-main)">세 가지</strong>를 씁니다.
+            </p>
+            <table>
+                <thead><tr><th>언어</th><th>어디서</th><th>언제</th></tr></thead>
+                <tbody>
+                    <tr class="highlight"><td>VBA</td><td>엑셀 안</td><td>지금 <span style="font-size: 14px;">(설치 없음)</span></td></tr>
+                    <tr class="highlight"><td>자바스크립트</td><td>브라우저 (HTML 파일)</td><td>지금 <span style="font-size: 14px;">(설치 없음)</span></td></tr>
+                    <tr><td>오토핫키</td><td>윈도우 전체</td><td>3시간째</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="info-box" style="border-left-color: #f59e0b; margin-top: 14px;">
+        <p><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
+            컴퓨터는 <strong style="color: var(--text-main)">쉼표 하나만 틀려도 멈춥니다.</strong><br>
+            오류가 나는 건 여러분 탓이 아니라 원래 그런 것입니다.
         </p>
     </div>
 </div>
