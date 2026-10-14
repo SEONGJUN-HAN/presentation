@@ -3,7 +3,8 @@ chcp 65001 > nul
 echo.
 echo ========================================
 echo  발표자료 단일 파일 빌드 스크립트
-echo  실행하면 dist/output.html 이 생성됩니다
+echo  실행하면 dist/덱이름.html 이 생성됩니다
+echo  (덱 이름을 안 주면 loader.js 의 DECKS 전부)
 echo ========================================
 echo.
 
@@ -17,12 +18,12 @@ if %errorlevel% neq 0 (
 )
 
 :: 빌드 스크립트 실행
-node build.js
+node build.js %*
 
 if %errorlevel% equ 0 (
     echo.
-    echo [완료] dist/output.html 생성 성공!
-    echo        이 파일 하나만 복사하면 어디서든 실행됩니다.
+    echo [완료] dist 폴더에 생성 성공!
+    echo        dist 안의 html 파일 하나만 복사하면 어디서든 실행됩니다.
 ) else (
     echo.
     echo [실패] 오류가 발생했습니다. 위 메시지를 확인하세요.

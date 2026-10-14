@@ -3,20 +3,20 @@
    ============================================================ */
 
    :root {
-    --bg-root:        #020617;
-    --bg-primary:     #0f172a;
-    --bg-secondary:   #1e293b;
-    --bg-code:        #0b0f19;
-    --bg-highlight:   #115e59;
-    --bg-normal-row:  #1e293b;
+    --bg-root:        #000000;
+    --bg-primary:     #000000;
+    --bg-secondary:   #171717;
+    --bg-code:        #0a0a0a;
+    --bg-highlight:   #3f2d05;
+    --bg-normal-row:  #171717;
 
-    --text-main:      #f8fafc;
-    --text-dim:       #94a3b8;
+    --text-main:      #ffffff;
+    --text-dim:       #a3a3a3;
 
-    --accent:         #22d3ee;
-    --accent-alt:     #84cc16;
+    --accent:         #fbbf24;
+    --accent-alt:     #e5e5e5;
 
-    --border:         #334155;
+    --border:         #222222;
 
     --font-sans:      'Inter', sans-serif;
     --font-mono:      'Fira Code', 'Courier New', monospace;
@@ -112,7 +112,7 @@ body {
     right: -5%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, #1e293b 0%, transparent 70%);
+    background: radial-gradient(circle, #111111 0%, transparent 70%);
     z-index: -1;
     pointer-events: none;
 }
@@ -141,7 +141,7 @@ body {
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(30, 41, 59, 0.95);
+    background-color: rgba(17, 17, 17, 0.95);
     border: 1px solid var(--border);
     padding: 8px 24px;
     border-radius: 9999px;
@@ -181,7 +181,7 @@ body {
 }
 
 .controls button:disabled {
-    color: #475569;
+    color: #525252;
     cursor: not-allowed;
 }
 
@@ -310,7 +310,7 @@ body.picker-mode .controls {
         width: auto !important;
         height: auto !important;
         overflow: visible !important;
-        background-color: #0f172a !important;
+        background-color: #000000 !important;
         display: block !important;
     }
 
@@ -340,4 +340,33 @@ body.picker-mode .controls {
         break-after: page !important;
         pointer-events: auto !important;
     }
+}
+
+
+/* ============================================================
+   줄바꿈·자간 자동 정돈 (모든 덱 공통)
+   - 새 슬라이드에서 <br> 로 억지 줄바꿈을 넣을 필요가 없습니다.
+   - 마지막 줄에 짧은 꼬리만 남는 문단은 navigation.js 의 fitAllText() 가
+     자간을 아주 조금(최대 -0.04em) 더 줄여 한 줄을 덜어냅니다.
+   ============================================================ */
+.slide-container {
+    word-break: keep-all;        /* 한글은 어절(띄어쓰기) 단위로만 줄바꿈 */
+    overflow-wrap: anywhere;     /* 공백 없는 긴 경로·URL 은 박스를 넘지 않게 */
+    line-break: strict;          /* 문장부호가 줄 맨 앞에 오지 않게 */
+    text-wrap: pretty;           /* 마지막 줄에 한 단어만 덩그러니 남는 것 방지 */
+    letter-spacing: -0.01em;     /* 한글 기본 자간을 살짝 조임 */
+}
+
+/* 제목·카드 제목은 줄 길이를 고르게 (두 줄이 될 때 한쪽만 길어지지 않게) */
+.slide-container :is(h1, h2, h3, h4, [class*="title"]) {
+    text-wrap: balance;
+}
+
+/* 코드·키 표기는 원래대로: 자간·줄바꿈을 건드리지 않음 (들여쓰기·정렬 보존) */
+.slide-container :is(pre, code, kbd, samp, .code-tile) {
+    word-break: normal;
+    overflow-wrap: normal;
+    line-break: auto;
+    text-wrap: wrap;
+    letter-spacing: 0;
 }

@@ -32,7 +32,7 @@
     align-items: center;
     gap: 6px;
     background-color: var(--accent-alt);
-    color: #020617;
+    color: #000000;
     padding: 4px 10px;
     border-radius: 6px;
     font-size: 14px;
@@ -40,7 +40,7 @@
     margin-left: 15px;
     letter-spacing: 0;
     text-transform: none;
-    box-shadow: 0 2px 8px rgba(132, 204, 22, 0.4);
+    box-shadow: 0 2px 8px rgba(229, 229, 229, 0.25);
     flex-shrink: 0;
 }
 
@@ -109,7 +109,7 @@ p strong {
 
 code {
     font-family: var(--font-mono);
-    font-size: 0.9em;
+    font-size: max(0.9em, 14px);   /* 작은 문단 안에서도 14px 미만으로 줄지 않게 */
     color: var(--accent);
     background-color: var(--bg-secondary);
     padding: 2px 6px;
@@ -166,12 +166,12 @@ pre {
     position: absolute;
     top: 12px;
     right: 12px;
-    background-color: #334155;
+    background-color: #222222;
     color: var(--text-main);
     border: none;
     padding: 6px 12px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;

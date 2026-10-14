@@ -63,7 +63,7 @@
     --c-fuchsia: #e879f9;
 
     /* 기본 tone (tone-* 클래스로 덮어씁니다) */
-    --tone: var(--c-cyan);
+    --tone: var(--c-amber);
 
     /* 표면색 */
     --surface:      rgba(255, 255, 255, 0.04);
@@ -71,7 +71,7 @@
 }
 
 /* tone 클래스 — 붙이는 것만으로 그 안의 카드·아이콘·강조가 함께 바뀝니다 */
-.tone-cyan    { --tone: var(--c-cyan); }
+.tone-cyan    { --tone: var(--c-amber); }
 .tone-lime    { --tone: var(--c-lime); }
 .tone-amber   { --tone: var(--c-amber); }
 .tone-red     { --tone: var(--c-red); }
@@ -374,7 +374,7 @@
 .sk-cover__icon  { font-size: 68px; }
 .sk-cover__label {
     font-size: var(--fs-sm); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-    background: linear-gradient(90deg, var(--c-cyan), var(--c-lime));
+    background: linear-gradient(90deg, var(--c-amber), #fde68a);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .sk-cover__title { font-size: 42px; font-weight: 900; color: #fff; line-height: var(--lh-tight); margin: 0; }

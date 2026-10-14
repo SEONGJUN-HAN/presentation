@@ -1,17 +1,23 @@
+<style>
+    .fill-col { display: flex; flex-direction: column; }
+    .fill-col .checklist-icon { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin: 0; }
+    .fill-col .checklist-icon li { margin-bottom: 0; }
+</style>
+
 <h2 class="slide-title" data-important="true">
     공문 만들기 — 메모 한 줄에서 한글 파일까지
     <span class="badge"><i class="fa-solid fa-file-signature"></i> 시연 · 게시판에서 받기</span>
 </h2>
 
 <div class="content-area">
-    <p style="font-size: 18px; margin-bottom: 12px;">
+    <p style="font-size: 20px; margin-bottom: 18px;">
         두서없는 메모를 <strong style="color: var(--text-main)">무료 AI</strong>가 정리하고,
         <strong style="color: var(--accent)">한글 공문서(.hwpx)</strong>로 바로 내려받습니다.<br>
         기안문 · 개조식 보고서 · 한 장 보고서 · 계획서 · 회의록을 만듭니다.
     </p>
 
-    <div class="two-column">
-        <div>
+    <div class="two-column" style="align-items: stretch;">
+        <div class="fill-col">
             <h3>사용법 (HTML 파일 하나)</h3>
             <ul class="checklist-icon">
                 <li>
@@ -35,14 +41,14 @@
 
         <div style="display: flex; flex-direction: column; gap: 14px;">
             <div class="info-box" style="margin: 0;">
-                <p style="font-size: 16px;">
+                <p style="font-size: 18px;">
                     <i class="fa-solid fa-lock"></i>&nbsp;
                     <strong style="color: var(--text-main)">설치 없음 · 서버 전송 없음.</strong><br>
                     변환은 내 PC 안에서만 하고, 업무망에서도 열립니다.
                 </p>
             </div>
             <div class="info-box" style="border-left-color: #f59e0b; margin: 0;">
-                <p style="font-size: 16px;">
+                <p style="font-size: 18px;">
                     <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>&nbsp;
                     AI 대화창은 <strong style="color: var(--text-main)">외부 서비스</strong>입니다.<br>
                     학생 이름 · 연락처 · 주민번호는 넣지 말고 <strong style="color: var(--text-main)">○○</strong>로 두세요.
@@ -51,7 +57,7 @@
             <div style="background: var(--bg-secondary); border-radius: 12px; padding: 18px 22px;
                         border: 1px solid var(--border); border-left: 4px solid var(--accent);
                         flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
-                <p style="font-size: 17px; margin: 0; line-height: 1.7;">
+                <p style="font-size: 19px; margin: 0; line-height: 1.7;">
                     문서를 만드는 엔진은 공무원이 공개한 오픈소스
                     <strong style="color: var(--text-main)">kordoc</strong>입니다.<br>
                     <strong style="color: var(--accent)">브라우저 하나로 묶은 것</strong>이 이 도구이고,

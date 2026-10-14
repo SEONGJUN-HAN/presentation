@@ -16,6 +16,7 @@
        updateSlideUI();
        adjustScale();
        syncFullscreenIcon();
+       fitAllText();
    }
    
    /* ─── 슬라이드 UI 업데이트 ─── */
@@ -144,7 +145,7 @@
                <i class="fa-solid fa-image"
                   style="font-size:48px; margin-bottom:16px; color:#334155; display:block;"></i>
                <p style="font-size:15px; margin:0; line-height:1.8;">
-                   <code style="color:#22d3ee;">${img.src.split('/').pop()}</code><br>
+                   <code style="color:#fbbf24;">${img.src.split('/').pop()}</code><br>
                    파일을 img/ 폴더에 넣어주세요
                </p>
            </div>`;
@@ -195,3 +196,63 @@
    
    /* ─── 창 크기 변경 시 스케일 재조정 ─── */
    window.addEventListener('resize', adjustScale);
+
+   /* ─── 줄바꿈 자동 정돈 ───
+      CSS(base.css 의 word-break / text-wrap)가 1차로 처리하고,
+      그래도 마지막 줄에 짧은 꼬리만 남은 문단은 자간을 단계적으로(-0.01em 씩,
+      최대 -0.04em) 줄여 한 줄을 덜어냅니다. 줄 수가 줄지 않으면 원래대로 되돌립니다. */
+   function fitAllText() {
+       const FIT_SELECTOR = 'p, li, td, th, h1, h2, h3, h4, [class*="title"], [class*="desc"]';
+       const BLOCK_CHILD  = 'p, li, ul, ol, div, table, pre, section';
+
+       // 요소 안 글자가 차지한 줄들을 [{top,bottom,left,right}] 로 돌려줌
+       function measureLines(el) {
+           const range = document.createRange();
+           range.selectNodeContents(el);
+           const rects = [...range.getClientRects()]
+               .filter(b => b.width > 0.5 && b.height > 0.5)
+               .sort((a, b) => a.top - b.top);
+           const lines = [];
+           rects.forEach(b => {
+               const cy = (b.top + b.bottom) / 2;
+               const last = lines[lines.length - 1];
+               if (last && cy > last.top + 1 && cy < last.bottom - 1) {
+                   last.top    = Math.min(last.top, b.top);
+                   last.bottom = Math.max(last.bottom, b.bottom);
+                   last.left   = Math.min(last.left, b.left);
+                   last.right  = Math.max(last.right, b.right);
+               } else {
+                   lines.push({ top: b.top, bottom: b.bottom, left: b.left, right: b.right });
+               }
+           });
+           return lines;
+       }
+
+       function fitOne(el) {
+           if (el.closest('pre, code, .code-tile')) return;
+           if (el.querySelector(BLOCK_CHILD)) return;               // 글자만 담은 말단 요소만
+           const cs = getComputedStyle(el);
+           if (!['block', 'list-item', 'table-cell'].includes(cs.display)) return;
+
+           const lines = measureLines(el);
+           if (lines.length < 2) return;
+
+           const box   = el.getBoundingClientRect();
+           const scale = el.offsetWidth ? box.width / el.offsetWidth : 1;
+           const inner = box.width - (parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight)) * scale;
+           const tail  = lines[lines.length - 1];
+           if (tail.right - tail.left > inner * 0.22) return;       // 꼬리가 짧을 때만 손댐
+
+           const fs   = parseFloat(cs.fontSize);
+           const base = (parseFloat(cs.letterSpacing) || 0) / fs;   // 현재 자간(em)
+           for (let step = 1; step <= 4; step++) {
+               el.style.letterSpacing = (base - step * 0.01) + 'em';
+               if (measureLines(el).length < lines.length) return;  // 성공 → 유지
+           }
+           el.style.letterSpacing = '';                             // 실패 → 원복
+       }
+
+       const run = () => slides.forEach(s => s.querySelectorAll(FIT_SELECTOR).forEach(fitOne));
+       const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+       ready.then(() => requestAnimationFrame(run));
+   }
