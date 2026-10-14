@@ -234,6 +234,26 @@
 /* 강조 카드 (추천 항목 등) */
 .sk .card--pick  { border-width: 2px; border-color: color-mix(in srgb, var(--tone) 55%, transparent); }
 
+/* 글이 짧은 카드 — 아이콘을 키우고 가운데로 모아 빈 공간을 없앱니다 */
+.sk .card--hero  { justify-content: center; align-items: center; text-align: center; gap: var(--sp-4); }
+.sk .card--hero .card__head { flex-direction: column; gap: var(--sp-3); }
+.sk .card--hero .card__icon { width: 72px; height: 72px; border-radius: var(--r-xl); font-size: 30px; }
+
+/* 가로로 납작한 카드 — 그림 옆에 여러 개 쌓을 때 */
+.sk .card--row { flex-direction: row; align-items: center; gap: var(--sp-4); padding: var(--sp-3) var(--sp-4); }
+.sk .card--row .card__title { font-size: var(--fs-lead); }
+.sk .card--row .card__body  { font-size: var(--fs-sm); line-height: var(--lh-tight); margin-top: 4px; }
+
+/* 열 하나를 채우는 그림 */
+.sk .shot {
+    flex: 1; min-height: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--surface-line);
+    display: block;
+}
+
 .sk .card__head { display: flex; align-items: center; gap: var(--sp-2); }
 
 /* 아이콘 타일 */
@@ -381,6 +401,50 @@
 .sk-cover__title em { font-style: normal; color: var(--tone); }
 .sk-cover__desc  { font-size: var(--fs-body); color: var(--text-dim); margin: var(--sp-2) 0 0; }
 
+/* ============================================================
+   그림 배경 — 흐리게 깐 그림 위에 글씨
+   ------------------------------------------------------------
+   표지 : <div class="sk sk-cover sk--photo">   <img class="sk-bg" src="img/...">
+   본문 : <div class="sk sk--photo tone-...">   <img class="sk-bg" src="img/...">
+   그림은 16:9, 검은 배경 + 단순한 소재일수록 잘 어울립니다.
+   흐림 정도는 --photo-dim 으로 조절 (표지 .42 / 본문 .5)
+   ============================================================ */
+.sk--photo { --photo-dim: .5; overflow: hidden; }
+.sk-cover.sk--photo { --photo-dim: .42; }
+
+.sk-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: var(--photo-dim);
+    z-index: -1;                /* 글자 뒤로 */
+    pointer-events: none;
+}
+/* 글씨 바로 뒤만 한 번 더 어둡게 — 그림 전체를 죽이지 않고 글씨를 살립니다 */
+.sk--photo::after {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(0,0,0,.7) 0%, transparent 100%);
+}
+
+/* 표지는 제목을 크게 */
+.sk-cover.sk--photo .sk-cover__label { font-size: var(--fs-body); }
+.sk-cover.sk--photo .sk-cover__title { font-size: 58px; }
+.sk-cover.sk--photo .sk-cover__desc  { font-size: var(--fs-lead); color: #d4d4d4; }
+
+/* 본문은 글이 위(제목)·아래(카드)에 있고 그림은 가운데 → 위아래만 어둡게 */
+.sk--photo:not(.sk-cover)::after {
+    background: linear-gradient(to bottom,
+        rgba(0,0,0,.75) 0%, transparent 28%, transparent 60%, rgba(0,0,0,.8) 100%);
+}
+/* 카드는 아래쪽에 납작하게 모아 그림이 가운데로 보이게 (card--row 와 함께) */
+.sk--photo:not(.sk-cover) .cols { flex: 0 0 auto; margin-top: auto; }
+
+/* 본문 카드는 그림이 비쳐도 글이 읽히도록 바탕을 채웁니다 */
+.sk--photo .card {
+    background: color-mix(in srgb, var(--tone) 8%, rgba(10,10,10,.85));
+    backdrop-filter: blur(6px);
+}
+
 /* 커버도 컨테이너 padding 을 끕니다 */
 .slide-container:has(> .sk-cover) { padding: 0; }
 
@@ -398,6 +462,7 @@
 .sk .center    { text-align: center; }
 
 
+
 /* ============================================================
    10. [테마 오버라이드] 덱마다 다른 느낌을 주고 싶을 때
    ------------------------------------------------------------
@@ -411,3 +476,11 @@
        --slide-py:  40px;
    }
    ============================================================ */
+
+/* 교데통 사용자교육 — 말로 풀어가는 강의라 글이 짧으므로 글씨를 한 단계 키웁니다 */
+[data-deck="교데통_사용자교육"] {
+    --fs-sm:   17px;
+    --fs-body: 20px;
+    --fs-lead: 23px;
+    --fs-h3:   26px;
+}
