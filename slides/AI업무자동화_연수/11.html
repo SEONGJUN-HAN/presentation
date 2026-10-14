@@ -1,42 +1,43 @@
-<h2 class="slide-title" data-important="true">
-    실습 ②. 쪽지 대화방 — 생각나는 대로 쓰면 개조식으로
-    <span class="badge"><i class="fa-solid fa-envelope-open-text"></i> 혼자 해보기</span>
-</h2>
+<div class="sk tone-amber">
 
-<div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        같은 메타프롬프트 틀, <strong style="color: var(--accent)">[목적]과 [조건]만 바꿉니다.</strong><br>
-        이번엔 앞 장의 순서를 혼자 해 보세요.
-    </p>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge"><i class="fa-solid fa-envelope-open-text"></i> 혼자 해보기</span>
+      <h2 class="s-title">실습 ②. 쪽지 대화방 — 생각나는 대로 쓰면 개조식으로</h2>
+    </div>
+  </div>
 
-    <div class="two-column">
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div style="background: var(--bg-code); border: 1px solid var(--border); border-radius: 10px;
-                        padding: 14px 18px;">
-                <p style="font-size: 14px; color: var(--text-dim); margin: 0 0 6px 0;">넣는 것 (막 쓴 메모)</p>
-                <p style="font-size: 16px; margin: 0; line-height: 1.6; font-family: var(--font-mono);">
-                    다음주 목욜 재물조사함 3시부터 과학실이랑 컴실 먼저 담당자분들 있어주시고
-                    바코드 안붙은거 있으면 미리 말좀
-                </p>
-            </div>
-            <div style="text-align: center; color: var(--accent); font-size: 22px;">
-                <i class="fa-solid fa-arrow-down"></i>
-            </div>
-            <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px;
-                        padding: 14px 18px; border-left: 4px solid var(--accent);">
-                <p style="font-size: 14px; color: var(--accent); margin: 0 0 6px 0;">받는 것 (쪽지)</p>
-                <p style="font-size: 15px; margin: 0; line-height: 1.7;">
-                    안녕하세요, 행정실입니다.<br> 물품 재물조사를 아래와 같이 실시합니다.<br>
-                    □ 일시: 11. 26.(목) 15:00~<br>
-                    □ 순서: 과학실 → 컴퓨터실 → …<br>
-                    □ 협조: 해당 실 담당자 입회, 바코드 미부착 물품 사전 알림
-                </p>
-            </div>
-        </div>
+  <p class="lead">
+    같은 메타프롬프트 틀, <strong class="hl">[목적]과 [조건]만 바꿉니다.</strong><br>
+    이번엔 앞 장의 순서를 혼자 해 보세요.
+  </p>
 
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
+  <div class="cols">
+
+    <div class="flow flow--down">
+      <div class="card card--plain">
+        <p class="card__kicker" style="color:var(--text-dim);">넣는 것 (막 쓴 메모)</p>
+        <p class="memo">
+          다음주 목욜 재물조사함 3시부터 과학실이랑 컴실 먼저 담당자분들 있어주시고
+          바코드 안붙은거 있으면 미리 말좀
+        </p>
+      </div>
+      <i class="fa-solid fa-arrow-down flow__arrow"></i>
+      <div class="card card--pick">
+        <p class="card__kicker">받는 것 (쪽지)</p>
+        <p class="card__body">
+          안녕하세요, 행정실입니다.<br> 물품 재물조사를 아래와 같이 실시합니다.<br>
+          □ 일시: 11. 26.(목) 15:00~<br>
+          □ 순서: 과학실 → 컴퓨터실 → …<br>
+          □ 협조: 해당 실 담당자 입회, 바코드 미부착 물품 사전 알림
+        </p>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="code-tile-wrapper">
+        <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+        <div class="code-tile">
 <pre style="font-size: 15px;">나는 학교 행정실에서 일하는 직원이야.
 <span class="c-keyword">두서없이 적은 메모를 넣으면
 교직원에게 보낼 쪽지로 정리해주는</span>
@@ -52,7 +53,10 @@
 
 더 정할 게 있으면 하나씩 물어보고,
 끝나면 지시문을 코드 블록으로 줘.</pre>
-            </div>
         </div>
+      </div>
     </div>
+
+  </div>
+
 </div>
