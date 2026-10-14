@@ -494,6 +494,7 @@
 .sk .card--fill .card__end   { border-top-color: rgba(0,0,0,.2); }
 .sk .card--fill .list li::before { color: #111; }
 .sk .card--fill code { color: #111; background: rgba(0,0,0,.14); }
+.sk .card--fill .card__icon { color: #111; background: rgba(0,0,0,.12); }
 
 /* 가로로 긴 카드 — 한 장에 2~4개를 세로로 쌓아 화면을 채울 때 (card--row 보다 큼) */
 .sk .card--wide { flex-direction: row; align-items: center; gap: var(--sp-5); padding: var(--sp-5) var(--sp-6); }
@@ -506,6 +507,7 @@
 /* 흐름 — 카드 사이에 화살표 */
 .sk .flow { display: flex; align-items: stretch; gap: var(--sp-3); flex: 1; min-height: 0; }
 .sk .flow > .card { flex: 1; min-width: 0; justify-content: center; }
+.sk .flow > .card--row { justify-content: flex-start; }   /* 가로 카드는 왼쪽부터 */
 .sk .flow__arrow { align-self: center; flex-shrink: 0; font-size: 30px; color: var(--tone); }
 .sk .flow--down { flex-direction: column; }
 .sk .flow--down .flow__arrow { font-size: var(--fs-h3); }
