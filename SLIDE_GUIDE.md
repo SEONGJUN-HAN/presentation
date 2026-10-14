@@ -83,6 +83,18 @@ npx serve
 | 그림 옆에 쌓는 납작한 카드 | `card--row` |
 | 열 하나를 채우는 그림 | `<img class="shot">` |
 | 흐린 그림 배경 | 루트에 `sk--photo` + 첫 줄에 `<img class="sk-bg">` |
+| 제목 아래 도입 문단 | `<p class="lead">` |
+| 열 안의 소제목 (카드 밖) | `s-h3` |
+| 카드 제목 위 작은 라벨 / 맨 아래 한 줄 | `card__kicker` / `card__end` (구분선) |
+| 톤 색으로 꽉 채운 강조 카드 | `card--fill` |
+| 가로로 긴 카드 (2~4개 세로로 쌓기) | `stack stack--fill` 안에 `card--wide` |
+| 카드 사이 화살표 | `flow` + `<i class="fa-solid fa-arrow-right flow__arrow">` · 세로 `flow--down` |
+| 번호 / 점 / 아이콘 목록 | `list--num` · `list--dot` · `list--icon` (li 첫 줄에 `<i>`) · 열 채우기 `list--spread` |
+| 메모·폴더 구조 같은 고정폭 글 | `memo` |
+| 표 첫 칸을 머리말처럼 | `<table class="tbl--key">` |
+| 잘리면 안 되는 캡처 | `shot shot--contain` |
+
+> 💡 글은 `<p>` 로 쓰세요 (`<p class="card__body">` 등). p 안의 `<strong>` 이 흰색이 되고, 줄바꿈 자동 정돈도 p 에만 작동합니다.
 
 ---
 
@@ -178,6 +190,7 @@ npx serve
 | CSS 를 고쳤는데 반영이 안 됨 | 브라우저가 css 파일을 캐시 | `index.html` 의 `?v=` 숫자를 올리고 `Ctrl+Shift+R` |
 | 헤더 오른쪽 알약이 잘림 | 긴 제목이 폭을 다 차지 | `s-head__main`(`min-width:0`) + `s-pill`(`flex-shrink:0`) |
 | 카드마다 색을 바꿨는데 안 먹힘 | 파생 변수를 부모에서 한 번만 계산 | 파생값은 `*` 에 선언 (이미 적용됨) |
+| 목록 속 굵은 글씨 앞뒤로 간격이 벌어짐 | `li` 가 flex 라 글 조각이 따로 떨어진 칸이 됨 | `.list li` 는 block + 아이콘 absolute (이미 적용됨) |
 
 ---
 

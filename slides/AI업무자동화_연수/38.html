@@ -1,73 +1,70 @@
-<h2 class="slide-title">오늘 가져가는 것 &amp; 숙제</h2>
+<div class="sk tone-amber">
 
-<div class="content-area">
-    <style>
-        .take-grid li { font-size: 16px; margin-bottom: 6px; line-height: 1.55; }
-    </style>
-    <p style="font-size: 18px; margin-bottom: 4px;">
-        <code>통합업무런처</code> <strong style="color: var(--accent)">zip 하나</strong>를 USB에 담아 가서 사무실에서 풀고
-        <strong style="color: var(--text-main)">설치하기.bat 한 번</strong> &mdash; <strong style="color: var(--text-main)">기본 세팅</strong>이 만들어집니다.
-    </p>
+  <div class="s-head">
+    <div class="s-head__main">
+      <h2 class="s-title">오늘 가져가는 것 &amp; 숙제</h2>
+    </div>
+  </div>
 
-    <div class="take-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;
-                flex-grow: 1; align-items: stretch; margin-top: 8px;">
+  <p class="lead">
+    <code>통합업무런처</code> <strong class="hl">zip 하나</strong>를 USB에 담아 가서 사무실에서 풀고
+    <strong>설치하기.bat 한 번</strong> &mdash; <strong>기본 세팅</strong>이 만들어집니다.
+  </p>
 
-        <!-- ① 직접 만든 것 -->
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
-                    border: 1px solid var(--border); border-top: 4px solid var(--accent);">
-            <h3 style="font-size: 18px; margin: 0 0 12px 0;">🤖 오늘 AI로 만든 것</h3>
-            <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px;
-                       line-height: 1.7; color: var(--text-dim);">
-                <li>🧾 <strong style="color: var(--text-main)">영수증 · 쪽지</strong> 지시문 <span style="font-size:14px;">— 메모장</span></li>
-                <li>📑 급여명세서 <strong style="color: var(--text-main)">PDF</strong> 매크로 <span style="font-size:14px;">— 엑셀 파일</span></li>
-                <li>📎 <strong style="color: var(--text-main)">용량줄이기.html</strong></li>
-                <li>⌨ <strong style="color: var(--text-main)">내 상용구</strong> · <code>/ocr</code> · 내 버튼 <span style="font-size:14px;">— <code>내설정.ahk</code></span></li>
-            </ul>
-            <p style="font-size: 14px; margin: 10px 0 0 0; line-height: 1.5;">
-                <strong style="color: var(--text-main)">zip에는 들어 있지 않습니다.</strong>
-                필요한 파일만 USB에 따로 담아 가세요.
-            </p>
-        </div>
+  <div class="cols cols--3">
 
-        <!-- ② 받아서 바로 쓰는 것 -->
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
-                    border: 1px solid var(--border); border-top: 4px solid var(--accent-alt);">
-            <h3 style="font-size: 18px; margin: 0 0 10px 0;">🎁 런처에 같이 담긴 것</h3>
-            <p style="font-size: 14px; margin: 0 0 8px 0; line-height: 1.5; color: var(--text-dim);">
-                <code>Ctrl+Alt+Win+Home</code> 에 <strong style="color: var(--text-main)">이미 연결돼 있습니다.</strong>
-            </p>
-            <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px;
-                       line-height: 1.5; color: var(--text-dim);">
-                <li>🖨 PDF 마스킹 · 페이지 번호</li>
-                <li>✍ 공문 만들기 (HWPX)</li>
-                <li>📞 통합연락처 <span style="font-size:14px;">— CSV만 채우기</span></li>
-                <li>🧑‍💼 직원 등 현황 검색</li>
-                <li>📢 EAT 공고 · 원인행위 도우미</li>
-                <li>🪟 창 위치 기억 · 이모티콘</li>
-            </ul>
-        </div>
-
-        <!-- ③ 숙제 -->
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px 22px;
-                    border: 1px solid var(--border); border-top: 4px solid #f59e0b;">
-            <h3 style="font-size: 18px; margin: 0 0 10px 0;">📝 숙제 두 가지</h3>
-            <p style="font-size: 15px; margin: 0 0 10px 0; line-height: 1.5;">
-                <strong style="color: var(--text-main)">① 내 불편 하나 없애기</strong><br>
-                매주 손으로 하는 일 하나를 골라
-                안티그래비티에 <strong style="color: #f59e0b">"AGENTS.md 읽고,"</strong> + 그대로 설명.
-            </p>
-            <p style="font-size: 15px; margin: 0; line-height: 1.5;">
-                <strong style="color: var(--text-main)">② 법령 MCP 내 것으로</strong><br>
-                <strong style="color: var(--text-main)">open.law.go.kr</strong> 에서 Open API 키 신청 &rarr;
-                승인되면 "법령 MCP 를 내 키로 바꿔줘".
-            </p>
-        </div>
+    <!-- ① 직접 만든 것 -->
+    <div class="card card--pick">
+      <div class="card__title">🤖 오늘 AI로 만든 것</div>
+      <ul class="list list--dot">
+        <li>🧾 <strong>영수증 · 쪽지</strong> 지시문 <span class="dim">— 메모장</span></li>
+        <li>📑 급여명세서 <strong>PDF</strong> 매크로 <span class="dim">— 엑셀 파일</span></li>
+        <li>📎 <strong>용량줄이기.html</strong></li>
+        <li>⌨ <strong>내 상용구</strong> · <code>/ocr</code> · 내 버튼 <span class="dim">— <code>내설정.ahk</code></span></li>
+      </ul>
+      <p class="card__end">
+        <strong>zip에는 들어 있지 않습니다.</strong>
+        필요한 파일만 USB에 따로 담아 가세요.
+      </p>
     </div>
 
-    <div class="info-box" style="margin-top: 12px; padding: 12px 20px;">
-        <p style="font-size: 17px;"><i class="fa-solid fa-seedling"></i>&nbsp;
-            "코딩을 배운다"가 아니라
-            <strong style="color: var(--text-main)">"내 업무를 내가 제어한다"</strong>.
-        </p>
+    <!-- ② 받아서 바로 쓰는 것 -->
+    <div class="card card--plain">
+      <div class="card__title">🎁 런처에 같이 담긴 것</div>
+      <p class="card__body">
+        <code>Ctrl+Alt+Win+Home</code> 에 <strong>이미 연결돼 있습니다.</strong>
+      </p>
+      <ul class="list list--dot">
+        <li>🖨 PDF 마스킹 · 페이지 번호</li>
+        <li>✍ 공문 만들기 (HWPX)</li>
+        <li>📞 통합연락처 <span class="dim">— CSV만 채우기</span></li>
+        <li>🧑‍💼 직원 등 현황 검색</li>
+        <li>📢 EAT 공고 · 원인행위 도우미</li>
+        <li>🪟 창 위치 기억 · 이모티콘</li>
+      </ul>
     </div>
+
+    <!-- ③ 숙제 -->
+    <div class="card card--plain">
+      <div class="card__title">📝 숙제 두 가지</div>
+      <p class="card__body">
+        <strong>① 내 불편 하나 없애기</strong><br>
+        매주 손으로 하는 일 하나를 골라
+        안티그래비티에 <strong class="hl">"AGENTS.md 읽고,"</strong> + 그대로 설명.
+      </p>
+      <p class="card__body">
+        <strong>② 법령 MCP 내 것으로</strong><br>
+        <strong>open.law.go.kr</strong> 에서 Open API 키 신청 &rarr;
+        승인되면 "법령 MCP 를 내 키로 바꿔줘".
+      </p>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <i class="fa-solid fa-seedling"></i>&nbsp;
+    "코딩을 배운다"가 아니라
+    <strong>"내 업무를 내가 제어한다"</strong>.
+  </div>
+
 </div>

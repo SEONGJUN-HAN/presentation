@@ -1,64 +1,56 @@
-<h2 class="slide-title" data-important="true">
-    AI에 손발 달기 — 법령 MCP
-    <span class="badge"><i class="fa-solid fa-scale-balanced"></i> 강사 시연</span>
-</h2>
+<div class="sk tone-amber">
 
-<div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 12px;">
-        AI는 법 조문을 <strong style="color: var(--text-main)">그럴듯하게 지어낼</strong> 때가 있습니다.<br>
-        <strong style="color: var(--accent)">MCP</strong>로 법제처 법령 DB를 연결하면, 기억 대신
-        <strong style="color: var(--accent)">지금 시행 중인 조문을 찾아보고</strong> 답합니다.
-    </p>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge"><i class="fa-solid fa-scale-balanced"></i> 강사 시연</span>
+      <h2 class="s-title">AI에 손발 달기 — 법령 MCP</h2>
+    </div>
+  </div>
 
-    <div class="two-column" style="gap: 26px;">
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div style="display: grid; grid-template-columns: 1fr 48px 1fr; gap: 8px; align-items: stretch;">
-                <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 18px;
-                            border: 1px solid var(--border); border-top: 4px solid var(--border);">
-                    <p style="font-size: 14px; color: var(--text-dim); margin: 0 0 6px 0;">MCP 없이</p>
-                    <p style="font-size: 16px; margin: 0; line-height: 1.6;">
-                        🧠 학습한 기억으로 답<br>
-                        <span style="color: var(--text-dim);">조문 번호 · 개정 여부 불확실</span>
-                    </p>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: center;
-                            font-size: 30px; color: var(--accent);">&rarr;</div>
-                <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 18px;
-                            border: 1px solid var(--border); border-top: 4px solid var(--accent);">
-                    <p style="font-size: 14px; color: var(--accent); margin: 0 0 6px 0;">MCP 연결</p>
-                    <p style="font-size: 16px; margin: 0; line-height: 1.6;">
-                        🔎 법령 · 판례 · 자치법규 검색<br>
-                        <span style="color: var(--text-dim);">원문 조문을 근거로 답</span>
-                    </p>
-                </div>
-            </div>
+  <p class="lead">
+    AI는 법 조문을 <strong>그럴듯하게 지어낼</strong> 때가 있습니다.<br>
+    <strong class="hl">MCP</strong>로 법제처 법령 DB를 연결하면, 기억 대신
+    <strong class="hl">지금 시행 중인 조문을 찾아보고</strong> 답합니다.
+  </p>
 
-            <ul class="checklist-icon" style="margin: 0;">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    안티그래비티에 <strong>"AGENTS.md 읽고, 법령 MCP 연결해줘"</strong>
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    안티그래비티 <strong>껐다 켜기</strong> &rarr; MCP Servers 에 <code>korean-law</code> 확인
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    오른쪽처럼 물어보기
-                </li>
-            </ul>
+  <div class="cols">
 
-            <div class="info-box" style="padding: 12px 20px; margin: 0;">
-                <p style="font-size: 15px;"><i class="fa-solid fa-key"></i>&nbsp;
-                    연결 정보는 AGENTS.md 에 <strong style="color: var(--text-main)">연수용 키까지</strong> 넣어 두었습니다.<br>
-                    오래 쓰려면 <strong style="color: var(--text-main)">open.law.go.kr</strong> 에서 내 키 신청 (승인 1~2일).
-                </p>
-            </div>
+    <div class="col">
+      <div class="flow" style="flex: 0 0 auto;">
+        <div class="card card--plain">
+          <p class="card__kicker" style="color:var(--text-dim);">MCP 없이</p>
+          <p class="card__body">
+            🧠 학습한 기억으로 답<br>
+            <span class="dim">조문 번호 · 개정 여부 불확실</span>
+          </p>
         </div>
+        <i class="fa-solid fa-arrow-right flow__arrow"></i>
+        <div class="card card--pick">
+          <p class="card__kicker">MCP 연결</p>
+          <p class="card__body">
+            🔎 법령 · 판례 · 자치법규 검색<br>
+            <span class="dim">원문 조문을 근거로 답</span>
+          </p>
+        </div>
+      </div>
 
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
+      <ol class="list list--num">
+        <li>안티그래비티에 <strong>"AGENTS.md 읽고, 법령 MCP 연결해줘"</strong></li>
+        <li>안티그래비티 <strong>껐다 켜기</strong> &rarr; MCP Servers 에 <code>korean-law</code> 확인</li>
+        <li>오른쪽처럼 물어보기</li>
+      </ol>
+
+      <div class="note">
+        <i class="fa-solid fa-key"></i>&nbsp;
+        연결 정보는 AGENTS.md 에 <strong>연수용 키까지</strong> 넣어 두었습니다.<br>
+        오래 쓰려면 <strong>open.law.go.kr</strong> 에서 내 키 신청 (승인 1~2일).
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="code-tile-wrapper">
+        <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+        <div class="code-tile">
 <pre style="font-size: 16px;"><span class="c-comment">; (연결된 뒤 이렇게)</span>
 
 학교 운동장을 지역 주민에게
@@ -68,7 +60,10 @@
 
 <span class="c-keyword">조문 번호와 원문</span>을 같이 보여주고,
 최근에 개정된 게 있으면 알려줘.</pre>
-            </div>
         </div>
+      </div>
     </div>
+
+  </div>
+
 </div>

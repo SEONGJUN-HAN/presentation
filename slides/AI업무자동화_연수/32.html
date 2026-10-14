@@ -1,63 +1,54 @@
-<h2 class="slide-title" data-important="true">
-    안티그래비티 시작 — 폴더를 열고, 인수인계서부터
-    <span class="badge"><i class="fa-solid fa-robot"></i> 같이 해보기</span>
-</h2>
+<div class="sk tone-amber">
 
-<div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 12px;">
-        새로 온 직원에게 업무 인수인계서를 주듯, AI에게도 <code>AGENTS.md</code> 를 줍니다.<br>
-        그래서 모든 요청은 <strong style="color: var(--accent)">"AGENTS.md 읽고,"</strong> 로 시작합니다.
-    </p>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge"><i class="fa-solid fa-robot"></i> 같이 해보기</span>
+      <h2 class="s-title">안티그래비티 시작 — 폴더를 열고, 인수인계서부터</h2>
+    </div>
+  </div>
 
-    <div class="two-column" style="gap: 26px;">
-        <div>
-            <ul class="checklist-icon">
-                <li>
-                    <i class="fa-solid fa-1"></i>
-                    안티그래비티 실행 &rarr; <strong>구글 계정</strong> 로그인 (제미나이와 같은 계정)
-                </li>
-                <li>
-                    <i class="fa-solid fa-2"></i>
-                    <strong>Open Folder</strong> &rarr; 압축 푼 <code>런처</code> 폴더
-                </li>
-                <li>
-                    <i class="fa-solid fa-3"></i>
-                    명령 실행은 <strong>나에게 확인받도록</strong> 설정
-                </li>
-                <li>
-                    <i class="fa-solid fa-4"></i>
-                    오른쪽 질문 붙여넣기 &rarr; 대답 읽어 보기
-                </li>
-            </ul>
-            <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 16px;"><i class="fa-solid fa-rotate"></i>&nbsp;
-                    AI가 고친 뒤에는 항상 트레이 <strong style="color: var(--text-main)">H 아이콘 우클릭 &rarr; 스크립트 재시작</strong>.
-                </p>
-            </div>
-        </div>
+  <p class="lead">
+    새로 온 직원에게 업무 인수인계서를 주듯, AI에게도 <code>AGENTS.md</code> 를 줍니다.<br>
+    그래서 모든 요청은 <strong class="hl">"AGENTS.md 읽고,"</strong> 로 시작합니다.
+  </p>
 
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div class="code-tile-wrapper" style="flex-grow: 0;">
-                <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-                <div class="code-tile">
+  <div class="cols">
+
+    <div class="col">
+      <ol class="list list--num">
+        <li>안티그래비티 실행 &rarr; <strong>구글 계정</strong> 로그인 (제미나이와 같은 계정)</li>
+        <li><strong>Open Folder</strong> &rarr; 압축 푼 <code>런처</code> 폴더</li>
+        <li>명령 실행은 <strong>나에게 확인받도록</strong> 설정</li>
+        <li>오른쪽 질문 붙여넣기 &rarr; 대답 읽어 보기</li>
+      </ol>
+      <div class="note">
+        <i class="fa-solid fa-rotate"></i>&nbsp;
+        AI가 고친 뒤에는 항상 트레이 <strong>H 아이콘 우클릭 &rarr; 스크립트 재시작</strong>.
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="code-tile-wrapper" style="flex: 0 0 auto; min-height: 0;">
+        <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+        <div class="code-tile">
 <pre style="font-size: 17px;"><span class="c-comment">; (안티그래비티에 이렇게)</span>
 
 <span class="c-keyword">AGENTS.md 읽고,</span>
 이 폴더가 뭐 하는 건지,
 내가 바꿀 수 있는 게 뭔지
 쉬운 말로 알려줘.</pre>
-                </div>
-            </div>
-            <div style="background: var(--bg-secondary); border-radius: 12px; padding: 16px 20px;
-                        border: 1px solid var(--border); border-left: 4px solid var(--accent-alt);">
-                <h3 style="font-size: 19px; margin: 0 0 8px 0;">📋 AGENTS.md 에 적어 둔 것</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 16px;
-                           color: var(--text-dim); line-height: 1.8;">
-                    <li>· 버튼 · 단축키 · 상용구는 <strong style="color: var(--text-main)">내설정.ahk 에만</strong></li>
-                    <li>· 같은 단축키가 있는지 <strong style="color: var(--text-main)">먼저 검색</strong></li>
-                    <li>· 고친 뒤 <strong style="color: var(--text-main)">문법 검사</strong>, 바꾼 곳을 쉬운 말로 보고</li>
-                </ul>
-            </div>
         </div>
+      </div>
+      <div class="card card--plain">
+        <div class="card__title">📋 AGENTS.md 에 적어 둔 것</div>
+        <ul class="list list--dot">
+          <li>버튼 · 단축키 · 상용구는 <strong>내설정.ahk 에만</strong></li>
+          <li>같은 단축키가 있는지 <strong>먼저 검색</strong></li>
+          <li>고친 뒤 <strong>문법 검사</strong>, 바꾼 곳을 쉬운 말로 보고</li>
+        </ul>
+      </div>
     </div>
+
+  </div>
+
 </div>

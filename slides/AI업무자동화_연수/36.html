@@ -1,38 +1,42 @@
-<h2 class="slide-title" data-important="true">
-    도전. 새 기능 하나 — 숫자를 한글 금액으로
-    <span class="badge"><i class="fa-solid fa-flag"></i> 시간 되면</span>
-</h2>
+<div class="sk tone-amber">
 
-<div class="content-area">
-    <p style="font-size: 17px; margin-bottom: 10px;">
-        숫자를 드래그하고 단축키 하나면 <code>1234000</code> &rarr;
-        <strong style="color: var(--accent)">금 일백이십삼만사천원정 (₩1,234,000)</strong>.<br>
-        만·억 끊기 같은 규칙은 AI가 짜고, <strong style="color: var(--text-main)">확인도 AI가 먼저</strong> 합니다.
-    </p>
+  <div class="s-head">
+    <div class="s-head__main">
+      <span class="s-badge"><i class="fa-solid fa-flag"></i> 시간 되면</span>
+      <h2 class="s-title">도전. 새 기능 하나 — 숫자를 한글 금액으로</h2>
+    </div>
+  </div>
 
-    <div class="two-column">
-        <div>
-            <h3>웹 AI로 했다면 &mdash; 무엇이 다른가</h3>
-            <table style="margin-bottom: 12px;">
-                <thead><tr><th></th><th>② 웹 AI</th><th>③ 안티그래비티</th></tr></thead>
-                <tbody>
-                    <tr><td>어느 파일에</td><td>내가 찾아서</td><td class="hl-cell"><strong style="color: var(--accent)">AGENTS.md 보고 AI가</strong></td></tr>
-                    <tr><td>코드 넣기</td><td>내가 붙여넣기</td><td><strong style="color: var(--accent)">AI가 파일 수정</strong></td></tr>
-                    <tr><td>문법 검사</td><td>실행해 봐야 앎</td><td><strong style="color: var(--accent)">AI가 검사</strong></td></tr>
-                    <tr><td>오류 나면</td><td>내가 복사해 전달</td><td><strong style="color: var(--accent)">AI가 보고 고침</strong></td></tr>
-                </tbody>
-            </table>
-            <div class="info-box" style="padding: 12px 20px;">
-                <p style="font-size: 15px;"><i class="fa-solid fa-user-check"></i>&nbsp;
-                    그래도 <strong style="color: var(--text-main)">마지막 확인은 사람</strong> &mdash;
-                    <code>10000</code> <code>100010000</code> <code>1010</code> 을 직접 드래그해 보기
-                </p>
-            </div>
-        </div>
+  <p class="lead">
+    숫자를 드래그하고 단축키 하나면 <code>1234000</code> &rarr;
+    <strong class="hl">금 일백이십삼만사천원정 (₩1,234,000)</strong>.<br>
+    만·억 끊기 같은 규칙은 AI가 짜고, <strong>확인도 AI가 먼저</strong> 합니다.
+  </p>
 
-        <div class="code-tile-wrapper">
-            <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
-            <div class="code-tile">
+  <div class="cols">
+
+    <div class="col">
+      <div class="s-h3">웹 AI로 했다면 &mdash; 무엇이 다른가</div>
+      <table class="tbl--key">
+        <thead><tr><th></th><th>② 웹 AI</th><th>③ 안티그래비티</th></tr></thead>
+        <tbody>
+          <tr><td>어느 파일에</td><td>내가 찾아서</td><td><strong class="hl">AGENTS.md 보고 AI가</strong></td></tr>
+          <tr><td>코드 넣기</td><td>내가 붙여넣기</td><td><strong class="hl">AI가 파일 수정</strong></td></tr>
+          <tr><td>문법 검사</td><td>실행해 봐야 앎</td><td><strong class="hl">AI가 검사</strong></td></tr>
+          <tr><td>오류 나면</td><td>내가 복사해 전달</td><td><strong class="hl">AI가 보고 고침</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <i class="fa-solid fa-user-check"></i>&nbsp;
+        그래도 <strong>마지막 확인은 사람</strong> &mdash;
+        <code>10000</code> <code>100010000</code> <code>1010</code> 을 직접 드래그해 보기
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="code-tile-wrapper">
+        <button class="copy-btn" onclick="copyCode(this)">코드 복사</button>
+        <div class="code-tile">
 <pre style="font-size: 15px;"><span class="c-comment">; (안티그래비티에 이렇게)</span>
 
 <span class="c-keyword">AGENTS.md 읽고,</span>
@@ -48,7 +52,10 @@
 다 만들면 문법 검사하고, 10000 ·
 100010000 · 1010 이 어떻게
 바뀌는지 알려줘.</pre>
-            </div>
         </div>
+      </div>
     </div>
+
+  </div>
+
 </div>
