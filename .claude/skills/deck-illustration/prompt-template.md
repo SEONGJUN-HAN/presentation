@@ -27,11 +27,14 @@ People (if any) are simple faceless stylized figures.
 ## 1. `NN_slug.png` — <슬라이드 제목> (NN번 슬라이드)
 
 - 비율: **16:9** (1920×1080) — 흐린 배경용
-- 배치: 슬라이드 전체에 흐리게 깔리고 그 위에 글씨가 올라갑니다. **소재를 화면 가운데에** 두세요.
+- 배치: 그림은 **왼쪽**(또는 오른쪽)에, 반대쪽 빈 자리에 제목이 들어갑니다.
 
 ```
-<장면 묘사 — 영어. 무엇이, 어디에, 어떤 빛으로. 마지막 줄: Centered composition.>
+<장면 묘사 — 영어. 무엇이, 어떤 빛으로.>
+Place everything inside the LEFT 60% of the frame; characters face toward the right.
+Leave the RIGHT 40% of the frame completely empty pure black.
 ```
+(글씨가 주인공인 장이면 LEFT↔RIGHT 를 바꾼다)
 
 ## 2. `NN_slug.png` — <슬라이드 제목> (NN번 슬라이드)
 
@@ -49,4 +52,6 @@ People (if any) are simple faceless stylized figures.
 - [ ] 파일 이름이 정확한가
 - [ ] 글자·숫자·로고가 없는가
 - [ ] 모든 그림의 화풍·색감이 같은가
-- [ ] 16:9 배경용은 소재가 가운데에 있는가
+- [ ] 16:9 배경용은 소재가 한쪽 60% 안에 있고, 반대쪽 40%가 비어 있는가
+- [ ] 인물이 빈 쪽(글씨 쪽)을 바라보는가
+- [ ] 오른쪽 아래 워터마크(✦)가 없는가

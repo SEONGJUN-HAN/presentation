@@ -448,6 +448,28 @@
     backdrop-filter: blur(6px);
 }
 
+/* ── 그림과 글씨의 초점을 좌우로 나누기 ───────────────────────
+   가운데 배치는 그림과 글씨의 초점이 겹쳐 그림을 많이 죽여야 합니다.
+   sk--photo-left  : 그림이 주인공 — 그림 왼쪽(먼저 보임), 글씨 오른쪽
+   sk--photo-right : 글씨가 주인공 — 글씨 왼쪽, 그림 오른쪽(보조)
+   그림은 한쪽으로 붙여 반대쪽 끝을 페이드, 어둡게 하는 건 글씨 쪽만.
+   (sk--photo 와 함께 씁니다) */
+.sk.sk--photo-left, .sk.sk--photo-right { --photo-dim: .8; }
+.sk--photo-left  .sk-bg { width: 74%; right: auto; object-position: 55% 50%;
+    -webkit-mask-image: linear-gradient(to right, #000 55%, transparent 100%);
+            mask-image: linear-gradient(to right, #000 55%, transparent 100%); }
+.sk--photo-right .sk-bg { width: 74%; left: auto; object-position: 45% 50%;
+    -webkit-mask-image: linear-gradient(to left, #000 55%, transparent 100%);
+            mask-image: linear-gradient(to left, #000 55%, transparent 100%); }
+.sk--photo-left::after  { background: linear-gradient(to right, transparent 30%, rgba(0,0,0,.82) 62%); }
+.sk--photo-right::after { background: linear-gradient(to left,  transparent 30%, rgba(0,0,0,.82) 62%); }
+
+/* 표지 글씨 블록을 반대쪽으로 */
+.sk-cover.sk--photo-left  { align-items: flex-start; text-align: left; padding-left: 50%; padding-right: var(--slide-px); }
+.sk-cover.sk--photo-right { align-items: flex-start; text-align: left; padding-right: 46%; }
+.sk-cover.sk--photo-left .sk-cover__title,
+.sk-cover.sk--photo-right .sk-cover__title { font-size: 50px; }
+
 /* 커버도 컨테이너 padding 을 끕니다 */
 .slide-container:has(> .sk-cover) { padding: 0; }
 
