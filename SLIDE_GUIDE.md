@@ -83,7 +83,7 @@ npx serve
 | 그림 옆에 쌓는 납작한 카드 | `card--row` |
 | 열 하나를 채우는 그림 | `<img class="shot">` |
 | 흐린 그림 배경 | 루트에 `sk--photo` + 첫 줄에 `<img class="sk-bg">` |
-| 그림·글씨 초점 나누기 | `sk--photo` 에 더해 `sk--photo-left`(그림 주인공) / `sk--photo-right`(글씨 주인공) |
+| 그림·글씨 초점 나누기 | `sk--photo` 에 더해 `sk--photo-left` / `-right` / `-bottom` / `-top` |
 | 제목 아래 도입 문단 | `<p class="lead">` |
 | 열 안의 소제목 (카드 밖) | `s-h3` |
 | 카드 제목 위 작은 라벨 / 맨 아래 한 줄 | `card__kicker` / `card__end` (구분선) |
@@ -141,6 +141,9 @@ npx serve
 |---|---|---|
 | 그림 | `sk--photo-left` | 그림 왼쪽(먼저 보임) · 글씨 오른쪽 |
 | 글씨 | `sk--photo-right` | 글씨 왼쪽 · 그림 오른쪽(보조) |
+| 소재가 아래(위)에 넓게 퍼진 그림 | `sk--photo-bottom` / `sk--photo-top` | 그림 아래 · 글씨 위 (또는 반대) |
+
+좌우든 위아래든 원리는 같습니다 — **초점을 나누고, 어둡게 하는 건 글씨 쪽만.** 이미 있는 그림은 두 방향을 다 보고 소재가 덜 가려지는 쪽을 고릅니다.
 
 ```html
 <div class="sk sk-cover sk--photo sk--photo-left tone-amber">
@@ -156,7 +159,8 @@ npx serve
 
 딱 끊긴 테두리는 단절감을 줍니다. 가운데는 밝게, 끝으로 갈수록 어둡게 검정 배경에 녹입니다.
 - 좌우 분리 배경(`sk--photo-left/right`)은 이미 위아래·바깥쪽까지 비네트가 들어가 있습니다.
-- 칸 안의 그림은 `<img class="shot shot--fade">` — 테두리 없이 타원으로 녹아듭니다. 덱 전체를 바꾸려면 `[data-deck="..."] .sk--photo { --photo-dim: .3; }`
+- 칸 안의 그림은 `<img class="shot shot--fade">` — 테두리 없이 사방 가장자리가 녹아듭니다.
+- 가운데 배치 배경도 가장자리가 흐려집니다. 덱 전체를 바꾸려면 `[data-deck="..."] .sk--photo { --photo-dim: .3; }`
 
 ### 그림 만들기 (안티그래비티 + 나노바나나)
 
