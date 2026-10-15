@@ -455,14 +455,31 @@
    그림은 한쪽으로 붙여 반대쪽 끝을 페이드, 어둡게 하는 건 글씨 쪽만.
    (sk--photo 와 함께 씁니다) */
 .sk.sk--photo-left, .sk.sk--photo-right { --photo-dim: .8; }
-.sk--photo-left  .sk-bg { width: 74%; right: auto; object-position: 55% 50%;
-    -webkit-mask-image: linear-gradient(to right, #000 55%, transparent 100%);
-            mask-image: linear-gradient(to right, #000 55%, transparent 100%); }
-.sk--photo-right .sk-bg { width: 74%; left: auto; object-position: 45% 50%;
-    -webkit-mask-image: linear-gradient(to left, #000 55%, transparent 100%);
-            mask-image: linear-gradient(to left, #000 55%, transparent 100%); }
-.sk--photo-left::after  { background: linear-gradient(to right, transparent 30%, rgba(0,0,0,.82) 62%); }
-.sk--photo-right::after { background: linear-gradient(to left,  transparent 30%, rgba(0,0,0,.82) 62%); }
+.sk--photo-left  .sk-bg { width: var(--photo-w, 100%); right: auto; }
+.sk--photo-right .sk-bg { width: var(--photo-w, 100%); left: auto; }
+/* 처음부터 한쪽 60% 구도로 만든 그림은 폭 100% 그대로.
+   가운데 구도로 만든 옛 그림은 style="--photo-w: 74%" 로 한쪽에 붙여 씁니다. */
+/* 비네트 — 가운데는 밝게, 끝으로 갈수록 어둡게 사라짐 (딱 끊긴 테두리 없이)
+   글씨 쪽은 길게(45%), 화면 바깥쪽·위아래는 짧게 녹아듭니다 */
+.sk--photo-left .sk-bg {
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,.35) 0%, #000 14%, #000 55%, transparent 100%),
+                        linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+            mask-image: linear-gradient(to right, rgba(0,0,0,.35) 0%, #000 14%, #000 55%, transparent 100%),
+                        linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+.sk--photo-right .sk-bg {
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,.35) 0%, #000 14%, #000 55%, transparent 100%),
+                        linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+            mask-image: linear-gradient(to left, rgba(0,0,0,.35) 0%, #000 14%, #000 55%, transparent 100%),
+                        linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+.sk.sk--photo-left::after  { background: linear-gradient(to right, transparent 30%, rgba(0,0,0,.82) 62%); }
+.sk.sk--photo-right::after { background: linear-gradient(to left,  transparent 30%, rgba(0,0,0,.82) 62%); }
+/* 본문에서 좌우 분리: 글씨는 반대쪽 절반에만 (.half 로 감쌈) — 아래로 모으는 본문 규칙은 쓰지 않음 */
+.sk--photo-left  .half { margin-left: auto; }
+.sk .half { width: 52%; flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--sp-4); }
 
 /* 표지 글씨 블록을 반대쪽으로 */
 .sk-cover.sk--photo-left  { align-items: flex-start; text-align: left; padding-left: 50%; padding-right: var(--slide-px); }
@@ -582,6 +599,12 @@
 
 /* 화면 캡처처럼 잘리면 안 되는 그림 */
 .sk .shot--contain { object-fit: contain; background: var(--bg-code); }
+/* 칸 안 그림의 테두리를 없애고 가장자리를 검정 배경에 녹임 (비네트) */
+.sk .shot--fade {
+    border: none; border-radius: 0;
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 55%, transparent 100%);
+            mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 55%, transparent 100%);
+}
 
 /* 코드 타일(components.css)을 열 안에서 남는 높이만큼 */
 .sk .col > .code-tile-wrapper { flex: 1; min-height: 0; }

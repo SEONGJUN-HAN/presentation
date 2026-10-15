@@ -33,6 +33,8 @@ People (if any) are simple faceless stylized figures.
 <장면 묘사 — 영어. 무엇이, 어떤 빛으로.>
 Place everything inside the LEFT 60% of the frame; characters face toward the right.
 Leave the RIGHT 40% of the frame completely empty pure black.
+The background is one seamless pure black (#000000) across the entire frame:
+no floor, no wall, no gray backdrop, no gradient, no visible edge or split.
 ```
 (글씨가 주인공인 장이면 LEFT↔RIGHT 를 바꾼다)
 
