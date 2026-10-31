@@ -1,75 +1,66 @@
 <div class="sk tone-amber">
 
-  <!-- 고리 그림 — 이 장에서만 쓰는 모양이라 여기에 둡니다 -->
-  <style>
-    .lp-rows { display: flex; flex-direction: column; gap: 4px; }
-    .lp-row { display: flex; align-items: center; gap: 10px; font-size: var(--fs-sm);
-              background: var(--bg-secondary); border: 1px solid var(--border);
-              border-radius: 8px; padding: 3px 12px; color: var(--text-main); }
-    .lp-who { flex: none; min-width: 40px; text-align: center; font-size: var(--fs-xs); font-weight: 700;
-              border-radius: 99px; padding: 1px 8px; border: 1px solid var(--text-dim); color: var(--text-dim); }
-    .lp-who--ai { background: var(--tone); border-color: var(--tone); color: var(--bg-primary); }
-    .lp-loop { border: 2px dashed var(--text-dim); border-radius: 12px; padding: 6px 10px 8px; }
-    .lp-loop--ai { border-color: var(--tone); }
-    .lp-loop__label { font-size: var(--fs-xs); font-weight: 700; color: var(--text-dim); margin: 0 0 4px 4px; }
-    .lp-loop--ai .lp-loop__label { color: var(--tone); }
-  </style>
-
   <div class="s-head">
     <div class="s-head__main">
-      <span class="s-badge"><i class="fa-solid fa-lightbulb"></i> 개념 ②</span>
-      <h2 class="s-title">채팅 AI vs 코딩 에이전트 — 누가 고리를 도느냐</h2>
+      <span class="s-badge"><i class="fa-solid fa-lightbulb"></i> 개념 ①</span>
+      <h2 class="s-title">이번엔 내 PC에 '실행기'를 들입니다</h2>
     </div>
   </div>
 
   <p class="lead">
-    2시간째까지는 코드를 받아 <strong>내가</strong> 붙이고, 돌리고, 오류를 옮겼습니다.<br>
-    코딩 에이전트는 <strong class="hl">내 PC에서 직접 실행해 보고, 스스로 고칩니다.</strong>
+    코드는 그것을 읽고 움직여 줄 프로그램, <strong class="hl">실행기</strong>가 있어야 돌아갑니다.<br>
+    2시간째까지는 <strong>이미 깔려 있는 실행기</strong>를 빌려 썼습니다.
   </p>
 
-  <div class="cols">
-
-    <div class="card card--plain">
-      <p class="card__kicker" style="color:var(--text-dim);">💬 채팅창 · 1 · 2시간째</p>
-      <div class="lp-loop">
-        <p class="lp-loop__label"><i class="fa-solid fa-rotate-left"></i>&nbsp; 될 때까지 <strong>사람이</strong> 반복</p>
-        <div class="lp-rows">
-          <div class="lp-row"><span class="lp-who">나</span> 요청하기</div>
-          <div class="lp-row"><span class="lp-who lp-who--ai">AI</span> 코드 주기</div>
-          <div class="lp-row"><span class="lp-who">나</span> 붙여넣고 실행하기</div>
-          <div class="lp-row"><span class="lp-who">나</span> 오류 복사해서 다시 요청</div>
-        </div>
-      </div>
-      <p class="card__end">
-        실행과 확인은 <strong>내 손으로.</strong>
-      </p>
-    </div>
-
-    <div class="card card--pick">
-      <p class="card__kicker">🤖 코딩 에이전트 · 3시간째 안티그래비티</p>
-      <div class="lp-rows">
-        <div class="lp-row"><span class="lp-who">나</span> 한 번 요청하기</div>
-        <div class="lp-loop lp-loop--ai">
-          <p class="lp-loop__label"><i class="fa-solid fa-rotate-right"></i>&nbsp; 될 때까지 <strong>AI가</strong> 반복</p>
-          <div class="lp-rows">
-            <div class="lp-row"><span class="lp-who lp-who--ai">AI</span> 파일 열어 코드 고치기</div>
-            <div class="lp-row"><span class="lp-who lp-who--ai">AI</span> 내 PC에서 실행하기</div>
-            <div class="lp-row"><span class="lp-who lp-who--ai">AI</span> 결과 · 오류 보고 판단</div>
-          </div>
-        </div>
-        <div class="lp-row"><span class="lp-who">나</span> 결과 확인하기</div>
-      </div>
-      <p class="card__end">
-        나는 <strong>말하고, 결과만 확인.</strong>
-      </p>
-    </div>
-
+  <div class="grow" style="display:flex; flex-direction:column; justify-content:center;">
+    <table class="tbl--key">
+      <thead>
+        <tr>
+          <th style="width: 15%;">언어</th>
+          <th style="width: 17%;">실행기</th>
+          <th>하는 일</th>
+          <th style="width: 14%;">언제</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>VBA</td>
+          <td>엑셀</td>
+          <td>엑셀 안의 반복 작업 <span class="dim">— 급여명세서 PDF</span></td>
+          <td class="dim">이미 있음</td>
+        </tr>
+        <tr>
+          <td>자바스크립트</td>
+          <td>브라우저</td>
+          <td>HTML 파일 하나짜리 프로그램 <span class="dim">— 용량 줄이기</span></td>
+          <td class="dim">이미 있음</td>
+        </tr>
+        <tr class="highlight">
+          <td>오토핫키</td>
+          <td><strong>AutoHotkey</strong></td>
+          <td>키보드 · 마우스 · 창을 대신 움직임 <span class="dim">— 런처 본체, 에듀파인처럼 못 고치는 프로그램도</span></td>
+          <td><strong class="hl">오늘 설치</strong></td>
+        </tr>
+        <tr class="highlight">
+          <td>파이썬</td>
+          <td><strong>Python</strong></td>
+          <td>PDF · 엑셀 파일 처리 <span class="dim">— 마스킹, 마트 계산기, 현황 검색</span></td>
+          <td><strong class="hl">오늘 설치</strong></td>
+        </tr>
+        <tr class="highlight">
+          <td>자바스크립트</td>
+          <td><strong>Node.js</strong></td>
+          <td>브라우저 밖에서 자바스크립트 실행 <span class="dim">— 법령 MCP처럼 AI에 붙이는 도구</span></td>
+          <td><strong class="hl">오늘 설치</strong></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="note">
-    <i class="fa-solid fa-plug"></i>&nbsp;
-    AI가 직접 돌려 보려면 <strong>내 PC에 실행기가 있어야</strong> 합니다. 그래서 앞 장의 셋을 설치합니다.<br>
-    안티그래비티가 안 되는 PC는 <strong>2시간째처럼 채팅창</strong>으로 해도 됩니다.
+    <i class="fa-solid fa-box-open"></i>&nbsp;
+    쉬는 시간에 눌러 둔 <strong>설치하기.bat</strong>이 이 셋과 <strong>안티그래비티</strong>까지 한 번에 깝니다.<br>
+    문법은 이번에도 외우지 않습니다. <strong>실행기만 있으면 AI가 씁니다.</strong>
   </div>
 
 </div>

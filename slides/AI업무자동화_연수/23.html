@@ -2,49 +2,57 @@
 
   <div class="s-head">
     <div class="s-head__main">
-      <span class="s-badge"><i class="fa-solid fa-robot"></i> 바이브코딩</span>
-      <h2 class="s-title">언어는 AI가 통역합니다 — 말하고, 붙이고, 실행</h2>
+      <h2 class="s-title">함수를 만들려면 '언어'가 필요합니다</h2>
     </div>
   </div>
 
   <p class="lead">
-    문법은 외우지 않습니다.<br>
-    우리말로 구조를 설명하면 <strong class="hl">AI가 코드로 통역</strong>합니다.
+    사람에게는 "대충 이렇게 해 줘"가 통합니다.<br>
+    컴퓨터는 <strong>정해진 말로, 정확하게</strong> 시켜야 합니다.
   </p>
 
-  <div class="grow" style="display:flex; flex-direction:column; justify-content:center;">
-    <table class="tbl--key">
-      <thead>
-        <tr>
-          <th style="width: 18%;"></th>
-          <th style="width: 41%;"><i class="fa-solid fa-file-excel"></i>&nbsp; 엑셀 VBA</th>
-          <th style="width: 41%;"><i class="fa-brands fa-html5"></i>&nbsp; HTML 프로그램</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>① 말하기</td>
-          <td>"엑셀 <strong>VBA</strong>로 만들어줘" + 구조 설명</td>
-          <td>"<strong>HTML 파일 하나</strong>로 만들어줘" + 구조 설명</td>
-        </tr>
-        <tr class="highlight">
-          <td>② 붙이기</td>
-          <td><code>Alt + F11</code> &rarr; 삽입 &rarr; 모듈</td>
-          <td>메모장에 붙여 <code>.html</code> 로 저장</td>
-        </tr>
-        <tr>
-          <td>③ 실행</td>
-          <td>코드 안에 커서 두고 <code>F5</code></td>
-          <td>파일 더블클릭 &rarr; 브라우저에서 열림</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="cols cols--3" style="grid-template-columns: 1.1fr 1fr 1.15fr; gap: var(--sp-5);">
+
+    <div class="col">
+      <img class="shot shot--fade" src="img/AI업무자동화/22_translator.png" alt="직원과 컴퓨터 사이에서 통역하는 로봇">
+    </div>
+
+    <div class="col">
+      <div class="card card--plain">
+        <p class="card__kicker" style="color:var(--text-dim);">🙋 동료에게</p>
+        <p class="memo">"명세서 사람별로 뽑아 줘요"</p>
+      </div>
+      <div class="card card--pick">
+        <p class="card__kicker">💻 컴퓨터에게</p>
+        <p class="memo hl">
+          D7부터 D52까지 하나씩,<br>
+          숨긴 행은 건너뛰고,<br>
+          F4에 넣고, PDF로, 이름.pdf
+        </p>
+      </div>
+    </div>
+
+    <div class="col">
+      <p class="card__body">
+        그 정해진 말이 프로그래밍 언어입니다.<br>
+        오늘은 <strong>세 가지</strong>를 씁니다.
+      </p>
+      <table class="tbl--key">
+        <thead><tr><th>언어</th><th>어디서</th><th>언제</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td>VBA</td><td>엑셀 안</td><td>지금 <span style="font-size: var(--fs-xs);">(설치 없음)</span></td></tr>
+          <tr class="highlight"><td>자바스크립트</td><td>브라우저 (HTML 파일)</td><td>지금 <span style="font-size: var(--fs-xs);">(설치 없음)</span></td></tr>
+          <tr><td>오토핫키</td><td>윈도우 전체</td><td>3시간째</td></tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 
   <div class="note">
-    <i class="fa-solid fa-user-check"></i>&nbsp;
-    사람의 몫은 셋 &mdash; <strong>구조를 정하고, 붙일 자리를 알고, 결과를 확인하기.</strong><br>
-    안 되면 오류를 그대로 붙여 "고쳐줘".
+    <i class="fa-solid fa-triangle-exclamation"></i>&nbsp;
+    컴퓨터는 <strong>쉼표 하나만 틀려도 멈춥니다.</strong><br>
+    오류가 나는 건 여러분 탓이 아니라 원래 그런 것입니다.
   </div>
 
 </div>
