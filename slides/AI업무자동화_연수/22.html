@@ -1,5 +1,14 @@
 <div class="sk tone-amber">
 
+  <!-- 대조 그림 두 장 — 이 장에서만 쓰는 모양이라 여기에 둡니다 -->
+  <style>
+    .vs-col { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
+    .vs-col .card__kicker { margin: 0; }
+    .vs-col .card__title { margin: 0; }
+    .vs-col .shot { object-fit: contain; }
+    .vs-col .vs-end { margin: 0; font-size: var(--fs-md); text-align: center; }
+  </style>
+
   <div class="s-head">
     <div class="s-head__main">
       <span class="s-badge"><i class="fa-solid fa-lock"></i> 꼭 알고 가기</span>
@@ -7,44 +16,27 @@
     </div>
   </div>
 
-  <p class="lead">
-    AI에게 시키면 <strong>서류가 AI 회사 서버(미국 등 해외)까지</strong> 다녀옵니다.<br>
-    코드로 만들면 <strong class="hl">기계를 우리 학교에 두고, 서류는 그 기계에 넣습니다.</strong>
-  </p>
+  <div class="cols grow">
 
-  <div class="cols">
-
-    <div class="card card--plain">
+    <div class="vs-col">
       <p class="card__kicker" style="color:var(--text-dim);">💬 AI에게 매번 시키기</p>
-      <div class="card__title">✈️ 서류를 들고 바다를 건넌다</div>
-      <ul class="list list--icon">
-        <li><i class="fa-solid fa-file-lines"></i> 내 서류(급여 자료)를 <strong>AI에게 건넴</strong></li>
-        <li><i class="fa-solid fa-plane"></i> AI 회사 서버(해외)에서 <strong>작업</strong></li>
-        <li><i class="fa-solid fa-arrow-rotate-left"></i> 결과를 들고 돌아옴</li>
-      </ul>
-      <p class="card__end">
-        <strong>할 때마다</strong> 서류가 학교 밖으로 나갑니다.
-      </p>
+      <div class="card__title">✈️ 서류를 들고 바다 건너 AI 회사 서버까지</div>
+      <img class="shot shot--fade" src="img/AI업무자동화/22_away.png" alt="직원이 로봇에게 서류를 건네고, 로봇이 바다 건너 서버까지 갔다가 돌아오는 그림">
+      <p class="vs-end"><strong>할 때마다</strong> 서류가 학교 밖으로 나갑니다.</p>
     </div>
 
-    <div class="card card--pick">
+    <div class="vs-col">
       <p class="card__kicker">⚙ 코드로 자동화</p>
-      <div class="card__title">🏫 기계를 학교에 둔다</div>
-      <ul class="list list--icon">
-        <li><i class="fa-solid fa-handshake"></i> AI와 <strong>기계(코드)를 만든다</strong> &mdash; 구조만 설명</li>
-        <li><i class="fa-solid fa-school"></i> 기계는 <strong>우리 학교 PC</strong>에 둔다</li>
-        <li><i class="fa-solid fa-file-lines"></i> 서류는 <strong>기계에 넣고</strong>, 결과는 바로</li>
-      </ul>
-      <p class="card__end">
-        서류는 <strong>학교 밖으로 나가지 않습니다.</strong>
-      </p>
+      <div class="card__title">🏫 AI와 만든 기계를 우리 학교에 두고</div>
+      <img class="shot shot--fade" src="img/AI업무자동화/22_home.png" alt="빛 돔 안의 사무실에서 직원이 기계에 서류를 넣고 결과가 바로 나오는 그림">
+      <p class="vs-end">서류는 <strong class="hl">기계에 넣고, 결과는 그 자리에서.</strong></p>
     </div>
 
   </div>
 
   <div class="note">
     <i class="fa-solid fa-user-shield"></i>&nbsp;
-    AI에게 가는 건 <strong>"D열에 이름, F4에 넣으면 채워져"</strong> 같은 설명뿐입니다.<br>
+    AI에게 가는 건 기계를 만들 때의 <strong>"D열에 이름, F4에 넣으면 채워져"</strong> 같은 설명뿐입니다.<br>
     그래서 기계를 만들 때도 <strong>실제 이름 · 금액은 붙여넣지 말고 ○○</strong>로.
   </div>
 
