@@ -693,3 +693,13 @@
 [data-deck="AI업무자동화_연수"] .sk-cover__desc  { font-size: var(--fs-lead); line-height: var(--lh-body); }
 /* 이 덱의 note 는 그 장의 결론 한 줄이라 본문 크기로 */
 [data-deck="AI업무자동화_연수"] .sk .note { font-size: var(--fs-body); }
+
+/* 원인행위 자동화 실습 — 실습실에서 멀리서도 보이도록 글씨를 한 단계 키웁니다 */
+[data-deck="원인행위_자동화_실습"] {
+    --fs-xs:   16px;
+    --fs-sm:   18px;
+    --fs-body: 21px;
+    --fs-lead: 24px;
+    --fs-h3:   27px;
+}
+[data-deck="원인행위_자동화_실습"] .sk .note { font-size: var(--fs-body); }
