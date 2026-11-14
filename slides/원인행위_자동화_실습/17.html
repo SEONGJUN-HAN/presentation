@@ -1,35 +1,57 @@
-<div class="sk tone-amber">
+<div class="sk tone-amber s17">
+
+  <style>
+    /* 세로 여백이 남는 장 — 글씨를 더 키움 */
+    .s17 .step__title { font-size: 30px; }
+    .s17 .step__desc  { font-size: 23px; }
+    .s17 .step__body  { padding-bottom: 34px; }
+    .s17 .tbl--key th, .s17 .tbl--key td { font-size: 23px; }
+  </style>
 
   <div class="s-head">
     <div class="s-head__main">
-      <h2 class="s-title">마지막으로, 세 가지만</h2>
+      <span class="s-badge"><i class="fa-solid fa-power-off"></i> 실습</span>
+      <h2 class="s-title">켤 때마다 자동으로 &mdash; shell:startup</h2>
     </div>
   </div>
 
-  <div class="stack stack--fill">
+  <div class="cols cols--left">
 
-    <div class="card card--wide">
-      <div class="card__icon">🛡</div>
-      <div>
-        <div class="card__title">'PC 보호' 창이 뜨면 [추가 정보] → [실행]</div>
-        <p class="card__body">서명 없는 exe라 뜨는 경고입니다. 백신이 막으면 <strong>정보 담당자에게 예외 요청</strong></p>
+    <div class="col">
+      <div class="steps">
+        <div class="step">
+          <div class="step__rail"><div class="step__num">1</div><div class="step__line"></div></div>
+          <div class="step__body">
+            <div class="step__title"><code>Win + R</code> → <code>shell:startup</code></div>
+            <div class="step__desc">시작프로그램 폴더가 열립니다</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__rail"><div class="step__num">2</div><div class="step__line"></div></div>
+          <div class="step__body">
+            <div class="step__title">exe 우클릭 → [바로 가기 만들기]</div>
+            <div class="step__desc">exe 본체는 그 자리에 둡니다</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__rail"><div class="step__num">3</div></div>
+          <div class="step__body">
+            <div class="step__title">바로 가기를 그 폴더로 옮기기</div>
+            <div class="step__desc">재부팅하면 트레이에서 대기</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card card--wide">
-      <div class="card__icon">📍</div>
-      <div>
-        <div class="card__title">전북 K-에듀파인 기준입니다</div>
-        <p class="card__body">타 시도 에듀파인에서는 동작하지 않습니다</p>
-      </div>
-    </div>
-
-    <div class="card card--wide card--pick">
-      <div class="card__icon">✅</div>
-      <div>
-        <div class="card__title">도구는 입력을 대신할 뿐, 판단은 내가</div>
-        <p class="card__body">저장 · 결재 전에 <strong>금액 · 품목 · 거래처</strong>는 꼭 눈으로 확인</p>
-      </div>
+    <div class="col">
+      <table class="tbl--key">
+        <thead><tr><th>단축키</th><th>하는 일</th></tr></thead>
+        <tbody>
+          <tr><td><code>Ctrl+Alt+Win+F12</code></td><td>제어창 열기</td></tr>
+          <tr class="highlight"><td><code>Ctrl+Alt+Win+F1~F9</code></td><td>시나리오 실행</td></tr>
+          <tr><td><code>Ctrl+Alt+Win+F11</code></td><td>비상 중단</td></tr>
+        </tbody>
+      </table>
     </div>
 
   </div>

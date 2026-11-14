@@ -1,10 +1,53 @@
-<div class="sk sk-cover tone-amber">
-  <div class="sk-cover__glow"></div>
-  <div class="sk-cover__icon">🛒</div>
-  <div class="sk-cover__label">1교시</div>
-  <h2 class="sk-cover__title">
-    품목_자동입력:<br>
-    <em>장바구니를 붙여넣으면 품목표</em>
-  </h2>
-  <p class="sk-cover__desc">복사 → 붙여넣기 → 확인 → <code>Ctrl + Alt + V</code></p>
+<div class="sk tone-amber">
+
+  <style>
+    /* 카드 세 장이 세로로 넉넉해서 글씨를 한 단계 크게 */
+    .flow3 .card { gap: var(--sp-4); padding: var(--sp-6); }
+    .flow3 .card__kicker { font-size: 20px; margin-bottom: -8px; }
+    .flow3 .card__title  { font-size: 32px; }
+    .flow3 .card__body   { font-size: 24px; line-height: 1.55; }
+    .flow3 .card__end    { font-size: 20px; }
+    .flow3 .flow__arrow  { font-size: 36px; }
+  </style>
+
+  <div class="s-head">
+    <div class="s-head__main">
+      <h2 class="s-title">원인행위 한 건, 도구가 맡는 자리</h2>
+    </div>
+  </div>
+
+  <div class="flow flow3">
+
+    <div class="card card--plain">
+      <p class="card__kicker">1교시</p>
+      <div class="card__title">🛒 품목 입력</div>
+      <p class="card__body">장바구니 · 영수증을<br><strong>물품내역 표</strong>로</p>
+      <p class="card__end">품목_자동입력 <span class="hl">(전북AI)</span></p>
+    </div>
+
+    <i class="fa-solid fa-arrow-right flow__arrow"></i>
+
+    <div class="card card--plain">
+      <p class="card__kicker">2교시</p>
+      <div class="card__title">📝 본문 작성</div>
+      <p class="card__body">관련 · 품명 · 금액 · 거래처를<br><strong>정형 본문</strong>으로</p>
+      <p class="card__end">본문_자동작성 (크롬 확장)</p>
+    </div>
+
+    <i class="fa-solid fa-arrow-right flow__arrow"></i>
+
+    <div class="card card--fill">
+      <p class="card__kicker">3교시</p>
+      <div class="card__title">🖱 결재 올리기</div>
+      <p class="card__body">결재선 · 공람 · 계좌검증<br><strong>클릭 반복</strong>을 대신</p>
+      <p class="card__end">클릭 자동화 실행기</p>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <i class="fa-solid fa-box-open"></i>&nbsp;
+    설치하는 것은 <strong>크롬 확장 하나</strong>뿐. 나머지 둘은 <strong>exe 파일을 더블클릭</strong>하면 끝입니다.
+  </div>
+
 </div>

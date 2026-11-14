@@ -1,38 +1,48 @@
-<div class="sk tone-amber">
+<div class="sk tone-amber s03">
+
+  <style>
+    /* 비교 두 칸 — 칸 안 줄 간격을 넉넉히, 글씨 한 단계 크게 */
+    .s03 .cols .card { gap: var(--sp-5); padding: var(--sp-6); justify-content: center; }
+    .s03 .cols .card__kicker { font-size: 20px; }
+    .s03 .cols .card__title { font-size: 34px; }
+    .s03 .cols .list { gap: var(--sp-5); }
+    .s03 .cols .list li { font-size: 27px; }
+  </style>
 
   <div class="s-head">
     <div class="s-head__main">
-      <span class="s-badge"><i class="fa-solid fa-bullseye"></i> 대상</span>
-      <h2 class="s-title">오늘은 원인행위 하나만 합니다</h2>
+      <span class="s-badge"><i class="fa-solid fa-compass"></i> 배경</span>
+      <h2 class="s-title">이번 연수는 '만드는 법'이 아니라 '쓰는 법'입니다</h2>
     </div>
   </div>
 
-  <div class="stack stack--fill">
+  <div class="cols">
 
-    <div class="card card--wide card--pick">
-      <div class="card__icon">🎯</div>
-      <div>
-        <div class="card__title">원인행위를 직접, 자주 처리하는 분</div>
-        <p class="card__body">물품 구입 · 업무추진비 · 용역을 <strong>매주 올리는 지출 담당자</strong></p>
-      </div>
+    <div class="card card--plain">
+      <p class="card__kicker">예전 AI 연수</p>
+      <div class="card__title">🛠 AI로 도구 만들기</div>
+      <ul class="list">
+        <li class="is-warn">대상이 넓어 <strong>내용이 일반적</strong></li>
+        <li class="is-warn">실습하기 좋은 <strong>간단한 도구</strong></li>
+        <li class="is-warn">내 업무에 남는지 <strong>체감이 어려움</strong></li>
+      </ul>
     </div>
 
-    <div class="card card--wide card--plain">
-      <div class="card__icon">🚫</div>
-      <div>
-        <div class="card__title">지급 · 계약 · 결산은 다루지 않습니다</div>
-        <p class="card__body">3시간 전부를 <strong>원인행위 자동화</strong>에만 씁니다</p>
-      </div>
+    <div class="card card--pick">
+      <p class="card__kicker">이번 연수</p>
+      <div class="card__title">🚀 만들어진 도구 바로 쓰기</div>
+      <ul class="list">
+        <li><strong>원인행위 담당자</strong>로 대상을 좁힘</li>
+        <li>강사가 <strong>실제로 매일 쓰는</strong> 도구</li>
+        <li>오늘 설치해서 <strong>내 PC에 남겨 감</strong></li>
+      </ul>
     </div>
 
-    <div class="card card--wide tone-red">
-      <div class="card__icon">⚖️</div>
-      <div>
-        <div class="card__title">원인행위가 드문 분께는 실익이 적습니다</div>
-        <p class="card__body">세팅하는 수고가 있어서, <strong>건수가 많을수록</strong> 이득입니다</p>
-      </div>
-    </div>
+  </div>
 
+  <div class="note">
+    <i class="fa-solid fa-arrow-right"></i>&nbsp;
+    방금 본 시연, <strong>그 도구 그대로</strong> 드립니다.
   </div>
 
 </div>
