@@ -8,7 +8,7 @@
     .vs .vs__before .vs__tag { color: var(--text-dim); }
     .vs .vs__after  .vs__tag { color: var(--tone); }
     .vs .vs__pic   { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;
-                     font-size: 110px; border-radius: var(--r-lg);
+                     font-size: 110px; border-radius: var(--r-lg); overflow: hidden;
                      background: var(--surface); border: 1px solid var(--surface-line); }
     .vs .vs__after .vs__pic { background: var(--tone-bg); border-color: var(--tone-border); }
     .vs .vs__pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -30,7 +30,7 @@
 
     <div class="vs__side vs__before">
       <div class="vs__tag">기존</div>
-      <div class="vs__pic">🧾</div>
+      <div class="vs__pic"><img src="img/원인행위_자동화_실습/08_before.png" alt="기존"></div>
       <div class="vs__title">장바구니 · 영수증을 보며<br>한 칸씩 직접 입력</div>
       <p class="vs__body">품명 · 수량 · 단가를 눈으로 옮겨 적기</p>
     </div>
@@ -39,7 +39,7 @@
 
     <div class="vs__side vs__after">
       <div class="vs__tag">이제</div>
-      <div class="vs__pic">🤖</div>
+      <div class="vs__pic"><img src="img/원인행위_자동화_실습/08_after.png" alt="이제"></div>
       <div class="vs__title">AI가 읽고<br>품목표를 채움</div>
       <p class="vs__body">붙여넣고 확인만, 입력은 <code>Ctrl+Alt+V</code></p>
     </div>
