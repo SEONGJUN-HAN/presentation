@@ -2,69 +2,47 @@
 
   <div class="s-head">
     <div class="s-head__main">
-      <span class="s-badge"><i class="fa-solid fa-key"></i> 같이</span>
-      <h2 class="s-title">전북AI API 키 만들기</h2>
+      <span class="s-badge"><i class="fa-solid fa-gears"></i> 동작 원리</span>
+      <h2 class="s-title">AI는 읽기만, 계산과 입력은 프로그램이</h2>
     </div>
   </div>
 
-  <div class="cols cols--left">
+  <div class="flow">
 
-    <div class="col">
-      <div class="steps">
-        <div class="step">
-          <div class="step__rail"><div class="step__num">1</div><div class="step__line"></div></div>
-          <div class="step__body">
-            <div class="step__title">ai.jbe.go.kr 로그인</div>
-            <div class="step__desc">왼쪽 아래 API Gateway → API 키 탭</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step__rail"><div class="step__num">2</div><div class="step__line"></div></div>
-          <div class="step__body">
-            <div class="step__title">[API 키 생성] → 바로 복사</div>
-            <div class="step__desc">키 전체는 <strong>이때 한 번만</strong> 보입니다</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step__rail"><div class="step__num">3</div><div class="step__line"></div></div>
-          <div class="step__body">
-            <div class="step__title">품목_자동입력 설정창에 붙여넣기</div>
-            <div class="step__desc">AI 회사 '전북AI' 선택</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step__rail"><div class="step__num">4</div></div>
-          <div class="step__body">
-            <div class="step__title">[목록 불러오기] → 저장</div>
-            <div class="step__desc">모델 목록이 뜨면 키가 맞습니다</div>
-          </div>
-        </div>
-      </div>
+    <div class="card card--plain">
+      <div class="card__title">📋 붙여넣기</div>
+      <p class="card__body">장바구니 화면 · 견적서 · 캡처 · 영수증 PDF</p>
     </div>
 
-    <div class="col">
-      <div class="card card--pick">
-        <div class="card__title">🎁 교직원 크레딧</div>
-        <ul class="list">
-          <li><strong>결제 등록 없이</strong> 씁니다</li>
-          <li>매달 <strong>8,000크레딧</strong> (1일 초기화)</li>
-          <li>한 건에 약 <strong>1~2크레딧</strong></li>
-        </ul>
-      </div>
-      <div class="card card--plain">
-        <div class="card__title">🎯 안 맞을 때만 정밀</div>
-        <ul class="list">
-          <li>합계가 다르면 <strong>[Sonnet으로 다시 분석]</strong></li>
-          <li>한 건 약 20~60크레딧</li>
-        </ul>
-      </div>
+    <i class="fa-solid fa-arrow-right flow__arrow"></i>
+
+    <div class="card card--pick">
+      <p class="card__kicker">전북AI</p>
+      <div class="card__title">👀 읽기</div>
+      <p class="card__body">체크한 상품만 골라 품명 · 수량 · 금액 추출</p>
+    </div>
+
+    <i class="fa-solid fa-arrow-right flow__arrow"></i>
+
+    <div class="card card--plain">
+      <p class="card__kicker">프로그램</p>
+      <div class="card__title">🧮 검산</div>
+      <p class="card__body">단가 = 총액 ÷ 수량<br>합계 ↔ <strong>실제 결제금액</strong></p>
+    </div>
+
+    <i class="fa-solid fa-arrow-right flow__arrow"></i>
+
+    <div class="card card--fill">
+      <p class="card__kicker">오토핫키</p>
+      <div class="card__title">⌨️ 대신 치기</div>
+      <p class="card__body">칸마다 입력하고 <code>Tab</code>, 다음 행으로</p>
     </div>
 
   </div>
 
   <div class="note">
-    <i class="fa-solid fa-circle-info"></i>&nbsp;
-    남은 크레딧은 ai.jbe.go.kr 오른쪽 위 <strong>내 이름</strong>을 누르면 보입니다.
+    <i class="fa-solid fa-circle-check"></i>&nbsp;
+    AI가 잘못 읽어도 <strong>합계가 결제금액과 다르면 빨간색</strong>으로 바로 알려 줍니다.
   </div>
 
 </div>

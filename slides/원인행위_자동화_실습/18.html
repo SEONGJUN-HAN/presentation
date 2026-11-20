@@ -2,34 +2,53 @@
 
   <div class="s-head">
     <div class="s-head__main">
-      <h2 class="s-title">마지막으로, 세 가지만</h2>
+      <span class="s-badge"><i class="fa-solid fa-gears"></i> 동작 원리</span>
+      <h2 class="s-title">버튼 사진을 화면에서 찾아 누른다</h2>
     </div>
   </div>
 
-  <div class="stack stack--fill">
+  <div class="cols">
 
-    <div class="card card--wide">
-      <div class="card__icon">🛡</div>
-      <div>
-        <div class="card__title">'PC 보호' 창이 뜨면 [추가 정보] → [실행]</div>
-        <p class="card__body">서명 없는 exe라 뜨는 경고입니다. 백신이 막으면 <strong>정보 담당자에게 예외 요청</strong></p>
+    <div class="flow flow--down">
+      <div class="card card--row card--plain">
+        <div class="card__icon"><i class="fa-solid fa-file-excel"></i></div>
+        <div>
+          <div class="card__title">Tasks.xlsx = 순서표</div>
+          <p class="card__body">무엇을, 어떤 순서로</p>
+        </div>
+      </div>
+      <i class="fa-solid fa-plus flow__arrow"></i>
+      <div class="card card--row card--plain">
+        <div class="card__icon"><i class="fa-solid fa-image"></i></div>
+        <div>
+          <div class="card__title">자동화이미지 = 버튼 사진</div>
+          <p class="card__body">어디를 누를지</p>
+        </div>
+      </div>
+      <i class="fa-solid fa-arrow-down flow__arrow"></i>
+      <div class="card card--row card--fill">
+        <div class="card__icon"><i class="fa-solid fa-crosshairs"></i></div>
+        <div>
+          <div class="card__title">화면에서 같은 그림을 찾아 클릭</div>
+          <p class="card__body">못 찾으면 기다렸다 다시</p>
+        </div>
       </div>
     </div>
 
-    <div class="card card--wide">
-      <div class="card__icon">📍</div>
-      <div>
-        <div class="card__title">전북 K-에듀파인 기준입니다</div>
-        <p class="card__body">타 시도 에듀파인에서는 동작하지 않습니다</p>
-      </div>
-    </div>
-
-    <div class="card card--wide card--pick">
-      <div class="card__icon">✅</div>
-      <div>
-        <div class="card__title">도구는 입력을 대신할 뿐, 판단은 내가</div>
-        <p class="card__body">저장 · 결재 전에 <strong>금액 · 품목 · 거래처</strong>는 꼭 눈으로 확인</p>
-      </div>
+    <div class="col">
+      <table class="tbl--key">
+        <thead>
+          <tr><th style="width:12%;">#</th><th style="width:34%;">동작</th><th>대상</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>사용자입력</td><td>결재자 (1 교장 / 2 실장)</td></tr>
+          <tr><td>2</td><td>키워드클릭</td><td>현재결재선클릭</td></tr>
+          <tr class="highlight"><td>3</td><td>조건분기</td><td><code>{{결재자}}</code> = 1</td></tr>
+          <tr><td>4</td><td>키워드클릭</td><td>교장결재선택</td></tr>
+          <tr><td>5</td><td>키워드클릭</td><td>결재올림버튼</td></tr>
+        </tbody>
+      </table>
+      <p class="tag">Tasks.xlsx 한 줄 = 한 동작</p>
     </div>
 
   </div>
